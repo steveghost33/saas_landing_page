@@ -41,7 +41,7 @@ const Header = () => {
     >
       <div className="container flex h-14 items-center max-lg:px-5">
         <a className="lg:hidden flex-1 cursor-pointer z-2">
-          <img src="/images/xora.svg" width={115} height={55} alt="logo" />
+          <img src="/images/ellalogo.svg" width={900} height={300} alt="logo" />
         </a>
 
         <div
@@ -70,9 +70,9 @@ const Header = () => {
                     )}
                   >
                     <img
-                      src="/images/xora.svg"
-                      width={160}
-                      height={55}
+                      src="/images/ellalogo.svg"
+                      width={950}
+                      height={950}
                       alt="logo"
                     />
                   </LinkScroll>
