@@ -20,7 +20,7 @@ const Hero = () => {
               focus on their mission, not the tech.
             </p>
             <LinkScroll to="features" offset={-100} spy smooth>
-              <Button icon="/images/zap.svg">Try it now</Button>
+              <Button icon="/images/zap.svg">Book Us Now</Button>
             </LinkScroll>
           </div>
 
@@ -36,7 +36,7 @@ const Hero = () => {
           >
             <img
               src="/images/computer.png"
-              className="size-800 max-lg:h-auto"
+              className="size-1200 max-lg:h-auto"
               alt="computer"
             />
           </div>
