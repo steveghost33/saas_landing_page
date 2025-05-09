@@ -13,7 +13,7 @@ const Hero = () => {
             <h1 className="mb-6 h1 text-p4 uppercase max-lg:mb-7 max-lg:h2 max-md:mb-4 max-md:text-5xl max-md:leading-12">
               Innovation Made Effortless
             </h1>
-            <p className="max-w-440 mb-14 body-1 max-md:mb-10">
+            <p className="max-w-440 mb-14 body-1 max-md:mb-10 text-p5">
               Ella Tech Solutions enables companies to streamline their work
               with custom websites, intelligent automations, and intuitive
               digital tools—so small businesses, nonprofits, and schools can
@@ -26,16 +26,16 @@ const Hero = () => {
 
           <div
             className="
-                  absolute
-                  top-32
-                  left-[calc(60%-340px)]
-                  w-[1230px]
-                  pointer-events-none
-                  computer-img_res
-                "
+              absolute
+              top-[42vh]
+              left-[calc(85%-340px)]
+              w-[1230px]
+              pointer-events-none
+              computer-img_res
+  "
           >
             <img
-              src="/images/computer.png"
+              src="/images/laptop.png"
               className="size-1200 max-lg:h-auto"
               alt="computer"
             />
