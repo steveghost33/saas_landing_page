@@ -27,8 +27,8 @@ const Hero = () => {
           <div
             className="
               absolute
-              top-[42vh]
-              left-[calc(85%-340px)]
+              top-[35vh]
+              left-[calc(77%-340px)]
               w-[1230px]
               pointer-events-none
               computer-img_res
