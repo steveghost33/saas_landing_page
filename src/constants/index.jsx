@@ -1,4 +1,4 @@
-export const features = [
+export const services = [
   {
     id: "0",
     icon: "/images/feature-1.png",
@@ -49,78 +49,80 @@ export const details = [
 export const faq = [
   {
     id: "0",
-    question: "How easy is it to setup Xora?",
+    question: "How long does it take to build and launch a custom website?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Timelines vary by project scope, but most small-to-medium websites take 4–6 weeks from kickoff to launch. We’ll provide a detailed schedule during our discovery phase.",
   },
   {
     id: "1",
-    question: "Can I integrate Xora with other platforms?",
+    question: "Can Ella Tech integrate our website with existing platforms?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Yes—whether it’s a CRM, payment gateway, learning management system, or other tool, we handle API integrations and custom connectors to keep your data in sync.",
   },
   {
     id: "2",
-    question: "How often do you add new content?",
+    question:
+      "What does your Technology Consulting and Automation service include?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "We assess your workflows, identify automation opportunities, then design and implement solutions—from simple scripts to full-scale RPA—to save you time and reduce errors.",
   },
   {
     id: "3",
-    question: "What your refund policy?",
+    question: "Do you offer training on the solutions you build?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Absolutely. We provide both individual and team training—live or on-demand—to ensure your staff can use new tools confidently and independently.",
   },
   {
     id: "4",
-    question: "Do you have corporate plans?",
+    question: "How do you handle UI/UX design and user testing?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Our designers create wireframes and high-fidelity mockups based on user research. We then run usability tests with real users to refine the experience before development.",
   },
   {
     id: "5",
-    question: "What happens when I’m out of storage?",
+    question: "Can you deploy AI chatbots or advanced AI features?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Yes. We design, train, and deploy custom AI chatbots and integrations—using tools like Azure Cognitive Services or open-source frameworks—to automate customer support and internal queries.",
   },
   {
     id: "6",
-    question: "Can I upgrade my plan?",
+    question: "What if I need ongoing support after launch?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "We offer monthly support and maintenance plans for updates, security patches, and performance monitoring—so your site and tools stay reliable and up to date.",
   },
   {
     id: "7",
-    question: "How do I invite my team?",
+    question: "How do you price your services?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "We offer flexible pricing: hourly rates for smaller tasks, fixed-price packages for standard projects, and custom quotes for larger engagements. We’ll tailor the plan to your budget and goals.",
   },
   {
     id: "8",
-    question: "Do you offer training for individuals and teams?",
+    question: "What is your refund or cancellation policy?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "If you cancel within the first 14 days of a fixed-price project, we issue a prorated refund for any unused work. Hourly engagements can be paused or stopped at any time with billing up to the last completed hour.",
   },
   {
     id: "9",
-    question: "I’m locked out of my account what do I do?",
+    question: "How do I get started with Ella Tech Solutions?",
     answer:
-      "Absolutely! Not only you can upgrade your plan at any time but you also get a prorated discount giving you maximum value for your subscription.",
+      "Just reach out via our contact form or email. We’ll schedule a free consultation to understand your needs and propose the best approach and timeline.",
   },
 ];
 
 export const plans = [
   {
     id: "0",
-    title: "Core",
-    priceMonthly: 19,
-    priceYearly: 12,
+    title: "Starter",
+    priceMonthly: 350,
+    priceYearly: 315,
     caption: "Best for solo creators",
     features: [
-      "100MB Cloud storage",
-      "100+ prompt templates",
-      "5 projects",
-      "24/7 support",
+      "3 hrs/month Consulting & Tech Support",
+      "1 Website Update per Month",
+      "1 Custom Development Task Per Quarter",
+      "Semi-Annual Performance/SEO Checkups",
+      "Client Portal Access",
     ],
     icon: "/images/circle.svg",
     logo: "/images/plan-1.png",
