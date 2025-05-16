@@ -3,8 +3,9 @@ import Hero from "./sections/Hero.jsx";
 import Services from "./sections/Services.jsx";
 import Pricing from "./sections/Pricing.jsx";
 import Faq from "./sections/Faq.jsx";
-import Contact from "./sections/Contact.jsx";
+import Booking from "./sections/Booking.jsx";
 import Testimonials from "./sections/Testimonials.jsx";
+import Chatbot from "./sections/Chatbot.jsx";
 import Footer from "./sections/Footer.jsx";
 
 const App = () => {
@@ -15,8 +16,9 @@ const App = () => {
       <Services />
       <Pricing />
       <Faq />
-      <Contact />
+      <Booking />
       <Testimonials />
+      <Chatbot /> {/* ← floating chatbot section */}
       <Footer />
     </main>
   );

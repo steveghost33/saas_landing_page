@@ -1,162 +1,162 @@
-import React, { useState } from "react";
+import React from "react";
 import { Element } from "react-scroll";
-import clsx from "clsx";
-import CountUp from "react-countup";
-import { plans } from "../constants/index.jsx";
+import {
+  hourlyRates,
+  plans,
+  projectBased,
+  workshops,
+  addOns,
+  discounts,
+  terms,
+} from "../constants/index.jsx";
 import Button from "../components/Button.jsx";
 
 const Pricing = () => {
-  const [monthly, setMonthly] = useState(false);
-
   return (
-    <section>
+    <section className="py-16 bg-s2">
       <Element name="pricing">
-        <div className="container">
-          <div className="max-w-960 pricing-head_before relative mx-auto border-l border-r border-s2 bg-s1/50 pb-40 pt-28 max-xl:max-w-4xl max-lg:border-none max-md:pb-32 max-md:pt-16">
-            <h3 className="h3 max-lg:h4 max-md:h5 z-3 relative mx-auto mb-14 max-w-lg text-center text-p4 max-md:mb-11 max-sm:max-w-sm">
-              Flexible pricing for organizations of all sizes
-            </h3>
+        <div className="container mx-auto px-4">
+          {/* Heading */}
+          <div className="text-center mb-12">
+            <h1 className="text-3xl font-bold text-p3">
+              Ella Tech Solutions Pricing
+            </h1>
+            <p className="text-p4 mt-2">
+              Transparent, budget-friendly rates for Detroit-area organizations
+            </p>
+          </div>
 
-            <div className="relative z-4 mx-auto flex w-[375px] rounded-3xl border-[3px] border-s4/25 bg-s1/50 p-2 backdrop-blur-[6px] max-md:w-[310px]">
-              <button
-                className={clsx("pricing-head_btn", monthly && "text-p4")}
-                onClick={() => setMonthly(true)}
-              >
-                Monthly
-              </button>
-              <button
-                className={clsx("pricing-head_btn", !monthly && "text-p4")}
-                onClick={() => setMonthly(false)}
-              >
-                Annual
-              </button>
-
-              <div
-                className={clsx(
-                  "g4 rounded-14 before:h-100 pricing-head_btn_before absolute left-2 top-2 h-[calc(100%-16px)] w-[calc(50%-8px)] overflow-hidden shadow-400 transition-transform duration-500",
-                  !monthly && "translate-x-full",
-                )}
-              />
-            </div>
-
-            <div className="pricing-bg">
-              <img
-                src="/images/bg-outlines.svg"
-                width={960}
-                height={380}
-                alt="outline"
-                className="relative z-2"
-              />
-              <img
-                src="/images/bg-outlines-fill.png"
-                width={960}
-                height={380}
-                alt="outline"
-                className="absolute inset-0 opacity-5 mix-blend-soft-light"
-              />
+          {/* Hourly Rates */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-p3 text-center mb-6">
+              Hourly Rates
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {hourlyRates.map(({ service, rate }) => (
+                <div
+                  key={service}
+                  className="bg-s1 p-6 rounded-lg shadow-md text-center"
+                >
+                  <p className="font-medium text-p3 mb-2">{service}</p>
+                  <p className="text-p4">{rate}</p>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/*  pricing section*/}
-          <div className="scroll-hide relative z-2 -mt-12 flex items-start max-xl:gap-5 max-xl:overflow-auto max-xl:pt-6">
-            {plans.map((plan, index) => (
-              <div
-                key={plan.id}
-                className="pricing-plan_first pricing-plan_last pricing-plan_odd pricing-plan_even relative border-2 p-7 max-xl:min-w-80 max-lg:rounded-3xl xl:w-[calc(33.33%+2px)]"
-              >
-                {index === 1 && (
-                  <div className="g4 absolute h-330 left-0 right-0 top-0 z-1 rounded-tl-3xl rounded-tr-3xl" />
-                )}
-
+          {/* Package Options */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-p3 text-center mb-6">
+              Packages & Retainers
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {plans.map(({ id, title, price, caption, features, logo }) => (
                 <div
-                  className={clsx(
-                    "absolute left-0 right-0 z-2 flex items-center justify-center",
-                    index === 1 ? "-top-6" : "-top-6 xl:-top-11",
-                  )}
+                  key={id}
+                  className="bg-s1 p-6 rounded-lg shadow-md flex flex-col"
                 >
                   <img
-                    src={plan.logo}
-                    alt={plan.title}
-                    className={clsx(
-                      "object-contain drop-shadow-2xl",
-                      index === 1 ? "size-[120px]" : "size-[88px]",
-                    )}
+                    src={logo}
+                    alt={title}
+                    className="h-12 w-auto mx-auto mb-4"
                   />
-                </div>
-
-                <div
-                  className={clsx(
-                    "relative flex flex-col items-center",
-                    index === 1 ? "pt-24" : "pt-12",
-                  )}
-                >
-                  <div
-                    className={clsx(
-                      "small-2 rounded-20 relative z-2 mx-auto mb-6 border-2 px-4 py-1.5 uppercase",
-                      index === 1 ? "border-p3 text-p3" : "border-p1 text-p1",
-                    )}
-                  >
-                    {plan.title}
-                  </div>
-
-                  <div className="relative z-2 flex items-center justify-center">
-                    <div
-                      className={clsx(
-                        "h-num flex items-start",
-                        index === 1 ? "text-p3" : "text-p4",
-                      )}
-                    >
-                      ${" "}
-                      <CountUp
-                        start={plan.priceMonthly}
-                        end={monthly ? plan.priceMonthly : plan.priceYearly}
-                        duration={0.4}
-                        useEasing={false}
-                        preserveValue
-                      />
-                    </div>
-                    <div className="small-1 relative top-3 ml-1 uppercase">
-                      / mo
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className={clsx(
-                    "body-1 relative z-2 mb-10 w-full border-b-s2 pb-9 text-center text-p4",
-                    index === 1 && "border-b",
-                  )}
-                >
-                  {plan.caption}
-                </div>
-
-                <ul className="mx-auto space-y-4 xl:px-7">
-                  {plan.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className="relative flex items-center gap-5"
-                    >
-                      <img
-                        src="/images/check.png"
-                        alt="check"
-                        className="size-10 object-contain"
-                      />
-                      <p className="flex-1">{feature}</p>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-10 flex w-full justify-center">
-                  <Button icon={plan.icon}>Get Started</Button>
-                </div>
-
-                {index === 1 && (
-                  <p className="small-compact mt-9 text-center text-p3 before:mx-2.5 before:content-['-'] after:mx-2.5 after:content-['-']">
-                    Limited time offer
+                  <h3 className="text-xl font-semibold text-p3 mb-2">
+                    {title}
+                  </h3>
+                  <p className="text-p4 text-lg mb-2">
+                    {price ? `$${price}` : "Custom"}
                   </p>
-                )}
-              </div>
-            ))}
+                  <p className="text-p4 mb-4">{caption}</p>
+                  <ul className="mb-4 space-y-1 text-p4 flex-1">
+                    {features.map((f) => (
+                      <li key={f} className="flex items-center gap-2">
+                        <img
+                          src="/images/check.png"
+                          alt="check"
+                          className="w-4 h-4"
+                        />
+                        <span>{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button className="mt-auto">Get Started</Button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Project-Based */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-p3 text-center mb-6">
+              Project-Based Pricing
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projectBased.map(({ title, price }) => (
+                <div
+                  key={title}
+                  className="bg-s1 p-6 rounded-lg shadow-md flex justify-between"
+                >
+                  <span className="text-p4">{title}</span>
+                  <span className="font-medium text-p3">{price}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Workshops & Training */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-p3 text-center mb-6">
+              Workshops & Training
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+              {workshops.map(({ title, price }) => (
+                <div
+                  key={title}
+                  className="bg-s1 p-6 rounded-lg shadow-md flex justify-between"
+                >
+                  <span className="text-p4">{title}</span>
+                  <span className="font-medium text-p3">{price}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Add-On Services */}
+          <div className="mb-12">
+            <h2 className="text-2xl font-semibold text-p3 text-center mb-6">
+              Add-On Services
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-xl mx-auto">
+              {addOns.map(({ title, price }) => (
+                <div
+                  key={title}
+                  className="bg-s1 p-6 rounded-lg shadow-md flex justify-between"
+                >
+                  <span className="text-p4">{title}</span>
+                  <span className="font-medium text-p3">{price}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Discounts & Terms */}
+          <div className="mb-12 text-center">
+            <h2 className="text-2xl font-semibold text-p3 mb-4">
+              Discounts & Terms
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md mx-auto mb-4">
+              {discounts.map(({ title, detail }) => (
+                <div key={title} className="text-p4">
+                  <span className="font-medium">{title}:</span> {detail}
+                </div>
+              ))}
+            </div>
+            <p className="text-p4 mb-1">
+              <span className="font-medium">Deposit:</span> {terms.deposit}
+            </p>
+            <p className="text-p4">
+              <span className="font-medium">Validity:</span> {terms.validity}
+            </p>
           </div>
         </div>
       </Element>

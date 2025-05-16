@@ -110,56 +110,85 @@ export const faq = [
   },
 ];
 
+export const hourlyRates = [
+  { service: "Web Development", rate: "$65/hr" },
+  { service: "UI/UX Design & Usability Testing", rate: "$65/hr" },
+  { service: "Technology Consulting & Automation", rate: "$75/hr" },
+  { service: "Instructional Design & E-Learning Development", rate: "$60/hr" },
+  { service: "AI & Chatbot Integration", rate: "$90/hr" },
+  { service: "Website Performance & SEO Optimization", rate: "$50/hr" },
+];
+
 export const plans = [
   {
-    id: "0",
-    title: "Custom Website Development",
-    priceMonthly: 350,
-    priceYearly: 315,
-    caption: "Best for small businesses and nonprofits",
-    features: [
-      "Up to 5 Pages Custom Design",
-      "Mobile-Responsive Layout",
-      "SEO Setup & Site Optimization",
-      "Basic Contact Form Integration",
-      "1 Performance/SEO Review per Quarter",
-    ],
-    icon: "/images/circle.svg",
-    logo: "/images/plan-1.png",
+    id: "starter",
+    title: "Starter",
+    price: 500,
+    caption: "1-page mini site or 5 hrs consulting/training",
+    features: ["1-page mini site", "5 hrs consulting/training"],
+    logo: "/images/plan-starter.png",
   },
   {
-    id: "1",
-    title: "Tech Consulting & Strategy",
-    priceMonthly: 750,
-    priceYearly: 675,
-    caption: "Most popular for growing teams",
-    features: [
-      "5 Hours of Support per Month",
-      "Workflow Automation Design",
-      "Microsoft 365 & Scheduling Integration",
-      "System Recommendations & Setup",
-      "Custom Tech Strategy Reports",
-    ],
-    icon: "/images/triangle.svg",
-    logo: "/images/plan-2.png",
+    id: "growth",
+    title: "Growth",
+    price: 1200,
+    caption: "3-page site or 15 hrs consulting/training",
+    features: ["3-page site", "15 hrs consulting/training"],
+    logo: "/images/plan-growth.png",
   },
   {
-    id: "2",
-    title: "Digital Training & Workshops",
-    priceMonthly: 950,
-    priceYearly: 850,
-    caption: "Ideal for schools and workforce teams",
-    features: [
-      "Monthly Professional Development Session",
-      "Interactive Microsoft & AI Trainings",
-      "Pre/Post Surveys & Analytics",
-      "Custom Content Development",
-      "Flexible Delivery: Virtual or In-Person",
-    ],
-    icon: "/images/hexagon.svg",
-    logo: "/images/plan-3.png",
+    id: "business",
+    title: "Business",
+    price: 2500,
+    caption: "5-page site or 35 hrs + support block",
+    features: ["5-page site", "35 hrs consulting", "Support block"],
+    logo: "/images/plan-business.png",
+  },
+  {
+    id: "enterprise",
+    title: "Enterprise",
+    price: null,
+    caption: "Custom scope: web build, training, automation",
+    features: [],
+    logo: "/images/plan-enterprise.png",
   },
 ];
+
+export const projectBased = [
+  { title: "Custom Website Dev (3–5 pages)", price: "$1,500+" },
+  { title: "E-Learning Course (Articulate/SCORM)", price: "$750/course" },
+  {
+    title: "Automation Workflow (Zapier, Power Automate)",
+    price: "$800/workflow",
+  },
+  { title: "UI/UX Audit & Wireframes", price: "$500/report" },
+  { title: "AI Chatbot (FAQ-style)", price: "$1,200+" },
+  { title: "Advanced NLP Chatbot", price: "$3,000+" },
+  { title: "SEO Audit + Fixes", price: "$300/audit + 5 fixes" },
+];
+
+export const workshops = [
+  { title: "Half-Day Workshop (≤4 hrs)", price: "$1,000 flat" },
+  { title: "Full-Day Workshop (≤8 hrs)", price: "$1,800 flat" },
+  { title: "Multi-Session (3×2-hr)", price: "$1,500 flat" },
+  { title: "Custom Series (per day)", price: "$1,600/day" },
+];
+
+export const addOns = [
+  { title: "Pre-training survey", price: "$150" },
+  { title: "Post-training report", price: "$200" },
+  { title: "Participant workbooks", price: "$15/person" },
+];
+
+export const discounts = [
+  { title: "Nonprofit/Education", detail: "10% off all rates" },
+  { title: "3-mo Retainer", detail: "15% off hourly rates" },
+];
+
+export const terms = {
+  deposit: "50% upfront, balance on delivery",
+  validity: "Valid for 30 days",
+};
 
 export const testimonials = [
   {
