@@ -19,7 +19,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: hook up to your backend or email service
     alert("Thanks! We'll be in touch soon.");
     setForm({ name: "", email: "", service: "", date: "", message: "" });
   };
@@ -28,21 +27,21 @@ const Contact = () => {
     <Element name="contact">
       <section className="relative pt-60 pb-40 max-lg:pt-52 max-lg:pb-36 max-md:pt-36 max-md:pb-32 bg-s1/50">
         <div className="container">
-          {/* Header to match Hero styling */}
-          <div className="relative z-2 max-w-512 mx-auto text-center">
-            <h2 className="mb-6 h1 text-p4 uppercase max-lg:mb-7 max-lg:h2 max-md:mb-4 max-md:text-5xl">
-              Contact Us
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <h2 className="text-4xl md:text-5xl font-bold text-p4 uppercase mb-4">
+              Schedule Consultation Now
             </h2>
-            <p className="max-w-440 mx-auto mb-14 body-1 text-p5 max-md:mb-10">
-              Tell us what you need and when—and we’ll get you set up with a
-              custom plan.
+            <p className="text-lg text-p5">
+              Let us know your needs and preferred timing—we'll create a
+              tailored plan just for you.
             </p>
           </div>
 
           {/* Form */}
           <form
             onSubmit={handleSubmit}
-            className="max-w-512 mx-auto grid gap-6"
+            className="max-w-2xl mx-auto grid grid-cols-1 gap-6 bg-white/80 p-8 rounded-2xl shadow-lg"
           >
             <input
               type="text"
@@ -51,7 +50,7 @@ const Contact = () => {
               value={form.name}
               onChange={handleChange}
               required
-              className="w-full p-4 border border-s2 rounded text-body-1 text-p5 focus:outline-none focus:ring-2 focus:ring-p4"
+              className="p-4 border border-s2 rounded-lg text-body-1 text-p5 focus:outline-none focus:ring-2 focus:ring-p4"
             />
 
             <input
@@ -61,7 +60,7 @@ const Contact = () => {
               value={form.email}
               onChange={handleChange}
               required
-              className="w-full p-4 border border-s2 rounded text-body-1 text-p5 focus:outline-none focus:ring-2 focus:ring-p4"
+              className="p-4 border border-s2 rounded-lg text-body-1 text-p5 focus:outline-none focus:ring-2 focus:ring-p4"
             />
 
             <select
@@ -69,13 +68,14 @@ const Contact = () => {
               value={form.service}
               onChange={handleChange}
               required
-              className="w-full p-4 border border-s2 rounded text-body-1 text-p5 focus:outline-none focus:ring-2 focus:ring-p4"
+              className="p-4 border border-s2 rounded-lg text-body-1 text-p5 focus:outline-none focus:ring-2 focus:ring-p4"
             >
               <option value="">Which service?</option>
               <option value="website">Website Development</option>
               <option value="consulting">Tech Consulting</option>
               <option value="eLearning">E-Learning Dev</option>
               <option value="automation">Automation & AI</option>
+              <option value="other">Other</option>
             </select>
 
             <input
@@ -83,7 +83,7 @@ const Contact = () => {
               name="date"
               value={form.date}
               onChange={handleChange}
-              className="w-full p-4 border border-s2 rounded text-body-1 text-p5 focus:outline-none focus:ring-2 focus:ring-p4"
+              className="p-4 border border-s2 rounded-lg text-body-1 text-p5 focus:outline-none focus:ring-2 focus:ring-p4"
             />
 
             <textarea
@@ -92,12 +92,14 @@ const Contact = () => {
               placeholder="Additional details (optional)"
               value={form.message}
               onChange={handleChange}
-              className="w-full p-4 border border-s2 rounded text-body-1 text-p5 focus:outline-none focus:ring-2 focus:ring-p4"
+              className="p-4 border border-s2 rounded-lg text-body-1 text-p5 focus:outline-none focus:ring-2 focus:ring-p4"
             />
 
-            <Button icon="/images/zap.svg" type="submit">
-              Send Contact Request
-            </Button>
+            <div className="text-center mt-4">
+              <Button icon="/images/zap.svg" type="submit">
+                Send Contact Request
+              </Button>
+            </div>
           </form>
         </div>
       </section>
