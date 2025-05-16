@@ -1,9 +1,9 @@
-// src/components/Booking.jsx
+// src/components/Contact.jsx
 import { Element } from "react-scroll";
 import Button from "../components/Button.jsx";
 import { useState } from "react";
 
-const Booking = () => {
+const Contact = () => {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -25,13 +25,13 @@ const Booking = () => {
   };
 
   return (
-    <Element name="booking">
+    <Element name="contact">
       <section className="relative pt-60 pb-40 max-lg:pt-52 max-lg:pb-36 max-md:pt-36 max-md:pb-32 bg-s1/50">
         <div className="container">
           {/* Header to match Hero styling */}
           <div className="relative z-2 max-w-512 mx-auto text-center">
             <h2 className="mb-6 h1 text-p4 uppercase max-lg:mb-7 max-lg:h2 max-md:mb-4 max-md:text-5xl">
-              Book Our Services
+              Contact Us
             </h2>
             <p className="max-w-440 mx-auto mb-14 body-1 text-p5 max-md:mb-10">
               Tell us what you need and when—and we’ll get you set up with a
@@ -95,9 +95,8 @@ const Booking = () => {
               className="w-full p-4 border border-s2 rounded text-body-1 text-p5 focus:outline-none focus:ring-2 focus:ring-p4"
             />
 
-            {/* Use the same Button component with icon */}
             <Button icon="/images/zap.svg" type="submit">
-              Send Booking Request
+              Send Contact Request
             </Button>
           </form>
         </div>
@@ -106,4 +105,4 @@ const Booking = () => {
   );
 };
 
-export default Booking;
+export default Contact;

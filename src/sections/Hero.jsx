@@ -19,7 +19,7 @@ const Hero = () => {
               digital tools—so small businesses, nonprofits, and schools can
               focus on their mission, not the tech.
             </p>
-            <LinkScroll to="booking" offset={-100} spy smooth>
+            <LinkScroll to="contact" offset={-100} spy smooth>
               <Button icon="/images/zap.svg">Book Us Now</Button>
             </LinkScroll>
           </div>

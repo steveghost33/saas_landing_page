@@ -110,6 +110,65 @@ export const faq = [
   },
 ];
 
+export const pricingServices = [
+  {
+    id: "website-creation",
+    title: "Website Creation",
+    price: "Starting at $1,500",
+    description:
+      "A simple, easy-to-update website that helps customers find your business and get in touch.",
+    details: [
+      "Mobile-friendly layout that looks great on any device",
+      "Easy editing tools so you can change text and images yourself",
+      "Contact form so customers can reach you directly",
+    ],
+  },
+  {
+    id: "tech-support",
+    title: "Technology Help & Support",
+    price: "Starting at $60/hour or $600/month",
+    description:
+      "One-on-one help for any tech questions, plus simple automations to save you time on everyday tasks.",
+    details: [
+      "Automations that organize files, send reminders, or route emails automatically",
+      "Setup and guidance for tools like email, calendars, and file sharing",
+    ],
+  },
+  {
+    id: "technology-workshops",
+    title: "Technology Workshops",
+    price: "Half-Day: $500 | Full-Day: $1,000",
+    description:
+      "Hands-on training designed for non-tech teams—no jargon, just clear steps to get confident with your tools.",
+    details: [
+      "Learn simple ways to let technology handle routine work",
+      "Tips for smart scheduling, file management, and basic site edits",
+      "Practice with real examples to build your skills",
+    ],
+  },
+  {
+    id: "design-review",
+    title: "Design Review & User Testing",
+    price: "Starting at $1,500 per review",
+    description:
+      "We watch real people use your website or app and share easy-to-understand feedback to make it more user-friendly.",
+  },
+  {
+    id: "ai-chat-assistant-setup",
+    title: "AI Chat Assistant Setup",
+    price: "Starting at $2,000",
+    description:
+      "Add a friendly chatbot to your site that can answer common questions any time, day or night.",
+  },
+  {
+    id: "performance-check",
+    title: "Site Speed & Performance Check",
+    price: "$250 audit, then $60/hour for fixes",
+    description:
+      "We check how quickly your site loads and make easy fixes so visitors don’t get stuck waiting.",
+  },
+];
+
 export const hourlyRates = [
   { service: "Web Development", rate: "$65/hr" },
   { service: "UI/UX Design & Usability Testing", rate: "$65/hr" },
@@ -193,49 +252,49 @@ export const terms = {
 export const testimonials = [
   {
     id: "0",
-    name: "Monica Williams",
+    name: "Erica Collins",
     role: "Midtown Detroit Inc.",
-    avatarUrl: "/images/testimonials/jessica-saunders.png",
+    avatarUrl: "/images/testimonials/erica-collins.png",
     comment:
       "Ella Tech Solutions revamped our website with stunning design and seamless functionality. Our traffic and engagement have never been higher.",
   },
   {
     id: "1",
-    name: "Tyrone Jackson",
+    name: "Jason Reed",
     role: "Corktown Business Association",
-    avatarUrl: "/images/testimonials/mark-erixon.png",
+    avatarUrl: "/images/testimonials/jason-reed.png",
     comment:
       "Their technology consulting sessions gave us clear direction and practical solutions. We’ve saved countless hours and resources.",
   },
   {
     id: "2",
-    name: "Linda Nguyen",
+    name: "Lisa Howard",
     role: "Grand Rapids Makerspace",
-    avatarUrl: "/images/testimonials/melanie-hurst.png",
+    avatarUrl: "/images/testimonials/lisa-howard.png",
     comment:
       "The digital training workshops made Office 365 feel simple and intuitive. Our whole team is now more confident and productive.",
   },
   {
     id: "3",
-    name: "Carlos Rodriguez",
+    name: "Marcus Brooks",
     role: "Kalamazoo Code Collective",
-    avatarUrl: "/images/testimonials/alicia-barker.png",
+    avatarUrl: "/images/testimonials/marcus-brooks.png",
     comment:
       "Their AI chatbot integration transformed our customer support. Response times are half of what they were and satisfaction is through the roof.",
   },
   {
     id: "4",
-    name: "Emily Thompson",
+    name: "Rachel Dean",
     role: "Sunrise Eco Innovations",
-    avatarUrl: "/images/testimonials/becky-snider.png",
+    avatarUrl: "/images/testimonials/rachel-dean.png",
     comment:
       "The UI/UX redesign for our app was a game changer. User retention and engagement metrics have improved dramatically.",
   },
   {
     id: "5",
-    name: "Michael Stevens",
+    name: "Sarah Bennett",
     role: "Prairie Tech Co-op",
-    avatarUrl: "/images/testimonials/jim-bradley.png",
+    avatarUrl: "/images/testimonials/sarah-bennett.png",
     comment:
       "Ella Tech Solutions’ performance optimization cut our site load times in half. Our bounce rate dropped and conversions climbed.",
   },
