@@ -1,27 +1,15 @@
-import Header from "./sections/Header.jsx";
-import Hero from "./sections/Hero.jsx";
-import Services from "./sections/Services.jsx";
-import Pricing from "./sections/Pricing.jsx";
-import Faq from "./sections/Faq.jsx";
-import Contact from "./sections/Contact.jsx";
-import Testimonials from "./sections/Testimonials.jsx";
-import Chatbot from "./sections/Chatbot.jsx";
-import Footer from "./sections/Footer.jsx";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home.jsx";
+import WebProjects from "./pages/WebProjects.jsx";
+import TechSolutions from "./pages/TechSolutions.jsx";
 
-const App = () => {
-  return (
-    <main className="overflow-hidden">
-      <Header />
-      <Hero />
-      <Services />
-      <Pricing />
-      <Faq />
-      <Contact />
-      <Testimonials />
-      <Chatbot /> {/* ← floating chatbot section */}
-      <Footer />
-    </main>
-  );
-};
-
+function App() {
+    return (
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/web-projects" element={<WebProjects />} />
+            <Route path="/tech-solutions" element={<TechSolutions />} />
+            </Routes>
+        );
+}
 export default App;
