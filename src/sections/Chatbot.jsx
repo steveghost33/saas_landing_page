@@ -5,10 +5,7 @@ import axios from "axios";
 const Chatbot = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
-    {
-      from: "bot",
-      text: "Hi! I’m the Ella Tech Strategy Expert. How can I help?",
-    },
+    { from: "bot", text: "Hi! I’m the Ella Tech Strategy Expert. How can I help?" },
   ]);
   const [input, setInput] = useState("");
   const bottomRef = useRef(null);
@@ -21,12 +18,12 @@ const Chatbot = () => {
   const [dragging, setDragging] = useState(false);
   const [rel, setRel] = useState({ x: 0, y: 0 });
 
-  // Scroll to bottom on new message
+  // Scroll to bottom whenever messages change
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Global handlers for dragging
+  // Handle mousemove/mouseup for drag
   useEffect(() => {
     const onMouseMove = (e) => {
       if (!dragging) return;
@@ -50,29 +47,32 @@ const Chatbot = () => {
 
   const sendMessage = async () => {
     if (!input.trim()) return;
+    // Add user message
     setMessages((msgs) => [...msgs, { from: "user", text: input }]);
     setInput("");
 
     try {
+      // Prepare the chat history for OpenAI
+      const history = messages.map((m) => ({
+        role: m.from === "bot" ? "assistant" : "user",
+        content: m.text,
+      }));
+      history.push({ role: "user", content: input });
+
       const res = await axios.post(
         "https://api.openai.com/v1/chat/completions",
         {
           model: import.meta.env.VITE_OPENAI_MODEL,
-          messages: [
-            ...messages.map((m) => ({
-              role: m.from === "bot" ? "assistant" : "user",
-              content: m.text,
-            })),
-            { role: "user", content: input },
-          ],
+          messages: history,
         },
         {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
           },
-        },
+        }
       );
+
       const botReply = res.data.choices[0].message.content.trim();
       setMessages((msgs) => [...msgs, { from: "bot", text: botReply }]);
     } catch (err) {
