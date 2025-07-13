@@ -256,51 +256,51 @@ export const terms = {
 export const testimonials = [
   {
     id: "0",
-    name: "Erica Collins",
-    role: "Midtown Detroit Inc.",
-    avatarUrl: "/images/testimonials/erica-collins.png",
+    name: "Kyle",
+    role: "HOMES Band",
+    avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
-        "Ella Tech Solutions revamped our website with stunning design and seamless functionality. Our traffic and engagement have never been higher.",
+      "Ella Tech Solutions set up our first simple band website. Now friends and local fans can find our music and upcoming shows all in one place.",
   },
   {
     id: "1",
-    name: "Jason Reed",
-    role: "Corktown Business Association",
-    avatarUrl: "/images/testimonials/jason-reed.png",
+    name: "Mia",
+    role: "Bright Roots Florist",
+    avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
-        "Their technology consulting sessions gave us clear direction and practical solutions. We’ve saved countless hours and resources.",
+      "They redesigned our flower shop’s website and added a seamless online ordering system. In just weeks, pickup orders climbed 60% and customer retention in Metro Detroit spiked by 35%.",
   },
   {
     id: "2",
-    name: "Lisa Howard",
-    role: "Grand Rapids Makerspace",
-    avatarUrl: "/images/testimonials/lisa-howard.png",
+    name: "Jamal",
+    role: "Riverfront Arts Collective",
+    avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
-        "The digital training workshops made Office 365 feel simple and intuitive. Our whole team is now more confident and productive.",
+      "As a grassroots nonprofit, we needed a donation portal and volunteer scheduler. Ella Tech delivered both—online gifts rose 50% and volunteer registrations jumped 40% year-over-year.",
   },
   {
     id: "3",
-    name: "Marcus Brooks",
-    role: "Kalamazoo Code Collective",
-    avatarUrl: "/images/testimonials/marcus-brooks.png",
+    name: "Sophie",
+    role: "Metro Skills Hub",
+    avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
-        "Their AI chatbot integration transformed our customer support. Response times are half of what they were and satisfaction is through the roof.",
+      "Their AI-and-Office workshops gave our team hands-on efficiency training. What used to take hours in Excel now takes minutes, boosting our program delivery by 50%.",
   },
   {
     id: "4",
-    name: "Rachel Dean",
-    role: "Sunrise Eco Innovations",
-    avatarUrl: "/images/testimonials/rachel-dean.png",
+    name: "Carlos",
+    role: "GreenCycle Detroit",
+    avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
-        "The UI/UX redesign for our app was a game changer. User retention and engagement metrics have improved dramatically.",
+      "We asked for a mobile-friendly web app to manage our bike-share program. Ella Tech built it end-to-end—ridership is up 25% and maintenance requests are now auto-logged.",
   },
   {
     id: "5",
-    name: "Sarah Bennett",
-    role: "Prairie Tech Co-op",
-    avatarUrl: "/images/testimonials/sarah-bennett.png",
+    name: "Avery",
+    role: "Solar United Neighbors",
+    avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
-        "Ella Tech Solutions’ performance optimization cut our site load times in half. Our bounce rate dropped and conversions climbed.",
+      "Ella Tech Solutions created our interactive member portal and automated email workflows. Across their national network, volunteer engagement improved by 45%.",
   },
 ];
 
