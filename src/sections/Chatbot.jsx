@@ -2,6 +2,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
+const TOGGLE_SIZE = 60;      // px
+const DOCK_MARGIN = 16;      // px from edges when docked
+const DOCK_GAP = 12;         // px gap between toggle and window when docked
+
+const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+
 const Chatbot = () => {
   // ─────────────────────────────────────────────────────────────
   // State
@@ -13,87 +19,131 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const bottomRef = useRef(null);
 
-  // Dragging‐and‐position state
-  const [position, setPosition] = useState({
-    x: window.innerWidth - 80,
-    y: window.innerHeight - 80,
-  });
+  // Start DOCKED in bottom-right; undock only after a drag starts
+  const [docked, setDocked] = useState(true);
+  const [position, setPosition] = useState({ x: 0, y: 0 }); // used when undocked
   const [dragging, setDragging] = useState(false);
   const [rel, setRel] = useState({ x: 0, y: 0 });
-  const [hasDragged, setHasDragged] = useState(false);
 
   // ─────────────────────────────────────────────────────────────
-  // Scroll to bottom whenever messages change
+  // Auto-scroll to latest message
   // ─────────────────────────────────────────────────────────────
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   // ─────────────────────────────────────────────────────────────
-  // Handle mousemove / mouseup for drag
+  // Drag handlers (mouse + touch)
   // ─────────────────────────────────────────────────────────────
+  const startDragFromPoint = (pageX, pageY) => {
+    if (docked) {
+      const left = window.innerWidth - (DOCK_MARGIN + TOGGLE_SIZE);
+      const top  = window.innerHeight - (DOCK_MARGIN + TOGGLE_SIZE);
+      setPosition({ x: left, y: top });
+      setDocked(false);
+      setRel({ x: pageX - left, y: pageY - top });
+    } else {
+      setRel({ x: pageX - position.x, y: pageY - position.y });
+    }
+    setDragging(true);
+  };
+
+  const onMouseDown = (e) => {
+    e.preventDefault();
+    startDragFromPoint(e.pageX, e.pageY);
+  };
+
+  const onTouchStart = (e) => {
+    const t = e.touches[0];
+    if (!t) return;
+    startDragFromPoint(t.pageX, t.pageY);
+  };
+
   useEffect(() => {
     const onMouseMove = (e) => {
       if (!dragging) return;
-      setPosition({ x: e.clientX - rel.x, y: e.clientY - rel.y });
+      e.preventDefault();
+      const x = e.pageX - rel.x;
+      const y = e.pageY - rel.y;
+      setPosition({
+        x: clamp(x, 8, window.innerWidth - TOGGLE_SIZE - 8),
+        y: clamp(y, 8, window.innerHeight - TOGGLE_SIZE - 8),
+      });
     };
-
     const onMouseUp = () => {
-      if (dragging) {
-        setDragging(false);
-        setHasDragged(true);
-      }
+      if (dragging) setDragging(false);
     };
 
-    document.addEventListener("mousemove", onMouseMove);
+    const onTouchMove = (e) => {
+      if (!dragging) return;
+      const t = e.touches[0];
+      if (!t) return;
+      e.preventDefault();
+      const x = t.pageX - rel.x;
+      const y = t.pageY - rel.y;
+      setPosition({
+        x: clamp(x, 8, window.innerWidth - TOGGLE_SIZE - 8),
+        y: clamp(y, 8, window.innerHeight - TOGGLE_SIZE - 8),
+      });
+    };
+    const onTouchEnd = () => {
+      if (dragging) setDragging(false);
+    };
+
+    document.addEventListener("mousemove", onMouseMove, { passive: false });
     document.addEventListener("mouseup", onMouseUp);
+    document.addEventListener("touchmove", onTouchMove, { passive: false });
+    document.addEventListener("touchend", onTouchEnd);
+
     return () => {
       document.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
+      document.removeEventListener("touchmove", onTouchMove);
+      document.removeEventListener("touchend", onTouchEnd);
     };
   }, [dragging, rel]);
 
   // ─────────────────────────────────────────────────────────────
-  // Keep bottom‐right on resize (only if user hasn't dragged)
+  // Always re-dock to bottom-right on any viewport size change
+  // (desktop resize, mobile orientation, address bar show/hide)
   // ─────────────────────────────────────────────────────────────
   useEffect(() => {
-    const onResize = () => {
-      if (!hasDragged) {
-        setPosition({
-          x: window.innerWidth - 80,
-          y: window.innerHeight - 80,
-        });
+    const reDock = () => {
+      setDragging(false);
+      setDocked(true); // CSS right/bottom take over -> stays bottom-right
+    };
+
+    window.addEventListener("resize", reDock);
+    window.addEventListener("orientationchange", reDock);
+
+    // VisualViewport handles mobile chrome/safari UI expanding/collapsing
+    const vv = window.visualViewport;
+    if (vv) {
+      vv.addEventListener("resize", reDock);
+      vv.addEventListener("scroll", reDock);
+    }
+
+    return () => {
+      window.removeEventListener("resize", reDock);
+      window.removeEventListener("orientationchange", reDock);
+      if (vv) {
+        vv.removeEventListener("resize", reDock);
+        vv.removeEventListener("scroll", reDock);
       }
     };
-
-    window.addEventListener("resize", onResize);
-    return () => {
-      window.removeEventListener("resize", onResize);
-    };
-  }, [hasDragged]);
+  }, []);
 
   // ─────────────────────────────────────────────────────────────
-  // When user clicks down on the toggle, begin dragging
-  // ─────────────────────────────────────────────────────────────
-  const onMouseDown = (e) => {
-    setDragging(true);
-    setRel({ x: e.clientX - position.x, y: e.clientY - position.y });
-    e.preventDefault();
-  };
-
-  // ─────────────────────────────────────────────────────────────
-  // Sending a message
+  // Messaging
   // ─────────────────────────────────────────────────────────────
   const sendMessage = async () => {
     if (!input.trim()) return;
 
-    // Add user message
     setMessages((msgs) => [...msgs, { from: "user", text: input }]);
     const userText = input;
     setInput("");
 
     try {
-      // Build OpenAI‐style history
       const history = messages.map((m) => ({
         role: m.from === "bot" ? "assistant" : "user",
         content: m.text,
@@ -126,33 +176,88 @@ const Chatbot = () => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      sendMessage();
-    }
+    if (e.key === "Enter") sendMessage();
   };
+
+  // ─────────────────────────────────────────────────────────────
+  // Computed styles for docked vs undocked
+  // ─────────────────────────────────────────────────────────────
+  const toggleStyle = docked
+    ? {
+        position: "fixed",
+        right: `calc(${DOCK_MARGIN}px + env(safe-area-inset-right, 0px))`,
+        bottom: `calc(${DOCK_MARGIN}px + env(safe-area-inset-bottom, 0px))`,
+      }
+    : {
+        position: "fixed",
+        left: position.x,
+        top: position.y,
+      };
+
+  const windowStyle =
+    open &&
+    (docked
+      ? {
+          position: "fixed",
+          right: `calc(${DOCK_MARGIN}px + env(safe-area-inset-right, 0px))`,
+          bottom: `calc(${DOCK_MARGIN + TOGGLE_SIZE + DOCK_GAP}px + env(safe-area-inset-bottom, 0px))`,
+          width: "min(360px, calc(100vw - 32px))",
+          maxHeight: "min(60vh, 480px)",
+        }
+      : {
+          position: "fixed",
+          left: position.x + TOGGLE_SIZE,
+          top: position.y,
+          transform: "translate(-100%, -100%)",
+          width: "min(360px, calc(100vw - 32px))",
+          maxHeight: "min(60vh, 480px)",
+        });
 
   // ─────────────────────────────────────────────────────────────
   // Render
   // ─────────────────────────────────────────────────────────────
   return (
     <>
+      {/* Button glow styles (tweak rgba color to match your brand glow) */}
+      <style>{`
+        .chatbot-glow {
+          box-shadow:
+            0 0 0 2px rgba(255,255,255,0.08),
+            0 10px 28px rgba(0,119,204,0.45),
+            0 0 24px rgba(0,119,204,0.35);
+          transition: box-shadow .25s ease, transform .25s ease, background-color .25s ease;
+        }
+        .chatbot-glow:hover,
+        .chatbot-glow:focus-visible {
+          box-shadow:
+            0 0 0 2px rgba(255,255,255,0.12),
+            0 14px 36px rgba(0,119,204,0.6),
+            0 0 36px rgba(0,119,204,0.5);
+          transform: translateY(-1px);
+        }
+        .chatbot-glow:active {
+          transform: translateY(0);
+          box-shadow:
+            0 0 0 2px rgba(255,255,255,0.10),
+            0 8px 22px rgba(0,119,204,0.45),
+            0 0 24px rgba(0,119,204,0.45);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .chatbot-glow { transition: none; }
+        }
+      `}</style>
+
       {open && (
         <section
           className="chatbot-window"
           style={{
-            position: "fixed",
-            // We want the chat window’s bottom‐right corner to sit at (position.x + 56, position.y)
-            left: position.x + 56,
-            top: position.y,
-            transform: "translate(-100%, -100%)",
-            width: "300px",
-            maxHeight: "400px",
+            ...windowStyle,
             display: "flex",
             flexDirection: "column",
             background: "#fff",
             border: "1px solid #ccc",
-            borderRadius: "8px",
-            boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+            borderRadius: 8,
+            boxShadow: "0 6px 20px rgba(0,0,0,0.2)",
             zIndex: 1000,
           }}
         >
@@ -162,15 +267,16 @@ const Chatbot = () => {
               padding: "8px 12px",
               background: "#0077cc",
               color: "#fff",
-              borderTopLeftRadius: "8px",
-              borderTopRightRadius: "8px",
+              borderTopLeftRadius: 8,
+              borderTopRightRadius: 8,
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
               cursor: "move",
+              touchAction: "none",
             }}
-            // If user drags from header, it should also start dragging
             onMouseDown={onMouseDown}
+            onTouchStart={onTouchStart}
           >
             <span>Ella Tech Strategy Expert</span>
             <button
@@ -180,8 +286,8 @@ const Chatbot = () => {
                 background: "transparent",
                 border: "none",
                 color: "#fff",
-                fontSize: "20px",
-                lineHeight: "1",
+                fontSize: 20,
+                lineHeight: 1,
                 cursor: "pointer",
               }}
             >
@@ -194,7 +300,7 @@ const Chatbot = () => {
             style={{
               flex: 1,
               overflowY: "auto",
-              padding: "12px",
+              padding: 12,
               background: "#f9f9f9",
             }}
           >
@@ -203,11 +309,11 @@ const Chatbot = () => {
                 key={i}
                 className={`message ${m.from}`}
                 style={{
-                  marginBottom: "8px",
+                  marginBottom: 8,
                   alignSelf: m.from === "bot" ? "flex-start" : "flex-end",
                   background: m.from === "bot" ? "#e1f5fe" : "#c8e6c9",
                   padding: "8px 10px",
-                  borderRadius: "6px",
+                  borderRadius: 6,
                   maxWidth: "80%",
                   wordWrap: "break-word",
                 }}
@@ -221,10 +327,10 @@ const Chatbot = () => {
           <footer
             className="chatbot-footer"
             style={{
-              padding: "8px",
+              padding: 8,
               borderTop: "1px solid #ddd",
               display: "flex",
-              gap: "8px",
+              gap: 8,
             }}
           >
             <input
@@ -237,8 +343,8 @@ const Chatbot = () => {
                 flex: 1,
                 padding: "6px 8px",
                 border: "1px solid #ccc",
-                borderRadius: "4px",
-                fontSize: "14px",
+                borderRadius: 4,
+                fontSize: 14,
               }}
             />
             <button
@@ -247,10 +353,10 @@ const Chatbot = () => {
                 background: "#0077cc",
                 color: "#fff",
                 border: "none",
-                borderRadius: "4px",
+                borderRadius: 4,
                 padding: "6px 12px",
                 cursor: "pointer",
-                fontSize: "14px",
+                fontSize: 14,
               }}
             >
               Send
@@ -260,13 +366,11 @@ const Chatbot = () => {
       )}
 
       <button
-        className="chatbot-toggle"
+        className="chatbot-toggle chatbot-glow"
         style={{
-          position: "fixed",
-          left: position.x,
-          top: position.y,
-          width: "60px",
-          height: "60px",
+          ...toggleStyle,
+          width: TOGGLE_SIZE,
+          height: TOGGLE_SIZE,
           borderRadius: "50%",
           background: "#0077cc",
           color: "#fff",
@@ -276,10 +380,12 @@ const Chatbot = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontSize: "14px",
+          fontSize: 14,
           userSelect: "none",
+          touchAction: "none",
         }}
         onMouseDown={onMouseDown}
+        onTouchStart={onTouchStart}
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close chat" : "Open chat"}
       >
@@ -290,3 +396,4 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
+

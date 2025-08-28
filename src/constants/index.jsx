@@ -118,9 +118,9 @@ export const pricingServices = [
   {
     id: "website-creation",
     title: "Website Creation",
-    price: "Starting at $1,500",
+    price: "Starting at $1,000+",
     description:
-        "A simple, easy-to-update website that helps customers find your business and get in touch.",
+      "A simple, easy-to-update website that helps customers find your business and get in touch.",
     details: [
       "Mobile-friendly layout that looks great on any device",
       "Easy editing tools so you can change text and images yourself",
@@ -130,9 +130,9 @@ export const pricingServices = [
   {
     id: "tech-support",
     title: "Technology Help & Support",
-    price: "Starting at $60/hour or $600/month",
+    price: "Starting at $60/hour or $600/month for 10 hrs",
     description:
-        "One-on-one help for any tech questions, plus simple automations to save you time on everyday tasks.",
+      "One-on-one help for any tech application questions, plus simple automations to save you time on everyday tasks.",
     details: [
       "Automations that organize files, send reminders, or route emails automatically",
       "Setup and guidance for tools like email, calendars, and file sharing",
@@ -143,7 +143,7 @@ export const pricingServices = [
     title: "Technology Workshops",
     price: "Half-Day: $500 | Full-Day: $1,000",
     description:
-        "Hands-on training designed for non-tech teams—no jargon, just clear steps to get confident with your tools.",
+      "Hands-on training designed for non-tech teams—no jargon, just clear steps to get confident with your tools.",
     details: [
       "Learn simple ways to let technology handle routine work",
       "Tips for smart scheduling, file management, and basic site edits",
@@ -151,27 +151,21 @@ export const pricingServices = [
     ],
   },
   {
-    id: "design-review",
-    title: "Design Review & User Testing",
-    price: "Starting at $1,500 per review",
+    id: "additional-services",
+    title: "Additional Services",
+    price: "Priced per project",
     description:
-        "We watch real people use your website or app and share easy-to-understand feedback to make it more user-friendly.",
-  },
-  {
-    id: "ai-chat-assistant-setup",
-    title: "AI Chat Assistant Setup",
-    price: "Starting at $2,000",
-    description:
-        "Add a friendly chatbot to your site that can answer common questions any time, day or night.",
-  },
-  {
-    id: "performance-check",
-    title: "Site Speed & Performance Check",
-    price: "$250 audit, then $60/hour for fixes",
-    description:
-        "We check how quickly your site loads and make easy fixes so visitors don’t get stuck waiting.",
+      "For work outside the core packages, we scope and quote based on complexity and impact.",
+    details: [
+      "Design Review & User Testing",
+      "AI Chat Assistant Setup",
+      "Site Speed & Performance Work",
+      "Content/CMS migrations",
+      "Custom integrations & automations",
+    ],
   },
 ];
+
 
 export const hourlyRates = [
   { service: "Web Development", rate: "$65/hr" },
@@ -254,53 +248,44 @@ export const terms = {
 };
 
 export const testimonials = [
+  // 0) Keep Kyle from HOMES
   {
     id: "0",
-    name: "Kyle",
+    name: "Kyle T.",
     role: "HOMES Band",
     avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
       "Ella Tech Solutions set up our first simple band website. Now friends and local fans can find our music and upcoming shows all in one place.",
   },
+
+  // 1) Detroit local — website + contact section integrated with Google Calendar → increased inquiries
   {
     id: "1",
-    name: "Mia",
-    role: "Bright Roots Florist",
+    name: "Alicia M.",
+    role: "Midtown Community Tutors (Detroit, MI)",
     avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
-      "They redesigned our flower shop’s website and added a seamless online ordering system. In just weeks, pickup orders climbed 60% and customer retention in Metro Detroit spiked by 35%.",
+      "They rebuilt our site and added a contact section that connects to Google Calendar. Parents can book sessions instantly, and inquiries have climbed steadily since launch.",
   },
+
+  // 2) Michigan (non-Detroit) — technology consulting
   {
     id: "2",
-    name: "Jamal",
-    role: "Riverfront Arts Collective",
+    name: "Evan P.",
+    role: "Grand Rapids Retail Co. (Grand Rapids, MI)",
     avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
-      "As a grassroots nonprofit, we needed a donation portal and volunteer scheduler. Ella Tech delivered both—online gifts rose 50% and volunteer registrations jumped 40% year-over-year.",
+      "Ella Tech’s consulting streamlined our tools and workflows: email, files, and automations finally work together. Less tech hassle, more time with customers.",
   },
+
+  // 3) Out-of-state — AI training for staff (productivity/flow/outcomes)
   {
     id: "3",
-    name: "Sophie",
-    role: "Metro Skills Hub",
+    name: "Tanya S.",
+    role: "HopeCare Network (Columbus, OH)",
     avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
-      "Their AI-and-Office workshops gave our team hands-on efficiency training. What used to take hours in Excel now takes minutes, boosting our program delivery by 50%.",
-  },
-  {
-    id: "4",
-    name: "Carlos",
-    role: "GreenCycle Detroit",
-    avatarUrl: "/images/testimonials/testimonial-icon.svg",
-    comment:
-      "We asked for a mobile-friendly web app to manage our bike-share program. Ella Tech built it end-to-end—ridership is up 25% and maintenance requests are now auto-logged.",
-  },
-  {
-    id: "5",
-    name: "Avery",
-    role: "Solar United Neighbors",
-    avatarUrl: "/images/testimonials/testimonial-icon.svg",
-    comment:
-      "Ella Tech Solutions created our interactive member portal and automated email workflows. Across their national network, volunteer engagement improved by 45%.",
+      "Their AI training gave our team practical playbooks. We draft content faster, route requests automatically, and our program outcomes are easier to track.",
   },
 ];
 
