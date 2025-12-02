@@ -17,7 +17,7 @@ export const services = [
     id: "1",
     icon: "/images/feature-2.png",
     caption: "Simplify. Automate. Grow.",
-    title: "Technology Consulting & Automation",
+    title: "Technology Consulting & Training",
     text: "We help you choose and use the right tech to save time and reduce hassle. From automation to AI tools, we streamline your systems. Ideal for teams ready to grow without the tech stress.",
     button: {
       icon: "/images/docs.svg",
