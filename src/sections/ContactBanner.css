@@ -1,6 +1,6 @@
 .contact-banner {
-  background-color: #00E0FF; /* bright aqua brand color */
-  color: #0A2540; /* dark navy text */
+  background-color: #00E0FF;
+  color: #0A2540;
   overflow: hidden;
   white-space: nowrap;
   padding: 8px 0;
@@ -13,14 +13,20 @@
 /* marquee animation */
 .contact-scroll {
   display: inline-block;
-  animation: scrollBanner 35s linear infinite; /* slowed from 20s to 28s */
+  animation-name: scrollBanner;
+  animation-duration: 28s; /* adjust to speed */
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-delay: 0s; /* absolutely no delay */
+  will-change: transform; /* smoother animation */
 }
 
+/* Start text fully visible on page load */
 @keyframes scrollBanner {
-  from {
-    transform: translateX(100%);
+  0% {
+    transform: translateX(0);
   }
-  to {
+  100% {
     transform: translateX(-100%);
   }
 }
@@ -29,14 +35,16 @@
 .contact-link {
   color: inherit;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .contact-link:hover {
   opacity: 0.8;
 }
 
-/* extra spacing between full calls-to-action */
+/* gap between repeated text */
 .spacer {
   display: inline-block;
-  width: 4rem; /* adjust to widen or tighten gap */
+  width: 4rem;
 }
+
