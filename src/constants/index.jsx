@@ -427,7 +427,7 @@ export const socials = [
     id: "2",
     title: "Instagram",
     icon: "/images/socials/instagram.svg",
-    url: "#",
+    url: "https://www.instagram.com/ellatechdetroit/",
   },
   {
     id: "3",

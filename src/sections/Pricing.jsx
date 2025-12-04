@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Element } from "react-scroll";
 import { pricingServices } from "../constants/index.jsx";
 import Button from "../components/Button.jsx";
 
 function Pricing() {
   const [expandedIds, setExpandedIds] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile vs desktop
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Tailwind md breakpoint
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const toggleExpand = (id) =>
     setExpandedIds((prev) =>
@@ -29,6 +41,9 @@ function Pricing() {
           <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-8 max-w-6xl mx-auto">
             {pricingServices.map(({ id, title, price, description, details }) => {
               const isExpanded = expandedIds.includes(id);
+              const desktopHeightClass = isExpanded
+                ? "md:min-h-[550px]"
+                : "md:min-h-[430px]";
 
               return (
                 <div
@@ -42,7 +57,7 @@ function Pricing() {
                   <div
                     className={`
                       relative z-10 p-6 flex flex-col transition-all duration-300 ease-in-out
-                      ${isExpanded ? "min-h-[550px]" : "min-h-[430px]"}
+                      ${desktopHeightClass}
                     `}
                   >
                     <h3 className="text-p4 uppercase font-bold text-xl mb-2 tracking-wide">
@@ -53,11 +68,11 @@ function Pricing() {
                       <p className="text-p3 font-medium mb-2">{price}</p>
                     )}
 
-                    {/* Visible preview text always shown */}
+                    {/* Description always visible, details depend on device */}
                     <div className="mt-1 flex-1 pr-1">
                       <p className="text-p5">{description}</p>
 
-                      {isExpanded && details && (
+                      {(isMobile || isExpanded) && details && (
                         <ul className="mt-2 list-disc list-inside text-p5 space-y-1">
                           {details.map((item, i) => (
                             <li key={i}>{item}</li>
@@ -66,8 +81,8 @@ function Pricing() {
                       )}
                     </div>
 
-                    {/* Button pinned bottom always */}
-                    {details && (
+                    {/* Button only on desktop */}
+                    {details && !isMobile && (
                       <div className="mt-auto pt-4 border-t border-white/10">
                         <button
                           onClick={() => toggleExpand(id)}
@@ -100,4 +115,3 @@ function Pricing() {
 }
 
 export default Pricing;
-

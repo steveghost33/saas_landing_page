@@ -478,3 +478,7 @@
 
   /*  END of Footer*/
 }
+/* Fix anchor scroll cutoff from fixed header + banner */
+html {
+  scroll-padding-top: 140px;
+}
