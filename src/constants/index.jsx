@@ -118,30 +118,30 @@ export const pricingServices = [
   {
     id: "website-creation",
     title: "Website Creation",
-    price: "Starting at $1,000+",
+    price: "Flexible Pricing Tailored to Your Needs",
     description:
-      "A simple, easy-to-update website that helps customers find your business and get in touch.",
+      "A streamlined website designed to highlight your services and make customer connection simple.",
     details: [
-      "Mobile-friendly layout that looks great on any device",
-      "Easy editing tools so you can change text and images yourself",
-      "Contact form so customers can reach you directly",
+      "Fully responsive design for all devices",
+      "User friendly editing tools for quick updates",
+      "Customer contact form included",
     ],
   },
   {
     id: "tech-support",
     title: "Technology Help & Support",
-    price: "Starting at $60/hour or $600/month for 10 hrs",
+    price: "Flexible Hourly and Monthly Plans",
     description:
-      "One-on-one help for any tech application questions, plus simple automations to save you time on everyday tasks.",
+      "Personalized tech assistance for your tools, workflow, and daily operations, along with time saving automations.",
     details: [
       "Automations that organize files, send reminders, or route emails automatically",
-      "Setup and guidance for tools like email, calendars, and file sharing",
+      "Support and setup for email, calendars, cloud storage, and more",
     ],
   },
   {
     id: "technology-workshops",
     title: "Technology Workshops",
-    price: "Half-Day: $500 | Full-Day: $1,000",
+    price: "Customizable Training Sessions",
     description:
       "Hands-on training designed for non-tech teams—no jargon, just clear steps to get confident with your tools.",
     details: [

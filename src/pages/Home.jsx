@@ -6,7 +6,7 @@ import Header from "../sections/Header.jsx";
 import ContactBanner from "../sections/ContactBanner.jsx";
 import Hero from "../sections/Hero.jsx";
 import Services from "../sections/Services.jsx";
-import Pricing from "../sections/Pricing.jsx";
+import Plans from "../sections/Plans.jsx";
 import Faq from "../sections/Faq.jsx";
 import Contact from "../sections/Contact.jsx";
 import Testimonials from "../sections/Testimonials.jsx";
@@ -36,7 +36,7 @@ function Home() {
       >
         <Hero />
         <Services />
-        <Pricing />
+        <Plans />
         <Faq />
         <Contact />
         <Testimonials />
