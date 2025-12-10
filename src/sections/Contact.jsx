@@ -7,9 +7,10 @@ const Contact = () => {
     <Element name="contact">
       <section
         id="contact"
-        className="relative pt-60 pb-40 bg-s1/50"
+        className="relative pt-44 pb-32 bg-s1/50"
       >
-        <div className="container mx-auto text-center mb-14">
+        {/* Heading */}
+        <div className="container mx-auto text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-p4 uppercase mb-4">
             Schedule Your Free 30 Minute Consultation
           </h2>
@@ -18,39 +19,58 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="max-w-2xl mx-auto bg-white rounded-2xl overflow-hidden shadow-lg mb-16">
+        {/* Scheduler Embed */}
+        <div className="max-w-2xl mx-auto bg-white rounded-2xl overflow-hidden shadow-2xl mb-12">
           <iframe
             title="Ella Tech Scheduler"
             src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1_gltX3YcW47uNEIzcEc8XWOCjYmZy7QtvFg1kUvqkrRc16EK-bWmFpMPOkGlADXyu_NdAXpau?gv=true"
-            style={{ border: 0, width: "100%", height: "900px" }}
+            style={{ border: 0, width: "100%", height: "850px" }}
             frameBorder="0"
           />
         </div>
 
-        {/* Contact Info on blue background */}
-        <div className="text-center text-p5 mb-20">
-          <h3 className="text-3xl font-bold uppercase mb-6 text-p4">
-            Contact Us
-          </h3>
-          <p className="text-lg">Ella Tech Solutions</p>
+        {/* Contact Information Card */}
+        <div className="container">
+          <div className="mx-auto max-w-3xl bg-s1 border border-s2 rounded-3xl px-10 py-12 shadow-2xl text-center text-p5 mb-12">
+            <h3 className="text-3xl font-bold uppercase text-p4 mb-3">
+              Contact Us
+            </h3>
+            <p className="text-lg text-p5 mb-8 opacity-90">
+              We reply within one business day
+            </p>
 
-          <a
-            href="tel:13134741772"
-            className="block text-lg font-medium hover:underline mt-2"
-          >
-            Phone: (313) 474 1772
-          </a>
+            <div className="space-y-6">
+              {/* Phone Block */}
+              <a
+                href="tel:13134741772"
+                className="flex items-center justify-center gap-4 bg-s2/20 hover:bg-s2/40 transition rounded-xl p-4 text-lg font-medium"
+              >
+                <img
+                  src="/images/phone.svg"
+                  alt="Phone"
+                  className="h-6 w-6"
+                />
+                (313) 474 1772
+              </a>
 
-          <a
-            href="mailto:info@ellatechsolutions.org"
-            className="block text-lg font-medium hover:underline mt-1"
-          >
-            Email: info@ellatechsolutions.org
-          </a>
+              {/* Email Block */}
+              <a
+                href="mailto:info@ellatechsolutions.org"
+                className="flex items-center justify-center gap-4 bg-s2/20 hover:bg-s2/40 transition rounded-xl p-4 text-lg font-medium"
+              >
+                <img
+                  src="/images/email.svg"
+                  alt="Email"
+                  className="h-6 w-6"
+                />
+                info@ellatechsolutions.org
+              </a>
+            </div>
+          </div>
         </div>
 
-        {/* Soft divider for visual spacing before next section */}
-        <div className="w-full h-8 bg-s1/30 rounded-t-3xl"></div>
+        {/* Soft divider for subtle separation before next section */}
+        <div className="w-full h-4 bg-s1/30 rounded-t-3xl"></div>
       </section>
     </Element>
   );

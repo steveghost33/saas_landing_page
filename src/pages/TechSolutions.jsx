@@ -1,4 +1,3 @@
-// src/pages/TechSolutions.jsx
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../sections/Header.jsx";
@@ -25,15 +24,12 @@ function TechSolutions() {
         <ContactBanner />
       </div>
 
-      {/* Page content pushed down below header + banner */}
-      <main
-        className="overflow-hidden"
-        style={{ paddingTop: "140px" }} // adjust if your header+banner height changes
-      >
+      {/* Push main content just below header + banner */}
+      <main className="overflow-hidden pt-[130px] md:pt-[145px]">
         {/* Hero Banner */}
         <section
           id="hero"
-          className="relative pt-44 pb-32 max-lg:pt-40 max-lg:pb-28 max-md:pt-36 max-md:pb-28 bg-s1 font-poppins text-p5"
+          className="relative pt-32 pb-32 max-lg:pt-28 max-lg:pb-28 max-md:pt-24 max-md:pb-24 bg-s1 font-poppins text-p5"
         >
           <div
             className="relative h-[350px] w-full overflow-hidden rounded-3xl mb-20"
@@ -116,7 +112,7 @@ function TechSolutions() {
                   title: "Automated Email Management",
                   img: "/images/email-auto.jpg",
                   desc:
-                    "Use AI to sort, prioritize, and draft responses to routine emails—freeing up hours every week.",
+                    "Use AI to sort, prioritize, and draft responses to routine emails freeing up hours every week.",
                 },
                 {
                   title: "Smart Scheduling & Reminders",
@@ -151,7 +147,7 @@ function TechSolutions() {
 
           {/* Call to Action */}
           <div className="container text-center mb-32">
-            <h2 className="h4 mb-6">Ready to Boost Your Team’s Efficiency?</h2>
+            <h2 className="h4 mb-6">Ready to Boost Your Team’s Efficiency</h2>
             <p className="body-1 mb-8 max-w-2xl mx-auto">
               Contact us for a free consultation and see how AI-powered solutions
               can save you time and money.

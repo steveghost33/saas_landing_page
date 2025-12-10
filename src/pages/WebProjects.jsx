@@ -1,4 +1,3 @@
-// src/pages/WebProjects.jsx
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../sections/Header.jsx";
@@ -19,48 +18,31 @@ function WebProjects() {
 
   const projects = [
     {
-      title: "SaaS Dashboard",
-      img: "/images/projects/saas-dashboard.jpg",
-      desc: "A responsive admin dashboard with real-time analytics and user management.",
-      link: "https://github.com/yourusername/saas-dashboard",
+      title: "Ella Tech Solutions SaaS Website",
+      img: "/images/projects/ellatech.png",
+      desc: "A modern SaaS style website showcasing services, animations, client centered solutions, and responsive design.",
+      link: "https://ellatechsolutions.com",
     },
     {
-      title: "E-Commerce Platform",
+      title: "Peak Form Fitness Ecommerce Website",
       img: "/images/projects/ecommerce.jpg",
-      desc: "Full-featured online store with shopping cart, payment integration, and order tracking.",
-      link: "https://github.com/yourusername/ecommerce-platform",
-    },
-    {
-      title: "Portfolio Website",
-      img: "/images/projects/portfolio.jpg",
-      desc: "Personal portfolio site showcasing projects, blog posts, and a contact form.",
-      link: "https://github.com/yourusername/portfolio-website",
-    },
-    {
-      title: "Blog CMS",
-      img: "/images/projects/blog.jpg",
-      desc: "Custom content management system with rich-text editor and SEO tools.",
-      link: "https://github.com/yourusername/blog-cms",
+      desc: "A fitness business website featuring service packages, appointment booking, and a branded ecommerce experience.",
+      link: "https://peak-form-fitness.vercel.app",
     },
   ];
 
   return (
     <>
-      {/* Fixed header + contact banner */}
       <div className="fixed top-0 left-0 w-full z-50">
         <Header />
         <ContactBanner />
       </div>
 
-      {/* Page content pushed down below header + banner */}
-      <main
-        className="overflow-hidden"
-        style={{ paddingTop: "140px" }} // adjust if header + banner height changes
-      >
-        {/* Hero / Page Banner */}
+      <main className="overflow-hidden pt-[130px] md:pt-[145px]">
+
         <section
           id="hero"
-          className="relative pt-44 pb-32 max-lg:pt-40 max-lg:pb-28 max-md:pt-36 max-md:pb-28 bg-s1 font-poppins text-p5"
+          className="relative pt-32 pb-32 max-lg:pt-28 max-lg:pb-28 max-md:pt-24 max-md:pb-24 bg-s1 font-poppins text-p5"
         >
           <div
             className="relative h-[350px] w-full overflow-hidden rounded-3xl mb-20"
@@ -76,13 +58,11 @@ function WebProjects() {
                 Our Web Projects
               </h1>
               <p className="body-1 text-white drop-shadow-lg max-w-2xl">
-                Take a look at some of the websites and web apps we have built for
-                clients in business, non-profits, and beyond.
+                A look at custom websites and web applications built for businesses and organizations.
               </p>
             </div>
           </div>
 
-          {/* Project Grid */}
           <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
             {projects.map((proj, idx) => (
               <div
@@ -96,9 +76,11 @@ function WebProjects() {
                     className="h-full w-full object-cover"
                   />
                 </div>
+
                 <div className="p-6 flex-1 flex flex-col">
                   <h3 className="h5 text-p4 mb-2">{proj.title}</h3>
                   <p className="body-3 text-p5 flex-1">{proj.desc}</p>
+
                   <Button
                     href={proj.link}
                     containerClassName="mt-4 self-start"
@@ -111,12 +93,10 @@ function WebProjects() {
             ))}
           </div>
 
-          {/* Booking CTA */}
           <div className="container text-center mb-32">
             <h2 className="h4 mb-4">Ready to Start Your Own Project?</h2>
             <p className="body-1 mb-6 max-w-2xl mx-auto">
-              Let us talk about how we can bring your web idea to life, no obligation,
-              just a friendly chat.
+              Let us talk about how we can bring your idea to life. No pressure, just a friendly conversation.
             </p>
             <Button href="/#contact" containerClassName="inline-block mx-auto">
               Book a Free Consultation
@@ -132,3 +112,4 @@ function WebProjects() {
 }
 
 export default WebProjects;
+

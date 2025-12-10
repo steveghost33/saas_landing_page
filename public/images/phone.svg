@@ -1,0 +1,27 @@
+<svg width="64" height="64" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <defs>
+    <linearGradient id="ellaPhone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3B82F6"></stop>
+      <stop offset="50%" stop-color="#6366F1"></stop>
+      <stop offset="100%" stop-color="#8B5CF6"></stop>
+    </linearGradient>
+  </defs>
+
+  <path d="
+      M6.62 10.79
+      A15.05 15.05 0 0 0 13.21 17.38
+      L15.41 15.18
+      A1 1 0 0 1 16.29 14.9
+      C17.41 15.05 18.56 15.12 19.71 15.12
+      A1 1 0 0 1 20.71 16.12
+      V19
+      A1 1 0 0 1 19.71 20
+      C10.52 20 3 12.48 3 3.29
+      A1 1 0 0 1 4 2.29
+      H6.88
+      A1 1 0 0 1 7.88 3.29
+      C7.88 4.44 7.95 5.59 8.1 6.71
+      A1 1 0 0 1 7.82 7.59
+      L5.62 9.79
+      Z" fill="url(#ellaPhone)"></path>
+</svg>

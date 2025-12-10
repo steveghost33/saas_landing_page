@@ -1,5 +1,3 @@
-// src/pages/Home.jsx
-
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Header from "../sections/Header.jsx";
@@ -32,7 +30,7 @@ function Home() {
 
       <main
         className="overflow-hidden"
-        style={{ paddingTop: "140px" }} // adjust if header + banner are taller or shorter
+        style={{ paddingTop: "140px" }} // adjust if header + banner height changes
       >
         <Hero />
         <Services />
