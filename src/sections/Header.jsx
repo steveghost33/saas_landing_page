@@ -3,6 +3,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { socials } from "../constants/index.jsx";
 
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -36,6 +37,37 @@ const Header = () => {
         hasScrolled && "py-2 bg-black-100 backdrop-blur-[8px]"
       )}
     >
+      {/* Top Bar - Book Us Button (Left) & Social Links (Right) - Desktop Only */}
+      <div className="container flex justify-between items-center mb-4 max-lg:hidden">
+        {/* Book Us Now Button - Small */}
+        <a
+          href="/#contact"
+          className="flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
+        >
+          <img src="/images/zap.svg" alt="zap" className="w-4 h-4" />
+          Book Us Now
+        </a>
+
+        {/* Social Media Links */}
+        <div className="flex items-center gap-3">
+          {socials.map(({ id, url, icon, title }) => (
+            <a
+              key={id}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon w-8 h-8 flex items-center justify-center rounded-full bg-s2 hover:bg-s3 transition-all duration-300"
+            >
+              <img
+                src={icon}
+                alt={title}
+                className="w-4 h-4 object-contain"
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+
       <div className="container flex h-14 items-center max-lg:px-5">
         {/* Mobile logo routes to top of Home */}
         <Link
@@ -53,6 +85,52 @@ const Header = () => {
           )}
         >
           <div className="max-lg:relative max-lg:flex max-lg:flex-col max-lg:min-h-screen max-lg:p-6 max-lg:overflow-hidden sidebar-before max-md:px-4">
+            {/* Mobile Logo in Menu */}
+            <Link
+              to="/"
+              className="lg:hidden flex justify-center cursor-pointer z-2 mt-4"
+              onClick={handleLogoClick}
+            >
+              <img
+                src="/images/ellalogo.svg"
+                width={250}
+                height={80}
+                alt="logo"
+              />
+            </Link>
+
+            {/* Mobile Social Media Links */}
+            <ul className="lg:hidden flex justify-center gap-4 mt-8 mb-8">
+              {socials.map(({ id, url, icon, title }) => (
+                <li key={id}>
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
+                  >
+                    <img
+                      src={icon}
+                      alt={title}
+                      className="w-5 h-5 object-contain"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {/* Mobile Book Us Now Button */}
+            <div className="lg:hidden flex justify-center mb-12">
+              <a
+                href="/#contact"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-2 px-5 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
+              >
+                <img src="/images/zap.svg" alt="zap" className="w-5 h-5" />
+                Book Us Now
+              </a>
+            </div>
+
             <nav className="max-lg:relative max-lg:z-2 max-lg:my-auto">
               <ul className="flex max-lg:block max-lg:px-12">
                 <li className="nav-li">
@@ -61,7 +139,7 @@ const Header = () => {
                   <NavLink title="plans" />
                 </li>
 
-                {/* Center logo routes to top of Home */}
+                {/* Center logo routes to top of Home (Desktop) */}
                 <li className="nav-logo">
                   <Link
                     to="/"
