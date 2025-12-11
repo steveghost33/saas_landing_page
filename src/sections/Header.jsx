@@ -15,6 +15,18 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   const NavLink = ({ title }) => (
     <a
       href={`/#${title}`}
@@ -69,38 +81,41 @@ const Header = () => {
       </div>
 
       <div className="container flex h-14 items-center max-lg:px-5">
-        {/* Mobile logo routes to top of Home */}
-        <Link
-          to="/"
-          className="lg:hidden flex-1 cursor-pointer z-2"
-          onClick={handleLogoClick}
-        >
-          <img src="/images/ellalogo.svg" width={900} height={300} alt="logo" />
-        </Link>
+        {/* Mobile logo - Only show when menu is CLOSED */}
+        {!isOpen && (
+          <Link
+            to="/"
+            className="lg:hidden flex-1 cursor-pointer z-2"
+            onClick={handleLogoClick}
+          >
+            <img src="/images/ellalogo.svg" width={900} height={300} alt="logo" />
+          </Link>
+        )}
 
+        {/* Mobile Menu Overlay */}
         <div
           className={clsx(
-            "w-full max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:w-full max-lg:bg-s2 max-lg:opacity-0",
+            "w-full max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:w-full max-lg:h-screen max-lg:bg-s2 max-lg:opacity-0 max-lg:z-[100]",
             isOpen ? "max-lg:opacity-100" : "max-lg:pointer-events-none"
           )}
         >
-          <div className="max-lg:relative max-lg:flex max-lg:flex-col max-lg:min-h-screen max-lg:p-6 max-lg:overflow-hidden sidebar-before max-md:px-4">
-            {/* Mobile Logo in Menu */}
+          <div className="max-lg:relative max-lg:flex max-lg:flex-col max-lg:min-h-screen max-lg:p-6 max-lg:pt-20 max-lg:overflow-hidden sidebar-before max-md:px-4">
+            {/* Mobile Logo in Menu - Centered at top */}
             <Link
               to="/"
-              className="lg:hidden flex justify-center cursor-pointer z-2 mt-4"
+              className="lg:hidden flex justify-center cursor-pointer z-2"
               onClick={handleLogoClick}
             >
               <img
                 src="/images/ellalogo.svg"
-                width={250}
-                height={80}
+                width={220}
+                height={70}
                 alt="logo"
               />
             </Link>
 
             {/* Mobile Social Media Links */}
-            <ul className="lg:hidden flex justify-center gap-4 mt-8 mb-8">
+            <ul className="lg:hidden flex justify-center gap-4 mt-10">
               {socials.map(({ id, url, icon, title }) => (
                 <li key={id}>
                   <a
@@ -120,7 +135,7 @@ const Header = () => {
             </ul>
 
             {/* Mobile Book Us Now Button */}
-            <div className="lg:hidden flex justify-center mb-12">
+            <div className="lg:hidden flex justify-center mt-8 mb-10">
               <a
                 href="/#contact"
                 onClick={() => setIsOpen(false)}
@@ -131,7 +146,8 @@ const Header = () => {
               </a>
             </div>
 
-            <nav className="max-lg:relative max-lg:z-2 max-lg:my-auto">
+            {/* Navigation Links */}
+            <nav className="max-lg:relative max-lg:z-2 max-lg:flex-1 max-lg:flex max-lg:items-center">
               <ul className="flex max-lg:block max-lg:px-12">
                 <li className="nav-li">
                   <NavLink title="services" />
@@ -139,7 +155,7 @@ const Header = () => {
                   <NavLink title="plans" />
                 </li>
 
-                {/* Center logo routes to top of Home (Desktop) */}
+                {/* Center logo routes to top of Home (Desktop Only) */}
                 <li className="nav-logo">
                   <Link
                     to="/"
@@ -163,7 +179,8 @@ const Header = () => {
               </ul>
             </nav>
 
-            <div className="lg:hidden block absolute top-1/2 left-0 w-[960px] h-[380px] translate-x-[-290px] -translate-y-1/2 rotate-90">
+            {/* Background Decorations */}
+            <div className="lg:hidden block absolute top-1/2 left-0 w-[960px] h-[380px] translate-x-[-290px] -translate-y-1/2 rotate-90 pointer-events-none">
               <img
                 src="/images/bg-outlines.svg"
                 width={960}
@@ -182,8 +199,9 @@ const Header = () => {
           </div>
         </div>
 
+        {/* Mobile Menu Toggle Button */}
         <button
-          className="lg:hidden z-2 size-10 border-2 border-s4/25 rounded-full flex justify-center items-center"
+          className="lg:hidden z-[110] size-10 border-2 border-s4/25 rounded-full flex justify-center items-center"
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <img

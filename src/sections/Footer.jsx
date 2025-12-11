@@ -4,35 +4,53 @@ const Footer = () => {
   return (
     <footer>
       <div className="container py-10">
-        <div className="flex w-full max-md:flex-col">
-          <div className="small-compact flex flex-1 flex-wrap items-center justify-center gap-5">
+        <div className="flex w-full flex-col items-center gap-6 lg:flex-row lg:gap-4">
+          {/* Copyright */}
+          <div className="small-compact flex items-center justify-center lg:flex-1 lg:justify-start">
             <p className="opacity-70">Copyright, ELLA TECH SOLUTIONS LLC</p>
           </div>
-          <div className="flex items-center justify-center sm:ml-auto">
-            <p className="legal-after relative mr-9 text-p5 transition-all duration-500 hover:text-p1">
+
+          {/* Legal Links - use whitespace-nowrap to prevent breaking */}
+          <div className="flex items-center justify-center gap-4">
+            <a 
+              href="/legal" 
+              className="whitespace-nowrap text-p5 transition-all duration-500 hover:text-p1 cursor-pointer"
+            >
               Privacy Policy
-            </p>
-            <p className="text-p5 transition-all duration-500 hover:text-p1">
+            </a>
+            <span className="text-p5 opacity-50">•</span>
+            <a 
+              href="/terms-of-use" 
+              className="whitespace-nowrap text-p5 transition-all duration-500 hover:text-p1 cursor-pointer"
+            >
               Terms of Use
-            </p>
+            </a>
           </div>
 
-          <ul className="flex flex-1 justify-center gap-3 max-md:mt-10 md:justify-end">
-            {socials.map(({ id, url, icon, title }) => (
-              <li key={id}>
-                <a href={url} className="social-icon">
-                  <img
-                    src={icon}
-                    alt={title}
-                    className="size-1/3 object-contain"
-                  />
-                </a>
-              </li>
-            ))}
-          </ul>
+          {/* Location & Socials */}
+          <div className="flex items-center justify-center gap-4 lg:flex-1 lg:justify-end">
+            <p className="opacity-70 text-p5 text-sm flex items-center gap-1 whitespace-nowrap">
+              📍 Detroit, MI
+            </p>
+            <span className="opacity-30 text-p5">|</span>
+            <ul className="flex gap-3">
+              {socials.map(({ id, url, icon, title }) => (
+                <li key={id}>
+                  <a href={url} className="social-icon">
+                    <img
+                      src={icon}
+                      alt={title}
+                      className="size-1/3 object-contain"
+                    />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </footer>
   );
 };
+
 export default Footer;
