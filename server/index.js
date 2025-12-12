@@ -12,8 +12,23 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
+const CORS_ORIGINS = process.env.CORS_ORIGINS
+  ?.split(",")
+  .map((o) => o.trim())
+  .filter(Boolean);
 
-app.use(cors());
+const corsOptions = CORS_ORIGINS?.length
+  ? {
+      origin(origin, callback) {
+        if (!origin || CORS_ORIGINS.includes(origin)) {
+          return callback(null, true);
+        }
+        return callback(new Error("Not allowed by CORS"));
+      },
+    }
+  : {};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
 const DATA_FILE = path.join(__dirname, "contacts.json");
@@ -63,6 +78,15 @@ app.post("/api/chat", async (req, res) => {
       role: m?.role,
       content: typeof m?.content === "string" ? m.content.trim() : "",
     }))
+    .filter((m) => {
+      if (!m.content || m.content.length > 2000) return false;
+      if (m.role === "system") {
+        if (systemIncluded) return false;
+        systemIncluded = true;
+        return true;
+      }
+      return m.role === "user" || m.role === "assistant";
+    });
 
   if (sanitizedHistory.length === 0) {
     return res.status(400).json({ error: "Invalid message history." });

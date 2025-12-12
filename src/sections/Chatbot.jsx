@@ -9,13 +9,38 @@ const DOCK_GAP = 12;
 const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
 // Ella Tech Solutions contact details
-const SITE_URL = import.meta.env.VITE_SITE_URL?.replace(/\/$/, "") || "";
-const ETS_BOOKING_URL = SITE_URL ? `${SITE_URL}/#contact` : "#contact";
+const ETS_BOOKING_URL = "#contact"; // do not print this as plain text anywhere
 const ETS_PHONE = "(313) 474 1772";
 const ETS_EMAIL = "info@ellatechsolutions.com";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, "") || "";
 const CHAT_ENDPOINT = `${API_BASE_URL}/api/chat`;
+
+const normalizeTel = (phone) => {
+  const digitsOnly = String(phone || "").replace(/[^\d]/g, "");
+  if (!digitsOnly) return "";
+  // Assume US if no country code is present
+  return digitsOnly.length === 10 ? `+1${digitsOnly}` : `+${digitsOnly}`;
+};
+
+const stripContactArtifacts = (text) => {
+  let t = String(text || "");
+
+  // Remove standalone "#contact" lines
+  t = t.replace(/^\s*#contact\s*$/gim, "");
+
+  // Remove URLs that end with #contact (or contain it)
+  t = t.replace(/https?:\/\/\S*#contact\b/gi, "");
+
+  // Remove any remaining raw "#contact" token inside text
+  t = t.replace(/\s#contact\b/gi, "");
+  t = t.replace(/#contact\b/gi, "");
+
+  // Clean up excess blank lines
+  t = t.replace(/\n{3,}/g, "\n\n").trim();
+
+  return t;
+};
 
 const BUSINESS_SYSTEM_PROMPT = `
 You are the official Ella Tech Solutions website assistant.
@@ -35,8 +60,8 @@ You represent a real business, not a generic AI assistant.
 Rules
 1. Answer technology questions clearly and practically.
 2. Lead with consulting, training, and support in recommendations whenever appropriate.
-3. If the visitor asks to schedule, book, consult, pricing, quote, estimate, or wants hands on help, you must provide contact options and the scheduling link.
-4. If the visitor asks how to contact the business, always provide phone, email, and scheduling link.
+3. If the visitor asks to schedule, book, consult, pricing, quote, estimate, or wants hands on help, provide contact options and a short instruction to use the website contact section to schedule.
+4. If the visitor asks how to contact the business, provide phone and email and tell them to use the website contact section to schedule.
 5. Never promise instant replies. State that Ella Tech Solutions replies within one business day.
 6. Do not claim actions like booking or calling. Only provide directions and contact info.
 7. Keep answers concise unless the visitor asks for more detail.
@@ -44,7 +69,7 @@ Rules
 Official contact
 Phone: (313) 474 1772
 Email: info@ellatechsolutions.com
-Scheduling: ${ETS_BOOKING_URL}
+Scheduling: Use the website contact section to schedule a consultation.
 `;
 
 const wantsSchedulingOrContact = (text) => {
@@ -76,14 +101,14 @@ const wantsSchedulingOrContact = (text) => {
   return patterns.some((p) => t.includes(p));
 };
 
+// Use tokens so we can render links cleanly without showing "#contact"
 const contactCtaText = () =>
   `You can reach Ella Tech Solutions here. We reply within one business day.\n\n` +
-  `Schedule a consultation: ${ETS_BOOKING_URL}\n` +
-  `Phone: ${ETS_PHONE}\n` +
-  `Email: ${ETS_EMAIL}`;
+  `Schedule a consultation: [[ETS_BOOK]]\n` +
+  `Phone: [[ETS_PHONE]]\n` +
+  `Email: [[ETS_EMAIL]]`;
 
 const Chatbot = () => {
-  // State
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
     { from: "bot", text: "Hi! I’m the Ella Tech Strategy Expert. How can I help?" },
@@ -97,7 +122,7 @@ const Chatbot = () => {
     messagesRef.current = messages;
   }, [messages]);
 
-  // Start DOCKED in bottom-right
+  // Docked behavior
   const [docked, setDocked] = useState(true);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
@@ -177,9 +202,9 @@ const Chatbot = () => {
       document.removeEventListener("touchmove", onTouchMove);
       document.removeEventListener("touchend", onTouchEnd);
     };
-  }, [dragging, rel]);
+  }, [dragging, rel, position.x, position.y]);
 
-  // Re-dock on viewport changes
+  // Re dock on viewport changes
   useEffect(() => {
     const reDock = () => {
       setDragging(false);
@@ -205,7 +230,6 @@ const Chatbot = () => {
     };
   }, []);
 
-  // Messaging helpers
   const buildChatHistory = (latestMessages, userText) => {
     const history = [
       { role: "system", content: BUSINESS_SYSTEM_PROMPT },
@@ -236,16 +260,14 @@ const Chatbot = () => {
       const res = await axios.post(
         CHAT_ENDPOINT,
         { messages: history },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
+        { headers: { "Content-Type": "application/json" } }
       );
 
       let botReply = res?.data?.reply?.trim();
       if (!botReply) botReply = "Sorry, I did not get a response. Try again.";
-      
+
+      botReply = stripContactArtifacts(botReply);
+
       if (wantsSchedulingOrContact(userText)) {
         botReply = `${botReply}\n\n${contactCtaText()}`;
       } else {
@@ -254,13 +276,14 @@ const Chatbot = () => {
           `${contactCtaText()}`;
       }
 
+      // Final scrub in case anything sneaks back in
+      botReply = stripContactArtifacts(botReply);
+
       setMessages((msgs) => [...msgs, { from: "bot", text: botReply }]);
     } catch (err) {
       console.error("Chatbot error:", err);
-      setMessages((msgs) => [
-        ...msgs,
-        { from: "bot", text: `Sorry, something went wrong.\n\n${contactCtaText()}` },
-      ]);
+      const fallback = stripContactArtifacts(`Sorry, something went wrong.\n\n${contactCtaText()}`);
+      setMessages((msgs) => [...msgs, { from: "bot", text: fallback }]);
     }
   };
 
@@ -314,11 +337,11 @@ const Chatbot = () => {
 
     return (
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 10 }}>
-        <a href={ETS_BOOKING_URL} target="_blank" rel="noreferrer" style={pill}>
+        <a href={ETS_BOOKING_URL} style={pill}>
           Schedule
         </a>
 
-        <a href={`tel:${ETS_PHONE}`} style={pill}>
+        <a href={`tel:${normalizeTel(ETS_PHONE)}`} style={pill}>
           Call
         </a>
 
@@ -336,9 +359,7 @@ const Chatbot = () => {
 
         <button
           type="button"
-          onClick={() =>
-            sendMessage("I want staff training. What training options do you recommend and how do I schedule")
-          }
+          onClick={() => sendMessage("I want staff training. What training options do you recommend and how do I schedule")}
           style={pill}
         >
           Staff training
@@ -346,9 +367,7 @@ const Chatbot = () => {
 
         <button
           type="button"
-          onClick={() =>
-            sendMessage("I need ongoing tech support. How does support work and how do I get started")
-          }
+          onClick={() => sendMessage("I need ongoing tech support. How does support work and how do I get started")}
           style={pill}
         >
           Support
@@ -361,6 +380,109 @@ const Chatbot = () => {
         >
           Get a quote
         </button>
+      </div>
+    );
+  };
+
+  const renderBotText = (text) => {
+    const safe = stripContactArtifacts(text);
+
+    const linkStyle = {
+      color: "#0b5ed7",
+      textDecoration: "underline",
+      fontWeight: 600,
+    };
+
+    const lines = safe.split("\n");
+
+    const renderInlineLinks = (line) => {
+      // Replace phone and email wherever they appear with clickable links
+      const tokens = [];
+      let remaining = line;
+
+      const phoneIndex = remaining.indexOf(ETS_PHONE);
+      const emailIndex = remaining.indexOf(ETS_EMAIL);
+
+      // If neither is present, return plain line
+      if (phoneIndex === -1 && emailIndex === -1) {
+        return <span>{line}</span>;
+      }
+
+      // Handle whichever comes first in the string
+      const nextIsPhone =
+        phoneIndex !== -1 && (emailIndex === -1 || phoneIndex < emailIndex);
+
+      const idx = nextIsPhone ? phoneIndex : emailIndex;
+      const match = nextIsPhone ? ETS_PHONE : ETS_EMAIL;
+
+      const before = remaining.slice(0, idx);
+      const after = remaining.slice(idx + match.length);
+
+      if (before) tokens.push(<span key="b">{before}</span>);
+
+      if (nextIsPhone) {
+        tokens.push(
+          <a key="p" href={`tel:${normalizeTel(ETS_PHONE)}`} style={linkStyle}>
+            {ETS_PHONE}
+          </a>
+        );
+      } else {
+        tokens.push(
+          <a key="e" href={`mailto:${ETS_EMAIL}`} style={linkStyle}>
+            {ETS_EMAIL}
+          </a>
+        );
+      }
+
+      if (after) tokens.push(<span key="a">{after}</span>);
+
+      return <>{tokens}</>;
+    };
+
+    return (
+      <div style={{ whiteSpace: "pre-wrap" }}>
+        {lines.map((line, idx) => {
+          const trimmed = line.trim();
+          if (!trimmed) return <div key={idx} />;
+
+          if (trimmed.includes("[[ETS_BOOK]]")) {
+            return (
+              <div key={idx}>
+                Schedule a consultation:{" "}
+                <a href={ETS_BOOKING_URL} style={linkStyle}>
+                  Open the contact section
+                </a>
+              </div>
+            );
+          }
+
+          if (trimmed.includes("[[ETS_PHONE]]")) {
+            return (
+              <div key={idx}>
+                Phone:{" "}
+                <a href={`tel:${normalizeTel(ETS_PHONE)}`} style={linkStyle}>
+                  {ETS_PHONE}
+                </a>
+              </div>
+            );
+          }
+
+          if (trimmed.includes("[[ETS_EMAIL]]")) {
+            return (
+              <div key={idx}>
+                Email:{" "}
+                <a href={`mailto:${ETS_EMAIL}`} style={linkStyle}>
+                  {ETS_EMAIL}
+                </a>
+              </div>
+            );
+          }
+
+          // Extra safety, if the model outputs "#contact" as a standalone line
+          if (trimmed === "#contact") return <div key={idx} />;
+
+          return <div key={idx}>{renderInlineLinks(line)}</div>;
+        })}
       </div>
     );
   };
@@ -466,10 +588,9 @@ const Chatbot = () => {
                   borderRadius: 6,
                   maxWidth: "80%",
                   wordWrap: "break-word",
-                  whiteSpace: "pre-wrap",
                 }}
               >
-                {m.text}
+                {m.from === "bot" ? renderBotText(m.text) : <div style={{ whiteSpace: "pre-wrap" }}>{m.text}</div>}
               </div>
             ))}
             <div ref={bottomRef} />
@@ -547,4 +668,3 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
-
