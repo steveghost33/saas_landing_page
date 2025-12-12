@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import WebProjects from "./pages/WebProjects.jsx";
 import TechSolutions from "./pages/TechSolutions.jsx";
-import TermsOfUse from "./pages/TermsofUse.jsx";
+import TermsOfUse from "./pages/TermsOfUse.jsx";
 import Legal from "./pages/Legal.jsx";
 
 function App() {

@@ -2,16 +2,84 @@
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 
-const TOGGLE_SIZE = 60;      // px
-const DOCK_MARGIN = 16;      // px from edges when docked
-const DOCK_GAP = 12;         // px gap between toggle and window when docked
+const TOGGLE_SIZE = 60;
+const DOCK_MARGIN = 16;
+const DOCK_GAP = 12;
 
 const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
+// Ella Tech Solutions contact details
+const ETS_BOOKING_URL = "http://localhost:5173/#contact";
+const ETS_PHONE = "(313) 474 1772";
+const ETS_EMAIL = "info@ellatechsolutions.com";
+
+const BUSINESS_SYSTEM_PROMPT = `
+You are the official Ella Tech Solutions website assistant.
+
+Primary focus
+Technology consulting, staff training, and ongoing technology support.
+
+Additional services
+Website development and redesign
+Website maintenance and troubleshooting
+Automation and digital workflows
+
+Tone
+Professional, clear, friendly, and confident.
+You represent a real business, not a generic AI assistant.
+
+Rules
+1. Answer technology questions clearly and practically.
+2. Lead with consulting, training, and support in recommendations whenever appropriate.
+3. If the visitor asks to schedule, book, consult, pricing, quote, estimate, or wants hands on help, you must provide contact options and the scheduling link.
+4. If the visitor asks how to contact the business, always provide phone, email, and scheduling link.
+5. Never promise instant replies. State that Ella Tech Solutions replies within one business day.
+6. Do not claim actions like booking or calling. Only provide directions and contact info.
+7. Keep answers concise unless the visitor asks for more detail.
+
+Official contact
+Phone: (313) 474 1772
+Email: info@ellatechsolutions.com
+Scheduling: http://localhost:5173/#contact
+`;
+
+const wantsSchedulingOrContact = (text) => {
+  const t = (text || "").toLowerCase();
+  const patterns = [
+    "schedule",
+    "book",
+    "appointment",
+    "consult",
+    "consultation",
+    "meeting",
+    "call",
+    "phone",
+    "email",
+    "contact",
+    "quote",
+    "pricing",
+    "price",
+    "estimate",
+    "training",
+    "workshop",
+    "support",
+    "help me",
+    "can you do it",
+    "can you build",
+    "can you make",
+    "can you fix",
+  ];
+  return patterns.some((p) => t.includes(p));
+};
+
+const contactCtaText = () =>
+  `You can reach Ella Tech Solutions here. We reply within one business day.\n\n` +
+  `Schedule a consultation: ${ETS_BOOKING_URL}\n` +
+  `Phone: ${ETS_PHONE}\n` +
+  `Email: ${ETS_EMAIL}`;
+
 const Chatbot = () => {
-  // ─────────────────────────────────────────────────────────────
   // State
-  // ─────────────────────────────────────────────────────────────
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
     { from: "bot", text: "Hi! I’m the Ella Tech Strategy Expert. How can I help?" },
@@ -19,26 +87,28 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const bottomRef = useRef(null);
 
-  // Start DOCKED in bottom-right; undock only after a drag starts
+  // Keep latest messages for correct history building
+  const messagesRef = useRef(messages);
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
+
+  // Start DOCKED in bottom-right
   const [docked, setDocked] = useState(true);
-  const [position, setPosition] = useState({ x: 0, y: 0 }); // used when undocked
+  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
   const [rel, setRel] = useState({ x: 0, y: 0 });
 
-  // ─────────────────────────────────────────────────────────────
-  // Auto-scroll to latest message
-  // ─────────────────────────────────────────────────────────────
+  // Auto scroll
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // ─────────────────────────────────────────────────────────────
-  // Drag handlers (mouse + touch)
-  // ─────────────────────────────────────────────────────────────
+  // Drag handlers
   const startDragFromPoint = (pageX, pageY) => {
     if (docked) {
       const left = window.innerWidth - (DOCK_MARGIN + TOGGLE_SIZE);
-      const top  = window.innerHeight - (DOCK_MARGIN + TOGGLE_SIZE);
+      const top = window.innerHeight - (DOCK_MARGIN + TOGGLE_SIZE);
       setPosition({ x: left, y: top });
       setDocked(false);
       setRel({ x: pageX - left, y: pageY - top });
@@ -70,6 +140,7 @@ const Chatbot = () => {
         y: clamp(y, 8, window.innerHeight - TOGGLE_SIZE - 8),
       });
     };
+
     const onMouseUp = () => {
       if (dragging) setDragging(false);
     };
@@ -86,6 +157,7 @@ const Chatbot = () => {
         y: clamp(y, 8, window.innerHeight - TOGGLE_SIZE - 8),
       });
     };
+
     const onTouchEnd = () => {
       if (dragging) setDragging(false);
     };
@@ -103,20 +175,16 @@ const Chatbot = () => {
     };
   }, [dragging, rel]);
 
-  // ─────────────────────────────────────────────────────────────
-  // Always re-dock to bottom-right on any viewport size change
-  // (desktop resize, mobile orientation, address bar show/hide)
-  // ─────────────────────────────────────────────────────────────
+  // Re-dock on viewport changes
   useEffect(() => {
     const reDock = () => {
       setDragging(false);
-      setDocked(true); // CSS right/bottom take over -> stays bottom-right
+      setDocked(true);
     };
 
     window.addEventListener("resize", reDock);
     window.addEventListener("orientationchange", reDock);
 
-    // VisualViewport handles mobile chrome/safari UI expanding/collapsing
     const vv = window.visualViewport;
     if (vv) {
       vv.addEventListener("resize", reDock);
@@ -133,22 +201,33 @@ const Chatbot = () => {
     };
   }, []);
 
-  // ─────────────────────────────────────────────────────────────
-  // Messaging
-  // ─────────────────────────────────────────────────────────────
-  const sendMessage = async () => {
-    if (!input.trim()) return;
+  // Messaging helpers
+  const buildChatHistory = (latestMessages, userText) => {
+    const history = [
+      { role: "system", content: BUSINESS_SYSTEM_PROMPT },
+      ...latestMessages.map((m) => ({
+        role: m.from === "bot" ? "assistant" : "user",
+        content: m.text,
+      })),
+      { role: "user", content: userText },
+    ];
 
-    setMessages((msgs) => [...msgs, { from: "user", text: input }]);
-    const userText = input;
+    const maxTurns = 14;
+    const system = history[0];
+    const rest = history.slice(1);
+    const trimmed = rest.slice(Math.max(0, rest.length - maxTurns));
+    return [system, ...trimmed];
+  };
+
+  const sendMessage = async (overrideText) => {
+    const userText = (overrideText ?? input).trim();
+    if (!userText) return;
+
+    setMessages((msgs) => [...msgs, { from: "user", text: userText }]);
     setInput("");
 
     try {
-      const history = messages.map((m) => ({
-        role: m.from === "bot" ? "assistant" : "user",
-        content: m.text,
-      }));
-      history.push({ role: "user", content: userText });
+      const history = buildChatHistory(messagesRef.current, userText);
 
       const res = await axios.post(
         "https://api.openai.com/v1/chat/completions",
@@ -164,13 +243,23 @@ const Chatbot = () => {
         }
       );
 
-      const botReply = res.data.choices[0].message.content.trim();
+      let botReply = res?.data?.choices?.[0]?.message?.content?.trim();
+      if (!botReply) botReply = "Sorry, I did not get a response. Try again.";
+
+      if (wantsSchedulingOrContact(userText)) {
+        botReply = `${botReply}\n\n${contactCtaText()}`;
+      } else {
+        botReply =
+          `${botReply}\n\nIf you want hands on help through tech consulting, staff training, or support:\n` +
+          `${contactCtaText()}`;
+      }
+
       setMessages((msgs) => [...msgs, { from: "bot", text: botReply }]);
     } catch (err) {
       console.error("Chatbot error:", err);
       setMessages((msgs) => [
         ...msgs,
-        { from: "bot", text: "Sorry, something went wrong." },
+        { from: "bot", text: `Sorry, something went wrong.\n\n${contactCtaText()}` },
       ]);
     }
   };
@@ -179,9 +268,7 @@ const Chatbot = () => {
     if (e.key === "Enter") sendMessage();
   };
 
-  // ─────────────────────────────────────────────────────────────
-  // Computed styles for docked vs undocked
-  // ─────────────────────────────────────────────────────────────
+  // Styles for docked vs undocked
   const toggleStyle = docked
     ? {
         position: "fixed",
@@ -213,12 +300,73 @@ const Chatbot = () => {
           maxHeight: "min(60vh, 480px)",
         });
 
-  // ─────────────────────────────────────────────────────────────
-  // Render
-  // ─────────────────────────────────────────────────────────────
+  const QuickActions = () => {
+    const pill = {
+      fontSize: 12,
+      padding: "6px 10px",
+      borderRadius: 999,
+      border: "1px solid rgba(0,0,0,0.18)",
+      background: "#ffffff",
+      color: "#111",
+      textDecoration: "none",
+      cursor: "pointer",
+    };
+
+    return (
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 10 }}>
+        <a href={ETS_BOOKING_URL} target="_blank" rel="noreferrer" style={pill}>
+          Schedule
+        </a>
+
+        <a href={`tel:${ETS_PHONE}`} style={pill}>
+          Call
+        </a>
+
+        <a href={`mailto:${ETS_EMAIL}`} style={pill}>
+          Email
+        </a>
+
+        <button
+          type="button"
+          onClick={() => sendMessage("I want consulting. What is the best next step to schedule")}
+          style={pill}
+        >
+          Tech consulting
+        </button>
+
+        <button
+          type="button"
+          onClick={() =>
+            sendMessage("I want staff training. What training options do you recommend and how do I schedule")
+          }
+          style={pill}
+        >
+          Staff training
+        </button>
+
+        <button
+          type="button"
+          onClick={() =>
+            sendMessage("I need ongoing tech support. How does support work and how do I get started")
+          }
+          style={pill}
+        >
+          Support
+        </button>
+
+        <button
+          type="button"
+          onClick={() => sendMessage("Can you give me an estimate or quote and tell me how to schedule")}
+          style={pill}
+        >
+          Get a quote
+        </button>
+      </div>
+    );
+  };
+
   return (
     <>
-      {/* Button glow styles (tweak rgba color to match your brand glow) */}
       <style>{`
         .chatbot-glow {
           box-shadow:
@@ -304,6 +452,8 @@ const Chatbot = () => {
               background: "#f9f9f9",
             }}
           >
+            <QuickActions />
+
             {messages.map((m, i) => (
               <div
                 key={i}
@@ -316,6 +466,7 @@ const Chatbot = () => {
                   borderRadius: 6,
                   maxWidth: "80%",
                   wordWrap: "break-word",
+                  whiteSpace: "pre-wrap",
                 }}
               >
                 {m.text}
@@ -348,7 +499,7 @@ const Chatbot = () => {
               }}
             />
             <button
-              onClick={sendMessage}
+              onClick={() => sendMessage()}
               style={{
                 background: "#0077cc",
                 color: "#fff",
