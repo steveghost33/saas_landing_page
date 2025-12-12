@@ -57,16 +57,12 @@ app.post("/api/chat", async (req, res) => {
     return res.status(400).json({ error: "Messages history is required." });
   }
 
+  let systemIncluded = false;
   const sanitizedHistory = messages
     .map((m) => ({
       role: m?.role,
       content: typeof m?.content === "string" ? m.content.trim() : "",
     }))
-    .filter((m) =>
-      m.content &&
-      (m.role === "user" || m.role === "assistant") &&
-      m.content.length <= 2000
-    );
 
   if (sanitizedHistory.length === 0) {
     return res.status(400).json({ error: "Invalid message history." });

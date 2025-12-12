@@ -9,9 +9,13 @@ const DOCK_GAP = 12;
 const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
 // Ella Tech Solutions contact details
-const ETS_BOOKING_URL = "http://localhost:5173/#contact";
+const SITE_URL = import.meta.env.VITE_SITE_URL?.replace(/\/$/, "") || "";
+const ETS_BOOKING_URL = SITE_URL ? `${SITE_URL}/#contact` : "#contact";
 const ETS_PHONE = "(313) 474 1772";
 const ETS_EMAIL = "info@ellatechsolutions.com";
+
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, "") || "";
+const CHAT_ENDPOINT = `${API_BASE_URL}/api/chat`;
 
 const BUSINESS_SYSTEM_PROMPT = `
 You are the official Ella Tech Solutions website assistant.
@@ -40,7 +44,7 @@ Rules
 Official contact
 Phone: (313) 474 1772
 Email: info@ellatechsolutions.com
-Scheduling: http://localhost:5173/#contact
+Scheduling: ${ETS_BOOKING_URL}
 `;
 
 const wantsSchedulingOrContact = (text) => {
@@ -230,22 +234,18 @@ const Chatbot = () => {
       const history = buildChatHistory(messagesRef.current, userText);
 
       const res = await axios.post(
-        "https://api.openai.com/v1/chat/completions",
-        {
-          model: import.meta.env.VITE_OPENAI_MODEL,
-          messages: history,
-        },
+        CHAT_ENDPOINT,
+        { messages: history },
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
           },
         }
       );
 
-      let botReply = res?.data?.choices?.[0]?.message?.content?.trim();
+      let botReply = res?.data?.reply?.trim();
       if (!botReply) botReply = "Sorry, I did not get a response. Try again.";
-
+      
       if (wantsSchedulingOrContact(userText)) {
         botReply = `${botReply}\n\n${contactCtaText()}`;
       } else {
