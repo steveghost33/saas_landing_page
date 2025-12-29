@@ -11,18 +11,8 @@ function ContactBanner() {
             (313) 474-1772
           </a>{" "}
           or E-Mail:{" "}
-          <a href="mailto:info@ellatechsolutions.org" className="contact-link">
-            info@ellatechsolutions.org
-          </a>{" "}
-          for more information.
-          <span className="spacer">    </span>
-          Schedule Your Consultation Today! Call:{" "}
-          <a href="tel:+13134741772" className="contact-link">
-            (313) 474-1772
-          </a>{" "}
-          or E-Mail:{" "}
-          <a href="mailto:info@ellatechsolutions.org" className="contact-link">
-            info@ellatechsolutions.org
+          <a href="mailto:info@ellatechsolutions.com" className="contact-link">
+            info@ellatechsolutions.com
           </a>{" "}
           for more information.
           <span className="spacer">    </span>
@@ -32,7 +22,17 @@ function ContactBanner() {
           </a>{" "}
           or E-Mail:{" "}
           <a href="mailto:info@ellatechsolutions.com" className="contact-link">
-            info@ellatechsolutions.org
+            info@ellatechsolutions.com
+          </a>{" "}
+          for more information.
+          <span className="spacer">    </span>
+          Schedule Your Consultation Today! Call:{" "}
+          <a href="tel:+13134741772" className="contact-link">
+            (313) 474-1772
+          </a>{" "}
+          or E-Mail:{" "}
+          <a href="mailto:info@ellatechsolutions.com" className="contact-link">
+            info@ellatechsolutions.com
           </a>{" "}
           for more information.
           <span className="spacer">    </span>
