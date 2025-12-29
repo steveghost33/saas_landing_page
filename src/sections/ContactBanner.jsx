@@ -31,7 +31,7 @@ function ContactBanner() {
             (313) 474-1772
           </a>{" "}
           or E-Mail:{" "}
-          <a href="mailto:info@ellatechsolutions.org" className="contact-link">
+          <a href="mailto:info@ellatechsolutions.com" className="contact-link">
             info@ellatechsolutions.org
           </a>{" "}
           for more information.
