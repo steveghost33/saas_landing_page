@@ -4,7 +4,6 @@ import { Element } from "react-scroll";
 
 const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
-// Balanced heights that prevent cut off while avoiding huge blank space
 const MIN_DESKTOP = 960;
 const MAX_DESKTOP = 1120;
 
@@ -21,15 +20,10 @@ const Contact = () => {
       const wrapW = wrapRef.current?.getBoundingClientRect?.().width || 0;
       const isMobile = wrapW > 0 && wrapW < 560;
 
-      // Use most of the viewport height, but do not overshoot.
-      // This avoids the massive blank space at the bottom.
       const target = Math.round(viewportH * 0.92);
 
-      if (isMobile) {
-        setIframeHeight(clamp(target, MIN_MOBILE, MAX_MOBILE));
-      } else {
-        setIframeHeight(clamp(target, MIN_DESKTOP, MAX_DESKTOP));
-      }
+      if (isMobile) setIframeHeight(clamp(target, MIN_MOBILE, MAX_MOBILE));
+      else setIframeHeight(clamp(target, MIN_DESKTOP, MAX_DESKTOP));
     };
 
     compute();
@@ -55,9 +49,11 @@ const Contact = () => {
 
   return (
     <Element name="contact">
-      <section id="contact" className="relative pt-44 pb-32 bg-s1/50">
-        {/* Heading */}
-        <div className="container mx-auto text-center mb-12">
+      <section
+        id="contact"
+        className="relative bg-s1/50 scroll-mt-[140px] pt-20 pb-20"
+      >
+        <div className="container mx-auto text-center mb-10">
           <h2 className="text-4xl md:text-5xl font-bold text-p4 uppercase mb-4">
             Schedule Your Free 30 Minute Consultation
           </h2>
@@ -67,13 +63,10 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* Scheduler Embed */}
         <div
           ref={wrapRef}
-          className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl mb-12"
-          style={{
-            overflow: "hidden", // keeps the rounded corners clean
-          }}
+          className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl mb-10"
+          style={{ overflow: "hidden" }}
         >
           <iframe
             title="Ella Tech Scheduler"
@@ -89,14 +82,12 @@ const Contact = () => {
           />
         </div>
 
-        {/* Contact Information Card */}
         <div className="container">
-          <div className="mx-auto max-w-3xl bg-s1 border border-s2 rounded-3xl px-10 py-12 shadow-2xl text-center text-p5 mb-12">
+          <div className="mx-auto max-w-3xl bg-s1 border border-s2 rounded-3xl px-10 py-10 shadow-2xl text-center text-p5">
             <h3 className="text-3xl font-bold uppercase text-p4 mb-3">Contact Us</h3>
             <p className="text-lg text-p5 mb-8 opacity-90">We reply within one business day</p>
 
             <div className="space-y-6">
-              {/* Phone Block */}
               <a
                 href="tel:13134741772"
                 className="flex items-center justify-center gap-4 bg-s2/20 hover:bg-s2/40 transition rounded-xl p-4 text-lg font-medium"
@@ -105,7 +96,6 @@ const Contact = () => {
                 (313) 474 1772
               </a>
 
-              {/* Email Block */}
               <a
                 href="mailto:info@ellatechsolutions.com"
                 className="flex items-center justify-center gap-4 bg-s2/20 hover:bg-s2/40 transition rounded-xl p-4 text-lg font-medium"
@@ -117,13 +107,10 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Soft divider */}
-        <div className="w-full h-4 bg-s1/30 rounded-t-3xl"></div>
+        <div className="w-full h-4 bg-s1/30 rounded-t-3xl mt-14" />
       </section>
     </Element>
   );
 };
 
 export default Contact;
-
-
