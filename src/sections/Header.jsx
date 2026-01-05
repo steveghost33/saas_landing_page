@@ -106,11 +106,11 @@ const Header = () => {
               className="lg:hidden flex justify-center cursor-pointer z-2"
               onClick={handleLogoClick}
             >
+              {/* ONLY CHANGE: make logo larger to match Book Us Now button weight */}
               <img
                 src="/images/ellalogo.svg"
-                width={220}
-                height={70}
                 alt="logo"
+                className="w-[320px] max-w-[88vw] h-auto"
               />
             </Link>
 
