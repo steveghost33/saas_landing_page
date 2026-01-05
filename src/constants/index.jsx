@@ -252,7 +252,7 @@ export const testimonials = [
   {
     id: "0",
     name: "Kyle T.",
-    role: "HOMES Band",
+    role: "Musician, Ann Arbor, MI",
     avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
       "Ella Tech Solutions set up our first simple band website. Now friends and local fans can find our music and upcoming shows all in one place.",
@@ -262,7 +262,7 @@ export const testimonials = [
   {
     id: "1",
     name: "Alicia M.",
-    role: "Midtown Community Tutors (Detroit, MI)",
+    role: "Midtown Community Tutors, Detroit, MI",
     avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
       "They rebuilt our site and added a contact section that connects to Google Calendar. Parents can book sessions instantly, and inquiries have climbed steadily since launch.",
@@ -272,7 +272,7 @@ export const testimonials = [
   {
     id: "2",
     name: "Evan P.",
-    role: "Grand Rapids Retail Co. (Grand Rapids, MI)",
+    role: "Grand Rapids Retail Co., Grand Rapids, MI",
     avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
       "Ella Tech’s consulting streamlined our tools and workflows: email, files, and automations finally work together. Less tech hassle, more time with customers.",
@@ -282,7 +282,7 @@ export const testimonials = [
   {
     id: "3",
     name: "Tanya S.",
-    role: "HopeCare Network (Columbus, OH)",
+    role: "HopeCare Network, Columbus, OH",
     avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
       "Their AI training gave our team practical playbooks. We draft content faster, route requests automatically, and our program outcomes are easier to track.",
