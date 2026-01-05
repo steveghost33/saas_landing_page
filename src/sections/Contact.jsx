@@ -2,36 +2,38 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Element } from "react-scroll";
 
-const SCHEDULER_MIN_HEIGHT = 900; // desktop baseline
-const SCHEDULER_MAX_HEIGHT = 1400; // prevent ridiculous tall embeds
-
 const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
+
+// Give the embed enough room to show the full Google UI (times list + footer)
+// without clipping. Most cut off issues happen because height is too small.
+const MIN_EMBED_HEIGHT_DESKTOP = 1100;
+const MIN_EMBED_HEIGHT_MOBILE = 1250;
+const MAX_EMBED_HEIGHT = 1800;
 
 const Contact = () => {
   const wrapRef = useRef(null);
-  const [iframeHeight, setIframeHeight] = useState(SCHEDULER_MIN_HEIGHT);
+  const [iframeHeight, setIframeHeight] = useState(MIN_EMBED_HEIGHT_DESKTOP);
 
   useEffect(() => {
     const compute = () => {
-      // Goal: keep the scheduler fully visible without needing to scroll inside it.
-      // We give it most of the viewport height, minus a little buffer.
-      // Then clamp to reasonable limits so it still looks clean.
-
       const viewportH = window.innerHeight || 900;
-
-      // Reserve some space so it does not slam into surrounding content
-      // and still looks good on smaller screens.
-      const buffer = viewportH < 820 ? 140 : 200;
-
-      const target = viewportH - buffer;
-
-      // If container is narrow (mobile), give a bit more height because Google embed stacks more.
       const wrapW = wrapRef.current?.getBoundingClientRect?.().width || 0;
-      const mobileBoost = wrapW && wrapW < 520 ? 140 : 0;
+      const isMobile = wrapW > 0 && wrapW < 560;
 
-      const next = clamp(target + mobileBoost, 760, SCHEDULER_MAX_HEIGHT);
+      // Google appointment embeds often need more vertical space on mobile
+      // because the layout stacks more and the time list area shrinks.
+      const minHeight = isMobile ? MIN_EMBED_HEIGHT_MOBILE : MIN_EMBED_HEIGHT_DESKTOP;
 
-      setIframeHeight(next);
+      // We want the scheduler to be tall enough to show the time list,
+      // and we accept that the page can scroll (that is fine).
+      // The key is: do not clip inside the iframe.
+      //
+      // Target height strategy:
+      // - Use a generous viewport-based height (so it scales on large screens)
+      // - But never go below a safe minimum that prevents the time list clipping.
+      const target = Math.round(viewportH * 1.35);
+
+      setIframeHeight(clamp(Math.max(target, minHeight), minHeight, MAX_EMBED_HEIGHT));
     };
 
     compute();
@@ -71,11 +73,11 @@ const Contact = () => {
         {/* Scheduler Embed */}
         <div
           ref={wrapRef}
-          className="max-w-4xl mx-auto bg-white rounded-2xl overflow-hidden shadow-2xl mb-12"
+          className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl mb-12"
           style={{
-            // Ensure the embed area does not create an inner scroll area
-            // caused by parent layout quirks.
-            overflow: "hidden",
+            // Key: allow the iframe to fully render with no clipping.
+            // Do not hide overflow here or Google UI can look cut off.
+            overflow: "visible",
           }}
         >
           <iframe
@@ -86,9 +88,12 @@ const Contact = () => {
               width: "100%",
               height: `${iframeHeight}px`,
               display: "block",
+              background: "transparent",
             }}
             frameBorder="0"
-            scrolling="no"
+            // Important: do not force scrolling="no" here.
+            // Some browsers treat that as permission to clip embedded content.
+            scrolling="yes"
           />
         </div>
 
@@ -128,4 +133,5 @@ const Contact = () => {
 };
 
 export default Contact;
+
 
