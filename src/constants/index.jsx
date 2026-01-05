@@ -433,6 +433,6 @@ export const socials = [
     id: "3",
     title: "Discord",
     icon: "/images/socials/discord.svg",
-    url: "#",
+    url: "https://discord.gg/4tkGK7YE",
   },
 ];
