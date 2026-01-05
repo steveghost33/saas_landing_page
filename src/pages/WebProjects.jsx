@@ -13,37 +13,42 @@ function WebProjects() {
     if (hash === "#hero") {
       const el = document.getElementById("hero");
       if (el) el.scrollIntoView({ behavior: "smooth" });
+      return;
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [hash]);
 
   const projects = [
     {
       title: "Ella Tech Solutions SaaS Website",
       img: "/images/projects/ellatech.png",
-      desc: "A modern SaaS style website showcasing services, animations, client centered solutions, and responsive design.",
-      link: "/", // Routes to Home page
+      desc:
+        "A modern SaaS style website showcasing services, animations, client centered solutions, and responsive design.",
+      link: "/",
+      internal: true,
     },
     {
       title: "Peak Form Fitness Ecommerce Website",
       img: "/images/projects/peak-form.png",
-      desc: "A fitness business website featuring service packages, appointment booking, and a branded ecommerce experience.",
+      desc:
+        "A fitness business website featuring service packages, appointment booking, and a branded ecommerce experience.",
       link: "https://peak-form-fitness.vercel.app",
+      internal: false,
     },
   ];
 
   return (
-    <>
+    <div className="min-h-screen bg-s1">
       <div className="fixed top-0 left-0 w-full z-50">
         <Header />
         <ContactBanner />
       </div>
 
-      <main className="overflow-hidden pt-[130px] md:pt-[145px]">
+      <main className="overflow-hidden pt-[160px] md:pt-[180px]">
         <section
           id="hero"
-          className="relative pt-32 pb-32 max-lg:pt-28 max-lg:pb-28 max-md:pt-24 max-md:pb-24 bg-s1 font-poppins text-p5"
+          className="relative pt-16 pb-24 max-lg:pt-12 max-lg:pb-20 max-md:pt-10 max-md:pb-16 bg-s1 font-poppins text-p5"
         >
-          {/* Hero Banner */}
           <div
             className="relative h-[350px] w-full overflow-hidden rounded-3xl mb-20"
             style={{
@@ -58,20 +63,19 @@ function WebProjects() {
                 Our Web Projects
               </h1>
               <p className="body-1 text-white drop-shadow-lg max-w-2xl">
-                A look at custom websites and web applications built for businesses and organizations.
+                A look at custom websites and web applications built for
+                businesses and organizations.
               </p>
             </div>
           </div>
 
-          {/* Project Grid */}
           <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
             {projects.map((proj, idx) => (
               <div
                 key={idx}
                 className="bg-s2 rounded-2xl shadow-lg overflow-hidden flex flex-col"
               >
-                {/* Thumbnail - Fixed height, full image visible */}
-                <div className="w-full h-48 md:h-56 lg:h-52 bg-s1 rounded-xl m-3 mr-3 ml-3 flex items-center justify-center">
+                <div className="w-full h-48 md:h-56 lg:h-52 bg-s1 rounded-xl m-3 flex items-center justify-center">
                   <img
                     src={proj.img}
                     alt={proj.title}
@@ -83,23 +87,33 @@ function WebProjects() {
                   <h3 className="h5 text-p4 mb-2">{proj.title}</h3>
                   <p className="body-3 text-p5 flex-1">{proj.desc}</p>
 
-                  <Button
-                    href={proj.link}
-                    containerClassName="mt-4 self-start"
-                    markerFill="#FFF"
-                  >
-                    View Project
-                  </Button>
+                  {proj.internal ? (
+                    <Button
+                      to={proj.link}
+                      containerClassName="mt-4 self-start"
+                      markerFill="#FFF"
+                    >
+                      View Project
+                    </Button>
+                  ) : (
+                    <Button
+                      href={proj.link}
+                      containerClassName="mt-4 self-start"
+                      markerFill="#FFF"
+                    >
+                      View Project
+                    </Button>
+                  )}
                 </div>
               </div>
             ))}
           </div>
 
-          {/* CTA */}
           <div className="container text-center mb-32">
             <h2 className="h4 mb-4">Ready to Start Your Own Project</h2>
             <p className="body-1 mb-6 max-w-2xl mx-auto">
-              Let us talk about how we can bring your idea to life. No pressure, just a friendly conversation.
+              Let us talk about how we can bring your idea to life. No pressure,
+              just a friendly conversation.
             </p>
             <Button href="/#contact" containerClassName="inline-block mx-auto">
               Book a Free Consultation
@@ -110,7 +124,7 @@ function WebProjects() {
         <Chatbot />
         <Footer />
       </main>
-    </>
+    </div>
   );
 }
 

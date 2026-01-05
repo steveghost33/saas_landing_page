@@ -13,23 +13,22 @@ function TechSolutions() {
     if (hash === "#hero") {
       const el = document.getElementById("hero");
       if (el) el.scrollIntoView({ behavior: "smooth" });
+      return;
     }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [hash]);
 
   return (
-    <>
-      {/* Fixed header + contact banner */}
+    <div className="min-h-screen bg-s1">
       <div className="fixed top-0 left-0 w-full z-50">
         <Header />
         <ContactBanner />
       </div>
 
-      {/* Push main content just below header + banner */}
-      <main className="overflow-hidden pt-[130px] md:pt-[145px]">
-        {/* Hero Banner */}
+      <main className="overflow-hidden pt-[160px] md:pt-[180px]">
         <section
           id="hero"
-          className="relative pt-32 pb-32 max-lg:pt-28 max-lg:pb-28 max-md:pt-24 max-md:pb-24 bg-s1 font-poppins text-p5"
+          className="relative pt-16 pb-24 max-lg:pt-12 max-lg:pb-20 max-md:pt-10 max-md:pb-16 bg-s1 font-poppins text-p5"
         >
           <div
             className="relative h-[350px] w-full overflow-hidden rounded-3xl mb-20"
@@ -45,13 +44,12 @@ function TechSolutions() {
                 Tech Solutions &amp; Training
               </h1>
               <p className="body-1 text-white drop-shadow-lg max-w-2xl">
-                From mastering everyday software to AI-powered admin support, we
+                From mastering everyday software to AI powered admin support, we
                 give your team the tools and guidance to work more efficiently.
               </p>
             </div>
           </div>
 
-          {/* Technology Consulting */}
           <div className="container grid md:grid-cols-2 gap-12 mb-20">
             <div>
               <h2 className="h3 text-p4 mb-4">Technology Consulting</h2>
@@ -67,6 +65,7 @@ function TechSolutions() {
                 <li>Check in regularly to keep everything running smoothly</li>
               </ul>
             </div>
+
             <div>
               <img
                 src="/images/consulting-session.jpg"
@@ -76,7 +75,6 @@ function TechSolutions() {
             </div>
           </div>
 
-          {/* Training & Development */}
           <div className="container grid md:grid-cols-2 gap-12 mb-20">
             <div className="order-2 md:order-1">
               <img
@@ -85,10 +83,11 @@ function TechSolutions() {
                 className="rounded-xl shadow-lg"
               />
             </div>
+
             <div className="order-1 md:order-2">
               <h2 className="h3 text-p4 mb-4">Training &amp; Development</h2>
               <p className="body-1 mb-6">
-                Hands-on sessions and quick online lessons to help your team gain
+                Hands on sessions and quick online lessons to help your team gain
                 confidence using email, online meetings, file sharing, and basic
                 computer skills.
               </p>
@@ -101,11 +100,11 @@ function TechSolutions() {
             </div>
           </div>
 
-          {/* AI-Powered Admin Support */}
           <div className="container mb-20">
             <h2 className="h3 text-p4 mb-8 text-center">
-              AI-Powered Admin Support
+              AI Powered Admin Support
             </h2>
+
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
@@ -124,7 +123,7 @@ function TechSolutions() {
                   title: "Data Entry & Reporting",
                   img: "/images/data-auto.jpg",
                   desc:
-                    "Automate repetitive data-entry tasks and generate clear, customizable reports for your business or nonprofit.",
+                    "Automate repetitive data entry tasks and generate clear, customizable reports for your business or nonprofit.",
                 },
               ].map((item, idx) => (
                 <div
@@ -145,11 +144,10 @@ function TechSolutions() {
             </div>
           </div>
 
-          {/* Call to Action */}
           <div className="container text-center mb-32">
             <h2 className="h4 mb-6">Ready to Boost Your Team’s Efficiency</h2>
             <p className="body-1 mb-8 max-w-2xl mx-auto">
-              Contact us for a free consultation and see how AI-powered solutions
+              Contact us for a free consultation and see how AI powered solutions
               can save you time and money.
             </p>
             <Button href="/#contact" containerClassName="inline-block mx-auto">
@@ -161,7 +159,7 @@ function TechSolutions() {
         <Chatbot />
         <Footer />
       </main>
-    </>
+    </div>
   );
 }
 
