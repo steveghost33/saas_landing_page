@@ -31,28 +31,23 @@ const makeSpacing = (text) => {
 
 const stripContactArtifacts = (text) => {
   let t = String(text || "");
-
   t = t.replace(/^\s*#contact\s*$/gim, "");
   t = t.replace(/https?:\/\/\S*#contact\b/gi, "");
   t = t.replace(/\s#contact\b/gi, "");
   t = t.replace(/#contact\b/gi, "");
-
   t = t.replace(/\n{3,}/g, "\n\n").trim();
   return t;
 };
 
 const stripChatgptArtifacts = (text) => {
   let t = String(text || "");
-
   t = t.replace(/https?:\/\/(?:chat\.openai\.com|chatgpt\.com)\S*/gi, "");
   t = t.replace(/\bChatGPT\b/gi, "this assistant");
   t = t.replace(/\bOpenAI\b/gi, "");
   t = t.replace(/\bGPT\b/gi, "");
-
   t = t.replace(/\(\s*\)/g, "");
   t = t.replace(/\s{2,}/g, " ");
   t = t.replace(/\n{3,}/g, "\n\n").trim();
-
   return t;
 };
 
@@ -169,15 +164,15 @@ const intentFromText = (text) => {
   return "";
 };
 
-// This now includes a few details about each service, then booking link.
+// Includes a few details about each service, then booking link.
 const serviceReply = (intent) => {
   if (intent === "tech_consulting") {
     return makeSpacing(
       `Tech consulting helps you make smart decisions and fix problems without guessing.\n\n` +
         `What it can include:\n` +
-        `1. A quick review of your current setup and goals\n` +
-        `2. Recommendations for tools, workflows, and next steps\n` +
-        `3. An implementation plan, plus hands on help if you want it\n\n` +
+        `1. Review your current setup and goals\n` +
+        `2. Recommend tools, workflows, and next steps\n` +
+        `3. Create a plan and provide hands on implementation if needed\n\n` +
         `${BOOKING_ONLY_CTA}`
     );
   }
@@ -186,8 +181,8 @@ const serviceReply = (intent) => {
     return makeSpacing(
       `Staff training helps your team use the tools correctly and consistently.\n\n` +
         `What it can include:\n` +
-        `1. Live training sessions tailored to your roles\n` +
-        `2. Simple guides, walkthroughs, and job aids\n` +
+        `1. Live sessions tailored to your roles\n` +
+        `2. Simple guides and walkthroughs your team can reuse\n` +
         `3. Practice time, Q and A, and follow up support\n\n` +
         `${BOOKING_ONLY_CTA}`
     );
@@ -197,8 +192,8 @@ const serviceReply = (intent) => {
     return makeSpacing(
       `Support helps you troubleshoot issues and keep your technology running reliably.\n\n` +
         `What it can include:\n` +
-        `1. Diagnosing the problem and stabilizing the issue\n` +
-        `2. Fixes for devices, accounts, email, Microsoft 365, and websites\n` +
+        `1. Diagnose the problem and stabilize the issue\n` +
+        `2. Fixes for accounts, email, Microsoft 365, devices, and websites\n` +
         `3. Ongoing support options if you need a long term partner\n\n` +
         `${BOOKING_ONLY_CTA}`
     );
@@ -208,8 +203,8 @@ const serviceReply = (intent) => {
     return makeSpacing(
       `Quotes depend on scope, timeline, and what you want done.\n\n` +
         `What we confirm during a consultation:\n` +
-        `1. Your goals and what success looks like\n` +
-        `2. The work needed and recommended approach\n` +
+        `1. Your goal and what success looks like\n` +
+        `2. The work required and recommended approach\n` +
         `3. Timeline and a clear price range or quote\n\n` +
         `${BOOKING_ONLY_CTA}`
     );
@@ -428,9 +423,7 @@ const Chatbot = () => {
       console.error("Chatbot error:", err);
 
       pushBot(
-        makeSpacing(
-          `Sorry, something went wrong on our side.\n\n${BOOKING_ONLY_CTA}`
-        )
+        makeSpacing(`Sorry, something went wrong on our side.\n\n${BOOKING_ONLY_CTA}`)
       );
     }
   };
@@ -670,9 +663,26 @@ const Chatbot = () => {
             onTouchStart={onTouchStart}
           >
             <span>Ella Tech Strategy Expert</span>
+
+            {/* FIX: Stop the drag handler from stealing the click.
+                The header listens for mouse down to drag, so clicking inside it
+                can start a drag and prevent the close click. */}
             <button
-              onClick={() => setOpen(false)}
+              type="button"
               aria-label="Close chat"
+              onMouseDown={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
+              onTouchStart={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+              }}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setOpen(false);
+              }}
               style={{
                 background: "transparent",
                 border: "none",
@@ -680,6 +690,8 @@ const Chatbot = () => {
                 fontSize: 20,
                 lineHeight: 1,
                 cursor: "pointer",
+                padding: 0,
+                marginLeft: 12,
               }}
             >
               ×
@@ -745,6 +757,7 @@ const Chatbot = () => {
               }}
             />
             <button
+              type="button"
               onClick={() => sendMessage()}
               style={{
                 background: "#0077cc",
@@ -763,6 +776,7 @@ const Chatbot = () => {
       )}
 
       <button
+        type="button"
         className="chatbot-toggle chatbot-glow"
         style={{
           ...toggleStyle,
@@ -793,4 +807,6 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
+
+
 
