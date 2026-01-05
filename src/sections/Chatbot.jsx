@@ -42,6 +42,25 @@ const stripContactArtifacts = (text) => {
   return t;
 };
 
+const stripChatgptArtifacts = (text) => {
+  let t = String(text || "");
+
+  // Remove common ChatGPT and OpenAI mentions or links
+  t = t.replace(/https?:\/\/(?:chat\.openai\.com|chatgpt\.com)\S*/gi, "");
+  t = t.replace(/\bChatGPT\b/gi, "this assistant");
+  t = t.replace(/\bOpenAI\b/gi, "");
+  t = t.replace(/\bGPT\b/gi, "");
+
+  // Remove empty parentheses or leftover punctuation spacing
+  t = t.replace(/\(\s*\)/g, "");
+  t = t.replace(/\s{2,}/g, " ");
+
+  // Clean up excess blank lines
+  t = t.replace(/\n{3,}/g, "\n\n").trim();
+
+  return t;
+};
+
 const BUSINESS_SYSTEM_PROMPT = `
 You are the official Ella Tech Solutions website assistant.
 
@@ -65,6 +84,7 @@ Rules
 5. Never promise instant replies. State that Ella Tech Solutions replies within one business day.
 6. Do not claim actions like booking or calling. Only provide directions and contact info.
 7. Keep answers concise unless the visitor asks for more detail.
+8. Never mention ChatGPT, OpenAI, GPT, or any external AI brand. Never include links to any AI site. You are the Ella Tech Solutions assistant.
 
 Official contact
 Phone: (313) 474 1772
@@ -107,6 +127,105 @@ const contactCtaText = () =>
   `Schedule a consultation: [[ETS_BOOK]]\n` +
   `Phone: [[ETS_PHONE]]\n` +
   `Email: [[ETS_EMAIL]]`;
+
+const norm = (s) => String(s || "").toLowerCase().trim();
+
+const intentFromText = (text) => {
+  const t = norm(text);
+
+  const hasTraining =
+    t.includes("staff training") ||
+    (t.includes("training") && !t.includes("strength training"));
+
+  const hasConsulting =
+    t.includes("tech consulting") ||
+    t.includes("technology consulting") ||
+    t.includes("consulting") ||
+    t.includes("consultant");
+
+  const hasSupport =
+    t.includes("support") ||
+    t.includes("help desk") ||
+    t.includes("troubleshoot") ||
+    t.includes("ongoing help") ||
+    t.includes("it help");
+
+  const hasQuote =
+    t.includes("get a quote") ||
+    t.includes("quote") ||
+    t.includes("estimate") ||
+    t.includes("pricing") ||
+    t.includes("cost") ||
+    t.includes("how much");
+
+  if (hasTraining) return "staff_training";
+  if (hasConsulting) return "tech_consulting";
+  if (hasSupport) return "support";
+  if (hasQuote) return "get_quote";
+  return "";
+};
+
+const quickResponseForIntent = (intent) => {
+  if (intent === "staff_training") {
+    return (
+      `Staff training is one of our core services. Here are common options we deliver.\n\n` +
+      `1. Microsoft 365 training, Outlook, Teams, OneDrive, SharePoint\n` +
+      `2. AI and productivity training, responsible use, practical workflows\n` +
+      `3. Digital literacy basics, file management, security habits\n` +
+      `4. Custom sessions for your tools and processes\n\n` +
+      `To recommend the right format, I only need 3 details.\n` +
+      `1. Your team size\n` +
+      `2. The tools or topics you want covered\n` +
+      `3. Your goal, for example faster communication, better file organization, fewer support tickets\n\n` +
+      `${contactCtaText()}`
+    );
+  }
+
+  if (intent === "tech_consulting") {
+    return (
+      `Tech consulting starts with a short discovery conversation so we can understand your workflow and what is slowing you down.\n\n` +
+      `Typical outcomes.\n` +
+      `1. A clear plan to streamline tools and processes\n` +
+      `2. Recommendations for secure, scalable setup\n` +
+      `3. Quick wins like automation, templates, and shared systems\n` +
+      `4. A practical timeline and budget range\n\n` +
+      `To scope this well, tell me.\n` +
+      `1. What type of organization you are\n` +
+      `2. The top 1 or 2 pain points\n` +
+      `3. Any tools you already use, Microsoft 365, Google Workspace, website platform\n\n` +
+      `${contactCtaText()}`
+    );
+  }
+
+  if (intent === "support") {
+    return (
+      `For support, we can help in two ways.\n\n` +
+      `1. One time help, fix an issue, clean up settings, restore access, troubleshoot devices, resolve website errors\n` +
+      `2. Ongoing support, a monthly support plan with priority help and regular check ins\n\n` +
+      `To get you the right next step, share.\n` +
+      `1. What is happening right now\n` +
+      `2. What device and tools you are using\n` +
+      `3. How urgent it is, today, this week, or flexible\n\n` +
+      `${contactCtaText()}`
+    );
+  }
+
+  if (intent === "get_quote") {
+    return (
+      `Absolutely. We provide clear quotes based on scope, timeline, and support needs.\n\n` +
+      `To prepare an accurate quote, I need 5 quick details.\n` +
+      `1. Service type, staff training, tech consulting, support, website, or a mix\n` +
+      `2. Who it is for, team size or number of users\n` +
+      `3. What success looks like, your main goal\n` +
+      `4. Your timeline, this week, this month, or a target date\n` +
+      `5. Any existing tools or systems we should work with\n\n` +
+      `Share those here, or use the contact section to schedule a consultation. We reply within one business day.\n\n` +
+      `${contactCtaText()}`
+    );
+  }
+
+  return "";
+};
 
 const Chatbot = () => {
   const [open, setOpen] = useState(false);
@@ -254,6 +373,16 @@ const Chatbot = () => {
     setMessages((msgs) => [...msgs, { from: "user", text: userText }]);
     setInput("");
 
+    // First, handle core business intents locally with approved responses
+    const intent = intentFromText(userText);
+    if (intent) {
+      const quick = quickResponseForIntent(intent);
+      const cleaned = stripChatgptArtifacts(stripContactArtifacts(quick));
+      setMessages((msgs) => [...msgs, { from: "bot", text: cleaned }]);
+      return;
+    }
+
+    // Otherwise, ask API for general questions, then sanitize output
     try {
       const history = buildChatHistory(messagesRef.current, userText);
 
@@ -266,8 +395,9 @@ const Chatbot = () => {
       let botReply = res?.data?.reply?.trim();
       if (!botReply) botReply = "Sorry, I did not get a response. Try again.";
 
-      botReply = stripContactArtifacts(botReply);
+      botReply = stripChatgptArtifacts(stripContactArtifacts(botReply));
 
+      // Add contact CTA to every response, with stronger CTA for scheduling questions
       if (wantsSchedulingOrContact(userText)) {
         botReply = `${botReply}\n\n${contactCtaText()}`;
       } else {
@@ -276,13 +406,14 @@ const Chatbot = () => {
           `${contactCtaText()}`;
       }
 
-      // Final scrub in case anything sneaks back in
-      botReply = stripContactArtifacts(botReply);
+      botReply = stripChatgptArtifacts(stripContactArtifacts(botReply));
 
       setMessages((msgs) => [...msgs, { from: "bot", text: botReply }]);
     } catch (err) {
       console.error("Chatbot error:", err);
-      const fallback = stripContactArtifacts(`Sorry, something went wrong.\n\n${contactCtaText()}`);
+      const fallback = stripChatgptArtifacts(
+        stripContactArtifacts(`Sorry, something went wrong.\n\n${contactCtaText()}`)
+      );
       setMessages((msgs) => [...msgs, { from: "bot", text: fallback }]);
     }
   };
@@ -349,35 +480,19 @@ const Chatbot = () => {
           Email
         </a>
 
-        <button
-          type="button"
-          onClick={() => sendMessage("I want consulting. What is the best next step to schedule")}
-          style={pill}
-        >
-          Tech consulting
-        </button>
-
-        <button
-          type="button"
-          onClick={() => sendMessage("I want staff training. What training options do you recommend and how do I schedule")}
-          style={pill}
-        >
+        <button type="button" onClick={() => sendMessage("Staff training")} style={pill}>
           Staff training
         </button>
 
-        <button
-          type="button"
-          onClick={() => sendMessage("I need ongoing tech support. How does support work and how do I get started")}
-          style={pill}
-        >
+        <button type="button" onClick={() => sendMessage("Tech consulting")} style={pill}>
+          Tech consulting
+        </button>
+
+        <button type="button" onClick={() => sendMessage("Support")} style={pill}>
           Support
         </button>
 
-        <button
-          type="button"
-          onClick={() => sendMessage("Can you give me an estimate or quote and tell me how to schedule")}
-          style={pill}
-        >
+        <button type="button" onClick={() => sendMessage("Get a quote")} style={pill}>
           Get a quote
         </button>
       </div>
@@ -385,7 +500,7 @@ const Chatbot = () => {
   };
 
   const renderBotText = (text) => {
-    const safe = stripContactArtifacts(text);
+    const safe = stripChatgptArtifacts(stripContactArtifacts(text));
 
     const linkStyle = {
       color: "#0b5ed7",
@@ -396,19 +511,16 @@ const Chatbot = () => {
     const lines = safe.split("\n");
 
     const renderInlineLinks = (line) => {
-      // Replace phone and email wherever they appear with clickable links
       const tokens = [];
       let remaining = line;
 
       const phoneIndex = remaining.indexOf(ETS_PHONE);
       const emailIndex = remaining.indexOf(ETS_EMAIL);
 
-      // If neither is present, return plain line
       if (phoneIndex === -1 && emailIndex === -1) {
         return <span>{line}</span>;
       }
 
-      // Handle whichever comes first in the string
       const nextIsPhone =
         phoneIndex !== -1 && (emailIndex === -1 || phoneIndex < emailIndex);
 
@@ -478,7 +590,6 @@ const Chatbot = () => {
             );
           }
 
-          // Extra safety, if the model outputs "#contact" as a standalone line
           if (trimmed === "#contact") return <div key={idx} />;
 
           return <div key={idx}>{renderInlineLinks(line)}</div>;
@@ -590,7 +701,11 @@ const Chatbot = () => {
                   wordWrap: "break-word",
                 }}
               >
-                {m.from === "bot" ? renderBotText(m.text) : <div style={{ whiteSpace: "pre-wrap" }}>{m.text}</div>}
+                {m.from === "bot" ? (
+                  renderBotText(m.text)
+                ) : (
+                  <div style={{ whiteSpace: "pre-wrap" }}>{m.text}</div>
+                )}
               </div>
             ))}
             <div ref={bottomRef} />
