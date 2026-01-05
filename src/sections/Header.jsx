@@ -1,5 +1,3 @@
-// src/sections/Header.jsx
-
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
@@ -15,16 +13,9 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
+    document.body.style.overflow = isOpen ? "hidden" : "unset";
+    return () => (document.body.style.overflow = "unset");
   }, [isOpen]);
 
   const NavLink = ({ title }) => (
@@ -49,9 +40,8 @@ const Header = () => {
         hasScrolled && "py-2 bg-black-100 backdrop-blur-[8px]"
       )}
     >
-      {/* Top Bar - Book Us Button (Left) & Social Links (Right) - Desktop Only */}
+      {/* Top Bar */}
       <div className="container flex justify-between items-center mb-4 max-lg:hidden">
-        {/* Book Us Now Button - Small */}
         <a
           href="/#contact"
           className="flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
@@ -60,7 +50,6 @@ const Header = () => {
           Book Us Now
         </a>
 
-        {/* Social Media Links */}
         <div className="flex items-center gap-3">
           {socials.map(({ id, url, icon, title }) => (
             <a
@@ -70,52 +59,55 @@ const Header = () => {
               rel="noopener noreferrer"
               className="social-icon w-8 h-8 flex items-center justify-center rounded-full bg-s2 hover:bg-s3 transition-all duration-300"
             >
-              <img
-                src={icon}
-                alt={title}
-                className="w-4 h-4 object-contain"
-              />
+              <img src={icon} alt={title} className="w-4 h-4 object-contain" />
             </a>
           ))}
         </div>
       </div>
 
       <div className="container flex h-14 items-center max-lg:px-5">
-        {/* Mobile logo - Only show when menu is CLOSED */}
+        {/* Mobile Logo (menu closed) */}
         {!isOpen && (
           <Link
             to="/"
             className="lg:hidden flex-1 cursor-pointer z-2"
             onClick={handleLogoClick}
           >
-            <img src="/images/ellalogo.svg" width={900} height={300} alt="logo" />
+            <img src="/images/ellalogo.svg" alt="Ella Tech Solutions" />
           </Link>
         )}
 
         {/* Mobile Menu Overlay */}
         <div
           className={clsx(
-            "w-full max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:w-full max-lg:h-screen max-lg:bg-s2 max-lg:opacity-0 max-lg:z-[100]",
-            isOpen ? "max-lg:opacity-100" : "max-lg:pointer-events-none"
+            "w-full max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:h-screen max-lg:bg-s2 max-lg:z-[100]",
+            isOpen ? "max-lg:opacity-100" : "max-lg:pointer-events-none max-lg:opacity-0"
           )}
         >
-          <div className="max-lg:relative max-lg:flex max-lg:flex-col max-lg:min-h-screen max-lg:p-6 max-lg:pt-20 max-lg:overflow-hidden sidebar-before max-md:px-4">
-            {/* Mobile Logo in Menu - Centered at top */}
+          <div className="max-lg:flex max-lg:flex-col max-lg:min-h-screen max-lg:p-6 max-lg:pt-20 sidebar-before max-md:px-4">
+
+            {/* LARGE MOBILE LOGO */}
             <Link
               to="/"
-              className="lg:hidden flex justify-center cursor-pointer z-2"
               onClick={handleLogoClick}
+              className="lg:hidden flex justify-center items-center cursor-pointer z-2 mb-10"
             >
               <img
                 src="/images/ellalogo.svg"
-                width={220}
-                height={70}
-                alt="logo"
+                alt="Ella Tech Solutions logo"
+                className="
+                  w-[260px]
+                  max-w-[80vw]
+                  h-auto
+                  transition-transform
+                  duration-300
+                  hover:scale-[1.02]
+                "
               />
             </Link>
 
-            {/* Mobile Social Media Links */}
-            <ul className="lg:hidden flex justify-center gap-4 mt-10">
+            {/* Mobile Social Icons */}
+            <ul className="lg:hidden flex justify-center gap-4 mt-2">
               {socials.map(({ id, url, icon, title }) => (
                 <li key={id}>
                   <a
@@ -124,82 +116,37 @@ const Header = () => {
                     rel="noopener noreferrer"
                     className="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
                   >
-                    <img
-                      src={icon}
-                      alt={title}
-                      className="w-5 h-5 object-contain"
-                    />
+                    <img src={icon} alt={title} className="w-5 h-5 object-contain" />
                   </a>
                 </li>
               ))}
             </ul>
 
-            {/* Mobile Book Us Now Button */}
-            <div className="lg:hidden flex justify-center mt-8 mb-10">
+            {/* Mobile CTA */}
+            <div className="lg:hidden flex justify-center mt-8 mb-12">
               <a
                 href="/#contact"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center gap-2 px-5 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
+                className="flex items-center gap-2 px-6 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
               >
                 <img src="/images/zap.svg" alt="zap" className="w-5 h-5" />
                 Book Us Now
               </a>
             </div>
 
-            {/* Navigation Links */}
-            <nav className="max-lg:relative max-lg:z-2 max-lg:flex-1 max-lg:flex max-lg:items-center">
-              <ul className="flex max-lg:block max-lg:px-12">
-                <li className="nav-li">
-                  <NavLink title="services" />
-                  <div className="dot" />
-                  <NavLink title="plans" />
-                </li>
-
-                {/* Center logo routes to top of Home (Desktop Only) */}
-                <li className="nav-logo">
-                  <Link
-                    to="/"
-                    className="max-lg:hidden transition-transform duration-500 cursor-pointer"
-                    onClick={handleLogoClick}
-                  >
-                    <img
-                      src="/images/ellalogo.svg"
-                      width={950}
-                      height={950}
-                      alt="logo"
-                    />
-                  </Link>
-                </li>
-
-                <li className="nav-li">
-                  <NavLink title="faq" />
-                  <div className="dot" />
-                  <NavLink title="contact" />
-                </li>
+            {/* Navigation */}
+            <nav className="flex-1 flex items-center justify-center">
+              <ul className="flex flex-col gap-6 text-center">
+                <li><NavLink title="services" /></li>
+                <li><NavLink title="plans" /></li>
+                <li><NavLink title="faq" /></li>
+                <li><NavLink title="contact" /></li>
               </ul>
             </nav>
-
-            {/* Background Decorations */}
-            <div className="lg:hidden block absolute top-1/2 left-0 w-[960px] h-[380px] translate-x-[-290px] -translate-y-1/2 rotate-90 pointer-events-none">
-              <img
-                src="/images/bg-outlines.svg"
-                width={960}
-                height={380}
-                alt="outline"
-                className="relative z-2"
-              />
-              <img
-                src="/images/bg-outlines-fill.png"
-                width={960}
-                height={380}
-                alt="outline"
-                className="absolute inset-0 mix-blend-soft-light opacity-5"
-              />
-            </div>
           </div>
         </div>
 
-        {/* Mobile Menu Toggle Button */}
+        {/* Mobile Menu Toggle */}
         <button
           className="lg:hidden z-[110] size-10 border-2 border-s4/25 rounded-full flex justify-center items-center"
           onClick={() => setIsOpen((prev) => !prev)}
