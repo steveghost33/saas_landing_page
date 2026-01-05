@@ -107,7 +107,7 @@ Email: info@ellatechsolutions.com
 Scheduling: Use the website contact section to schedule a consultation.
 `;
 
-// Use tokens so we can render links cleanly without showing "#contact"
+// Tokens so we render clickable actions without printing "#contact"
 const contactCtaText = () =>
   `Next step: [[ETS_BOOK]]\n` +
   `Phone: [[ETS_PHONE]]\n` +
@@ -184,48 +184,32 @@ const wantsSchedulingOrContact = (text) => {
 const quickResolutionForIntent = (intent) => {
   if (intent === "staff_training") {
     return makeSpacing(
-      ensureQuestionMarks(
-        `Staff training is one of our core services.\n\n` +
-          `The fastest way to get the right recommendation and pricing is to schedule a short consultation.\n\n` +
-          `If you want, share one detail so we can come prepared.\n` +
-          `About how many people need training\n\n` +
-          `${contactCtaText()}`
-      )
+      `Staff training is one of our core services.\n\n` +
+        `The fastest way to get the right recommendation and pricing is to book a consultation.\n\n` +
+        `${contactCtaText()}`
     );
   }
 
   if (intent === "tech_consulting") {
     return makeSpacing(
-      ensureQuestionMarks(
-        `Tech consulting starts with a short consultation so we can understand your workflow and recommend the quickest improvements.\n\n` +
-          `If you want, share one detail so we can come prepared.\n` +
-          `What is the top issue you want to solve right now\n\n` +
-          `${contactCtaText()}`
-      )
+      `Tech consulting starts with a consultation so we can understand your goals and recommend the best next steps.\n\n` +
+        `${contactCtaText()}`
     );
   }
 
   if (intent === "support") {
     return makeSpacing(
-      ensureQuestionMarks(
-        `We can help with one time support or ongoing support plans.\n\n` +
-          `For the fastest resolution, schedule a quick consultation so we can confirm the issue and route you to the right help.\n\n` +
-          `If you want, share one detail so we can come prepared.\n` +
-          `What is happening right now\n\n` +
-          `${contactCtaText()}`
-      )
+      `We can help with one time support or ongoing support.\n\n` +
+        `For the fastest resolution, book a consultation so we can confirm the issue and route you to the right help.\n\n` +
+        `${contactCtaText()}`
     );
   }
 
   if (intent === "get_quote") {
     return makeSpacing(
-      ensureQuestionMarks(
-        `Yes. We provide clear quotes based on scope and timeline.\n\n` +
-          `The fastest way to get an accurate quote is to schedule a short consultation.\n\n` +
-          `If you want, share one detail so we can come prepared.\n` +
-          `What service do you need, training, consulting, support, website, or a mix\n\n` +
-          `${contactCtaText()}`
-      )
+      `Yes. We provide clear quotes based on scope and timeline.\n\n` +
+        `The fastest way to get an accurate quote is to book a consultation.\n\n` +
+        `${contactCtaText()}`
     );
   }
 
@@ -242,7 +226,6 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const bottomRef = useRef(null);
 
-  // Keep latest messages for correct history building
   const messagesRef = useRef(messages);
   useEffect(() => {
     messagesRef.current = messages;
@@ -264,13 +247,13 @@ const Chatbot = () => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Move chatbot back to bottom right when navigation happens (route or hash change)
+  // Re dock on navigation changes (route or hash change)
   useEffect(() => {
     reDock();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname, location.hash]);
 
-  // Move chatbot back to bottom right when user clicks anywhere in the header
+  // Re dock when user clicks anywhere in the Header
   useEffect(() => {
     const onDocClickCapture = (e) => {
       const target = e.target;
@@ -404,7 +387,6 @@ const Chatbot = () => {
     setMessages((msgs) => [...msgs, { from: "user", text: userText }]);
     setInput("");
 
-    // If user triggers a core service intent, respond locally and route to scheduling
     const intent = intentFromText(userText);
     if (intent) {
       const reply = quickResolutionForIntent(intent);
@@ -413,7 +395,6 @@ const Chatbot = () => {
       return;
     }
 
-    // Otherwise call the API, but always respond and always route to scheduling
     try {
       const history = buildChatHistory(messagesRef.current, userText);
 
@@ -430,18 +411,11 @@ const Chatbot = () => {
         ensureQuestionMarks(stripChatgptArtifacts(stripContactArtifacts(botReply)))
       );
 
-      // Always push toward scheduling instead of interrogating the user
       const schedulingLead =
-        `For the fastest path to a clear next step, schedule a short consultation.\n\n` +
+        `For the fastest path to a clear next step, book a consultation.\n\n` +
         `${contactCtaText()}`;
 
-      if (wantsSchedulingOrContact(userText)) {
-        botReply = makeSpacing(`${botReply}\n\n${schedulingLead}`);
-      } else {
-        botReply = makeSpacing(
-          `${botReply}\n\n${schedulingLead}`
-        );
-      }
+      botReply = makeSpacing(`${botReply}\n\n${schedulingLead}`);
 
       botReply = stripChatgptArtifacts(stripContactArtifacts(botReply));
 
@@ -449,13 +423,10 @@ const Chatbot = () => {
     } catch (err) {
       console.error("Chatbot error:", err);
 
-      // Always respond with a resolution focused fallback
       const fallback = makeSpacing(
-        ensureQuestionMarks(
-          `Sorry, something went wrong on our side.\n\n` +
-            `For the fastest path to resolution, schedule a short consultation.\n\n` +
-            `${contactCtaText()}`
-        )
+        `Sorry, something went wrong on our side.\n\n` +
+          `For the fastest path to resolution, book a consultation.\n\n` +
+          `${contactCtaText()}`
       );
 
       const cleaned = stripChatgptArtifacts(stripContactArtifacts(fallback));
