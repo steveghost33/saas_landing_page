@@ -23,6 +23,12 @@ const normalizeTel = (phone) => {
   return digitsOnly.length === 10 ? `+1${digitsOnly}` : `+${digitsOnly}`;
 };
 
+const makeSpacing = (text) => {
+  let t = String(text || "");
+  t = t.replace(/\n{3,}/g, "\n\n").trim();
+  return t;
+};
+
 const stripContactArtifacts = (text) => {
   let t = String(text || "");
 
@@ -50,14 +56,8 @@ const stripChatgptArtifacts = (text) => {
   return t;
 };
 
-const makeSpacing = (text) => {
-  let t = String(text || "");
-  t = t.replace(/\n{3,}/g, "\n\n").trim();
-  return t;
-};
-
-// Only enforce question marks for short, direct questions.
-// Also, avoid adding question marks to headings or statements.
+// Add question marks only when a line clearly looks like a question.
+// Do not add question marks to headings or statements.
 const ensureQuestionMarks = (text) => {
   const lines = String(text || "").split("\n");
   const fixed = lines.map((line) => {
@@ -70,12 +70,9 @@ const ensureQuestionMarks = (text) => {
       );
 
     const alreadyHasQ = trimmed.endsWith("?");
-    const endsWithPeriodOrColon = /[.:]$/.test(trimmed);
+    const endsWithPunct = /[.:]$/.test(trimmed);
 
-    if (looksLikeQuestion && !alreadyHasQ && !endsWithPeriodOrColon) {
-      return `${trimmed}?`;
-    }
-
+    if (looksLikeQuestion && !alreadyHasQ && !endsWithPunct) return `${trimmed}?`;
     return line;
   });
 
@@ -98,12 +95,11 @@ Professional, clear, friendly, and confident.
 You represent a real business, not a generic AI assistant.
 
 Rules
-1. Answer technology questions clearly and practically.
-2. Keep answers short. Avoid asking multiple questions.
-3. If the visitor wants help with consulting, staff training, support, a quote, or pricing, route them to book a free 30 minute consultation.
-4. Only include phone and email if the visitor asks for call, phone, email, or contact info.
-5. Never promise instant replies. State that Ella Tech Solutions replies within one business day.
-6. Never mention ChatGPT, OpenAI, GPT, or any external AI brand. Never include links to any AI site.
+1. Keep answers short and action oriented.
+2. If the visitor asks about a service, describe it briefly in plain language and then route them to book a free 30 minute consultation.
+3. Only provide phone and email if the visitor asks for phone, call, email, or contact info.
+4. Never promise instant replies. State that Ella Tech Solutions replies within one business day.
+5. Never mention ChatGPT, OpenAI, GPT, or any external AI brand. Never include links to any AI site.
 
 Official contact
 Phone: (313) 474 1772
@@ -111,51 +107,27 @@ Email: info@ellatechsolutions.com
 Scheduling: Use the website contact section to book a free 30 minute consultation.
 `;
 
-// Tokens so we render clickable actions without printing "#contact"
-const bookingOnlyCtaText = () => `Next step: [[ETS_BOOK]]`;
-
-const fullContactCtaText = () =>
-  `Next step: [[ETS_BOOK]]\n` +
-  `Phone: [[ETS_PHONE]]\n` +
-  `Email: [[ETS_EMAIL]]\n\n` +
-  `Ella Tech Solutions replies within one business day.`;
+// Tokens so we can render clickable links without printing "#contact"
+const BOOKING_ONLY_CTA = `Next step: [[ETS_BOOK]]`;
+const CONTACT_ONLY_CTA = `Phone: [[ETS_PHONE]]\nEmail: [[ETS_EMAIL]]\n\nElla Tech Solutions replies within one business day.`;
 
 const norm = (s) => String(s || "").toLowerCase().trim();
-
 const containsAny = (t, arr) => arr.some((p) => t.includes(p));
 
 const userAskedForPhoneOrEmail = (text) => {
   const t = norm(text);
   return containsAny(t, [
-    "call",
     "phone",
+    "call",
+    "telephone",
+    "number",
     "email",
     "e-mail",
     "contact",
     "reach you",
     "reach out",
-    "number",
-  ]);
-};
-
-const userSaidSchedulerNotWorking = (text) => {
-  const t = norm(text);
-  return containsAny(t, [
-    "scheduler",
-    "calendar",
-    "booking",
-    "book",
-    "schedule",
-    "doesn't work",
-    "does not work",
-    "not working",
-    "won't load",
-    "will not load",
-    "blank",
-    "error",
-    "broken",
-    "cant schedule",
-    "can't schedule",
+    "how do i contact",
+    "how can i contact",
   ]);
 };
 
@@ -178,7 +150,9 @@ const intentFromText = (text) => {
     t.includes("help desk") ||
     t.includes("troubleshoot") ||
     t.includes("ongoing help") ||
-    t.includes("it help");
+    t.includes("it help") ||
+    t.includes("fix") ||
+    t.includes("broken");
 
   const hasQuote =
     t.includes("get a quote") ||
@@ -195,25 +169,32 @@ const intentFromText = (text) => {
   return "";
 };
 
-// One sentence + booking link.
-// Phone/email only if user asks, or scheduler is reported broken.
-const quickResolutionForIntent = (intent, includeFullContact) => {
-  const cta = includeFullContact ? fullContactCtaText() : bookingOnlyCtaText();
-
-  if (intent === "staff_training") {
-    return makeSpacing(`Staff training starts with a short consultation so we can recommend the right approach.\n\n${cta}`);
+// This is the behavior you asked for:
+// Describe the service briefly, then show booking link.
+// Do not show phone and email unless user asks for them.
+const serviceReply = (intent) => {
+  if (intent === "tech_consulting") {
+    return makeSpacing(
+      `Tech consulting helps you choose the right tools, streamline workflows, and solve problems with a clear plan.\n\n${BOOKING_ONLY_CTA}`
+    );
   }
 
-  if (intent === "tech_consulting") {
-    return makeSpacing(`Tech consulting starts with a short consultation so we can recommend next steps.\n\n${cta}`);
+  if (intent === "staff_training") {
+    return makeSpacing(
+      `Staff training gives your team clear, hands on guidance so people can use the tools correctly and confidently.\n\n${BOOKING_ONLY_CTA}`
+    );
   }
 
   if (intent === "support") {
-    return makeSpacing(`Support starts with a short consultation so we can route you to the fastest fix.\n\n${cta}`);
+    return makeSpacing(
+      `Support helps you troubleshoot issues, stabilize your setup, and keep your technology running reliably.\n\n${BOOKING_ONLY_CTA}`
+    );
   }
 
   if (intent === "get_quote") {
-    return makeSpacing(`Quotes are based on scope and timeline. The fastest way to get a quote is a short consultation.\n\n${cta}`);
+    return makeSpacing(
+      `Quotes depend on scope and timeline. A short consultation is the fastest way to get an accurate price.\n\n${BOOKING_ONLY_CTA}`
+    );
   }
 
   return "";
@@ -250,7 +231,7 @@ const Chatbot = () => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Re dock on navigation changes (route or hash change)
+  // Re dock on navigation changes
   useEffect(() => {
     reDock();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -261,6 +242,7 @@ const Chatbot = () => {
     const onDocClickCapture = (e) => {
       const target = e.target;
       if (!(target instanceof Element)) return;
+
       const headerEl = target.closest("header");
       if (headerEl) reDock();
     };
@@ -382,6 +364,13 @@ const Chatbot = () => {
     return [system, ...trimmed];
   };
 
+  const pushBot = (raw) => {
+    const cleaned = makeSpacing(
+      ensureQuestionMarks(stripChatgptArtifacts(stripContactArtifacts(raw)))
+    );
+    setMessages((msgs) => [...msgs, { from: "bot", text: cleaned }]);
+  };
+
   const sendMessage = async (overrideText) => {
     const userText = (overrideText ?? input).trim();
     if (!userText) return;
@@ -389,16 +378,21 @@ const Chatbot = () => {
     setMessages((msgs) => [...msgs, { from: "user", text: userText }]);
     setInput("");
 
-    const includeFullContact = userAskedForPhoneOrEmail(userText) || userSaidSchedulerNotWorking(userText);
-
-    const intent = intentFromText(userText);
-    if (intent) {
-      const reply = quickResolutionForIntent(intent, includeFullContact);
-      const cleaned = stripChatgptArtifacts(stripContactArtifacts(reply));
-      setMessages((msgs) => [...msgs, { from: "bot", text: cleaned }]);
+    // If they asked for phone or email, give ONLY contact details (and do not add booking link unless you want it).
+    // Your request: if they ask for telephone or email, then give it to them.
+    if (userAskedForPhoneOrEmail(userText)) {
+      pushBot(makeSpacing(`${CONTACT_ONLY_CTA}`));
       return;
     }
 
+    // If they clicked or asked about a service, do brief service description + booking link, no phone/email.
+    const intent = intentFromText(userText);
+    if (intent) {
+      pushBot(serviceReply(intent));
+      return;
+    }
+
+    // Otherwise use backend assistant, then add booking link only.
     try {
       const history = buildChatHistory(messagesRef.current, userText);
 
@@ -409,29 +403,21 @@ const Chatbot = () => {
       );
 
       let botReply = res?.data?.reply?.trim();
-      if (!botReply) botReply = "Sorry, I did not get a response. Try again.";
+      if (!botReply) botReply = "Sorry, I did not get a response. Please try again.";
 
-      botReply = makeSpacing(
-        ensureQuestionMarks(stripChatgptArtifacts(stripContactArtifacts(botReply)))
-      );
+      // Keep it short and route to booking
+      botReply = makeSpacing(`${botReply}\n\n${BOOKING_ONLY_CTA}`);
 
-      const cta = includeFullContact ? fullContactCtaText() : bookingOnlyCtaText();
-
-      // Keep momentum: one clear next step, no repeated contact details unless asked.
-      botReply = makeSpacing(`${botReply}\n\n${cta}`);
-      botReply = stripChatgptArtifacts(stripContactArtifacts(botReply));
-
-      setMessages((msgs) => [...msgs, { from: "bot", text: botReply }]);
+      pushBot(botReply);
     } catch (err) {
       console.error("Chatbot error:", err);
 
-      // If the chat fails, show full contact as a safe fallback.
-      const fallback = makeSpacing(
-        `Sorry, something went wrong on our side.\n\n${fullContactCtaText()}`
+      // If the chat fails, route to booking first, and do not show phone/email unless asked.
+      pushBot(
+        makeSpacing(
+          `Sorry, something went wrong on our side.\n\n${BOOKING_ONLY_CTA}`
+        )
       );
-
-      const cleaned = stripChatgptArtifacts(stripContactArtifacts(fallback));
-      setMessages((msgs) => [...msgs, { from: "bot", text: cleaned }]);
     }
   };
 
@@ -488,10 +474,6 @@ const Chatbot = () => {
 
     return (
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 10 }}>
-        <a href={ETS_BOOKING_URL} style={pill}>
-          Book a consultation
-        </a>
-
         <button type="button" onClick={() => sendMessage("Tech consulting")} style={pill}>
           Tech consulting
         </button>
@@ -509,8 +491,12 @@ const Chatbot = () => {
         </button>
 
         <button type="button" onClick={() => sendMessage("What is your phone number and email")} style={pill}>
-          Contact
+          Phone and email
         </button>
+
+        <a href={ETS_BOOKING_URL} style={pill}>
+          Book a consultation
+        </a>
       </div>
     );
   };
@@ -715,7 +701,11 @@ const Chatbot = () => {
                   wordWrap: "break-word",
                 }}
               >
-                {m.from === "bot" ? renderBotText(m.text) : <div style={{ whiteSpace: "pre-wrap" }}>{m.text}</div>}
+                {m.from === "bot" ? (
+                  renderBotText(m.text)
+                ) : (
+                  <div style={{ whiteSpace: "pre-wrap" }}>{m.text}</div>
+                )}
               </div>
             ))}
             <div ref={bottomRef} />
