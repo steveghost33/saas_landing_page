@@ -17,6 +17,9 @@ const Contact = () => {
           <p className="text-lg text-p5">
             Pick a time that works for you and let us get started.
           </p>
+          <p className="text-lg text-p5">
+            No sales pressure. Just a clear conversation about your goals and next steps.
+          </p>
         </div>
 
         {/* Scheduler Embed */}
