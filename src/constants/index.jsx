@@ -53,64 +53,63 @@ export const details = [
 export const faq = [
   {
     id: "0",
-    question: "How long does it take to build and launch a custom website?",
+    question: "How long does it take to build and launch a website?",
     answer:
-        "Timelines vary by project scope, but most small-to-medium websites take 4–6 weeks from kickoff to launch. We’ll provide a detailed schedule during our discovery phase.",
+      "Most small business websites take about 4 to 6 weeks. The exact timeline depends on how many pages you need and how quickly we get your content and feedback. If you want a clear estimate for your project, book a consultation and we will map out a simple timeline.",
   },
   {
     id: "1",
-    question: "Can Ella Tech integrate our website with existing platforms?",
+    question: "Can you connect my website to other tools I already use?",
     answer:
-        "Yes—whether it’s a CRM, payment gateway, learning management system, or other tool, we handle API integrations and custom connectors to keep your data in sync.",
+      "Yes. We can connect your website to tools like payment systems, email lists, scheduling, customer tracking, and more. The best next step is a consultation so we can confirm what you use now and what you want the website to do.",
   },
   {
     id: "2",
-    question:
-        "What does your Technology Consulting and Automation service include?",
+    question: "What does tech consulting help with?",
     answer:
-        "We assess your workflows, identify automation opportunities, then design and implement solutions—from simple scripts to full-scale RPA—to save you time and reduce errors.",
+      "Tech consulting helps you save time and reduce stress with better tools and simpler systems. We look at how your work gets done, what is slowing you down, and recommend practical fixes. For details that match your situation, book a consultation and we will build a clear plan.",
   },
   {
     id: "3",
-    question: "Do you offer training on the solutions you build?",
+    question: "Do you train people on the tools and systems you set up?",
     answer:
-        "Absolutely. We provide both individual and team training—live or on-demand—to ensure your staff can use new tools confidently and independently.",
+      "Yes. We offer training for individuals and teams so people feel confident using the tools. Training can be live or self paced depending on your needs. Book a consultation and we will recommend the best format for your team.",
   },
   {
     id: "4",
-    question: "How do you handle UI/UX design and user testing?",
+    question: "Will my website be easy for people to use?",
     answer:
-        "Our designers create wireframes and high-fidelity mockups based on user research. We then run usability tests with real users to refine the experience before development.",
+      "That is the goal. We design with real users in mind so the site is clear, simple, and works well on phones. If you have a specific audience or goal, book a consultation and we will plan the layout around what your visitors need.",
   },
   {
     id: "5",
-    question: "Can you deploy AI chatbots or advanced AI features?",
+    question: "Do you offer chatbots or AI features?",
     answer:
-        "Yes. We design, train, and deploy custom AI chatbots and integrations—using tools like Azure Cognitive Services or open-source frameworks—to automate customer support and internal queries.",
+      "Yes, when it makes sense for your business. A chatbot can help answer common questions, route requests, and capture leads. The best way to know what is worth building is a consultation so we can match the tool to your needs and budget.",
   },
   {
     id: "6",
-    question: "What if I need ongoing support after launch?",
+    question: "Do you offer ongoing support after the website goes live?",
     answer:
-        "We offer monthly support and maintenance plans for updates, security patches, and performance monitoring—so your site and tools stay reliable and up to date.",
+      "Yes. We offer ongoing support for updates, fixes, and keeping your website secure and running smoothly. If you want a support plan that fits your needs, book a consultation and we will walk you through options.",
   },
   {
     id: "7",
-    question: "How do you price your services?",
+    question: "How much do your services cost?",
     answer:
-        "We offer flexible pricing: hourly rates for smaller tasks, fixed-price packages for standard projects, and custom quotes for larger engagements. We’ll tailor the plan to your budget and goals.",
+      "Pricing depends on what you need. Some projects are a flat price and some work is hourly. The easiest way to get a clear number is to book a consultation so we can understand the scope and give you a quote.",
   },
   {
     id: "8",
-    question: "What is your refund or cancellation policy?",
+    question: "What if I need to pause or cancel a project?",
     answer:
-        "If you cancel within the first 14 days of a fixed-price project, we issue a prorated refund for any unused work. Hourly engagements can be paused or stopped at any time with billing up to the last completed hour.",
+      "You can pause or stop a project if your situation changes. Any billing is based on work already completed. If you want to understand how this works for your type of project, book a consultation and we will explain it clearly before you commit.",
   },
   {
     id: "9",
-    question: "How do I get started with Ella Tech Solutions?",
+    question: "How do I get started?",
     answer:
-        "Just reach out via our contact form or email. We’ll schedule a free consultation to understand your needs and propose the best approach and timeline.",
+      "Start by booking a consultation through the contact section. We will review what you need, recommend the best next steps, and follow up within one business day.",
   },
 ];
 
