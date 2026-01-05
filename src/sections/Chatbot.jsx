@@ -1,6 +1,7 @@
 // src/sections/Chatbot.jsx
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
 
 const TOGGLE_SIZE = 60;
 const DOCK_MARGIN = 16;
@@ -49,6 +50,32 @@ const stripChatgptArtifacts = (text) => {
   return t;
 };
 
+const makeSpacing = (text) => {
+  let t = String(text || "");
+  t = t.replace(/\n{3,}/g, "\n\n").trim();
+  return t;
+};
+
+const ensureQuestionMarks = (text) => {
+  const lines = String(text || "").split("\n");
+  const fixed = lines.map((line) => {
+    const trimmed = line.trim();
+    if (!trimmed) return line;
+
+    const startsLikeQuestion =
+      /^(to|tell me|share|what|which|who|when|where|why|how|do you|are you|can you|could you|would you|is it|are there|any|does|did)\b/i.test(
+        trimmed
+      );
+
+    const alreadyHasQ = trimmed.endsWith("?");
+
+    if (startsLikeQuestion && !alreadyHasQ) return `${trimmed}?`;
+    return line;
+  });
+
+  return fixed.join("\n");
+};
+
 const BUSINESS_SYSTEM_PROMPT = `
 You are the official Ella Tech Solutions website assistant.
 
@@ -80,6 +107,51 @@ Email: info@ellatechsolutions.com
 Scheduling: Use the website contact section to schedule a consultation.
 `;
 
+// Use tokens so we can render links cleanly without showing "#contact"
+const contactCtaText = () =>
+  `Next step: [[ETS_BOOK]]\n` +
+  `Phone: [[ETS_PHONE]]\n` +
+  `Email: [[ETS_EMAIL]]\n\n` +
+  `Ella Tech Solutions replies within one business day.`;
+
+const norm = (s) => String(s || "").toLowerCase().trim();
+
+const intentFromText = (text) => {
+  const t = norm(text);
+
+  const hasTraining =
+    t.includes("staff training") ||
+    (t.includes("training") && !t.includes("strength training")) ||
+    t.includes("workshop");
+
+  const hasConsulting =
+    t.includes("tech consulting") ||
+    t.includes("technology consulting") ||
+    t.includes("consulting") ||
+    t.includes("consultant");
+
+  const hasSupport =
+    t.includes("support") ||
+    t.includes("help desk") ||
+    t.includes("troubleshoot") ||
+    t.includes("ongoing help") ||
+    t.includes("it help");
+
+  const hasQuote =
+    t.includes("get a quote") ||
+    t.includes("quote") ||
+    t.includes("estimate") ||
+    t.includes("pricing") ||
+    t.includes("cost") ||
+    t.includes("how much");
+
+  if (hasTraining) return "staff_training";
+  if (hasConsulting) return "tech_consulting";
+  if (hasSupport) return "support";
+  if (hasQuote) return "get_quote";
+  return "";
+};
+
 const wantsSchedulingOrContact = (text) => {
   const t = (text || "").toLowerCase();
   const patterns = [
@@ -109,58 +181,60 @@ const wantsSchedulingOrContact = (text) => {
   return patterns.some((p) => t.includes(p));
 };
 
-const contactCtaText = () =>
-  `You can reach Ella Tech Solutions here. We reply within one business day.\n\n` +
-  `Schedule a consultation: [[ETS_BOOK]]\n` +
-  `Phone: [[ETS_PHONE]]\n` +
-  `Email: [[ETS_EMAIL]]`;
+const quickResolutionForIntent = (intent) => {
+  if (intent === "staff_training") {
+    return makeSpacing(
+      ensureQuestionMarks(
+        `Staff training is one of our core services.\n\n` +
+          `The fastest way to get the right recommendation and pricing is to schedule a short consultation.\n\n` +
+          `If you want, share one detail so we can come prepared.\n` +
+          `About how many people need training\n\n` +
+          `${contactCtaText()}`
+      )
+    );
+  }
 
-const norm = (s) => String(s || "").toLowerCase().trim();
+  if (intent === "tech_consulting") {
+    return makeSpacing(
+      ensureQuestionMarks(
+        `Tech consulting starts with a short consultation so we can understand your workflow and recommend the quickest improvements.\n\n` +
+          `If you want, share one detail so we can come prepared.\n` +
+          `What is the top issue you want to solve right now\n\n` +
+          `${contactCtaText()}`
+      )
+    );
+  }
 
-const intentFromText = (text) => {
-  const t = norm(text);
+  if (intent === "support") {
+    return makeSpacing(
+      ensureQuestionMarks(
+        `We can help with one time support or ongoing support plans.\n\n` +
+          `For the fastest resolution, schedule a quick consultation so we can confirm the issue and route you to the right help.\n\n` +
+          `If you want, share one detail so we can come prepared.\n` +
+          `What is happening right now\n\n` +
+          `${contactCtaText()}`
+      )
+    );
+  }
 
-  const hasTraining = t.includes("staff training") || (t.includes("training") && !t.includes("strength training"));
-  const hasConsulting =
-    t.includes("tech consulting") || t.includes("technology consulting") || t.includes("consulting") || t.includes("consultant");
-  const hasSupport =
-    t.includes("support") || t.includes("help desk") || t.includes("troubleshoot") || t.includes("ongoing help") || t.includes("it help");
-  const hasQuote = t.includes("get a quote") || t.includes("quote") || t.includes("estimate") || t.includes("pricing") || t.includes("cost");
+  if (intent === "get_quote") {
+    return makeSpacing(
+      ensureQuestionMarks(
+        `Yes. We provide clear quotes based on scope and timeline.\n\n` +
+          `The fastest way to get an accurate quote is to schedule a short consultation.\n\n` +
+          `If you want, share one detail so we can come prepared.\n` +
+          `What service do you need, training, consulting, support, website, or a mix\n\n` +
+          `${contactCtaText()}`
+      )
+    );
+  }
 
-  if (hasTraining) return "staff_training";
-  if (hasConsulting) return "tech_consulting";
-  if (hasSupport) return "support";
-  if (hasQuote) return "get_quote";
   return "";
 };
 
-const makeSpacing = (text) => {
-  let t = String(text || "");
-  t = t.replace(/\n{3,}/g, "\n\n").trim();
-  return t;
-};
-
-const ensureQuestionMarks = (text) => {
-  const lines = String(text || "").split("\n");
-  const fixed = lines.map((line) => {
-    const trimmed = line.trim();
-    if (!trimmed) return line;
-
-    const startsLikeQuestion =
-      /^(to|tell me|share|what|which|who|when|where|why|how|do you|are you|can you|could you|would you|is it|are there|any|does|did)\b/i.test(
-        trimmed
-      );
-
-    const alreadyHasQ = trimmed.endsWith("?");
-
-    if (startsLikeQuestion && !alreadyHasQ) return `${trimmed}?`;
-    return line;
-  });
-
-  return fixed.join("\n");
-};
-
 const Chatbot = () => {
+  const location = useLocation();
+
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
     { from: "bot", text: "Hi! I’m the Ella Tech Strategy Expert. How can I help?" },
@@ -168,18 +242,10 @@ const Chatbot = () => {
   const [input, setInput] = useState("");
   const bottomRef = useRef(null);
 
-  // Guided flow state so the bot can actually resolve the request
-  const [flow, setFlow] = useState(null);
-  // flow shape:
-  // { type: "staff_training"|"tech_consulting"|"support"|"get_quote", step: 1..N, answers: { ... } }
-
+  // Keep latest messages for correct history building
   const messagesRef = useRef(messages);
   useEffect(() => {
     messagesRef.current = messages;
-  }, [messages]);
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   // Docked behavior
@@ -188,6 +254,38 @@ const Chatbot = () => {
   const [dragging, setDragging] = useState(false);
   const [rel, setRel] = useState({ x: 0, y: 0 });
 
+  const reDock = () => {
+    setDragging(false);
+    setDocked(true);
+  };
+
+  // Auto scroll
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
+
+  // Move chatbot back to bottom right when navigation happens (route or hash change)
+  useEffect(() => {
+    reDock();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname, location.hash]);
+
+  // Move chatbot back to bottom right when user clicks anywhere in the header
+  useEffect(() => {
+    const onDocClickCapture = (e) => {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+
+      const headerEl = target.closest("header");
+      if (headerEl) reDock();
+    };
+
+    document.addEventListener("click", onDocClickCapture, true);
+    return () => document.removeEventListener("click", onDocClickCapture, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Drag handlers
   const startDragFromPoint = (pageX, pageY) => {
     if (docked) {
       const left = window.innerWidth - (DOCK_MARGIN + TOGGLE_SIZE);
@@ -258,29 +356,28 @@ const Chatbot = () => {
     };
   }, [dragging, rel, position.x, position.y]);
 
+  // Re dock on viewport changes
   useEffect(() => {
-    const reDock = () => {
-      setDragging(false);
-      setDocked(true);
-    };
+    const onResize = () => reDock();
 
-    window.addEventListener("resize", reDock);
-    window.addEventListener("orientationchange", reDock);
+    window.addEventListener("resize", onResize);
+    window.addEventListener("orientationchange", onResize);
 
     const vv = window.visualViewport;
     if (vv) {
-      vv.addEventListener("resize", reDock);
-      vv.addEventListener("scroll", reDock);
+      vv.addEventListener("resize", onResize);
+      vv.addEventListener("scroll", onResize);
     }
 
     return () => {
-      window.removeEventListener("resize", reDock);
-      window.removeEventListener("orientationchange", reDock);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("orientationchange", onResize);
       if (vv) {
-        vv.removeEventListener("resize", reDock);
-        vv.removeEventListener("scroll", reDock);
+        vv.removeEventListener("resize", onResize);
+        vv.removeEventListener("scroll", onResize);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const buildChatHistory = (latestMessages, userText) => {
@@ -300,204 +397,6 @@ const Chatbot = () => {
     return [system, ...trimmed];
   };
 
-  const startFlow = (type) => {
-    setFlow({ type, step: 1, answers: {} });
-
-    if (type === "staff_training") {
-      return makeSpacing(
-        ensureQuestionMarks(
-          `Staff training is one of our core services.\n\n` +
-            `To recommend the best option, I need three quick details.\n\n` +
-            `1. About how many people need training\n` +
-            `2. What tools or topics, for example Microsoft 365, Teams, Outlook, AI productivity\n` +
-            `3. What you want to improve, for example faster communication, better file organization, fewer support tickets`
-        )
-      );
-    }
-
-    if (type === "tech_consulting") {
-      return makeSpacing(
-        ensureQuestionMarks(
-          `Tech consulting usually starts with a short discovery conversation.\n\n` +
-            `To scope this well, tell me three things.\n\n` +
-            `1. What type of organization you are\n` +
-            `2. Your top one or two pain points\n` +
-            `3. What tools you currently use, Microsoft 365, Google Workspace, website platform`
-        )
-      );
-    }
-
-    if (type === "support") {
-      return makeSpacing(
-        ensureQuestionMarks(
-          `We can help with one time support or ongoing support plans.\n\n` +
-            `To get you to a solution, share these three details.\n\n` +
-            `1. What is happening right now\n` +
-            `2. What device and tools you are using\n` +
-            `3. How urgent it is, today, this week, or flexible`
-        )
-      );
-    }
-
-    if (type === "get_quote") {
-      return makeSpacing(
-        ensureQuestionMarks(
-          `Absolutely. We provide clear quotes based on scope and timeline.\n\n` +
-            `To prepare an accurate quote, please share five quick details.\n\n` +
-            `1. What service you need, training, consulting, support, website, or a mix\n` +
-            `2. Who it is for, team size or number of users\n` +
-            `3. What success looks like, your main goal\n` +
-            `4. Your timeline, this week, this month, or a target date\n` +
-            `5. Any existing tools or systems we should work with`
-        )
-      );
-    }
-
-    return "";
-  };
-
-  const handleFlowTurn = (userText) => {
-    const t = userText.trim();
-    const f = flow;
-
-    if (!f) return { handled: false, reply: "" };
-
-    // Allow user to exit a flow quickly
-    const lower = norm(t);
-    if (lower === "cancel" || lower === "stop" || lower === "never mind") {
-      setFlow(null);
-      const reply = makeSpacing(
-        `No problem.\n\nIf you want to pick this back up later, you can choose a quick option above or tell me what you need.\n\n${contactCtaText()}`
-      );
-      return { handled: true, reply };
-    }
-
-    // Step collection pattern:
-    // We do not over parse, we just store the user input per step and keep moving.
-    // This guarantees the bot responds and reaches a clear resolution.
-    const answers = { ...(f.answers || {}) };
-
-    if (f.type === "staff_training") {
-      if (f.step === 1) {
-        answers.teamSizeAndTopics = t;
-        setFlow({ ...f, step: 2, answers });
-
-        const reply = makeSpacing(
-          ensureQuestionMarks(
-            `Thanks. One more thing so we can recommend the right format.\n\n` +
-              `Do you prefer a live workshop, a short series, or self paced micro learning\n\n` +
-              `If you are not sure, tell me your goal and your timeline`
-          )
-        );
-        return { handled: true, reply };
-      }
-
-      if (f.step === 2) {
-        answers.formatPreference = t;
-        setFlow(null);
-
-        const reply = makeSpacing(
-          `Great. Based on what you shared, the fastest next step is a short consultation so we can confirm scope and recommend the best training format.\n\n` +
-            `What you will get from that consult.\n\n` +
-            `1. A clear training recommendation\n` +
-            `2. A timeline\n` +
-            `3. A price range or quote\n\n` +
-            `${contactCtaText()}`
-        );
-        return { handled: true, reply };
-      }
-    }
-
-    if (f.type === "tech_consulting") {
-      if (f.step === 1) {
-        answers.context = t;
-        setFlow({ ...f, step: 2, answers });
-
-        const reply = makeSpacing(
-          ensureQuestionMarks(
-            `Thank you. What is the ideal outcome you want in 30 to 60 days\n\n` +
-              `For example, smoother scheduling, fewer admin tasks, better file organization, clearer reporting`
-          )
-        );
-        return { handled: true, reply };
-      }
-
-      if (f.step === 2) {
-        answers.outcome = t;
-        setFlow(null);
-
-        const reply = makeSpacing(
-          `Perfect. Based on your goals, the best next step is a consultation so we can map your current workflow and recommend the quickest improvements.\n\n` +
-            `We will come prepared with options like process cleanup, automation, templates, and tool setup.\n\n` +
-            `${contactCtaText()}`
-        );
-        return { handled: true, reply };
-      }
-    }
-
-    if (f.type === "support") {
-      if (f.step === 1) {
-        answers.issue = t;
-        setFlow({ ...f, step: 2, answers });
-
-        const reply = makeSpacing(
-          ensureQuestionMarks(
-            `Got it. Two quick checks so we can route this correctly.\n\n` +
-              `1. Is this affecting one person or multiple people\n` +
-              `2. Are you seeing any error message, and if so what does it say`
-          )
-        );
-        return { handled: true, reply };
-      }
-
-      if (f.step === 2) {
-        answers.scopeAndError = t;
-        setFlow(null);
-
-        const reply = makeSpacing(
-          `Thanks. The fastest path to resolution is to schedule a quick consult so we can confirm details and get you the right support option.\n\n` +
-            `If it is urgent, call or email and mention it is time sensitive.\n\n` +
-            `${contactCtaText()}`
-        );
-        return { handled: true, reply };
-      }
-    }
-
-    if (f.type === "get_quote") {
-      if (f.step === 1) {
-        answers.quoteDetails = t;
-        setFlow({ ...f, step: 2, answers });
-
-        const reply = makeSpacing(
-          ensureQuestionMarks(
-            `Thank you. Last question so we can be accurate.\n\n` +
-              `Do you have a target budget range or should we propose a few options at different levels`
-          )
-        );
-        return { handled: true, reply };
-      }
-
-      if (f.step === 2) {
-        answers.budget = t;
-        setFlow(null);
-
-        const reply = makeSpacing(
-          `Great. Based on what you shared, the next step is a consultation so we can confirm scope and send a clear quote.\n\n${contactCtaText()}`
-        );
-        return { handled: true, reply };
-      }
-    }
-
-    // Safety fallback if steps drift
-    setFlow(null);
-    return {
-      handled: true,
-      reply: makeSpacing(
-        `Thanks. The next step is a consultation so we can confirm details and recommend the best path.\n\n${contactCtaText()}`
-      ),
-    };
-  };
-
   const sendMessage = async (overrideText) => {
     const userText = (overrideText ?? input).trim();
     if (!userText) return;
@@ -505,24 +404,16 @@ const Chatbot = () => {
     setMessages((msgs) => [...msgs, { from: "user", text: userText }]);
     setInput("");
 
-    // If we are in a guided flow, handle it locally and always respond
-    const flowResult = handleFlowTurn(userText);
-    if (flowResult.handled) {
-      const cleaned = stripChatgptArtifacts(stripContactArtifacts(flowResult.reply));
-      setMessages((msgs) => [...msgs, { from: "bot", text: cleaned }]);
-      return;
-    }
-
-    // If user triggers one of the core service intents, start a guided flow locally
+    // If user triggers a core service intent, respond locally and route to scheduling
     const intent = intentFromText(userText);
     if (intent) {
-      const first = startFlow(intent);
-      const cleaned = stripChatgptArtifacts(stripContactArtifacts(first));
+      const reply = quickResolutionForIntent(intent);
+      const cleaned = stripChatgptArtifacts(stripContactArtifacts(reply));
       setMessages((msgs) => [...msgs, { from: "bot", text: cleaned }]);
       return;
     }
 
-    // Otherwise call the API, but always respond even if the API fails
+    // Otherwise call the API, but always respond and always route to scheduling
     try {
       const history = buildChatHistory(messagesRef.current, userText);
 
@@ -535,14 +426,20 @@ const Chatbot = () => {
       let botReply = res?.data?.reply?.trim();
       if (!botReply) botReply = "Sorry, I did not get a response. Try again.";
 
-      botReply = makeSpacing(ensureQuestionMarks(stripChatgptArtifacts(stripContactArtifacts(botReply))));
+      botReply = makeSpacing(
+        ensureQuestionMarks(stripChatgptArtifacts(stripContactArtifacts(botReply)))
+      );
 
-      // Always add contact CTA, and make it stronger if the user is trying to book, price, or get help
+      // Always push toward scheduling instead of interrogating the user
+      const schedulingLead =
+        `For the fastest path to a clear next step, schedule a short consultation.\n\n` +
+        `${contactCtaText()}`;
+
       if (wantsSchedulingOrContact(userText)) {
-        botReply = makeSpacing(`${botReply}\n\n${contactCtaText()}`);
+        botReply = makeSpacing(`${botReply}\n\n${schedulingLead}`);
       } else {
         botReply = makeSpacing(
-          `${botReply}\n\nIf you want hands on help through tech consulting, staff training, or support:\n\n${contactCtaText()}`
+          `${botReply}\n\n${schedulingLead}`
         );
       }
 
@@ -552,14 +449,11 @@ const Chatbot = () => {
     } catch (err) {
       console.error("Chatbot error:", err);
 
-      // Always respond with a helpful, resolution focused fallback
+      // Always respond with a resolution focused fallback
       const fallback = makeSpacing(
         ensureQuestionMarks(
           `Sorry, something went wrong on our side.\n\n` +
-            `I can still help you get to a resolution.\n\n` +
-            `1. If this is about staff training, tell me your team size and the tools you want covered\n` +
-            `2. If this is tech consulting, tell me your top one or two pain points\n` +
-            `3. If this is support, tell me what is happening right now and how urgent it is\n\n` +
+            `For the fastest path to resolution, schedule a short consultation.\n\n` +
             `${contactCtaText()}`
         )
       );
@@ -576,6 +470,7 @@ const Chatbot = () => {
     }
   };
 
+  // Styles for docked vs undocked
   const toggleStyle = docked
     ? {
         position: "fixed",
@@ -653,7 +548,9 @@ const Chatbot = () => {
   };
 
   const renderBotText = (text) => {
-    const safe = makeSpacing(ensureQuestionMarks(stripChatgptArtifacts(stripContactArtifacts(text))));
+    const safe = makeSpacing(
+      ensureQuestionMarks(stripChatgptArtifacts(stripContactArtifacts(text)))
+    );
 
     const linkStyle = {
       color: "#0b5ed7",
@@ -711,9 +608,9 @@ const Chatbot = () => {
           if (trimmed.includes("[[ETS_BOOK]]")) {
             return (
               <div key={idx}>
-                Schedule a consultation:{" "}
+                Next step:{" "}
                 <a href={ETS_BOOKING_URL} style={linkStyle}>
-                  Open the contact section
+                  Book a consultation
                 </a>
               </div>
             );
