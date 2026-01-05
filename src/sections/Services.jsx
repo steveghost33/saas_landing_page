@@ -38,7 +38,11 @@ function Services() {
                     </p>
                   </div>
 
-                  <Button icon={button.icon} to={button.path}>
+                  <Button
+                    icon={button.icon}
+                    to={button.path}
+                    containerClassName="self-start"
+                  >
                     {button.title}
                   </Button>
                 </div>
@@ -71,3 +75,4 @@ function Services() {
 }
 
 export default Services;
+

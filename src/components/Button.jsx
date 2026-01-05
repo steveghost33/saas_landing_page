@@ -36,7 +36,7 @@ const Button = ({
   );
 
   const className = clsx(
-    "relative p-0.5 g5 rounded-2xl shadow-500 group",
+    "relative inline-flex w-fit p-0.5 g5 rounded-2xl shadow-500 group",
     containerClassName
   );
 
