@@ -57,7 +57,6 @@ const stripChatgptArtifacts = (text) => {
 };
 
 // Add question marks only when a line clearly looks like a question.
-// Do not add question marks to headings or statements.
 const ensureQuestionMarks = (text) => {
   const lines = String(text || "").split("\n");
   const fixed = lines.map((line) => {
@@ -95,11 +94,12 @@ Professional, clear, friendly, and confident.
 You represent a real business, not a generic AI assistant.
 
 Rules
-1. Keep answers short and action oriented.
-2. If the visitor asks about a service, describe it briefly in plain language and then route them to book a free 30 minute consultation.
-3. Only provide phone and email if the visitor asks for phone, call, email, or contact info.
-4. Never promise instant replies. State that Ella Tech Solutions replies within one business day.
-5. Never mention ChatGPT, OpenAI, GPT, or any external AI brand. Never include links to any AI site.
+1. Keep answers short, clear, and action oriented.
+2. When the visitor asks about Support, Tech Consulting, or Staff Training, include a few plain language details about what that service includes.
+3. After describing the service, route them to book a free 30 minute consultation.
+4. Only provide phone and email if the visitor asks for phone, call, email, or contact info.
+5. Never promise instant replies. State that Ella Tech Solutions replies within one business day.
+6. Never mention ChatGPT, OpenAI, GPT, or any external AI brand. Never include links to any AI site.
 
 Official contact
 Phone: (313) 474 1772
@@ -169,31 +169,49 @@ const intentFromText = (text) => {
   return "";
 };
 
-// This is the behavior you asked for:
-// Describe the service briefly, then show booking link.
-// Do not show phone and email unless user asks for them.
+// This now includes a few details about each service, then booking link.
 const serviceReply = (intent) => {
   if (intent === "tech_consulting") {
     return makeSpacing(
-      `Tech consulting helps you choose the right tools, streamline workflows, and solve problems with a clear plan.\n\n${BOOKING_ONLY_CTA}`
+      `Tech consulting helps you make smart decisions and fix problems without guessing.\n\n` +
+        `What it can include:\n` +
+        `1. A quick review of your current setup and goals\n` +
+        `2. Recommendations for tools, workflows, and next steps\n` +
+        `3. An implementation plan, plus hands on help if you want it\n\n` +
+        `${BOOKING_ONLY_CTA}`
     );
   }
 
   if (intent === "staff_training") {
     return makeSpacing(
-      `Staff training gives your team clear, hands on guidance so people can use the tools correctly and confidently.\n\n${BOOKING_ONLY_CTA}`
+      `Staff training helps your team use the tools correctly and consistently.\n\n` +
+        `What it can include:\n` +
+        `1. Live training sessions tailored to your roles\n` +
+        `2. Simple guides, walkthroughs, and job aids\n` +
+        `3. Practice time, Q and A, and follow up support\n\n` +
+        `${BOOKING_ONLY_CTA}`
     );
   }
 
   if (intent === "support") {
     return makeSpacing(
-      `Support helps you troubleshoot issues, stabilize your setup, and keep your technology running reliably.\n\n${BOOKING_ONLY_CTA}`
+      `Support helps you troubleshoot issues and keep your technology running reliably.\n\n` +
+        `What it can include:\n` +
+        `1. Diagnosing the problem and stabilizing the issue\n` +
+        `2. Fixes for devices, accounts, email, Microsoft 365, and websites\n` +
+        `3. Ongoing support options if you need a long term partner\n\n` +
+        `${BOOKING_ONLY_CTA}`
     );
   }
 
   if (intent === "get_quote") {
     return makeSpacing(
-      `Quotes depend on scope and timeline. A short consultation is the fastest way to get an accurate price.\n\n${BOOKING_ONLY_CTA}`
+      `Quotes depend on scope, timeline, and what you want done.\n\n` +
+        `What we confirm during a consultation:\n` +
+        `1. Your goals and what success looks like\n` +
+        `2. The work needed and recommended approach\n` +
+        `3. Timeline and a clear price range or quote\n\n` +
+        `${BOOKING_ONLY_CTA}`
     );
   }
 
@@ -378,21 +396,20 @@ const Chatbot = () => {
     setMessages((msgs) => [...msgs, { from: "user", text: userText }]);
     setInput("");
 
-    // If they asked for phone or email, give ONLY contact details (and do not add booking link unless you want it).
-    // Your request: if they ask for telephone or email, then give it to them.
+    // If they asked for phone or email, provide it.
     if (userAskedForPhoneOrEmail(userText)) {
       pushBot(makeSpacing(`${CONTACT_ONLY_CTA}`));
       return;
     }
 
-    // If they clicked or asked about a service, do brief service description + booking link, no phone/email.
+    // If they clicked or asked about a service, provide details + booking link.
     const intent = intentFromText(userText);
     if (intent) {
       pushBot(serviceReply(intent));
       return;
     }
 
-    // Otherwise use backend assistant, then add booking link only.
+    // Otherwise: ask backend, then route to booking link (no phone/email).
     try {
       const history = buildChatHistory(messagesRef.current, userText);
 
@@ -405,14 +422,11 @@ const Chatbot = () => {
       let botReply = res?.data?.reply?.trim();
       if (!botReply) botReply = "Sorry, I did not get a response. Please try again.";
 
-      // Keep it short and route to booking
       botReply = makeSpacing(`${botReply}\n\n${BOOKING_ONLY_CTA}`);
-
       pushBot(botReply);
     } catch (err) {
       console.error("Chatbot error:", err);
 
-      // If the chat fails, route to booking first, and do not show phone/email unless asked.
       pushBot(
         makeSpacing(
           `Sorry, something went wrong on our side.\n\n${BOOKING_ONLY_CTA}`
@@ -488,10 +502,6 @@ const Chatbot = () => {
 
         <button type="button" onClick={() => sendMessage("Get a quote")} style={pill}>
           Get a quote
-        </button>
-
-        <button type="button" onClick={() => sendMessage("What is your phone number and email")} style={pill}>
-          Phone and email
         </button>
 
         <a href={ETS_BOOKING_URL} style={pill}>
