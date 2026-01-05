@@ -4,15 +4,16 @@ import { Element } from "react-scroll";
 
 const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
-// Give the embed enough room to show the full Google UI (times list + footer)
-// without clipping. Most cut off issues happen because height is too small.
-const MIN_EMBED_HEIGHT_DESKTOP = 1100;
-const MIN_EMBED_HEIGHT_MOBILE = 1250;
-const MAX_EMBED_HEIGHT = 1800;
+// Balanced heights that prevent cut off while avoiding huge blank space
+const MIN_DESKTOP = 960;
+const MAX_DESKTOP = 1120;
+
+const MIN_MOBILE = 1120;
+const MAX_MOBILE = 1380;
 
 const Contact = () => {
   const wrapRef = useRef(null);
-  const [iframeHeight, setIframeHeight] = useState(MIN_EMBED_HEIGHT_DESKTOP);
+  const [iframeHeight, setIframeHeight] = useState(MIN_DESKTOP);
 
   useEffect(() => {
     const compute = () => {
@@ -20,23 +21,19 @@ const Contact = () => {
       const wrapW = wrapRef.current?.getBoundingClientRect?.().width || 0;
       const isMobile = wrapW > 0 && wrapW < 560;
 
-      // Google appointment embeds often need more vertical space on mobile
-      // because the layout stacks more and the time list area shrinks.
-      const minHeight = isMobile ? MIN_EMBED_HEIGHT_MOBILE : MIN_EMBED_HEIGHT_DESKTOP;
+      // Use most of the viewport height, but do not overshoot.
+      // This avoids the massive blank space at the bottom.
+      const target = Math.round(viewportH * 0.92);
 
-      // We want the scheduler to be tall enough to show the time list,
-      // and we accept that the page can scroll (that is fine).
-      // The key is: do not clip inside the iframe.
-      //
-      // Target height strategy:
-      // - Use a generous viewport-based height (so it scales on large screens)
-      // - But never go below a safe minimum that prevents the time list clipping.
-      const target = Math.round(viewportH * 1.35);
-
-      setIframeHeight(clamp(Math.max(target, minHeight), minHeight, MAX_EMBED_HEIGHT));
+      if (isMobile) {
+        setIframeHeight(clamp(target, MIN_MOBILE, MAX_MOBILE));
+      } else {
+        setIframeHeight(clamp(target, MIN_DESKTOP, MAX_DESKTOP));
+      }
     };
 
     compute();
+
     window.addEventListener("resize", compute);
     window.addEventListener("orientationchange", compute);
 
@@ -75,9 +72,7 @@ const Contact = () => {
           ref={wrapRef}
           className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl mb-12"
           style={{
-            // Key: allow the iframe to fully render with no clipping.
-            // Do not hide overflow here or Google UI can look cut off.
-            overflow: "visible",
+            overflow: "hidden", // keeps the rounded corners clean
           }}
         >
           <iframe
@@ -91,9 +86,6 @@ const Contact = () => {
               background: "transparent",
             }}
             frameBorder="0"
-            // Important: do not force scrolling="no" here.
-            // Some browsers treat that as permission to clip embedded content.
-            scrolling="yes"
           />
         </div>
 
@@ -125,7 +117,7 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Soft divider for subtle separation before next section */}
+        {/* Soft divider */}
         <div className="w-full h-4 bg-s1/30 rounded-t-3xl"></div>
       </section>
     </Element>
