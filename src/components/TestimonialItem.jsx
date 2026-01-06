@@ -1,93 +1,94 @@
+// src/components/TestimonialItem.jsx
+import React from "react";
 import clsx from "clsx";
 
 const TestimonialItem = ({ item, containerClassName = "" }) => {
   return (
     <article
       className={clsx(
-        "relative z-10 px-12 py-14 max-md:px-6 max-md:py-10",
-        "text-p5",
-        "before:pointer-events-none before:absolute before:inset-0 before:z-0 before:content-['']",
+        // Layout
+        "relative flex flex-col justify-between",
+        // Spacing
+        "px-10 py-12 md:px-12",
+        // Divider line between cards
+        "after:absolute after:left-0 after:bottom-0 after:h-px after:w-full after:bg-s2/35",
+        // Mobile spacing tuning
+        "max-md:px-6 max-md:py-10",
         containerClassName
       )}
     >
-      {/* Divider lines that do not cover content */}
-      <span
-        className="
-          pointer-events-none
-          absolute inset-x-0 top-0
-          h-px bg-white/10
-          max-md:hidden
-        "
-        aria-hidden="true"
-      />
-      <span
-        className="
-          pointer-events-none
-          absolute inset-y-0 right-0
-          w-px bg-white/10
-          max-md:hidden
-        "
-        aria-hidden="true"
-      />
+      {/* Comment */}
+      <p className="body-1 text-p5 max-w-[46ch]">
+        {item.comment}
+      </p>
 
-      <div className="relative z-10">
-        <p className="body-1 leading-relaxed max-md:text-base">
-          {item.comment}
-        </p>
-
-        <div className="mt-10 flex items-center gap-5">
-          {/* This is the fix.
-              Mobile was collapsing or covering this block.
-              These classes force it to render and stay on top. */}
+      {/* Footer row */}
+      <div className="mt-10 flex items-center gap-5">
+        {/* Avatar wrapper */}
+        <div className="relative flex-shrink-0">
+          {/* Soft ring behind icon */}
           <div
             className="
-              relative z-20
-              flex-shrink-0
-              w-16 h-16
-              max-md:w-16 max-md:h-16
+              absolute inset-0
               rounded-full
-              bg-black/20
-              border border-white/10
+              bg-s2/20
+              blur-[0.2px]
+            "
+          />
+
+          {/* Outer circle */}
+          <div
+            className="
+              relative
               flex items-center justify-center
-              overflow-visible
+              rounded-full
+              border border-s2/40
+              bg-s1
+              w-16 h-16
+              max-md:w-14 max-md:h-14
+              z-10
             "
           >
+            {/* Inner glow circle */}
+            <div
+              className="
+                absolute
+                inset-2
+                rounded-full
+                bg-s2/15
+              "
+            />
+
+            {/* The actual icon */}
             <img
               src={item.avatarUrl}
-              alt=""
+              alt={`${item.name} testimonial icon`}
               className="
-                block
-                w-10 h-10
-                max-md:w-10 max-md:h-10
+                relative z-20
+                w-8 h-8
+                max-md:w-7 max-md:h-7
                 object-contain
-                opacity-100
+                block
               "
               loading="lazy"
-              decoding="async"
+              draggable="false"
             />
           </div>
+        </div>
 
-          <div className="min-w-0">
-            <p className="font-semibold text-p3">{item.name}</p>
-            <p className="text-xs uppercase tracking-[0.16em] text-p5/60 mt-1">
-              {item.role}
-            </p>
+        {/* Name and role */}
+        <div className="min-w-0">
+          <div className="text-p1 font-semibold leading-tight">
+            {item.name}
+          </div>
+          <div className="mt-1 text-xs uppercase tracking-wide text-p5/70">
+            {item.role}
           </div>
         </div>
       </div>
-
-      {/* Mobile divider */}
-      <span
-        className="
-          pointer-events-none
-          absolute left-0 right-0 bottom-0
-          h-px bg-white/10
-          md:hidden
-        "
-        aria-hidden="true"
-      />
     </article>
   );
 };
 
 export default TestimonialItem;
+
