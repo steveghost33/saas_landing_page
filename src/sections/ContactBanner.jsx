@@ -18,7 +18,6 @@ function ContactBanner() {
             <a href="mailto:info@ellatechsolutions.com" className="contact-link">
               info@ellatechsolutions.com
             </a>
-            .
           </span>
 
           <span className="spacer">    </span>
@@ -35,7 +34,6 @@ function ContactBanner() {
             <a href="mailto:info@ellatechsolutions.com" className="contact-link">
               info@ellatechsolutions.com
             </a>
-            .
           </span>
 
           <span className="spacer">    </span>
@@ -52,7 +50,6 @@ function ContactBanner() {
             <a href="mailto:info@ellatechsolutions.com" className="contact-link">
               info@ellatechsolutions.com
             </a>
-            .
           </span>
 
           <span className="spacer">    </span>
