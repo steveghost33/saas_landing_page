@@ -30,8 +30,13 @@ function TechSolutions() {
           id="hero"
           className="relative pt-16 pb-24 max-lg:pt-12 max-lg:pb-20 max-md:pt-10 max-md:pb-16 bg-s1 font-poppins text-p5"
         >
+          {/* FIXED HERO: mobile uses min height so text never gets clipped */}
           <div
-            className="relative h-[350px] w-full overflow-hidden rounded-3xl mb-20"
+            className="
+              relative w-full overflow-hidden rounded-3xl mb-20
+              min-h-[440px] sm:min-h-[380px]
+              md:h-[350px] md:min-h-0
+            "
             style={{
               backgroundImage: "url('/images/tech-training-hero.jpg')",
               backgroundSize: "cover",
@@ -39,10 +44,13 @@ function TechSolutions() {
             }}
           >
             <div className="absolute inset-0 bg-black/60" />
-            <div className="relative z-10 container h-full flex flex-col justify-center items-center text-center">
+
+            {/* On mobile, do not force h-full. Use padding so content can grow. */}
+            <div className="relative z-10 container flex flex-col justify-center items-center text-center px-4 py-12 md:h-full md:py-0">
               <h1 className="h1 text-white drop-shadow-xl mb-4">
                 Tech Solutions &amp; Training
               </h1>
+
               <p className="body-1 text-white drop-shadow-lg max-w-2xl">
                 From mastering everyday software to AI powered admin support, we
                 give your team the tools and guidance to work more efficiently.

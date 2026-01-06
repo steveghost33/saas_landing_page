@@ -1,3 +1,5 @@
+// src/sections/Header.jsx
+
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
@@ -25,6 +27,13 @@ const Header = () => {
     };
   }, [isOpen]);
 
+  // Tell other UI (chatbot) when the mobile menu opens or closes
+  useEffect(() => {
+    window.dispatchEvent(
+      new CustomEvent("ets:mobileMenu", { detail: { open: isOpen } })
+    );
+  }, [isOpen]);
+
   const NavLink = ({ title }) => (
     <a
       href={`/#${title}`}
@@ -47,21 +56,12 @@ const Header = () => {
         hasScrolled && "py-2 bg-black-100 backdrop-blur-[8px]"
       )}
     >
-      {/* Top Bar - Book Us Button (Left) & Social Links (Right) - Desktop Only */}
+      {/* Top Bar Desktop Only */}
       <div className="container flex justify-between items-center mb-4 max-lg:hidden">
-        {/* DESKTOP Book Us Now Button — ONLY CHANGE IS SIZE */}
+        {/* DESKTOP Book Us Now Button */}
         <a
           href="/#contact"
-          className="
-            flex items-center gap-3
-            px-6 py-3
-            text-sm font-semibold uppercase
-            text-p1
-            border border-p1/30
-            rounded-full
-            hover:bg-p1/10
-            transition-all duration-300
-          "
+          className="flex items-center gap-3 px-6 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
         >
           <img src="/images/zap.svg" alt="zap" className="w-5 h-5" />
           Book Us Now
@@ -77,18 +77,14 @@ const Header = () => {
               rel="noopener noreferrer"
               className="social-icon w-8 h-8 flex items-center justify-center rounded-full bg-s2 hover:bg-s3 transition-all duration-300"
             >
-              <img
-                src={icon}
-                alt={title}
-                className="w-4 h-4 object-contain"
-              />
+              <img src={icon} alt={title} className="w-4 h-4 object-contain" />
             </a>
           ))}
         </div>
       </div>
 
       <div className="container flex h-14 items-center max-lg:px-5">
-        {/* Mobile logo - Only show when menu is CLOSED */}
+        {/* Mobile logo only when menu closed */}
         {!isOpen && (
           <Link
             to="/"
@@ -130,17 +126,13 @@ const Header = () => {
                     rel="noopener noreferrer"
                     className="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
                   >
-                    <img
-                      src={icon}
-                      alt={title}
-                      className="w-5 h-5 object-contain"
-                    />
+                    <img src={icon} alt={title} className="w-5 h-5 object-contain" />
                   </a>
                 </li>
               ))}
             </ul>
 
-            {/* Mobile Book Us Now Button — UNCHANGED */}
+            {/* Mobile Book Us Now Button */}
             <div className="lg:hidden flex justify-center mt-8 mb-10">
               <a
                 href="/#contact"
@@ -167,12 +159,7 @@ const Header = () => {
                     className="max-lg:hidden transition-transform duration-500 cursor-pointer"
                     onClick={handleLogoClick}
                   >
-                    <img
-                      src="/images/ellalogo.svg"
-                      width={950}
-                      height={950}
-                      alt="logo"
-                    />
+                    <img src="/images/ellalogo.svg" width={950} height={950} alt="logo" />
                   </Link>
                 </li>
 
@@ -190,6 +177,7 @@ const Header = () => {
         <button
           className="lg:hidden z-[110] size-10 border-2 border-s4/25 rounded-full flex justify-center items-center"
           onClick={() => setIsOpen((prev) => !prev)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
         >
           <img
             src={`/images/${isOpen ? "close" : "magic"}.svg`}
@@ -203,4 +191,3 @@ const Header = () => {
 };
 
 export default Header;
-

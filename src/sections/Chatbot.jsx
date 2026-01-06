@@ -1,4 +1,5 @@
 // src/sections/Chatbot.jsx
+
 import React, { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
@@ -51,7 +52,6 @@ const stripChatgptArtifacts = (text) => {
   return t;
 };
 
-// Add question marks only when a line clearly looks like a question.
 const ensureQuestionMarks = (text) => {
   const lines = String(text || "").split("\n");
   const fixed = lines.map((line) => {
@@ -102,7 +102,6 @@ Email: info@ellatechsolutions.com
 Scheduling: Use the website contact section to book a free 30 minute consultation.
 `;
 
-// Tokens so we can render clickable links without printing "#contact"
 const BOOKING_ONLY_CTA = `Next step: [[ETS_BOOK]]`;
 const CONTACT_ONLY_CTA = `Phone: [[ETS_PHONE]]\nEmail: [[ETS_EMAIL]]\n\nElla Tech Solutions replies within one business day.`;
 
@@ -164,7 +163,6 @@ const intentFromText = (text) => {
   return "";
 };
 
-// Includes a few details about each service, then booking link.
 const serviceReply = (intent) => {
   if (intent === "tech_consulting") {
     return makeSpacing(
@@ -228,7 +226,6 @@ const Chatbot = () => {
     messagesRef.current = messages;
   }, [messages]);
 
-  // Docked behavior
   const [docked, setDocked] = useState(true);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
@@ -239,18 +236,28 @@ const Chatbot = () => {
     setDocked(true);
   };
 
-  // Auto scroll
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Re dock on navigation changes
   useEffect(() => {
     reDock();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname, location.hash]);
 
-  // Re dock when user clicks anywhere in the Header
+  // Close chat when mobile menu opens
+  useEffect(() => {
+    const onMobileMenu = (e) => {
+      const shouldClose = Boolean(e?.detail?.open);
+      if (shouldClose) {
+        setOpen(false);
+        reDock();
+      }
+    };
+
+    window.addEventListener("ets:mobileMenu", onMobileMenu);
+    return () => window.removeEventListener("ets:mobileMenu", onMobileMenu);
+  }, []);
+
   useEffect(() => {
     const onDocClickCapture = (e) => {
       const target = e.target;
@@ -262,10 +269,8 @@ const Chatbot = () => {
 
     document.addEventListener("click", onDocClickCapture, true);
     return () => document.removeEventListener("click", onDocClickCapture, true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Drag handlers
   const startDragFromPoint = (pageX, pageY) => {
     if (docked) {
       const left = window.innerWidth - (DOCK_MARGIN + TOGGLE_SIZE);
@@ -336,7 +341,6 @@ const Chatbot = () => {
     };
   }, [dragging, rel, position.x, position.y]);
 
-  // Re dock on viewport changes
   useEffect(() => {
     const onResize = () => reDock();
 
@@ -357,7 +361,6 @@ const Chatbot = () => {
         vv.removeEventListener("scroll", onResize);
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const buildChatHistory = (latestMessages, userText) => {
@@ -391,20 +394,17 @@ const Chatbot = () => {
     setMessages((msgs) => [...msgs, { from: "user", text: userText }]);
     setInput("");
 
-    // If they asked for phone or email, provide it.
     if (userAskedForPhoneOrEmail(userText)) {
       pushBot(makeSpacing(`${CONTACT_ONLY_CTA}`));
       return;
     }
 
-    // If they clicked or asked about a service, provide details + booking link.
     const intent = intentFromText(userText);
     if (intent) {
       pushBot(serviceReply(intent));
       return;
     }
 
-    // Otherwise: ask backend, then route to booking link (no phone/email).
     try {
       const history = buildChatHistory(messagesRef.current, userText);
 
@@ -421,10 +421,7 @@ const Chatbot = () => {
       pushBot(botReply);
     } catch (err) {
       console.error("Chatbot error:", err);
-
-      pushBot(
-        makeSpacing(`Sorry, something went wrong on our side.\n\n${BOOKING_ONLY_CTA}`)
-      );
+      pushBot(makeSpacing(`Sorry, something went wrong on our side.\n\n${BOOKING_ONLY_CTA}`));
     }
   };
 
@@ -435,7 +432,6 @@ const Chatbot = () => {
     }
   };
 
-  // Styles for docked vs undocked
   const toggleStyle = docked
     ? {
         position: "fixed",
@@ -484,19 +480,15 @@ const Chatbot = () => {
         <button type="button" onClick={() => sendMessage("Tech consulting")} style={pill}>
           Tech consulting
         </button>
-
         <button type="button" onClick={() => sendMessage("Staff training")} style={pill}>
           Staff training
         </button>
-
         <button type="button" onClick={() => sendMessage("Support")} style={pill}>
           Support
         </button>
-
         <button type="button" onClick={() => sendMessage("Get a quote")} style={pill}>
           Get a quote
         </button>
-
         <a href={ETS_BOOKING_URL} style={pill}>
           Book a consultation
         </a>
@@ -664,9 +656,6 @@ const Chatbot = () => {
           >
             <span>Ella Tech Strategy Expert</span>
 
-            {/* FIX: Stop the drag handler from stealing the click.
-                The header listens for mouse down to drag, so clicking inside it
-                can start a drag and prevent the close click. */}
             <button
               type="button"
               aria-label="Close chat"
@@ -807,6 +796,3 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
-
-
-
