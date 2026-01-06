@@ -4,48 +4,52 @@ import clsx from "clsx";
 
 const BubbleIcon = () => {
   return (
-    <div className="relative flex items-center justify-center">
-      {/* Outer soft glow */}
-      <div className="absolute inset-0 rounded-full blur-md opacity-60 bg-cyan-400/25" />
+    <div className="relative shrink-0 w-16 h-16">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 200 200"
+        className="w-full h-full block"
+        aria-hidden="true"
+      >
+        <defs>
+          {/* Outer ring gradient */}
+          <radialGradient id="outerGrad" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#041a3f" />
+            <stop offset="100%" stopColor="#00051a" />
+          </radialGradient>
 
-      {/* Outer ring */}
-      <div className="relative w-[64px] h-[64px] rounded-full bg-s1/40 border border-white/10 flex items-center justify-center">
-        {/* Inner ring */}
-        <div className="w-[46px] h-[46px] rounded-full bg-s1/60 border border-white/10 flex items-center justify-center">
-          {/* Solid bubble */}
-          <div className="w-[30px] h-[30px] rounded-full bg-cyan-400/15 flex items-center justify-center">
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="block"
-            >
-              {/* Bubble body */}
-              <path
-                d="M7.5 9.6C7.5 7.62 9.1 6 11.08 6H12.92C14.9 6 16.5 7.62 16.5 9.6V10.9C16.5 12.88 14.9 14.5 12.92 14.5H11.05L9.2 16.05C8.75 16.42 8.08 16.09 8.08 15.5V14.38C7.74 14.12 7.5 13.68 7.5 13.15V9.6Z"
-                fill="url(#etsBubble)"
-              />
-              {/* Small highlight dot */}
-              <circle cx="10.2" cy="9.4" r="1.05" fill="rgba(255,255,255,0.55)" />
-              <defs>
-                <linearGradient
-                  id="etsBubble"
-                  x1="7.5"
-                  y1="6"
-                  x2="16.5"
-                  y2="16"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#22D3EE" />
-                  <stop offset="1" stopColor="#0EA5E9" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-        </div>
-      </div>
+          {/* Middle ring gradient */}
+          <radialGradient id="midGrad" cx="50%" cy="50%" r="40%">
+            <stop offset="0%" stopColor="#032b6b" />
+            <stop offset="100%" stopColor="#001f4f" />
+          </radialGradient>
+
+          {/* Bubble gradient */}
+          <radialGradient id="bubbleGrad" cx="50%" cy="30%" r="60%">
+            <stop offset="0%" stopColor="#5cffff" />
+            <stop offset="100%" stopColor="#1de6f0" />
+          </radialGradient>
+
+          {/* Blur filter (your SVG referenced it but did not define it) */}
+          <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="0.6" />
+          </filter>
+        </defs>
+
+        {/* Outer circle */}
+        <circle cx="100" cy="100" r="98" fill="url(#outerGrad)" />
+
+        {/* Middle circle */}
+        <circle cx="100" cy="100" r="78" fill="url(#midGrad)" />
+
+        {/* Bubble */}
+        <g fill="url(#bubbleGrad)" filter="url(#blur)">
+          {/* Main pill */}
+          <rect x="50" y="60" width="100" height="60" rx="30" ry="30" />
+          {/* Tail */}
+          <path d="M110,120 L100,140 L120,120 Z" />
+        </g>
+      </svg>
     </div>
   );
 };
@@ -64,12 +68,8 @@ const TestimonialItem = ({ item, containerClassName = "" }) => {
       </p>
 
       <div className="mt-10 flex items-center gap-4">
-        {/* Icon */}
-        <div className="shrink-0">
-          <BubbleIcon />
-        </div>
+        <BubbleIcon />
 
-        {/* Name and role */}
         <div className="min-w-0">
           <div className="text-cyan-300 font-semibold text-[16px] leading-tight">
             {item.name}
@@ -84,5 +84,6 @@ const TestimonialItem = ({ item, containerClassName = "" }) => {
 };
 
 export default TestimonialItem;
+
 
 
