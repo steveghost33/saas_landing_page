@@ -1,8 +1,14 @@
 // src/components/TestimonialItem.jsx
-import React from "react";
+import React, { useId } from "react";
 import clsx from "clsx";
 
 const BubbleIcon = () => {
+  const uid = useId();
+
+  const outerId = `outerGrad-${uid}`;
+  const midId = `midGrad-${uid}`;
+  const bubbleId = `bubbleGrad-${uid}`;
+
   return (
     <div className="relative shrink-0 w-16 h-16">
       <svg
@@ -12,42 +18,28 @@ const BubbleIcon = () => {
         aria-hidden="true"
       >
         <defs>
-          {/* Outer ring gradient */}
-          <radialGradient id="outerGrad" cx="50%" cy="50%" r="50%">
+          <radialGradient id={outerId} cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#041a3f" />
             <stop offset="100%" stopColor="#00051a" />
           </radialGradient>
 
-          {/* Middle ring gradient */}
-          <radialGradient id="midGrad" cx="50%" cy="50%" r="40%">
+          <radialGradient id={midId} cx="50%" cy="50%" r="40%">
             <stop offset="0%" stopColor="#032b6b" />
             <stop offset="100%" stopColor="#001f4f" />
           </radialGradient>
 
-          {/* Bubble gradient */}
-          <radialGradient id="bubbleGrad" cx="50%" cy="30%" r="60%">
+          <radialGradient id={bubbleId} cx="50%" cy="30%" r="60%">
             <stop offset="0%" stopColor="#5cffff" />
             <stop offset="100%" stopColor="#1de6f0" />
           </radialGradient>
-
-          {/* Blur filter (your SVG referenced it but did not define it) */}
-          <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="0.6" />
-          </filter>
         </defs>
 
-        {/* Outer circle */}
-        <circle cx="100" cy="100" r="98" fill="url(#outerGrad)" />
+        <circle cx="100" cy="100" r="98" fill={`url(#${outerId})`} />
+        <circle cx="100" cy="100" r="78" fill={`url(#${midId})`} />
 
-        {/* Middle circle */}
-        <circle cx="100" cy="100" r="78" fill="url(#midGrad)" />
-
-        {/* Bubble */}
-        <g fill="url(#bubbleGrad)" filter="url(#blur)">
-          {/* Main pill */}
+        <g fill={`url(#${bubbleId})`}>
           <rect x="50" y="60" width="100" height="60" rx="30" ry="30" />
-          {/* Tail */}
-          <path d="M110,120 L100,140 L120,120 Z" />
+          <path d="M110 120 L100 140 L120 120 Z" />
         </g>
       </svg>
     </div>
@@ -84,6 +76,3 @@ const TestimonialItem = ({ item, containerClassName = "" }) => {
 };
 
 export default TestimonialItem;
-
-
-
