@@ -1,33 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-  <defs>
-    <!-- Outer ring gradient -->
-    <radialGradient id="outerGrad" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#041a3f"></stop>
-      <stop offset="100%" stop-color="#00051a"></stop>
-    </radialGradient>
-    <!-- Middle ring gradient -->
-    <radialGradient id="midGrad" cx="50%" cy="50%" r="40%">
-      <stop offset="0%" stop-color="#032b6b"></stop>
-      <stop offset="100%" stop-color="#001f4f"></stop>
-    </radialGradient>
-    <!-- Bubble gradient -->
-    <radialGradient id="bubbleGrad" cx="50%" cy="30%" r="60%">
-      <stop offset="0%" stop-color="#5cffff"></stop>
-      <stop offset="100%" stop-color="#1de6f0"></stop>
-    </radialGradient>
-  </defs>
+<!-- public/images/testimonials/testimonial-icon.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Testimonial">
+  <!-- Outer soft glow ring -->
+  <circle cx="32" cy="32" r="30" fill="#0EA5E9" opacity="0.18" />
+  <circle cx="32" cy="32" r="24" fill="#0EA5E9" opacity="0.14" />
 
-  <!-- Outer circle -->
-  <circle cx="100" cy="100" r="98" fill="url(#outerGrad)"></circle>
+  <!-- Chat bubble -->
+  <path
+    d="M20 24c0-3.314 2.686-6 6-6h12c6.627 0 12 5.373 12 12s-5.373 12-12 12H30l-6.4 4.2c-.9.59-2.1-.14-2.1-1.22V42c-1.0-.9-1.5-2.1-1.5-3.5V24z"
+    fill="#22D3EE"
+  />
 
-  <!-- Middle circle -->
-  <circle cx="100" cy="100" r="78" fill="url(#midGrad)"></circle>
-
-  <!-- Bubble -->
-  <g fill="url(#bubbleGrad)" filter="url(#blur)">
-    <!-- Main pill -->
-    <rect x="50" y="60" width="100" height="60" rx="30" ry="30"></rect>
-    <!-- Tail -->
-    <path d="M110,120 L100,140 L120,120 Z"></path>
-  </g>
+  <!-- Bubble highlight -->
+  <path
+    d="M26 23.5c0-1.1.9-2 2-2h10c.8 0 1.5.1 2.2.3"
+    fill="none"
+    stroke="#E0F2FE"
+    stroke-width="3"
+    stroke-linecap="round"
+    opacity="0.7"
+  />
 </svg>
+
