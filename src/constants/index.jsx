@@ -6,7 +6,7 @@ export const services = [
     icon: "/images/feature-1.png",
     caption: "Smart. Stylish. Scalable.",
     title: "Custom Website Development",
-    text: "We build clean, responsive websites tailored to your brand. Every site is optimized for mobile, speed, and usability. Perfect for small businesses, nonprofits, and schools.",
+    text: "We build clean, responsive websites tailored to your brand. Every site is optimized for mobile, speed, and usability. Ideal for small businesses, nonprofits, and mission driven organizations.",
     button: {
       icon: "/images/magictouch.svg",
       title: "View Web Projects",
