@@ -15,10 +15,10 @@ const Hero = () => {
               Technology That Actually Gets Used
             </h1>
             <p className="max-w-440 mb-3 body-1 text-p3 font-medium">
-              Serving nonprofits and small businesses across Detroit and beyond.
+              Based in Detroit. Built for organizations that mean business.
             </p>
             <p className="max-w-440 mb-14 body-1 max-md:mb-10 text-p5">
-              Ella Tech Solutions helps mission-driven organizations implement websites, CRMs, AI workflows, LMS platforms, and HRIS systems that your staff will actually adopt. No hype. No tools that sit unused. Just practical technology strategy from someone who has built systems inside the organizations you serve.
+              Ella Tech Solutions helps businesses, nonprofits, and community organizations implement websites, CRMs, AI workflows, LMS platforms, and HRIS systems that your staff will actually adopt. No hype. No tools that sit unused. Just practical technology strategy from someone who has built systems inside the organizations you serve.
             </p>
             <LinkScroll to="contact" offset={-100} spy smooth>
               <Button icon="/images/zap.svg">Book a Consultation</Button>
