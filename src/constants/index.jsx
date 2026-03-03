@@ -4,25 +4,25 @@ export const services = [
   {
     id: "0",
     icon: "/images/feature-1.png",
-    caption: "Smart. Stylish. Scalable.",
-    title: "Custom Website Development",
-    text: "We build clean, responsive websites tailored to your brand. Every site is optimized for mobile, speed, and usability. Ideal for small businesses, nonprofits, and mission driven organizations.",
+    caption: "Built for mission-driven organizations.",
+    title: "Website Creation & CRM Strategy",
+    text: "We build clean, responsive websites and implement CRM (Customer Relationship Management) systems designed for how nonprofits and small businesses actually operate. No generic templates. No tools your team will ignore.",
     button: {
       icon: "/images/magictouch.svg",
       title: "View Web Projects",
-      path: "/web-projects"
+      path: "/web-projects",
     },
   },
   {
     id: "1",
     icon: "/images/feature-2.png",
-    caption: "Simplify. Automate. Grow.",
-    title: "Technology Consulting & Training",
-    text: "We help you choose and use the right tech to save time and reduce hassle. From automation to AI tools, we streamline your systems. Ideal for teams ready to grow without the tech stress.",
+    caption: "Practical AI. Real implementation.",
+    title: "AI Workflows, LMS & Staff Training",
+    text: "We integrate AI tools, build learning systems, and train your staff so the technology actually gets used. From LMS (Learning Management System) builds to HRIS (Human Resources Information System) setup and micro-learning development, we handle the full implementation.",
     button: {
       icon: "/images/docs.svg",
       title: "See Tech Solutions",
-      path: "/tech-solutions"
+      path: "/tech-solutions",
     },
   },
 ];
@@ -31,22 +31,22 @@ export const details = [
   {
     id: "0",
     icon: "/images/detail-1.png",
-    title: "Digital Training & E-Learning Development",
+    title: "CRM Strategy & Implementation",
   },
   {
     id: "1",
     icon: "/images/detail-2.png",
-    title: "UI/UX Design & User Testing",
+    title: "HRIS Implementation",
   },
   {
     id: "2",
     icon: "/images/detail-3.png",
-    title: "AI Integration & Chatbot Deployment",
+    title: "LMS & Micro-Learning Development",
   },
   {
     id: "3",
     icon: "/images/detail-4.png",
-    title: "Website Performance Optimization",
+    title: "AI Workflow Integration & Literacy",
   },
 ];
 
@@ -55,199 +55,116 @@ export const faq = [
     id: "0",
     question: "How long does it take to build and launch a website?",
     answer:
-      "Most small business websites take about 4 to 6 weeks. The exact timeline depends on how many pages you need and how quickly we get your content and feedback. If you want a clear estimate for your project, book a consultation and we will map out a simple timeline.",
+      "Most small business and nonprofit websites take about 4 to 6 weeks. The exact timeline depends on how many pages you need and how quickly we get your content and feedback. Book a consultation and we will map out a clear timeline for your project.",
   },
   {
     id: "1",
-    question: "Can you connect my website to other tools I already use?",
+    question: "Do you offer nonprofit pricing?",
     answer:
-      "Yes. We can connect your website to tools like payment systems, email lists, scheduling, customer tracking, and more. The best next step is a consultation so we can confirm what you use now and what you want the website to do.",
+      "Yes. Ella Tech Solutions offers a mission-driven discount for verified 501(c)(3) nonprofits and community-based organizations with demonstrated community impact. This reflects our values alignment with mission-driven work and our commitment to making quality technology consulting accessible to organizations serving Detroit and similar communities. Book a consultation to discuss what your project would cost.",
   },
   {
     id: "2",
-    question: "What does tech consulting help with?",
+    question: "What does CRM implementation include?",
     answer:
-      "Tech consulting helps you save time and reduce stress with better tools and simpler systems. We look at how your work gets done, what is slowing you down, and recommend practical fixes. For details that match your situation, book a consultation and we will build a clear plan.",
+      "CRM stands for Customer Relationship Management — it is the system your organization uses to track donors, clients, volunteers, or contacts. We handle CRM selection, configuration, data migration, and staff training. We configure the system around how your organization actually works, not around how the software assumes you work. Most nonprofits we work with have bought CRMs that sit unused. We make sure that does not happen.",
   },
   {
     id: "3",
-    question: "Do you train people on the tools and systems you set up?",
+    question: "What is HRIS implementation and who needs it?",
     answer:
-      "Yes. We offer training for individuals and teams so people feel confident using the tools. Training can be live or self paced depending on your needs. Book a consultation and we will recommend the best format for your team.",
+      "HRIS stands for Human Resources Information System. It is the platform your organization uses to manage staff records, onboarding, time off, performance, and payroll in one place instead of scattered spreadsheets. If your HR team is still managing these things manually, an HRIS centralizes all of it. We handle system selection, setup, data migration, and staff training so your team can use it from day one.",
   },
   {
     id: "4",
-    question: "Will my website be easy for people to use?",
+    question: "What does LMS and micro-learning development mean?",
     answer:
-      "That is the goal. We design with real users in mind so the site is clear, simple, and works well on phones. If you have a specific audience or goal, book a consultation and we will plan the layout around what your visitors need.",
+      "LMS stands for Learning Management System — it is the platform your staff uses to complete training and track progress. Think of tools like Canvas, TalentLMS, or Absorb. Micro-learning is short, focused training content built for busy teams, usually 5 to 10 minutes per module. We select and implement the LMS, build the course content using Articulate or SCORM-compliant tools, and train your administrators so the system runs without outside help.",
   },
   {
     id: "5",
-    question: "Do you offer chatbots or AI features?",
+    question: "What does AI workflow integration actually look like?",
     answer:
-      "Yes, when it makes sense for your business. A chatbot can help answer common questions, route requests, and capture leads. The best way to know what is worth building is a consultation so we can match the tool to your needs and budget.",
+      "We start by identifying where your team spends time on repetitive tasks — email management, report generation, data entry, scheduling. Then we implement AI tools that handle those tasks automatically. We also run AI literacy training so your staff understands what the tools do and how to use them confidently. No hype. No tools your team will not touch.",
   },
   {
     id: "6",
-    question: "Do you offer ongoing support after the website goes live?",
+    question: "Do you train staff on the systems you set up?",
     answer:
-      "Yes. We offer ongoing support for updates, fixes, and keeping your website secure and running smoothly. If you want a support plan that fits your needs, book a consultation and we will walk you through options.",
+      "Yes. Every implementation includes training. We offer live sessions, self-paced video content, and quick reference guides depending on what works for your team. The goal is that your staff feels confident using the tools without needing to call us for every question.",
   },
   {
     id: "7",
-    question: "How much do your services cost?",
+    question: "What does a digital strategy consulting session include?",
     answer:
-      "Pricing depends on what you need. Some projects are a flat price and some work is hourly. The easiest way to get a clear number is to book a consultation so we can understand the scope and give you a quote.",
+      "A paid discovery session is a focused conversation where we review your current technology, identify gaps, and recommend a prioritized roadmap. There is no long-term commitment required. Book a consultation to learn more about what a session would cover for your organization.",
   },
   {
     id: "8",
-    question: "What if I need to pause or cancel a project?",
+    question: "How much do your services cost?",
     answer:
-      "You can pause or stop a project if your situation changes. Any billing is based on work already completed. If you want to understand how this works for your type of project, book a consultation and we will explain it clearly before you commit.",
+      "Pricing is scoped to your project, your organization type, and what you need. We offer mission-driven pricing for nonprofits and community-based organizations. The best way to get a clear number is to book a discovery session — we will scope the work and give you a straightforward quote.",
   },
   {
     id: "9",
     question: "How do I get started?",
     answer:
-      "Start by booking a consultation through the contact section. We will review what you need, recommend the best next steps, and follow up within one business day.",
+      "Book a consultation through the contact section. We will review what you need, recommend the best next steps, and follow up within one business day.",
   },
-];
-
-export const pricingServices = [
-  {
-    id: "website-creation",
-    title: "Website Creation",
-    price: "Flexible Pricing Tailored to Your Needs",
-    description:
-      "A streamlined website designed to highlight your services and make customer connection simple.",
-    details: [
-      "Fully responsive design for all devices",
-      "User friendly editing tools for quick updates",
-      "Customer contact form included",
-    ],
-  },
-  {
-    id: "tech-support",
-    title: "Technology Help & Support",
-    price: "Flexible Hourly and Monthly Plans",
-    description:
-      "Personalized tech assistance for your tools, workflow, and daily operations, along with time saving automations.",
-    details: [
-      "Automations that organize files, send reminders, or route emails automatically",
-      "Support and setup for email, calendars, cloud storage, and more",
-    ],
-  },
-  {
-    id: "technology-workshops",
-    title: "Technology Workshops",
-    price: "Customizable Training Sessions",
-    description:
-      "Hands-on training designed for non-tech teams—no jargon, just clear steps to get confident with your tools.",
-    details: [
-      "Learn simple ways to let technology handle routine work",
-      "Tips for smart scheduling, file management, and basic site edits",
-      "Practice with real examples to build your skills",
-    ],
-  },
-  {
-    id: "additional-services",
-    title: "Additional Services",
-    price: "Priced per project",
-    description:
-      "For work outside the core packages, we scope and quote based on complexity and impact.",
-    details: [
-      "Design Review & User Testing",
-      "AI Chat Assistant Setup",
-      "Site Speed & Performance Work",
-      "Content/CMS migrations",
-      "Custom integrations & automations",
-    ],
-  },
-];
-
-
-export const hourlyRates = [
-  { service: "Web Development", rate: "$65/hr" },
-  { service: "UI/UX Design & Usability Testing", rate: "$65/hr" },
-  { service: "Technology Consulting & Automation", rate: "$75/hr" },
-  { service: "Instructional Design & E-Learning Development", rate: "$60/hr" },
-  { service: "AI & Chatbot Integration", rate: "$90/hr" },
-  { service: "Website Performance & SEO Optimization", rate: "$50/hr" },
 ];
 
 export const plans = [
   {
-    id: "starter",
-    title: "Starter",
-    price: 500,
-    caption: "1-page mini site or 5 hrs consulting/training",
-    features: ["1-page mini site", "5 hrs consulting/training"],
-    logo: "/images/plan-starter.png",
+    id: "website-crm",
+    title: "Website & CRM Strategy",
+    description:
+      "A professional website and CRM (Customer Relationship Management) system built around how your organization actually works. Not a generic setup your team will stop using in 60 days.",
+    details: [
+      "Fully responsive design for all devices",
+      "CRM configured for your workflows and staff capacity",
+      "Contact forms, intake flows, and donor or client tracking",
+      "Mission-driven pricing available for nonprofits",
+    ],
   },
   {
-    id: "growth",
-    title: "Growth",
-    price: 1200,
-    caption: "3-page site or 15 hrs consulting/training",
-    features: ["3-page site", "15 hrs consulting/training"],
-    logo: "/images/plan-growth.png",
+    id: "ai-workflows",
+    title: "AI Workflow Integration",
+    description:
+      "Practical AI implementation without the hype. We identify where AI saves your team time and build workflows that actually get adopted.",
+    details: [
+      "AI literacy training for staff and leadership",
+      "Workflow automation using tools your team already has",
+      "No jargon. Clear, grounded implementation.",
+      "Mission-driven pricing available for nonprofits",
+    ],
   },
   {
-    id: "business",
-    title: "Business",
-    price: 2500,
-    caption: "5-page site or 35 hrs + support block",
-    features: ["5-page site", "35 hrs consulting", "Support block"],
-    logo: "/images/plan-business.png",
+    id: "lms-training",
+    title: "LMS & Staff Training",
+    description:
+      "An LMS (Learning Management System) and professional development built for lean teams. We design, build, and train so your staff can keep up without burning out.",
+    details: [
+      "LMS platform selection, setup, and content migration",
+      "Micro-learning modules built in Articulate or SCORM-compliant tools",
+      "HRIS (Human Resources Information System — HR records, onboarding, time off) implementation and integration",
+      "Mission-driven pricing available for nonprofits",
+    ],
   },
   {
-    id: "enterprise",
-    title: "Enterprise",
-    price: null,
-    caption: "Custom scope: web build, training, automation",
-    features: [],
-    logo: "/images/plan-enterprise.png",
+    id: "digital-strategy",
+    title: "Digital Strategy Consulting",
+    description:
+      "Not sure where to start? We help you build a technology roadmap that fits your budget, your team, and your mission.",
+    details: [
+      "Technology audit and gap analysis",
+      "Vendor selection and implementation planning",
+      "Flexible session formats for nonprofits and standard clients",
+      "No long-term commitment required to start",
+    ],
   },
 ];
-
-export const projectBased = [
-  { title: "Custom Website Dev (3–5 pages)", price: "$1,500+" },
-  { title: "E-Learning Course (Articulate/SCORM)", price: "$750/course" },
-  {
-    title: "Automation Workflow (Zapier, Power Automate)",
-    price: "$800/workflow",
-  },
-  { title: "UI/UX Audit & Wireframes", price: "$500/report" },
-  { title: "AI Chatbot (FAQ-style)", price: "$1,200+" },
-  { title: "Advanced NLP Chatbot", price: "$3,000+" },
-  { title: "SEO Audit + Fixes", price: "$300/audit + 5 fixes" },
-];
-
-export const workshops = [
-  { title: "Half-Day Workshop (≤4 hrs)", price: "$1,000 flat" },
-  { title: "Full-Day Workshop (≤8 hrs)", price: "$1,800 flat" },
-  { title: "Multi-Session (3×2-hr)", price: "$1,500 flat" },
-  { title: "Custom Series (per day)", price: "$1,600/day" },
-];
-
-export const addOns = [
-  { title: "Pre-training survey", price: "$150" },
-  { title: "Post-training report", price: "$200" },
-  { title: "Participant workbooks", price: "$15/person" },
-];
-
-export const discounts = [
-  { title: "Nonprofit/Education", detail: "10% off all rates" },
-  { title: "3-mo Retainer", detail: "15% off hourly rates" },
-];
-
-export const terms = {
-  deposit: "50% upfront, balance on delivery",
-  validity: "Valid for 30 days",
-};
 
 export const testimonials = [
-  // 0) Keep Kyle from HOMES
   {
     id: "0",
     name: "Kyle T.",
@@ -256,8 +173,6 @@ export const testimonials = [
     comment:
       "Ella Tech Solutions set up our first simple band website. Now friends and local fans can find our music and upcoming shows all in one place.",
   },
-
-  // 1) Detroit local — website + contact section integrated with Google Calendar → increased inquiries
   {
     id: "1",
     name: "Alicia M.",
@@ -266,18 +181,14 @@ export const testimonials = [
     comment:
       "They rebuilt our site and added a contact section that connects to Google Calendar. Parents can book sessions instantly, and inquiries have climbed steadily since launch.",
   },
-
-  // 2) Michigan (non-Detroit) — technology consulting
   {
     id: "2",
     name: "Evan P.",
     role: "Grand Rapids Retail Co., Grand Rapids, MI",
     avatarUrl: "/images/testimonials/testimonial-icon.svg",
     comment:
-      "Ella Tech’s consulting streamlined our tools and workflows: email, files, and automations finally work together. Less tech hassle, more time with customers.",
+      "Ella Tech's consulting streamlined our tools and workflows: email, files, and automations finally work together. Less tech hassle, more time with customers.",
   },
-
-  // 3) Out-of-state — AI training for staff (productivity/flow/outcomes)
   {
     id: "3",
     name: "Tanya S.",
@@ -289,149 +200,55 @@ export const testimonials = [
 ];
 
 export const logos = [
-  {
-    id: "0",
-    title: "Afterpay",
-    url: "/images/logos/afterpay.svg",
-    width: 156,
-    height: 48,
-  },
-  {
-    id: "1",
-    title: "Amplitude",
-    url: "/images/logos/amplitude.svg",
-    width: 194,
-    height: 48,
-  },
-  {
-    id: "2",
-    title: "Sonos",
-    url: "/images/logos/sonos.svg",
-    width: 115,
-    height: 48,
-  },
-  {
-    id: "3",
-    title: "Maze",
-    url: "/images/logos/maze.svg",
-    width: 142,
-    height: 48,
-  },
-  {
-    id: "4",
-    title: "Drips",
-    url: "/images/logos/drips.svg",
-    width: 77,
-    height: 48,
-  },
+  { id: "0", title: "Afterpay", url: "/images/logos/afterpay.svg", width: 156, height: 48 },
+  { id: "1", title: "Amplitude", url: "/images/logos/amplitude.svg", width: 194, height: 48 },
+  { id: "2", title: "Sonos", url: "/images/logos/sonos.svg", width: 115, height: 48 },
+  { id: "3", title: "Maze", url: "/images/logos/maze.svg", width: 142, height: 48 },
+  { id: "4", title: "Drips", url: "/images/logos/drips.svg", width: 77, height: 48 },
 ];
 
 export const Ios = () => {
   return (
-      <svg
-          width="32"
-          height="32"
-          viewBox="0 0 32 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* ... */}
-      </svg>
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* ... */}
+    </svg>
   );
 };
 
 export const Android = () => {
   return (
-      <svg
-          width="33"
-          height="32"
-          viewBox="0 0 33 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* ... */}
-      </svg>
+    <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* ... */}
+    </svg>
   );
 };
 
 export const Windows = () => {
   return (
-      <svg
-          width="33"
-          height="32"
-          viewBox="0 0 33 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* ... */}
-      </svg>
+    <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* ... */}
+    </svg>
   );
 };
 
 export const Web = () => {
   return (
-      <svg
-          width="33"
-          height="32"
-          viewBox="0 0 33 32"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-      >
-        {/* ... */}
-      </svg>
+    <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* ... */}
+    </svg>
   );
 };
 
 export const links = [
-  {
-    id: "0",
-    title: "Ios",
-    icon: <Ios />,
-    url: "#",
-  },
-  {
-    id: "1",
-    title: "Android",
-    icon: <Android />,
-    url: "#",
-  },
-  {
-    id: "2",
-    title: "Windows",
-    icon: <Windows />,
-    url: "#",
-  },
-  {
-    id: "3",
-    title: "Web",
-    icon: <Web />,
-    url: "#",
-  },
+  { id: "0", title: "Ios", icon: <Ios />, url: "#" },
+  { id: "1", title: "Android", icon: <Android />, url: "#" },
+  { id: "2", title: "Windows", icon: <Windows />, url: "#" },
+  { id: "3", title: "Web", icon: <Web />, url: "#" },
 ];
 
 export const socials = [
-  {
-    id: "0",
-    title: "x",
-    icon: "/images/socials/x.svg",
-    url: "#",
-  },
-  {
-    id: "1",
-    title: "Threads",
-    icon: "/images/socials/threads.svg",
-    url: "#",
-  },
-  {
-    id: "2",
-    title: "Instagram",
-    icon: "/images/socials/instagram.svg",
-    url: "https://www.instagram.com/ellatechdetroit/",
-  },
-  {
-    id: "3",
-    title: "Discord",
-    icon: "/images/socials/discord.svg",
-    url: "https://discord.gg/4tkGK7YE",
-  },
+  { id: "0", title: "x", icon: "/images/socials/x.svg", url: "#" },
+  { id: "1", title: "Threads", icon: "/images/socials/threads.svg", url: "#" },
+  { id: "2", title: "Instagram", icon: "/images/socials/instagram.svg", url: "https://www.instagram.com/ellatechdetroit/" },
+  { id: "3", title: "Discord", icon: "/images/socials/discord.svg", url: "https://discord.gg/4tkGK7YE" },
 ];

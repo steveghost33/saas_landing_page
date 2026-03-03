@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Element } from "react-scroll";
-import { pricingServices } from "../constants/index.jsx";
+import { plans } from "../constants/index.jsx";
 import Button from "../components/Button.jsx";
 
 function Plans() {
@@ -30,20 +30,23 @@ function Plans() {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="text-sm md:text-base text-p3 font-medium tracking-wide">
-              Flexible plans for small businesses and nonprofits.
+              Every engagement is scoped to your organization and your needs.
             </div>
             <h1 className="mt-2 font-bold text-p4 uppercase text-4xl md:text-5xl">
-              Ella Tech Solutions Plans
+              Our Services
             </h1>
+            <p className="mt-4 text-p5 max-w-2xl mx-auto body-1">
+              Every engagement is scoped to your needs. Mission-driven pricing available.
+            </p>
           </div>
 
           {/* Cards */}
-          <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-8 max-w-6xl mx-auto">
-            {pricingServices.map(({ id, title, price, description, details }) => {
+          <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-12 max-w-6xl mx-auto">
+            {plans.map(({ id, title, description, details }) => {
               const isExpanded = expandedIds.includes(id);
               const desktopHeightClass = isExpanded
-                ? "md:min-h-[550px]"
-                : "md:min-h-[430px]";
+                ? "md:min-h-[580px]"
+                : "md:min-h-[460px]";
 
               return (
                 <div
@@ -59,19 +62,15 @@ function Plans() {
                       ${desktopHeightClass}
                     `}
                   >
-                    <h3 className="text-p4 uppercase font-bold text-xl mb-2 tracking-wide">
+                    <h3 className="text-p4 uppercase font-bold text-xl mb-3 tracking-wide">
                       {title}
                     </h3>
-
-                    {price && (
-                      <p className="text-p3 font-medium mb-2">{price}</p>
-                    )}
 
                     <div className="mt-1 flex-1 pr-1">
                       <p className="text-p5">{description}</p>
 
                       {(isMobile || isExpanded) && details && (
-                        <ul className="mt-2 list-disc list-inside text-p5 space-y-1">
+                        <ul className="mt-4 list-disc list-inside text-p5 space-y-1">
                           {details.map((item, i) => (
                             <li key={i}>{item}</li>
                           ))}
@@ -98,12 +97,12 @@ function Plans() {
           {/* CTA */}
           <div className="text-center mb-4">
             <Button href="/#contact" containerClassName="inline-block mx-auto">
-              Schedule Consultation Now
+              Schedule a Consultation
             </Button>
           </div>
 
-          <p className="text-center text-p5">
-            For custom or complex projects, let’s chat about your needs.
+          <p className="text-center text-p5 mt-4">
+            Not sure which service fits your needs? We will figure it out together.
           </p>
         </div>
       </section>
