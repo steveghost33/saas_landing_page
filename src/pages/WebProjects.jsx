@@ -65,8 +65,8 @@ function WebProjects() {
       title: "Team Cabin",
       img: "/images/projects/teamcabin.png",
       desc:
-        "A clean, modern website for a collaborative team retreat and community brand. Designed to communicate culture, connection, and experience.",
-      tags: ["Web Design", "Branding", "React"],
+        "A website for an indie music band built with visitor engagement at the center. Features an interactive game so fans can connect with the brand beyond just listening.",
+      tags: ["Web Design", "Music", "Interactive"],
       link: "https://weareteamcabin.com",
       internal: false,
     },
@@ -151,7 +151,7 @@ function WebProjects() {
           {/* Project Cards */}
           <div className="container mb-20">
             <h2 className="h3 text-p4 mb-10 text-center">Recent Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {projects.map((proj, idx) => (
                 <div
                   key={idx}
