@@ -211,16 +211,16 @@ function TechSolutions() {
               <div className="max-w-2xl">
                 <h2 className="h3 text-p4 mb-4">Digital Strategy Consulting</h2>
                 <p className="body-1 text-p5 mb-6">
-                  Not sure where to start? A paid discovery session gives you a technology audit, a clear picture of your gaps, and a prioritized roadmap. No commitment beyond the session. Nonprofit sessions start at $100.
+                  Not sure where to start? Book a free 30-minute consultation and we will give you a clear picture of your technology gaps and the best next steps. No commitment required.
                 </p>
                 <ul className="list-disc pl-5 space-y-2 body-3 text-p5 mb-8">
                   <li>Technology audit and gap analysis</li>
                   <li>Vendor selection and implementation planning</li>
-                  <li>Flexible session formats for nonprofits and standard clients</li>
+                  <li>Flexible options for nonprofits and standard clients</li>
                   <li>No long-term commitment required to start</li>
                 </ul>
                 <Button href="/#contact" containerClassName="inline-block">
-                  Book a Discovery Session
+                  Book a Free Consultation
                 </Button>
               </div>
             </div>
