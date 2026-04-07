@@ -61,6 +61,15 @@ function WebProjects() {
       link: "https://peak-form-fitness.vercel.app",
       internal: false,
     },
+    {
+      title: "Team Cabin",
+      img: "/images/projects/teamcabin.png",
+      desc:
+        "A clean, modern website for a collaborative team retreat and community brand. Designed to communicate culture, connection, and experience.",
+      tags: ["Web Design", "Branding", "React"],
+      link: "https://weareteamcabin.com",
+      internal: false,
+    },
   ];
 
   const capabilities = [
