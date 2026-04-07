@@ -2,8 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/x-icon" href="/laptop.ico" />
+    <link rel="apple-touch-icon" href="/laptop.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0a14" />
+    <meta name="robots" content="index, follow" />
 
     <!-- Primary SEO -->
     <title>Ella Tech Solutions | Nonprofit Technology Consulting Detroit</title>
@@ -33,6 +36,9 @@
       property="og:image"
       content="https://www.ellatechsolutions.com/images/og-image.jpg"
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ella Tech Solutions — Nonprofit Technology Consulting Detroit" />
     <meta property="og:site_name" content="Ella Tech Solutions" />
     <meta property="og:locale" content="en_US" />
 
@@ -55,6 +61,26 @@
     <meta name="geo.region" content="US-MI" />
     <meta name="geo.placename" content="Detroit, Michigan" />
 
+    <!-- Schema.org WebSite with SearchAction -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Ella Tech Solutions",
+        "url": "https://www.ellatechsolutions.com",
+        "description": "Nonprofit technology consulting firm based in Detroit. Websites, CRMs, AI workflows, LMS, and HRIS implementation for mission-driven organizations.",
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.ellatechsolutions.com/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
     <!-- Schema.org Local Business structured data -->
     <script type="application/ld+json">
       {
@@ -63,6 +89,12 @@
         "name": "Ella Tech Solutions",
         "description": "Technology consulting firm helping nonprofits and small businesses implement websites, CRMs, AI workflows, LMS platforms, and HRIS systems.",
         "url": "https://www.ellatechsolutions.com",
+        "logo": "https://www.ellatechsolutions.com/images/og-image.jpg",
+        "image": "https://www.ellatechsolutions.com/images/og-image.jpg",
+        "sameAs": [
+          "https://www.instagram.com/ellatechdetroit/",
+          "https://discord.gg/4tkGK7YE"
+        ],
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Detroit",
@@ -86,7 +118,17 @@
         "founder": {
           "@type": "Person",
           "name": "Steven Bowman"
-        }
+        },
+        "priceRange": "$$",
+        "knowsAbout": [
+          "Nonprofit Technology",
+          "CRM Implementation",
+          "AI Workflow Automation",
+          "Learning Management Systems",
+          "HRIS Implementation",
+          "Staff Technology Training",
+          "Detroit Nonprofits"
+        ]
       }
     </script>
   </head>

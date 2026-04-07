@@ -5,6 +5,30 @@ import ContactBanner from "../sections/ContactBanner.jsx";
 import Button from "../components/Button.jsx";
 import Chatbot from "../sections/Chatbot.jsx";
 import Footer from "../sections/Footer.jsx";
+import PageSEO from "../components/PageSEO.jsx";
+
+const webProjectsSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Website Creation & CRM Strategy",
+  serviceType: "Website Design and CRM Implementation",
+  description:
+    "Custom websites and CRM systems built for nonprofits, small businesses, and mission-driven organizations in Detroit and beyond.",
+  provider: {
+    "@type": "LocalBusiness",
+    name: "Ella Tech Solutions",
+    url: "https://www.ellatechsolutions.com",
+  },
+  areaServed: ["Detroit, MI", "Metro Detroit", "Michigan"],
+  url: "https://www.ellatechsolutions.com/web-projects",
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ellatechsolutions.com/" },
+      { "@type": "ListItem", position: 2, name: "Web Projects", item: "https://www.ellatechsolutions.com/web-projects" },
+    ],
+  },
+};
 
 function WebProjects() {
   const { hash } = useLocation();
@@ -60,6 +84,12 @@ function WebProjects() {
 
   return (
     <div className="min-h-screen bg-s1">
+      <PageSEO
+        title="Web Projects | Ella Tech Solutions — Detroit Nonprofit Websites"
+        description="Custom websites built for nonprofits, small businesses, and mission-driven organizations in Detroit. Responsive, fast, and built around your audience and mission."
+        canonical="https://www.ellatechsolutions.com/web-projects"
+        schema={webProjectsSchema}
+      />
       <div className="fixed top-0 left-0 w-full z-50">
         <Header />
         <ContactBanner />

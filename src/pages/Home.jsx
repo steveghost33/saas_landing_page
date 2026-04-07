@@ -9,6 +9,21 @@ import Faq from "../sections/Faq.jsx";
 import Contact from "../sections/Contact.jsx";
 import Chatbot from "../sections/Chatbot.jsx";
 import Footer from "../sections/Footer.jsx";
+import PageSEO from "../components/PageSEO.jsx";
+import { faq } from "../constants/index.jsx";
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faq.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer,
+    },
+  })),
+};
 
 function Home() {
   const { hash } = useLocation();
@@ -22,6 +37,12 @@ function Home() {
 
   return (
     <>
+      <PageSEO
+        title="Ella Tech Solutions | Nonprofit Technology Consulting Detroit"
+        description="Ella Tech Solutions helps Detroit nonprofits and small businesses implement websites, CRMs, AI workflows, LMS platforms, and HRIS systems. Practical technology consulting from Detroit."
+        canonical="https://www.ellatechsolutions.com/"
+        schema={faqSchema}
+      />
       <div className="fixed top-0 left-0 w-full z-50">
         <Header />
         <ContactBanner />

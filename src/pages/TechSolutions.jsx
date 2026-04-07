@@ -5,6 +5,41 @@ import ContactBanner from "../sections/ContactBanner.jsx";
 import Button from "../components/Button.jsx";
 import Chatbot from "../sections/Chatbot.jsx";
 import Footer from "../sections/Footer.jsx";
+import PageSEO from "../components/PageSEO.jsx";
+
+const techSolutionsSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Tech Solutions & Staff Training",
+  serviceType: "Technology Consulting and Staff Training",
+  description:
+    "CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits and mission-driven organizations in Detroit.",
+  provider: {
+    "@type": "LocalBusiness",
+    name: "Ella Tech Solutions",
+    url: "https://www.ellatechsolutions.com",
+  },
+  areaServed: ["Detroit, MI", "Metro Detroit", "Michigan"],
+  url: "https://www.ellatechsolutions.com/tech-solutions",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Technology Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "CRM Strategy & Implementation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "HRIS Implementation" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Workflow Integration & Literacy" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "LMS & Micro-Learning Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Staff Technology Training & Professional Development" } },
+    ],
+  },
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ellatechsolutions.com/" },
+      { "@type": "ListItem", position: 2, name: "Tech Solutions", item: "https://www.ellatechsolutions.com/tech-solutions" },
+    ],
+  },
+};
 
 const services = [
   {
@@ -98,6 +133,12 @@ function TechSolutions() {
 
   return (
     <div className="min-h-screen bg-s1">
+      <PageSEO
+        title="Tech Solutions & Training | Ella Tech Solutions — CRM, AI, LMS, HRIS Detroit"
+        description="CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits in Detroit. Practical tech consulting that gets adopted, not just installed."
+        canonical="https://www.ellatechsolutions.com/tech-solutions"
+        schema={techSolutionsSchema}
+      />
       <div className="fixed top-0 left-0 w-full z-50">
         <Header />
         <ContactBanner />
