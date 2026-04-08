@@ -91,7 +91,7 @@ const Header = () => {
             className="lg:hidden flex-1 cursor-pointer z-2"
             onClick={handleLogoClick}
           >
-            <img src="/images/ellalogo.svg" width={900} height={300} alt="logo" />
+            <img src="/images/ellalogo.svg" alt="logo" className="w-56 h-auto" />
           </Link>
         )}
 
