@@ -3,7 +3,7 @@ import { socials } from "../constants/index.jsx";
 const Footer = () => {
   return (
     <footer>
-      <div className="container py-10">
+      <div className="container py-10 lg:pb-10 pb-24">
         <div className="flex w-full flex-col items-center gap-6 lg:flex-row lg:gap-4">
           {/* Copyright */}
           <div className="small-compact flex items-center justify-center lg:flex-1 lg:justify-start">
