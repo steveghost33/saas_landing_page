@@ -10,6 +10,7 @@ import Contact from "../sections/Contact.jsx";
 import Chatbot from "../sections/Chatbot.jsx";
 import Footer from "../sections/Footer.jsx";
 import PageSEO from "../components/PageSEO.jsx";
+import MobileBookingBar from "../components/MobileBookingBar.jsx";
 import { faq } from "../constants/index.jsx";
 
 const faqSchema = {
@@ -60,6 +61,7 @@ function Home() {
         <Chatbot />
         <Footer />
       </main>
+      <MobileBookingBar />
     </>
   );
 }
