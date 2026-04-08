@@ -91,7 +91,7 @@ const Header = () => {
             className="xl:hidden flex-1 cursor-pointer z-2"
             onClick={handleLogoClick}
           >
-            <img src="/images/ellalogo.svg" alt="logo" className="w-64 h-auto" />
+            <img src="/images/ellalogo.svg" alt="logo" className="w-full h-auto" />
           </Link>
         )}
 
@@ -159,7 +159,7 @@ const Header = () => {
                     className="max-xl:hidden transition-transform duration-500 cursor-pointer"
                     onClick={handleLogoClick}
                   >
-                    <img src="/images/ellalogo.svg" alt="logo" className="w-[360px] h-auto" />
+                    <img src="/images/ellalogo.svg" alt="logo" className="w-full h-auto" />
                   </Link>
                 </li>
 
