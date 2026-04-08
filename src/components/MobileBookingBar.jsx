@@ -1,15 +1,7 @@
 import { useState, useEffect } from "react";
 
 const MobileBookingBar = () => {
-  const [visible, setVisible] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  // Show bar after scrolling past the hero CTA (~400px)
-  useEffect(() => {
-    const handleScroll = () => setVisible(window.scrollY > 400);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   // Hide bar when mobile nav menu is open
   useEffect(() => {
@@ -21,11 +13,7 @@ const MobileBookingBar = () => {
   if (menuOpen) return null;
 
   return (
-    <div
-      className={`lg:hidden fixed bottom-0 left-0 right-0 z-[90] transition-transform duration-300 ${
-        visible ? "translate-y-0" : "translate-y-full"
-      }`}
-    >
+    <div className="lg:hidden fixed bottom-0 left-0 right-0 z-[90]">
       <div className="bg-black-100/95 backdrop-blur-sm border-t border-s2 px-4 py-3">
         <a
           href="/#contact"
