@@ -38,7 +38,7 @@ const Header = () => {
     <a
       href={`/#${title}`}
       onClick={() => setIsOpen(false)}
-      className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1 max-lg:my-4 max-lg:h5"
+      className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1 max-xl:my-4 max-xl:h5"
     >
       {title.charAt(0).toUpperCase() + title.slice(1)}
     </a>
@@ -52,12 +52,12 @@ const Header = () => {
   return (
     <header
       className={clsx(
-        "w-full py-10 transition-all duration-500 max-lg:py-4",
+        "w-full py-10 transition-all duration-500 max-xl:py-4",
         hasScrolled && "py-2 bg-black-100 backdrop-blur-[8px]"
       )}
     >
       {/* Top Bar Desktop Only */}
-      <div className="container flex justify-between items-center mb-4 max-lg:hidden">
+      <div className="container flex justify-between items-center mb-4 max-xl:hidden">
         {/* DESKTOP Book Us Now Button */}
         <a
           href="/#contact"
@@ -83,30 +83,30 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="container flex h-14 items-center max-lg:px-5">
+      <div className="container flex h-14 items-center max-xl:px-5">
         {/* Mobile logo only when menu closed */}
         {!isOpen && (
           <Link
             to="/"
-            className="lg:hidden flex-1 cursor-pointer z-2"
+            className="xl:hidden flex-1 cursor-pointer z-2"
             onClick={handleLogoClick}
           >
-            <img src="/images/ellalogo.svg" alt="logo" className="w-56 h-auto" />
+            <img src="/images/ellalogo.svg" alt="logo" className="w-72 h-auto" />
           </Link>
         )}
 
         {/* Mobile Menu Overlay */}
         <div
           className={clsx(
-            "w-full max-lg:fixed max-lg:top-0 max-lg:left-0 max-lg:w-full max-lg:h-screen max-lg:bg-s2 max-lg:opacity-0 max-lg:z-[100]",
-            isOpen ? "max-lg:opacity-100" : "max-lg:pointer-events-none"
+            "w-full max-xl:fixed max-xl:top-0 max-xl:left-0 max-xl:w-full max-xl:h-screen max-xl:bg-s2 max-xl:opacity-0 max-xl:z-[100]",
+            isOpen ? "max-xl:opacity-100" : "max-xl:pointer-events-none"
           )}
         >
-          <div className="max-lg:relative max-lg:flex max-lg:flex-col max-lg:min-h-screen max-lg:p-6 max-lg:pt-20 max-lg:overflow-hidden sidebar-before max-md:px-4">
+          <div className="max-xl:relative max-xl:flex max-xl:flex-col max-xl:min-h-screen max-xl:p-6 max-xl:pt-20 max-xl:overflow-hidden sidebar-before max-md:px-4">
             {/* Mobile Logo in Menu */}
             <Link
               to="/"
-              className="lg:hidden flex justify-center cursor-pointer z-2"
+              className="xl:hidden flex justify-center cursor-pointer z-2"
               onClick={handleLogoClick}
             >
               <img
@@ -117,7 +117,7 @@ const Header = () => {
             </Link>
 
             {/* Mobile Social Media Links */}
-            <ul className="lg:hidden flex justify-center gap-4 mt-10">
+            <ul className="xl:hidden flex justify-center gap-4 mt-10">
               {socials.map(({ id, url, icon, title }) => (
                 <li key={id}>
                   <a
@@ -133,7 +133,7 @@ const Header = () => {
             </ul>
 
             {/* Mobile Book Us Now Button */}
-            <div className="lg:hidden flex justify-center mt-8 mb-10">
+            <div className="xl:hidden flex justify-center mt-8 mb-10">
               <a
                 href="/#contact"
                 onClick={() => setIsOpen(false)}
@@ -145,8 +145,8 @@ const Header = () => {
             </div>
 
             {/* Navigation Links */}
-            <nav className="max-lg:relative max-lg:z-2 max-lg:flex-1 max-lg:flex max-lg:items-center">
-              <ul className="flex max-lg:block max-lg:px-12">
+            <nav className="max-xl:relative max-xl:z-2 max-xl:flex-1 max-xl:flex max-xl:items-center">
+              <ul className="flex max-xl:block max-xl:px-12">
                 <li className="nav-li">
                   <NavLink title="services" />
                   <div className="dot" />
@@ -156,7 +156,7 @@ const Header = () => {
                 <li className="nav-logo">
                   <Link
                     to="/"
-                    className="max-lg:hidden transition-transform duration-500 cursor-pointer"
+                    className="max-xl:hidden transition-transform duration-500 cursor-pointer"
                     onClick={handleLogoClick}
                   >
                     <img src="/images/ellalogo.svg" width={950} height={950} alt="logo" />
@@ -173,9 +173,9 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Toggle Button */}
+        {/* Menu Toggle Button */}
         <button
-          className="lg:hidden z-[110] flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200"
+          className="xl:hidden z-[110] flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200"
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
         >
