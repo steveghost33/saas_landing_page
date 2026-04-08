@@ -175,15 +175,22 @@ const Header = () => {
 
         {/* Mobile Menu Toggle Button */}
         <button
-          className="lg:hidden z-[110] size-10 border-2 border-s4/25 rounded-full flex justify-center items-center"
+          className="lg:hidden z-[110] flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200"
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
         >
-          <img
-            src={`/images/${isOpen ? "close" : "magic"}.svg`}
-            alt="toggle menu"
-            className="size-1/2 object-contain"
-          />
+          {isOpen ? (
+            <img src="/images/close.svg" alt="close" className="w-4 h-4 object-contain" />
+          ) : (
+            <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="16" height="2" rx="1" fill="#2EF2FF"/>
+              <rect y="5" width="16" height="2" rx="1" fill="#2EF2FF"/>
+              <rect y="10" width="16" height="2" rx="1" fill="#2EF2FF"/>
+            </svg>
+          )}
+          <span className="text-xs font-bold uppercase tracking-widest text-p1">
+            {isOpen ? "Close" : "Menu"}
+          </span>
         </button>
       </div>
     </header>
