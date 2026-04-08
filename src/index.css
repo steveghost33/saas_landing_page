@@ -165,7 +165,7 @@
 
   .nav-logo {
     @apply relative flex items-center justify-center;
-    flex: 0 0 420px;
+    flex: 0 0 580px;
   }
 
   .dot {

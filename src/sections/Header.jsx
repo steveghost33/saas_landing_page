@@ -83,7 +83,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="container flex h-14 items-center max-xl:px-5">
+      <div className="container flex items-center max-xl:px-5 max-xl:py-3">
         {/* Mobile logo only when menu closed */}
         {!isOpen && (
           <Link
@@ -91,7 +91,7 @@ const Header = () => {
             className="xl:hidden flex-1 cursor-pointer z-2"
             onClick={handleLogoClick}
           >
-            <img src="/images/ellalogo.svg" alt="logo" className="w-[85vw] max-w-sm h-auto" />
+            <img src="/images/ellalogo.svg" alt="logo" className="w-full h-auto" />
           </Link>
         )}
 
@@ -159,7 +159,7 @@ const Header = () => {
                     className="max-xl:hidden transition-transform duration-500 cursor-pointer"
                     onClick={handleLogoClick}
                   >
-                    <img src="/images/ellalogo.svg" alt="logo" className="w-[400px] h-auto" />
+                    <img src="/images/ellalogo.svg" alt="logo" className="w-[560px] h-auto" />
                   </Link>
                 </li>
 
