@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import Header from "../sections/Header.jsx";
 import ContactBanner from "../sections/ContactBanner.jsx";
 import Chatbot from "../sections/Chatbot.jsx";
@@ -19,6 +20,9 @@ function Legal() {
 
   return (
     <div className="min-h-screen bg-s1">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
       <div className="fixed top-0 left-0 w-full z-50">
         <Header />
         <ContactBanner />
