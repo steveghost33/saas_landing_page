@@ -83,12 +83,12 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="container flex items-center max-xl:px-5 max-xl:py-3">
+      <div className="container flex items-center max-xl:flex-wrap max-xl:px-5 max-xl:py-3">
         {/* Mobile logo only when menu closed */}
         {!isOpen && (
           <Link
             to="/"
-            className="xl:hidden flex-1 cursor-pointer z-2"
+            className="xl:hidden w-full cursor-pointer z-2 max-xl:mb-2"
             onClick={handleLogoClick}
           >
             <img src="/images/ellalogo.svg" alt="logo" className="w-full h-auto" />
@@ -175,7 +175,7 @@ const Header = () => {
 
         {/* Menu Toggle Button */}
         <button
-          className="xl:hidden z-[110] flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200"
+          className="xl:hidden z-[110] flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200 max-xl:ml-auto"
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
         >
