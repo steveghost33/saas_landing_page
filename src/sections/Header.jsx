@@ -52,7 +52,7 @@ const Header = () => {
   return (
     <header
       className={clsx(
-        "w-full py-10 transition-all duration-500 max-xl:py-4",
+        "w-full py-10 transition-all duration-500 max-xl:py-4 max-xl:overflow-x-hidden",
         hasScrolled && "py-2 bg-black-100 backdrop-blur-[8px]"
       )}
     >
@@ -88,7 +88,7 @@ const Header = () => {
         {!isOpen && (
           <Link
             to="/"
-            className="xl:hidden w-full cursor-pointer z-2 max-xl:order-2 max-xl:mt-2"
+            className="xl:hidden cursor-pointer z-2 max-xl:order-2 max-xl:mt-2 max-xl:w-screen max-xl:-ml-5"
             onClick={handleLogoClick}
           >
             <img src="/images/ellalogo.svg" alt="logo" className="w-full h-auto" />
