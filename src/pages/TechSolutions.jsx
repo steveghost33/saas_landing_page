@@ -13,7 +13,7 @@ const techSolutionsSchema = {
   name: "Tech Solutions & Staff Training",
   serviceType: "Technology Consulting and Staff Training",
   description:
-    "CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits and mission-driven organizations in Detroit.",
+    "CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits, small businesses, and entrepreneurs in Detroit.",
   provider: {
     "@type": "LocalBusiness",
     name: "Ella Tech Solutions",
@@ -135,7 +135,7 @@ function TechSolutions() {
     <div className="min-h-screen bg-s1">
       <PageSEO
         title="Tech Solutions & Training | Ella Tech Solutions — CRM, AI, LMS, HRIS Detroit"
-        description="CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits in Detroit. Practical tech consulting that gets adopted, not just installed."
+        description="CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits, small businesses, and entrepreneurs in Detroit. Practical tech consulting that gets adopted, not just installed."
         canonical="https://www.ellatechsolutions.com/tech-solutions"
         schema={techSolutionsSchema}
       />

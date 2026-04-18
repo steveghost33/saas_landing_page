@@ -39,8 +39,8 @@ function Home() {
   return (
     <>
       <PageSEO
-        title="Ella Tech Solutions | Nonprofit Technology Consulting Detroit"
-        description="Ella Tech Solutions helps Detroit nonprofits and small businesses implement websites, CRMs, AI workflows, LMS platforms, and HRIS systems. Practical technology consulting from Detroit."
+        title="Ella Tech Solutions | Technology Consulting Detroit — Nonprofits, Businesses &amp; Entrepreneurs"
+        description="Ella Tech Solutions helps Detroit nonprofits, small businesses, and entrepreneurs implement websites, CRMs, AI workflows, LMS platforms, and HRIS systems. Practical technology consulting from Detroit."
         canonical="https://www.ellatechsolutions.com/"
         schema={faqSchema}
       />
