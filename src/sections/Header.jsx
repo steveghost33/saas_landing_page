@@ -104,7 +104,7 @@ const Header = () => {
             className="xl:hidden cursor-pointer z-2 max-xl:order-2 max-xl:mt-2 max-xl:w-screen max-xl:-ml-5"
             onClick={handleLogoClick}
           >
-            <img src="/images/ellalogo.svg" alt="logo" className="w-full h-auto" />
+            <img src="/images/ellalogo.svg" alt="Ella Tech Solutions" className="w-full h-auto" />
           </Link>
         )}
 
@@ -124,7 +124,7 @@ const Header = () => {
             >
               <img
                 src="/images/ellalogo.svg"
-                alt="logo"
+                alt="Ella Tech Solutions"
                 className="w-[320px] max-w-[88vw] h-auto"
               />
             </Link>
@@ -172,7 +172,7 @@ const Header = () => {
                     className="max-xl:hidden transition-transform duration-500 cursor-pointer"
                     onClick={handleLogoClick}
                   >
-                    <img src="/images/ellalogo.svg" alt="logo" className="w-full h-auto" />
+                    <img src="/images/ellalogo.svg" alt="Ella Tech Solutions" className="w-full h-auto" />
                   </Link>
                 </li>
 
