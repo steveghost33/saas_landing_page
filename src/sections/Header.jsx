@@ -1,13 +1,14 @@
 // src/sections/Header.jsx
 
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { socials } from "../constants/index.jsx";
 
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const firstNavLinkRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setHasScrolled(window.scrollY > 32);
@@ -34,8 +35,16 @@ const Header = () => {
     );
   }, [isOpen]);
 
-  const NavLink = ({ title }) => (
+  // Move focus to first nav link when mobile menu opens
+  useEffect(() => {
+    if (isOpen && firstNavLinkRef.current) {
+      firstNavLinkRef.current.focus();
+    }
+  }, [isOpen]);
+
+  const NavLink = ({ title, firstLink }) => (
     <a
+      ref={firstLink ? firstNavLinkRef : null}
       href={`/#${title}`}
       onClick={() => setIsOpen(false)}
       className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1 max-xl:my-4 max-xl:h5"
@@ -50,6 +59,10 @@ const Header = () => {
   };
 
   return (
+    <>
+    <a href="#main-content" className="sr-only">
+      Skip to main content
+    </a>
     <header
       className={clsx(
         "w-full py-10 transition-all duration-500 max-xl:py-4 max-xl:overflow-x-hidden",
@@ -145,10 +158,10 @@ const Header = () => {
             </div>
 
             {/* Navigation Links */}
-            <nav className="max-xl:relative max-xl:z-2 max-xl:flex-1 max-xl:flex max-xl:items-center">
+            <nav id="mobile-nav" className="max-xl:relative max-xl:z-2 max-xl:flex-1 max-xl:flex max-xl:items-center">
               <ul className="flex max-xl:block max-xl:px-12">
                 <li className="nav-li">
-                  <NavLink title="services" />
+                  <NavLink title="services" firstLink={true} />
                   <div className="dot" />
                   <NavLink title="plans" />
                 </li>
@@ -178,6 +191,8 @@ const Header = () => {
           className="xl:hidden z-[110] flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200 max-xl:ml-auto max-xl:order-1"
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav"
         >
           {isOpen ? (
             <img src="/images/close.svg" alt="close" className="w-4 h-4 object-contain" />
@@ -194,6 +209,7 @@ const Header = () => {
         </button>
       </div>
     </header>
+    </>
   );
 };
 

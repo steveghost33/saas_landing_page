@@ -8,11 +8,14 @@ function FaqItem({ item, index }) {
 
   return (
     <div className="relative z-2 mb-16">
-      <div
-        className="group relative flex cursor-pointer items-center justify-between gap-10 px-7 py-5"
+      <button
+        type="button"
+        className="group relative flex w-full cursor-pointer items-center justify-between gap-10 px-7 py-5 text-left"
         onClick={() => {
           setActiveId(active ? null : item.id);
         }}
+        aria-expanded={active}
+        aria-controls={`faq-answer-${item.id}`}
       >
         <div className="flex-1">
           <div className="small-compact mb-1.5 text-p3 max-lg:hidden">
@@ -23,6 +26,7 @@ function FaqItem({ item, index }) {
         </div>
 
         <div
+          aria-hidden="true"
           className={clsx(
             "flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300",
             active
@@ -32,10 +36,12 @@ function FaqItem({ item, index }) {
         >
           +
         </div>
-      </div>
+      </button>
 
       {/* COLLAPSIBLE CONTENT */}
       <div
+        id={`faq-answer-${item.id}`}
+        role="region"
         className={clsx(
           "overflow-hidden transition-all duration-300 ease-in-out",
           active ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"

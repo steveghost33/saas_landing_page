@@ -50,6 +50,7 @@ function Home() {
       </div>
 
       <main
+        id="main-content"
         className="overflow-hidden"
         style={{ paddingTop: "140px" }} // adjust if header + banner height changes
       >

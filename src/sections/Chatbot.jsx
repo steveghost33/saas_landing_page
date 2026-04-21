@@ -689,6 +689,9 @@ const Chatbot = () => {
 
           <div
             className="chatbot-body"
+            role="log"
+            aria-live="polite"
+            aria-label="Chat messages"
             style={{
               flex: 1,
               overflowY: "auto",
@@ -731,7 +734,11 @@ const Chatbot = () => {
               gap: 8,
             }}
           >
+            <label htmlFor="chatbot-input" className="sr-only">
+              Message
+            </label>
             <input
+              id="chatbot-input"
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}

@@ -32,9 +32,9 @@ function Plans() {
             <div className="text-sm md:text-base text-p3 font-medium tracking-wide">
               Every engagement is scoped to your organization and your needs.
             </div>
-            <h1 className="mt-2 font-bold text-p4 uppercase text-4xl md:text-5xl">
+            <h2 className="mt-2 font-bold text-p4 uppercase text-4xl md:text-5xl">
               Our Services
-            </h1>
+            </h2>
             <p className="mt-4 text-p5 max-w-2xl mx-auto body-1">
               Every engagement is scoped to your needs. Mission-driven pricing available.
             </p>
@@ -70,7 +70,7 @@ function Plans() {
                       <p className="text-p5">{description}</p>
 
                       {(isMobile || isExpanded) && details && (
-                        <ul className="mt-4 list-disc list-inside text-p5 space-y-1">
+                        <ul id={`plan-details-${id}`} className="mt-4 list-disc list-inside text-p5 space-y-1">
                           {details.map((item, i) => (
                             <li key={i}>{item}</li>
                           ))}
@@ -83,6 +83,8 @@ function Plans() {
                         <button
                           onClick={() => toggleExpand(id)}
                           className="text-p3 font-medium hover:underline transition"
+                          aria-expanded={isExpanded}
+                          aria-controls={`plan-details-${id}`}
                         >
                           {isExpanded ? "Show Less" : "Show More"}
                         </button>
