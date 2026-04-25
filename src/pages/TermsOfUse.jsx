@@ -1,34 +1,18 @@
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import Header from "../sections/Header.jsx";
-import ContactBanner from "../sections/ContactBanner.jsx";
-import Chatbot from "../sections/Chatbot.jsx";
-import Footer from "../sections/Footer.jsx";
+import PageShell from "../components/PageShell.jsx";
+import { CONTACT_EMAIL } from "../data/site.js";
+import { useScrollToHash } from "../hooks/useScrollToHash.js";
 
 function TermsOfUse() {
-  const { hash } = useLocation();
-
-  useEffect(() => {
-    if (hash) {
-      const el = document.getElementById(hash.replace("#", ""));
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  }, [hash]);
+  useScrollToHash({ defaultToTop: true });
 
   return (
-    <div className="min-h-screen bg-s1">
+    <>
       <Helmet>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Header />
-        <ContactBanner />
-      </div>
 
-      <main className="overflow-hidden pt-[160px] md:pt-[180px]">
+      <PageShell mainClassName="overflow-hidden pt-[160px] md:pt-[180px] min-h-screen bg-s1">
         <section className="relative py-16 max-md:py-12 font-poppins text-p5">
           <div className="container max-w-4xl">
             <div className="text-center mb-16">
@@ -75,16 +59,13 @@ function TermsOfUse() {
               <p className="font-semibold text-p3">Ella Tech Solutions</p>
               <p className="text-p5">Detroit, Michigan</p>
               <p className="text-p5">
-                Email: <a href="mailto:info@ellatechsolutions.com" className="text-p1 hover:text-p3">info@ellatechsolutions.com</a>
+                Email: <a href={`mailto:${CONTACT_EMAIL}`} className="text-p1 hover:text-p3">{CONTACT_EMAIL}</a>
               </p>
             </div>
           </div>
         </section>
-
-        <Chatbot />
-        <Footer />
-      </main>
-    </div>
+      </PageShell>
+    </>
   );
 }
 

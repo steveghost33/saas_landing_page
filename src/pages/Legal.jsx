@@ -1,34 +1,18 @@
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import Header from "../sections/Header.jsx";
-import ContactBanner from "../sections/ContactBanner.jsx";
-import Chatbot from "../sections/Chatbot.jsx";
-import Footer from "../sections/Footer.jsx";
+import PageShell from "../components/PageShell.jsx";
+import { CONTACT_EMAIL } from "../data/site.js";
+import { useScrollToHash } from "../hooks/useScrollToHash.js";
 
 function Legal() {
-  const { hash } = useLocation();
-
-  useEffect(() => {
-    if (hash) {
-      const el = document.getElementById(hash.replace("#", ""));
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  }, [hash]);
+  useScrollToHash({ defaultToTop: true });
 
   return (
-    <div className="min-h-screen bg-s1">
+    <>
       <Helmet>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Header />
-        <ContactBanner />
-      </div>
 
-      <main className="overflow-hidden pt-[160px] md:pt-[180px]">
+      <PageShell mainClassName="overflow-hidden pt-[160px] md:pt-[180px] min-h-screen bg-s1">
         <section className="relative py-16 max-md:py-12 font-poppins text-p5">
           <div className="container max-w-4xl">
             <div className="text-center mb-16">
@@ -49,7 +33,7 @@ function Legal() {
               <p className="text-p5">Technology consulting, web development, digital training and automation services</p>
               <p className="text-p5">Based in Detroit, Michigan</p>
               <p className="text-p5">
-                Contact: <a href="mailto:info@ellatechsolutions.com" className="text-p1 hover:text-p3">info@ellatechsolutions.com</a>
+                Contact: <a href={`mailto:${CONTACT_EMAIL}`} className="text-p1 hover:text-p3">{CONTACT_EMAIL}</a>
               </p>
             </div>
 
@@ -87,17 +71,14 @@ function Legal() {
               <p className="body-1 text-p5 leading-relaxed mb-4">
                 If you have questions about this Privacy Policy, contact us at:
               </p>
-              <a href="mailto:info@ellatechsolutions.com" className="text-p1 hover:text-p3 text-lg font-semibold">
-                info@ellatechsolutions.com
+              <a href={`mailto:${CONTACT_EMAIL}`} className="text-p1 hover:text-p3 text-lg font-semibold">
+                {CONTACT_EMAIL}
               </a>
             </div>
           </div>
         </section>
-
-        <Chatbot />
-        <Footer />
-      </main>
-    </div>
+      </PageShell>
+    </>
   );
 }
 

@@ -1,110 +1,26 @@
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import Header from "../sections/Header.jsx";
-import ContactBanner from "../sections/ContactBanner.jsx";
 import Button from "../components/Button.jsx";
-import Chatbot from "../sections/Chatbot.jsx";
-import Footer from "../sections/Footer.jsx";
 import PageSEO from "../components/PageSEO.jsx";
-
-const webProjectsSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Website Creation & CRM Strategy",
-  serviceType: "Website Design and CRM Implementation",
-  description:
-    "Custom websites and CRM systems built for nonprofits, small businesses, and mission-driven organizations in Detroit and beyond.",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "Ella Tech Solutions",
-    url: "https://www.ellatechsolutions.com",
-  },
-  areaServed: ["Detroit, MI", "Metro Detroit", "Michigan"],
-  url: "https://www.ellatechsolutions.com/web-projects",
-  breadcrumb: {
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.ellatechsolutions.com/" },
-      { "@type": "ListItem", position: 2, name: "Web Projects", item: "https://www.ellatechsolutions.com/web-projects" },
-    ],
-  },
-};
+import PageShell from "../components/PageShell.jsx";
+import {
+  webProjectCapabilities,
+  webProjects,
+  webProjectsSchema,
+} from "../data/webProjects.js";
+import { useScrollToHash } from "../hooks/useScrollToHash.js";
 
 function WebProjects() {
-  const { hash } = useLocation();
-
-  useEffect(() => {
-    if (hash === "#hero") {
-      const el = document.getElementById("hero");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-      return;
-    }
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [hash]);
-
-  const projects = [
-    {
-      title: "Ella Tech Solutions Website",
-      img: "/images/projects/ellatech.png",
-      desc:
-        "A modern SaaS-style website built for a Detroit-based technology consulting firm. Showcases services, pricing, and client intake — optimized for nonprofit and small business audiences.",
-      tags: ["React", "Tailwind CSS", "Vite"],
-      link: "/",
-      internal: true,
-    },
-    {
-      title: "Peak Form Fitness",
-      img: "/images/projects/peak-form.png",
-      desc:
-        "A fitness business website featuring service packages, appointment booking, and a branded e-commerce experience. Built for speed and mobile usability.",
-      tags: ["Web Design", "E-Commerce", "Booking Integration"],
-      link: "https://peak-form-fitness.vercel.app",
-      internal: false,
-    },
-    {
-      title: "Team Cabin",
-      img: "/images/projects/teamcabin.png",
-      desc:
-        "A website for an indie music band built with visitor engagement at the center. Features an interactive game so fans can connect with the brand beyond just listening.",
-      tags: ["Web Design", "Music", "Interactive"],
-      link: "https://weareteamcabin.com",
-      internal: false,
-    },
-  ];
-
-  const capabilities = [
-    {
-      title: "Nonprofit Websites",
-      desc: "Designed for lean teams and limited budgets. We build sites your staff can update and your donors can trust. Mission-driven pricing available.",
-    },
-    {
-      title: "Small Business Sites",
-      desc: "Clean, fast, mobile-first websites that generate leads and reflect your brand. Book a consultation to discuss scope and pricing.",
-    },
-    {
-      title: "CRM Integration",
-      desc: "We connect your website to your CRM (Customer Relationship Management) system so contact forms, intake flows, and donor tracking actually work together.",
-    },
-    {
-      title: "Ongoing Support",
-      desc: "Retainer options available so your site stays updated, secure, and working after launch. Book a consultation to discuss support plans.",
-    },
-  ];
+  useScrollToHash({ defaultToTop: true });
 
   return (
-    <div className="min-h-screen bg-s1">
+    <>
       <PageSEO
         title="Web Projects | Ella Tech Solutions — Detroit Web Design for Nonprofits, Businesses &amp; Entrepreneurs"
         description="Custom websites built for nonprofits, small businesses, and entrepreneurs in Detroit. Responsive, fast, and built around your audience and goals."
         canonical="https://www.ellatechsolutions.com/web-projects"
         schema={webProjectsSchema}
       />
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Header />
-        <ContactBanner />
-      </div>
 
-      <main className="overflow-hidden pt-[160px] md:pt-[180px]">
+      <PageShell mainClassName="overflow-hidden pt-[160px] md:pt-[180px] min-h-screen bg-s1">
         <section
           id="hero"
           className="relative pt-16 pb-24 max-lg:pt-12 max-lg:pb-20 max-md:pt-10 max-md:pb-16 bg-s1 font-poppins text-p5"
@@ -136,9 +52,9 @@ function WebProjects() {
               Every site we build is responsive, fast, and designed so your team can manage it without calling a developer for every update. We do not use generic templates. We build around your audience, your mission, and your workflow.
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {capabilities.map((cap, idx) => (
+              {webProjectCapabilities.map((cap) => (
                 <div
-                  key={idx}
+                  key={cap.title}
                   className="bg-s2 rounded-2xl p-6 border border-white/10"
                 >
                   <h3 className="h5 text-p4 mb-2">{cap.title}</h3>
@@ -152,9 +68,9 @@ function WebProjects() {
           <div className="container mb-20">
             <h2 className="h3 text-p4 mb-10 text-center">Recent Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {projects.map((proj, idx) => (
+              {webProjects.map((proj) => (
                 <div
-                  key={idx}
+                  key={proj.title}
                   className="bg-s2 rounded-2xl shadow-lg overflow-hidden flex flex-col"
                 >
                   <div className="w-full h-48 md:h-56 bg-s1 rounded-xl m-3 flex items-center justify-center">
@@ -171,9 +87,9 @@ function WebProjects() {
 
                     {/* Tags */}
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {proj.tags.map((tag, i) => (
+                      {proj.tags.map((tag) => (
                         <span
-                          key={i}
+                          key={tag}
                           className="text-xs px-3 py-1 rounded-full border border-white/20 text-p3 uppercase tracking-wide"
                         >
                           {tag}
@@ -227,11 +143,8 @@ function WebProjects() {
             </Button>
           </div>
         </section>
-
-        <Chatbot />
-        <Footer />
-      </main>
-    </div>
+      </PageShell>
+    </>
   );
 }
 

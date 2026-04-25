@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import bodyParser from "body-parser";
 import fs from "fs-extra";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -12,6 +11,8 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
+const MAX_CONTACT_FIELD_LENGTH = 1000;
+const MAX_CHAT_MESSAGES = 16;
 const CORS_ORIGINS = process.env.CORS_ORIGINS
   ?.split(",")
   .map((o) => o.trim())
@@ -29,7 +30,7 @@ const corsOptions = CORS_ORIGINS?.length
   : {};
 
 app.use(cors(corsOptions));
-app.use(bodyParser.json());
+app.use(express.json({ limit: "32kb" }));
 
 const DATA_FILE = path.join(__dirname, "contacts.json");
 fs.ensureFileSync(DATA_FILE);
@@ -42,10 +43,20 @@ try {
   fs.writeJsonSync(DATA_FILE, contacts, { spaces: 2 });
 }
 
+const normalizeField = (value, maxLength = MAX_CONTACT_FIELD_LENGTH) =>
+  typeof value === "string" ? value.trim().slice(0, maxLength) : "";
+
+const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
 app.post("/api/contact", async (req, res) => {
-  const { name, email, service, date, message } = req.body;
-  if (!name || !email) {
-    return res.status(400).json({ error: "Name and email are required." });
+  const name = normalizeField(req.body?.name, 120);
+  const email = normalizeField(req.body?.email, 254).toLowerCase();
+  const service = normalizeField(req.body?.service, 120);
+  const date = normalizeField(req.body?.date, 120);
+  const message = normalizeField(req.body?.message);
+
+  if (!name || !email || !isValidEmail(email)) {
+    return res.status(400).json({ error: "A valid name and email are required." });
   }
 
   const entry = {
@@ -74,6 +85,7 @@ app.post("/api/chat", async (req, res) => {
 
   let systemIncluded = false;
   const sanitizedHistory = messages
+    .slice(-MAX_CHAT_MESSAGES)
     .map((m) => ({
       role: m?.role,
       content: typeof m?.content === "string" ? m.content.trim() : "",
@@ -102,12 +114,12 @@ app.post("/api/chat", async (req, res) => {
       body: JSON.stringify({
         model: OPENAI_MODEL,
         messages: sanitizedHistory,
+        max_tokens: 350,
       }),
     });
 
     if (!response.ok) {
-      const errorBody = await response.text();
-      console.error("OpenAI chat error", response.status, errorBody);
+      console.error("OpenAI chat error", response.status);
       return res.status(502).json({ error: "Chat service unavailable." });
     }
 

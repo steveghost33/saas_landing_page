@@ -1,4 +1,3 @@
-import React from "react";
 import { Element } from "react-scroll";
 import { details, services } from "../constants/index.jsx";
 import Button from "../components/Button.jsx";
@@ -75,4 +74,3 @@ function Services() {
 }
 
 export default Services;
-

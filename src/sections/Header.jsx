@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { socials } from "../constants/index.jsx";
+import { CHATBOT_EVENT_MOBILE_MENU } from "../features/chatbot/chatbotConfig.js";
 
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -31,7 +32,7 @@ const Header = () => {
   // Tell other UI (chatbot) when the mobile menu opens or closes
   useEffect(() => {
     window.dispatchEvent(
-      new CustomEvent("ets:mobileMenu", { detail: { open: isOpen } })
+      new CustomEvent(CHATBOT_EVENT_MOBILE_MENU, { detail: { open: isOpen } })
     );
   }, [isOpen]);
 
@@ -88,9 +89,10 @@ const Header = () => {
               href={url}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Visit Ella Tech Solutions on ${title}`}
               className="social-icon w-8 h-8 flex items-center justify-center rounded-full bg-s2 hover:bg-s3 transition-all duration-300"
             >
-              <img src={icon} alt={title} className="w-4 h-4 object-contain" />
+              <img src={icon} alt="" aria-hidden="true" className="w-4 h-4 object-contain" />
             </a>
           ))}
         </div>
@@ -137,9 +139,10 @@ const Header = () => {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`Visit Ella Tech Solutions on ${title}`}
                     className="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
                   >
-                    <img src={icon} alt={title} className="w-5 h-5 object-contain" />
+                    <img src={icon} alt="" aria-hidden="true" className="w-5 h-5 object-contain" />
                   </a>
                 </li>
               ))}

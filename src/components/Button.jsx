@@ -7,9 +7,12 @@ const Button = ({
   children,
   href,
   to,
+  target,
+  rel,
   containerClassName,
   onClick,
   markerFill,
+  ariaLabel,
 }) => {
   const Inner = () => (
     <>
@@ -21,7 +24,8 @@ const Button = ({
         {icon ? (
           <img
             src={icon}
-            alt="icon"
+            alt=""
+            aria-hidden="true"
             className="size-10 mr-5 object-contain z-10"
           />
         ) : null}
@@ -42,22 +46,24 @@ const Button = ({
 
   if (to) {
     return (
-      <Link className={className} to={to}>
+      <Link className={className} to={to} aria-label={ariaLabel}>
         <Inner />
       </Link>
     );
   }
 
   if (href) {
+    const safeRel = target === "_blank" ? rel || "noopener noreferrer" : rel;
+
     return (
-      <a className={className} href={href}>
+      <a className={className} href={href} target={target} rel={safeRel} aria-label={ariaLabel}>
         <Inner />
       </a>
     );
   }
 
   return (
-    <button className={className} onClick={onClick} type="button">
+    <button className={className} onClick={onClick} type="button" aria-label={ariaLabel}>
       <Inner />
     </button>
   );

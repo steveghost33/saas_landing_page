@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { CHATBOT_EVENT_MOBILE_MENU } from "../features/chatbot/chatbotConfig.js";
 
 const MobileBookingBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -6,8 +7,8 @@ const MobileBookingBar = () => {
   // Hide bar when mobile nav menu is open
   useEffect(() => {
     const handleMenu = (e) => setMenuOpen(e.detail?.open ?? false);
-    window.addEventListener("ets:mobileMenu", handleMenu);
-    return () => window.removeEventListener("ets:mobileMenu", handleMenu);
+    window.addEventListener(CHATBOT_EVENT_MOBILE_MENU, handleMenu);
+    return () => window.removeEventListener(CHATBOT_EVENT_MOBILE_MENU, handleMenu);
   }, []);
 
   if (menuOpen) return null;

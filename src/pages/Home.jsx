@@ -1,17 +1,12 @@
-import React, { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import Header from "../sections/Header.jsx";
-import ContactBanner from "../sections/ContactBanner.jsx";
 import Hero from "../sections/Hero.jsx";
 import Services from "../sections/Services.jsx";
 import Plans from "../sections/Plans.jsx";
 import Faq from "../sections/Faq.jsx";
 import Contact from "../sections/Contact.jsx";
-import Chatbot from "../sections/Chatbot.jsx";
-import Footer from "../sections/Footer.jsx";
 import PageSEO from "../components/PageSEO.jsx";
-import MobileBookingBar from "../components/MobileBookingBar.jsx";
+import PageShell from "../components/PageShell.jsx";
 import { faq } from "../constants/index.jsx";
+import { useScrollToHash } from "../hooks/useScrollToHash.js";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -27,14 +22,7 @@ const faqSchema = {
 };
 
 function Home() {
-  const { hash } = useLocation();
-
-  useEffect(() => {
-    if (hash) {
-      const el = document.getElementById(hash.replace("#", ""));
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [hash]);
+  useScrollToHash();
 
   return (
     <>
@@ -44,25 +32,16 @@ function Home() {
         canonical="https://www.ellatechsolutions.com/"
         schema={faqSchema}
       />
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Header />
-        <ContactBanner />
-      </div>
-
-      <main
-        id="main-content"
-        className="overflow-hidden"
-        style={{ paddingTop: "140px" }} // adjust if header + banner height changes
+      <PageShell
+        mainClassName="overflow-hidden pt-[140px]"
+        showMobileBookingBar
       >
         <Hero />
         <Services />
         <Plans />
         <Faq />
         <Contact />
-        <Chatbot />
-        <Footer />
-      </main>
-      <MobileBookingBar />
+      </PageShell>
     </>
   );
 }

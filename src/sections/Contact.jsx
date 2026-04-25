@@ -1,6 +1,7 @@
 // src/sections/Contact.jsx
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Element } from "react-scroll";
+import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_TEL } from "../data/site.js";
 
 const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 
@@ -89,19 +90,19 @@ const Contact = () => {
 
             <div className="space-y-6">
               <a
-                href="tel:13134741772"
+                href={`tel:${CONTACT_PHONE_TEL}`}
                 className="flex items-center justify-center gap-4 bg-s2/20 hover:bg-s2/40 transition rounded-xl p-4 text-lg font-medium"
               >
-                <img src="/images/phone.svg" alt="Phone" className="h-6 w-6" />
-                (313) 474 1772
+                <img src="/images/phone.svg" alt="" aria-hidden="true" className="h-6 w-6" />
+                {CONTACT_PHONE}
               </a>
 
               <a
-                href="mailto:info@ellatechsolutions.com"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="flex items-center justify-center gap-4 bg-s2/20 hover:bg-s2/40 transition rounded-xl p-4 text-lg font-medium"
               >
-                <img src="/images/email.svg" alt="Email" className="h-6 w-6" />
-                info@ellatechsolutions.com
+                <img src="/images/email.svg" alt="" aria-hidden="true" className="h-6 w-6" />
+                {CONTACT_EMAIL}
               </a>
             </div>
           </div>

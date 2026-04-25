@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Element } from "react-scroll";
 import { plans } from "../constants/index.jsx";
 import Button from "../components/Button.jsx";
