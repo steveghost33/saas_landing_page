@@ -39,15 +39,6 @@ export const webProjects = [
     internal: true,
   },
   {
-    title: "Peak Form Fitness",
-    img: "/images/projects/peak-form.png",
-    desc:
-      "A fitness business website featuring service packages, appointment booking, and a branded e-commerce experience. Built for speed and mobile usability.",
-    tags: ["Web Design", "E-Commerce", "Booking Integration"],
-    link: "https://peak-form-fitness.vercel.app",
-    internal: false,
-  },
-  {
     title: "Team Cabin",
     img: "/images/projects/teamcabin.png",
     desc:
@@ -76,4 +67,3 @@ export const webProjectCapabilities = [
     desc: "Retainer options available so your site stays updated, secure, and working after launch. Book a consultation to discuss support plans.",
   },
 ];
-
