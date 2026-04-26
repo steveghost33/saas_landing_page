@@ -10,3 +10,13 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## Security configuration
+
+Copy `.env.example` and `server/.env.example` before running production-like environments.
+
+- `OPENAI_API_KEY` must only be set on the backend. Do not expose it through `VITE_` variables.
+- `CORS_ORIGINS` should list the exact public website origins allowed to call the API.
+- If the API is hosted on a different origin than the website, add that API origin to `public/_headers` `connect-src`.
+- `server/contacts.json` is runtime data and must not be committed. Use a real database or managed form service for production contact storage when possible.
+- Run `npm audit --omit=dev` in both the root project and `server/` before deployment.

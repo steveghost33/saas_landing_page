@@ -5,7 +5,6 @@ import ChatbotMessage from "../features/chatbot/ChatbotMessage.jsx";
 import QuickActions from "../features/chatbot/QuickActions.jsx";
 import {
   BOOKING_ONLY_CTA,
-  BUSINESS_SYSTEM_PROMPT,
   CHAT_ENDPOINT,
   CHATBOT_EVENT_MOBILE_MENU,
   DOCK_GAP,
@@ -167,7 +166,6 @@ function Chatbot() {
 
   const buildChatHistory = (latestMessages, userText) => {
     const history = [
-      { role: "system", content: BUSINESS_SYSTEM_PROMPT },
       ...latestMessages.map((message) => ({
         role: message.from === "bot" ? "assistant" : "user",
         content: message.text,
@@ -176,7 +174,7 @@ function Chatbot() {
     ];
 
     const maxTurns = 14;
-    return [history[0], ...history.slice(1).slice(-maxTurns)];
+    return history.slice(-maxTurns);
   };
 
   const pushBot = (raw) => {
@@ -377,6 +375,7 @@ function Chatbot() {
               value={input}
               onChange={(event) => setInput(event.target.value)}
               onKeyDown={handleKeyDown}
+              maxLength={1000}
               placeholder="Type your message..."
               style={{
                 flex: 1,

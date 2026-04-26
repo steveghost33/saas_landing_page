@@ -25,5 +25,4 @@ dist-ssr
 
 # Ignore environment variable files
 .env
-.env
-.env
+server/contacts.json
