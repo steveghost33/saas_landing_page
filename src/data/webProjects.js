@@ -39,6 +39,15 @@ export const webProjects = [
     internal: true,
   },
   {
+    title: "Build by Steven",
+    img: "/images/projects/build-by-steven.png",
+    desc:
+      "A personal brand and portfolio website focused on clear project presentation, responsive performance, and a polished client-facing experience.",
+    tags: ["Portfolio", "Web Design", "Personal Brand"],
+    link: "https://www.buildbysteven.com",
+    internal: false,
+  },
+  {
     title: "Team Cabin",
     img: "/images/projects/teamcabin.png",
     desc:
