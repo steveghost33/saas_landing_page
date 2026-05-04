@@ -67,7 +67,7 @@ const Contact = () => {
               </div>
 
               {/* Before you book */}
-              <div className="rounded-2xl border border-s3/50 bg-s2/50 px-6 py-5">
+              <div className="rounded-2xl border border-s3/50 bg-s2/50 px-6 py-5 mb-6">
                 <h3 className="text-p4 font-bold text-sm uppercase tracking-wider mb-2">
                   Before you book
                 </h3>
@@ -75,6 +75,29 @@ const Contact = () => {
                   You'll be asked a few quick questions so the session can be
                   focused and useful from the first minute.
                 </p>
+              </div>
+
+              {/* Contact fallback — desktop only (left column) */}
+              <div className="hidden lg:block">
+                <p className="text-p5/70 text-sm uppercase tracking-wider font-semibold mb-3">
+                  Prefer to reach out directly?
+                </p>
+                <div className="space-y-2">
+                  <a
+                    href={`tel:${CONTACT_PHONE_TEL}`}
+                    className="flex items-center gap-3 rounded-xl bg-s3/20 hover:bg-s3/40 transition-colors px-4 py-3 text-p5 text-[15px] font-medium"
+                  >
+                    <img src="/images/phone.svg" alt="" aria-hidden="true" className="h-5 w-5 flex-shrink-0" />
+                    {CONTACT_PHONE}
+                  </a>
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="flex items-center gap-3 rounded-xl bg-s3/20 hover:bg-s3/40 transition-colors px-4 py-3 text-p5 text-[15px] font-medium"
+                  >
+                    <img src="/images/email.svg" alt="" aria-hidden="true" className="h-5 w-5 flex-shrink-0" />
+                    {CONTACT_EMAIL}
+                  </a>
+                </div>
               </div>
 
             </div>
@@ -104,8 +127,8 @@ const Contact = () => {
                 We reply to all booking confirmations within one business day.
               </p>
 
-              {/* Contact fallback — always below the embed */}
-              <div className="mt-6">
+              {/* Contact fallback — mobile only (below embed) */}
+              <div className="mt-6 lg:hidden">
                 <p className="text-p5/70 text-sm uppercase tracking-wider font-semibold mb-3">
                   Prefer to reach out directly?
                 </p>
