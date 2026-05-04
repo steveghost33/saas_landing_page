@@ -7,9 +7,9 @@ const Contact = () => {
     <Element name="contact">
       <section
         id="contact"
-        className="relative bg-s1/50 scroll-mt-[140px] pt-20 pb-20"
+        className="relative scroll-mt-[140px] pt-12 pb-12"
       >
-        <div className="container mx-auto text-center mb-10">
+        <div className="container mx-auto text-center mb-6">
           <h2 className="text-4xl md:text-5xl font-bold text-p4 uppercase mb-4">
             Schedule Your Free 30 Minute Consultation
           </h2>
@@ -19,19 +19,19 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto min-h-[960px] md:min-h-[1040px] mb-10 overflow-hidden">
-          <CalInlineEmbed className="h-full min-h-[960px] w-full md:min-h-[1040px]" />
+        <div className="max-w-5xl mx-auto mb-6 overflow-hidden">
+          <CalInlineEmbed className="min-h-[720px] w-full" />
         </div>
 
         <div className="container">
-          <div className="mx-auto max-w-3xl bg-s1 border border-s2 rounded-3xl px-10 py-10 shadow-2xl text-center text-p5">
+          <div className="mx-auto max-w-3xl bg-s2/60 border border-s3/50 rounded-3xl px-8 py-8 shadow-2xl text-center text-p5">
             <h3 className="text-3xl font-bold uppercase text-p4 mb-3">Contact Us</h3>
-            <p className="text-lg text-p5 mb-8 opacity-90">We reply within one business day</p>
+            <p className="text-lg text-p5 mb-6 opacity-90">We reply within one business day</p>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               <a
                 href={`tel:${CONTACT_PHONE_TEL}`}
-                className="flex items-center justify-center gap-4 bg-s2/20 hover:bg-s2/40 transition rounded-xl p-4 text-lg font-medium"
+                className="flex items-center justify-center gap-4 bg-s3/20 hover:bg-s3/40 transition rounded-xl p-4 text-lg font-medium"
               >
                 <img src="/images/phone.svg" alt="" aria-hidden="true" className="h-6 w-6" />
                 {CONTACT_PHONE}
@@ -39,7 +39,7 @@ const Contact = () => {
 
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="flex items-center justify-center gap-4 bg-s2/20 hover:bg-s2/40 transition rounded-xl p-4 text-lg font-medium"
+                className="flex items-center justify-center gap-4 bg-s3/20 hover:bg-s3/40 transition rounded-xl p-4 text-lg font-medium"
               >
                 <img src="/images/email.svg" alt="" aria-hidden="true" className="h-6 w-6" />
                 {CONTACT_EMAIL}
@@ -47,8 +47,6 @@ const Contact = () => {
             </div>
           </div>
         </div>
-
-        <div className="w-full h-4 bg-s1/30 rounded-t-3xl mt-14" />
       </section>
     </Element>
   );
