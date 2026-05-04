@@ -7,10 +7,20 @@
 @layer base {
   html {
     @apply min-h-full overflow-x-hidden bg-s1;
+    scrollbar-width: none;
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
   }
 
   body {
     @apply min-h-full overflow-x-hidden bg-s1 font-poppins text-[16px] tracking-[-0.03em] text-p5;
+    scrollbar-width: none;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
   }
 
   #root {
