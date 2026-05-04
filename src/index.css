@@ -446,8 +446,13 @@
     padding: 12px;
     flex: 1;
     overflow-y: auto;
+    scrollbar-width: none;
     background: #f3faff;
     color: #000; /* default text color */
+  }
+
+  .chatbot-body::-webkit-scrollbar {
+    display: none;
   }
 
   .message {
