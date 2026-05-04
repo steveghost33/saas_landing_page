@@ -1,53 +1,8 @@
-// src/sections/Contact.jsx
-import { useEffect, useRef, useState } from "react";
 import { Element } from "react-scroll";
+import CalInlineEmbed from "../components/CalInlineEmbed.jsx";
 import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_TEL } from "../data/site.js";
 
-const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
-
-const MIN_DESKTOP = 960;
-const MAX_DESKTOP = 1120;
-
-const MIN_MOBILE = 1120;
-const MAX_MOBILE = 1380;
-
 const Contact = () => {
-  const wrapRef = useRef(null);
-  const [iframeHeight, setIframeHeight] = useState(MIN_DESKTOP);
-
-  useEffect(() => {
-    const compute = () => {
-      const viewportH = window.innerHeight || 900;
-      const wrapW = wrapRef.current?.getBoundingClientRect?.().width || 0;
-      const isMobile = wrapW > 0 && wrapW < 560;
-
-      const target = Math.round(viewportH * 0.92);
-
-      if (isMobile) setIframeHeight(clamp(target, MIN_MOBILE, MAX_MOBILE));
-      else setIframeHeight(clamp(target, MIN_DESKTOP, MAX_DESKTOP));
-    };
-
-    compute();
-
-    window.addEventListener("resize", compute);
-    window.addEventListener("orientationchange", compute);
-
-    const vv = window.visualViewport;
-    if (vv) {
-      vv.addEventListener("resize", compute);
-      vv.addEventListener("scroll", compute);
-    }
-
-    return () => {
-      window.removeEventListener("resize", compute);
-      window.removeEventListener("orientationchange", compute);
-      if (vv) {
-        vv.removeEventListener("resize", compute);
-        vv.removeEventListener("scroll", compute);
-      }
-    };
-  }, []);
-
   return (
     <Element name="contact">
       <section
@@ -64,23 +19,8 @@ const Contact = () => {
           </p>
         </div>
 
-        <div
-          ref={wrapRef}
-          className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl mb-10"
-          style={{ overflow: "hidden" }}
-        >
-          <iframe
-            title="Ella Tech Scheduler"
-            src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1_gltX3YcW47uNEIzcEc8XWOCjYmZy7QtvFg1kUvqkrRc16EK-bWmFpMPOkGlADXyu_NdAXpau?gv=true"
-            style={{
-              border: 0,
-              width: "100%",
-              height: `${iframeHeight}px`,
-              display: "block",
-              background: "transparent",
-            }}
-            frameBorder="0"
-          />
+        <div className="max-w-5xl mx-auto min-h-[960px] md:min-h-[1040px] bg-white rounded-2xl shadow-2xl mb-10 overflow-hidden">
+          <CalInlineEmbed className="h-full min-h-[960px] w-full md:min-h-[1040px]" />
         </div>
 
         <div className="container">
