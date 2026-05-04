@@ -2,48 +2,137 @@ import { Element } from "react-scroll";
 import CalInlineEmbed from "../components/CalInlineEmbed.jsx";
 import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_TEL } from "../data/site.js";
 
+const deliverables = [
+  "A quick diagnosis of your biggest system bottleneck",
+  "3 to 5 practical recommendations you can act on immediately",
+  "Clear next steps for your CRM, automation, website, or workflow needs",
+];
+
 const Contact = () => {
   return (
     <Element name="contact">
       <section
         id="contact"
-        className="relative scroll-mt-[140px] pt-12 pb-12"
+        className="relative scroll-mt-[140px] pt-20 pb-20 max-md:pt-14 max-md:pb-14"
       >
-        <div className="container mx-auto text-center mb-6">
-          <h2 className="text-4xl md:text-5xl font-bold text-p4 uppercase mb-4">
-            Schedule Your Free 30 Minute Consultation
-          </h2>
-          <p className="text-lg text-p5">Pick a time that works for you and let us get started.</p>
-          <p className="text-lg text-p5">
-            No sales pressure. Just a clear conversation about your goals and next steps.
-          </p>
-        </div>
-
-        <div className="max-w-5xl mx-auto mb-6 overflow-hidden">
-          <CalInlineEmbed className="min-h-[720px] w-full" />
-        </div>
+        {/* Subtle ambient glow */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 h-[600px] w-[900px] rounded-full bg-s4/20 blur-[160px] -z-10"
+        />
 
         <div className="container">
-          <div className="mx-auto max-w-3xl bg-s2/60 border border-s3/50 rounded-3xl px-8 py-8 shadow-2xl text-center text-p5">
-            <h3 className="text-3xl font-bold uppercase text-p4 mb-3">Contact Us</h3>
-            <p className="text-lg text-p5 mb-6 opacity-90">We reply within one business day</p>
+          {/* Section label */}
+          <p className="caption text-center mb-4">Free Consultation</p>
 
-            <div className="space-y-4">
-              <a
-                href={`tel:${CONTACT_PHONE_TEL}`}
-                className="flex items-center justify-center gap-4 bg-s3/20 hover:bg-s3/40 transition rounded-xl p-4 text-lg font-medium"
-              >
-                <img src="/images/phone.svg" alt="" aria-hidden="true" className="h-6 w-6" />
-                {CONTACT_PHONE}
-              </a>
+          {/* Main headline */}
+          <h2 className="text-center h3 max-md:text-4xl max-md:leading-tight text-p4 uppercase font-black mb-4 max-w-3xl mx-auto">
+            Book a Free Tech Clarity Session
+          </h2>
+          <p className="text-center text-p5 body-1 max-w-2xl mx-auto mb-14 max-md:mb-10">
+            A focused 30-minute conversation to identify where your technology,
+            systems, CRM, automation, website, or AI workflows are slowing you
+            down — and what to fix first.
+          </p>
 
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="flex items-center justify-center gap-4 bg-s3/20 hover:bg-s3/40 transition rounded-xl p-4 text-lg font-medium"
-              >
-                <img src="/images/email.svg" alt="" aria-hidden="true" className="h-6 w-6" />
-                {CONTACT_EMAIL}
-              </a>
+          {/* Two-column layout */}
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start max-w-[1100px] mx-auto">
+
+            {/* LEFT — Copy */}
+            <div className="w-full lg:w-5/12 flex-shrink-0">
+
+              {/* Who this is for */}
+              <div className="mb-8">
+                <p className="text-p5 leading-relaxed text-[17px]">
+                  I reserve a limited number of weekly consultation windows for
+                  nonprofits, small businesses, and teams looking to improve
+                  their digital systems. During the session, we'll talk through
+                  your current tools, biggest friction points, and practical
+                  next steps.
+                </p>
+                <p className="mt-4 text-p5 leading-relaxed text-[17px]">
+                  This is not a hard sales call. The goal is to give you clarity
+                  on what to improve first and determine whether Ella Tech
+                  Solutions is the right fit to help.
+                </p>
+              </div>
+
+              {/* What you'll get */}
+              <div className="mb-8">
+                <h3 className="text-p4 font-bold text-lg uppercase tracking-wide mb-4">
+                  What you'll get
+                </h3>
+                <ol className="space-y-3">
+                  {deliverables.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-p1/15 border border-p1/40 flex items-center justify-center text-p1 text-xs font-bold">
+                        {i + 1}
+                      </span>
+                      <span className="text-p5 leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              {/* Before you book */}
+              <div className="rounded-2xl border border-s3/50 bg-s2/50 px-6 py-5 mb-8">
+                <h3 className="text-p4 font-bold text-sm uppercase tracking-wider mb-2">
+                  Before you book
+                </h3>
+                <p className="text-p5 text-[15px] leading-relaxed">
+                  You'll be asked a few quick questions so the session can be
+                  focused and useful from the first minute.
+                </p>
+              </div>
+
+              {/* Contact fallback */}
+              <div>
+                <p className="text-p5/70 text-sm uppercase tracking-wider font-semibold mb-3">
+                  Prefer to reach out directly?
+                </p>
+                <div className="space-y-2">
+                  <a
+                    href={`tel:${CONTACT_PHONE_TEL}`}
+                    className="flex items-center gap-3 rounded-xl bg-s3/20 hover:bg-s3/40 transition-colors px-4 py-3 text-p5 text-[15px] font-medium"
+                  >
+                    <img src="/images/phone.svg" alt="" aria-hidden="true" className="h-5 w-5 flex-shrink-0" />
+                    {CONTACT_PHONE}
+                  </a>
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="flex items-center gap-3 rounded-xl bg-s3/20 hover:bg-s3/40 transition-colors px-4 py-3 text-p5 text-[15px] font-medium"
+                  >
+                    <img src="/images/email.svg" alt="" aria-hidden="true" className="h-5 w-5 flex-shrink-0" />
+                    {CONTACT_EMAIL}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT — Scheduler */}
+            <div className="w-full lg:flex-1">
+              {/* Framing line */}
+              <p className="text-p5/60 text-sm text-center mb-4 italic">
+                Consultation windows are opened weekly and intentionally limited
+                so each session gets proper preparation.
+              </p>
+
+              {/* Scheduler card */}
+              <div className="relative rounded-[28px] border border-s3/50 bg-s2/60 shadow-500 overflow-hidden">
+                {/* Subtle top accent line */}
+                <div
+                  aria-hidden="true"
+                  className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-p1/40 to-transparent"
+                />
+
+                <div className="p-4 max-sm:p-2">
+                  <CalInlineEmbed className="min-h-[680px] w-full" />
+                </div>
+              </div>
+
+              <p className="text-p5/50 text-xs text-center mt-3">
+                We reply to all booking confirmations within one business day.
+              </p>
             </div>
           </div>
         </div>

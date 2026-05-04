@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const CAL_ORIGIN = "https://app.cal.com";
 const CAL_SCRIPT_SRC = "https://app.cal.com/embed/embed.js";
+// Update this slug after creating the "Free Tech Clarity Session" event in Cal.com
 const CAL_LINK = "ella-tech-7ze7wk";
 
 const ensureCalLoader = () => {
@@ -76,7 +77,7 @@ const CalInlineEmbed = ({ className = "" }) => {
         },
       });
       cal("ui", {
-        hideEventTypeDetails: true,
+        hideEventTypeDetails: false,
         layout: "month_view",
         theme: "dark",
         styles: {
@@ -104,26 +105,36 @@ const CalInlineEmbed = ({ className = "" }) => {
 
   if (hasError) {
     return (
-      <div className={`flex min-h-[960px] items-center justify-center p-8 text-center ${className}`}>
-        <div className="max-w-xl space-y-4">
-          <h3 className="text-2xl font-bold text-p4">Book Your Consultation</h3>
-          <p className="text-lg text-p5">
-            The scheduling widget did not load, but your booking page is still available.
-          </p>
+      <div className={`flex min-h-[680px] items-center justify-center p-8 text-center ${className}`}>
+        <div className="max-w-sm space-y-5">
+          <div className="mx-auto w-12 h-12 rounded-full bg-p1/15 border border-p1/40 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-p1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold text-p4 mb-2">Book Your Tech Clarity Session</h3>
+            <p className="text-p5 text-[15px] leading-relaxed">
+              The scheduler didn't load here, but your booking page is available directly.
+            </p>
+          </div>
           <a
             href={`${CAL_ORIGIN}/${CAL_LINK}`}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center justify-center rounded-xl bg-p1 px-6 py-3 font-poppins font-bold uppercase tracking-wide text-s1 transition-colors duration-200 hover:bg-p1/90"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-p1 px-7 py-3.5 font-poppins font-bold uppercase tracking-wide text-s1 text-sm transition-opacity duration-200 hover:opacity-90"
           >
-            Open Secure Booking Page
+            Open Booking Page
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
           </a>
         </div>
       </div>
     );
   }
 
-  return <div ref={containerRef} className={className} aria-label="Schedule a consultation" />;
+  return <div ref={containerRef} className={className} aria-label="Book a Free Tech Clarity Session" />;
 };
 
 export default CalInlineEmbed;
