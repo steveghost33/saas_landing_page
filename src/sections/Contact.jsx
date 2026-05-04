@@ -77,28 +77,6 @@ const Contact = () => {
                 </p>
               </div>
 
-              {/* Contact fallback */}
-              <div>
-                <p className="text-p5/70 text-sm uppercase tracking-wider font-semibold mb-3">
-                  Prefer to reach out directly?
-                </p>
-                <div className="space-y-2">
-                  <a
-                    href={`tel:${CONTACT_PHONE_TEL}`}
-                    className="flex items-center gap-3 rounded-xl bg-s3/20 hover:bg-s3/40 transition-colors px-4 py-3 text-p5 text-[15px] font-medium"
-                  >
-                    <img src="/images/phone.svg" alt="" aria-hidden="true" className="h-5 w-5 flex-shrink-0" />
-                    {CONTACT_PHONE}
-                  </a>
-                  <a
-                    href={`mailto:${CONTACT_EMAIL}`}
-                    className="flex items-center gap-3 rounded-xl bg-s3/20 hover:bg-s3/40 transition-colors px-4 py-3 text-p5 text-[15px] font-medium"
-                  >
-                    <img src="/images/email.svg" alt="" aria-hidden="true" className="h-5 w-5 flex-shrink-0" />
-                    {CONTACT_EMAIL}
-                  </a>
-                </div>
-              </div>
             </div>
 
             {/* RIGHT — Scheduler */}
@@ -125,6 +103,29 @@ const Contact = () => {
               <p className="text-p5/50 text-xs text-center mt-3">
                 We reply to all booking confirmations within one business day.
               </p>
+
+              {/* Contact fallback — always below the embed */}
+              <div className="mt-6">
+                <p className="text-p5/70 text-sm uppercase tracking-wider font-semibold mb-3">
+                  Prefer to reach out directly?
+                </p>
+                <div className="space-y-2">
+                  <a
+                    href={`tel:${CONTACT_PHONE_TEL}`}
+                    className="flex items-center gap-3 rounded-xl bg-s3/20 hover:bg-s3/40 transition-colors px-4 py-3 text-p5 text-[15px] font-medium"
+                  >
+                    <img src="/images/phone.svg" alt="" aria-hidden="true" className="h-5 w-5 flex-shrink-0" />
+                    {CONTACT_PHONE}
+                  </a>
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="flex items-center gap-3 rounded-xl bg-s3/20 hover:bg-s3/40 transition-colors px-4 py-3 text-p5 text-[15px] font-medium"
+                  >
+                    <img src="/images/email.svg" alt="" aria-hidden="true" className="h-5 w-5 flex-shrink-0" />
+                    {CONTACT_EMAIL}
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
