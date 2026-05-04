@@ -103,7 +103,7 @@ const Header = () => {
         {!isOpen && (
           <Link
             to="/"
-            className="xl:hidden cursor-pointer z-2 max-xl:order-2 max-xl:mt-2 max-xl:w-screen max-xl:-ml-5"
+            className="xl:hidden cursor-pointer z-2 max-xl:order-2 max-xl:mt-2 max-xl:w-full"
             onClick={handleLogoClick}
           >
             <img src="/images/ellalogo.svg" alt="Ella Tech Solutions" className="w-full h-auto" />
