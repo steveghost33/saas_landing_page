@@ -13,7 +13,7 @@ const Contact = () => {
     <Element name="contact">
       <section
         id="contact"
-        className="relative scroll-mt-[140px] pt-20 pb-20 max-md:pt-14 max-md:pb-14"
+        className="relative scroll-mt-[140px] pt-20 pb-20 max-md:pt-14 max-md:pb-8"
       >
         {/* Subtle ambient glow */}
         <div
