@@ -1,39 +1,55 @@
 import { useEffect, useRef, useState } from "react";
 
-const CAL_ORIGIN = "https://cal.com";
+const CAL_ORIGIN = "https://app.cal.com";
 const CAL_SCRIPT_SRC = "https://app.cal.com/embed/embed.js";
 const CAL_LINK = "ella-tech-7ze7wk";
 
-let calLoaderPromise;
+const ensureCalLoader = () => {
+  if (typeof window === "undefined") return null;
 
-const loadCalEmbedScript = () => {
-  if (typeof window === "undefined") return Promise.resolve(null);
+  if (!window.Cal) {
+    ((C, A, L) => {
+      const queue = (api, args) => api.q.push(args);
+      const doc = C.document;
 
-  if (window.Cal) return Promise.resolve(window.Cal);
-  if (calLoaderPromise) return calLoaderPromise;
+      C.Cal = C.Cal || function calProxy() {
+        const cal = C.Cal;
+        const args = arguments;
 
-  calLoaderPromise = new Promise((resolve, reject) => {
-    const existingScript = document.querySelector(`script[src="${CAL_SCRIPT_SRC}"]`);
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          const script = doc.createElement("script");
+          script.src = A;
+          script.async = true;
+          doc.head.appendChild(script);
+          cal.loaded = true;
+        }
 
-    if (existingScript) {
-      existingScript.addEventListener("load", () => resolve(window.Cal), { once: true });
-      existingScript.addEventListener(
-        "error",
-        () => reject(new Error("Failed to load Cal.com embed script.")),
-        { once: true },
-      );
-      return;
-    }
+        if (args[0] === L) {
+          const api = function namespaceProxy() {
+            queue(api, arguments);
+          };
+          const namespace = args[1];
+          api.q = api.q || [];
 
-    const script = document.createElement("script");
-    script.src = CAL_SCRIPT_SRC;
-    script.async = true;
-    script.onload = () => resolve(window.Cal);
-    script.onerror = () => reject(new Error("Failed to load Cal.com embed script."));
-    document.head.appendChild(script);
-  });
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            queue(cal.ns[namespace], args);
+            queue(cal, ["initNamespace", namespace]);
+          } else {
+            queue(cal, args);
+          }
 
-  return calLoaderPromise;
+          return;
+        }
+
+        queue(cal, args);
+      };
+    })(window, CAL_SCRIPT_SRC, "init");
+  }
+
+  return window.Cal;
 };
 
 const CalInlineEmbed = ({ className = "" }) => {
@@ -41,23 +57,26 @@ const CalInlineEmbed = ({ className = "" }) => {
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
-    let cancelled = false;
     const container = containerRef.current;
+    if (!container) return undefined;
 
-    const mountEmbed = async () => {
-      const cal = await loadCalEmbedScript();
-      if (cancelled || !cal || !container) return;
+    let cancelled = false;
 
-      container.innerHTML = "";
+    const initializeEmbed = async () => {
+      const cal = ensureCalLoader();
+      if (cancelled || !cal) return;
 
       cal("init", { origin: CAL_ORIGIN });
       cal("inline", {
         elementOrSelector: container,
         calLink: CAL_LINK,
+        config: {
+          layout: "month_view",
+        },
       });
       cal("ui", {
         hideEventTypeDetails: true,
-        showTimezoneWhenEventDetailsHidden: true,
+        layout: "month_view",
         styles: {
           body: {
             background: "transparent",
@@ -66,16 +85,14 @@ const CalInlineEmbed = ({ className = "" }) => {
       });
     };
 
-    mountEmbed().catch((error) => {
+    initializeEmbed().catch((error) => {
       setHasError(true);
       console.error(error);
     });
 
     return () => {
       cancelled = true;
-      if (container) {
-        container.innerHTML = "";
-      }
+      container.innerHTML = "";
     };
   }, []);
 
