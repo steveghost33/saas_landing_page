@@ -29,10 +29,8 @@ const Contact = () => {
           <h2 className="text-center h3 max-md:text-4xl max-md:leading-tight text-p4 uppercase font-black mb-4 max-w-3xl mx-auto">
             Book a Free Tech Clarity Session
           </h2>
-          <p className="text-center text-p5 body-1 max-w-2xl mx-auto mb-14 max-md:mb-10">
-            A focused 30-minute conversation to identify where your technology,
-            systems, CRM, automation, website, or AI workflows are slowing you
-            down — and what to fix first.
+          <p className="text-center text-p5 body-1 max-w-xl mx-auto mb-14 max-md:mb-10">
+            30 minutes to pinpoint where your tech is slowing you down and what to fix first.
           </p>
 
           {/* Two-column layout */}
@@ -44,16 +42,10 @@ const Contact = () => {
               {/* Who this is for */}
               <div className="mb-8">
                 <p className="text-p5 leading-relaxed text-[17px]">
-                  I reserve a limited number of weekly consultation windows for
-                  nonprofits, small businesses, and teams looking to improve
-                  their digital systems. During the session, we'll talk through
-                  your current tools, biggest friction points, and practical
-                  next steps.
-                </p>
-                <p className="mt-4 text-p5 leading-relaxed text-[17px]">
-                  This is not a hard sales call. The goal is to give you clarity
-                  on what to improve first and determine whether Ella Tech
-                  Solutions is the right fit to help.
+                  A working session for nonprofits, small businesses, and teams
+                  ready to improve their digital systems. We'll cover your
+                  current tools, what's slowing you down, and what to fix first.
+                  No sales pressure — just clarity.
                 </p>
               </div>
 
