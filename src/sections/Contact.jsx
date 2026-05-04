@@ -34,7 +34,7 @@ const Contact = () => {
           </p>
 
           {/* Two-column layout */}
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-14 items-start max-w-[1100px] mx-auto">
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-14 items-start max-w-[1100px] mx-auto">
 
             {/* LEFT — Copy */}
             <div className="w-full lg:w-5/12 flex-shrink-0">
@@ -67,7 +67,7 @@ const Contact = () => {
               </div>
 
               {/* Before you book */}
-              <div className="rounded-2xl border border-s3/50 bg-s2/50 px-6 py-5 mb-8">
+              <div className="rounded-2xl border border-s3/50 bg-s2/50 px-6 py-5">
                 <h3 className="text-p4 font-bold text-sm uppercase tracking-wider mb-2">
                   Before you book
                 </h3>
