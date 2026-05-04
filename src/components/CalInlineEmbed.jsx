@@ -72,14 +72,20 @@ const CalInlineEmbed = ({ className = "" }) => {
         calLink: CAL_LINK,
         config: {
           layout: "month_view",
+          theme: "dark",
         },
       });
       cal("ui", {
         hideEventTypeDetails: true,
         layout: "month_view",
+        theme: "dark",
         styles: {
           body: {
             background: "transparent",
+          },
+          enabledDateButton: {
+            background: "#2EF2FF",
+            color: "#080D27",
           },
         },
       });

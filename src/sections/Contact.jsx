@@ -19,7 +19,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto min-h-[960px] md:min-h-[1040px] bg-white rounded-2xl shadow-2xl mb-10 overflow-hidden">
+        <div className="max-w-5xl mx-auto min-h-[960px] md:min-h-[1040px] mb-10 overflow-hidden">
           <CalInlineEmbed className="h-full min-h-[960px] w-full md:min-h-[1040px]" />
         </div>
 
