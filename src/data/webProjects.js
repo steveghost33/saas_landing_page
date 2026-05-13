@@ -55,6 +55,30 @@ export const webProjects = [
     tags: ["Web Design", "Music", "Interactive"],
     link: "https://weareteamcabin.com",
     internal: false,
+    skills: {
+      Frontend: [
+        "React 18 — component-based UI with custom hooks (useMobile, useFullscreen), responsive layout switching between mobile and desktop views",
+        "Vite — modern build tooling and dev server setup",
+        "Vanilla CSS — design system using CSS variables, modular per-component stylesheets, responsive design",
+        "HTML5 Canvas / Game Development — built a browser game (GameEngine.js, renderer.js, sprites.js) from scratch with a custom game loop, sprite rendering, and pixel art characters",
+      ],
+      Backend: [
+        "Python / Flask — REST API with two endpoints (POST /scores, GET /scores, GET /high-score)",
+        "SQLite — relational database schema design, parameterized queries (safe from SQL injection)",
+        "Flask-CORS — cross-origin resource sharing for decoupled frontend/backend",
+        "Gunicorn — production WSGI server configuration for deployment",
+      ],
+      "DevOps / Platform": [
+        "Vercel — frontend deployment with custom headers (_headers) and routing config (vercel.json)",
+        "Render — backend deployment with environment variable configuration",
+        "SEO — sitemap.xml, robots.txt, canonical URL, apple-touch-icon for discoverability and PWA readiness",
+      ],
+      Architecture: [
+        "Full-stack separation — decoupled SPA frontend + stateless REST API backend",
+        "Mobile-first responsive design — dedicated mobile layout with fullscreen game support",
+        "In-game leaderboard — real-time score persistence and retrieval across sessions",
+      ],
+    },
   },
 ];
 

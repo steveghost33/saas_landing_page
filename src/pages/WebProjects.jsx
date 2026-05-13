@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "../components/Button.jsx";
 import PageSEO from "../components/PageSEO.jsx";
 import PageShell from "../components/PageShell.jsx";
@@ -7,6 +8,95 @@ import {
   webProjectsSchema,
 } from "../data/webProjects.js";
 import { useScrollToHash } from "../hooks/useScrollToHash.js";
+
+function ProjectCard({ proj }) {
+  const [skillsOpen, setSkillsOpen] = useState(false);
+
+  return (
+    <div className="bg-s2 rounded-2xl shadow-lg overflow-hidden flex flex-col">
+      <div className="w-full h-48 md:h-56 bg-s1 rounded-xl m-3 flex items-center justify-center">
+        <img
+          src={proj.img}
+          alt={proj.title}
+          className="max-w-[calc(100%-1.5rem)] max-h-[calc(100%-1.5rem)] object-contain"
+        />
+      </div>
+
+      <div className="p-6 pt-3 flex-1 flex flex-col">
+        <h3 className="h5 text-p4 mb-2">{proj.title}</h3>
+        <p className="body-3 text-p5 flex-1 mb-4">{proj.desc}</p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 mb-4">
+          {proj.tags.map((tag) => (
+            <span
+              key={tag}
+              className="text-xs px-3 py-1 rounded-full border border-white/20 text-p3 uppercase tracking-wide"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        {/* Skills toggle */}
+        {proj.skills && (
+          <div className="mb-4">
+            <button
+              onClick={() => setSkillsOpen((o) => !o)}
+              className="flex items-center gap-2 text-xs font-semibold text-p3 uppercase tracking-wide border border-white/20 rounded-full px-3 py-1 hover:bg-white/5 transition-colors"
+            >
+              Technical Skills
+              <span className="text-base leading-none">{skillsOpen ? "−" : "+"}</span>
+            </button>
+
+            {skillsOpen && (
+              <div className="mt-4 space-y-4">
+                {Object.entries(proj.skills).map(([category, items]) => (
+                  <div key={category}>
+                    <h4 className="text-xs font-bold text-p4 uppercase tracking-wider mb-2">
+                      {category}
+                    </h4>
+                    <ul className="space-y-1">
+                      {items.map((item) => {
+                        const [label, detail] = item.split(" — ");
+                        return (
+                          <li key={label} className="text-xs text-p5 leading-relaxed">
+                            <span className="font-semibold text-p3">{label}</span>
+                            {detail && (
+                              <span className="text-p5"> — {detail}</span>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {proj.internal ? (
+          <Button
+            to={proj.link}
+            containerClassName="mt-auto self-start"
+            markerFill="#FFF"
+          >
+            View Project
+          </Button>
+        ) : (
+          <Button
+            href={proj.link}
+            containerClassName="mt-auto self-start"
+            markerFill="#FFF"
+          >
+            View Project
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function WebProjects() {
   useScrollToHash({ defaultToTop: true });
@@ -69,53 +159,7 @@ function WebProjects() {
             <h2 className="h3 text-p4 mb-10 text-center">Recent Projects</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {webProjects.map((proj) => (
-                <div
-                  key={proj.title}
-                  className="bg-s2 rounded-2xl shadow-lg overflow-hidden flex flex-col"
-                >
-                  <div className="w-full h-48 md:h-56 bg-s1 rounded-xl m-3 flex items-center justify-center">
-                    <img
-                      src={proj.img}
-                      alt={proj.title}
-                      className="max-w-[calc(100%-1.5rem)] max-h-[calc(100%-1.5rem)] object-contain"
-                    />
-                  </div>
-
-                  <div className="p-6 pt-3 flex-1 flex flex-col">
-                    <h3 className="h5 text-p4 mb-2">{proj.title}</h3>
-                    <p className="body-3 text-p5 flex-1 mb-4">{proj.desc}</p>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {proj.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs px-3 py-1 rounded-full border border-white/20 text-p3 uppercase tracking-wide"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    {proj.internal ? (
-                      <Button
-                        to={proj.link}
-                        containerClassName="mt-auto self-start"
-                        markerFill="#FFF"
-                      >
-                        View Project
-                      </Button>
-                    ) : (
-                      <Button
-                        href={proj.link}
-                        containerClassName="mt-auto self-start"
-                        markerFill="#FFF"
-                      >
-                        View Project
-                      </Button>
-                    )}
-                  </div>
-                </div>
+                <ProjectCard key={proj.title} proj={proj} />
               ))}
             </div>
           </div>
