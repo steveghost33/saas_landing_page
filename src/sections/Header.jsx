@@ -142,13 +142,23 @@ const Header = () => {
           </div>
         </div>
 
-        {/* ── Mobile header: controls row + full-width logo row ── */}
-        <div className="xl:hidden">
-          <div className="container flex items-center justify-between gap-3 py-3 relative z-[110]">
-            <ThemeToggle className="flex-shrink-0" />
+        {/* ── Mobile header: full-width logo with buttons overlaid ── */}
+        <div className="xl:hidden relative z-[110]">
+          {/* Logo spans the full width — sets the row height */}
+          <Link to="/" onClick={handleLogoClick} className="block w-full py-3">
+            <img
+              src="/images/ellalogo.svg"
+              alt="Ella Tech Solutions"
+              className="theme-logo w-full h-auto block"
+            />
+          </Link>
+
+          {/* Toggle + menu icon pinned to left/right edges, centred vertically */}
+          <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
+            <ThemeToggle className="pointer-events-auto flex-shrink-0" />
 
             <button
-              className="flex-shrink-0 z-[110] flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200"
+              className="pointer-events-auto flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-full border border-p1/50 bg-s2 hover:bg-s3 transition-colors duration-200"
               onClick={() => setIsOpen((prev) => !prev)}
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
@@ -163,21 +173,8 @@ const Header = () => {
                   <rect y="10" width="16" height="2" rx="1" fill="#2EF2FF"/>
                 </svg>
               )}
-              <span className="text-xs font-bold uppercase tracking-widest text-p1">
-                {isOpen ? "Close" : "Menu"}
-              </span>
             </button>
           </div>
-
-          {!isOpen && (
-            <Link to="/" onClick={handleLogoClick} className="block w-full">
-              <img
-                src="/images/ellalogo.svg"
-                alt="Ella Tech Solutions"
-                className="theme-logo w-full h-auto block"
-              />
-            </Link>
-          )}
         </div>
       </header>
 
@@ -185,17 +182,8 @@ const Header = () => {
       {isOpen && (
         <div className="xl:hidden fixed inset-0 bg-s2 z-[100] flex flex-col overflow-hidden sidebar-before">
           <div className="flex flex-col min-h-screen p-6 pt-20 max-md:px-4">
-            {/* Logo */}
-            <Link to="/" className="block w-full cursor-pointer" onClick={handleLogoClick}>
-              <img
-                src="/images/ellalogo.svg"
-                alt="Ella Tech Solutions"
-                className="theme-logo w-full h-auto block"
-              />
-            </Link>
-
             {/* Socials */}
-            <ul className="flex justify-center gap-4 mt-10">
+            <ul className="flex justify-center gap-4">
               {socials.map(({ id, url, icon, title }) => (
                 <li key={id}>
                   <a
