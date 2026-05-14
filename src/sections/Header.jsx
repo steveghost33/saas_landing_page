@@ -39,73 +39,57 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
-  // Tell other UI (chatbot) when the mobile menu opens or closes
   useEffect(() => {
     window.dispatchEvent(
       new CustomEvent(CHATBOT_EVENT_MOBILE_MENU, { detail: { open: isOpen } })
     );
   }, [isOpen]);
 
-  // Move focus to first nav link when mobile menu opens
   useEffect(() => {
     if (isOpen && firstNavLinkRef.current) {
       firstNavLinkRef.current.focus();
     }
   }, [isOpen]);
 
-  const NavLink = ({ title, firstLink }) => (
-    <a
-      ref={firstLink ? firstNavLinkRef : null}
-      href={`/#${title}`}
-      onClick={() => setIsOpen(false)}
-      className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1 max-xl:my-4 max-xl:h5"
-    >
-      {title.charAt(0).toUpperCase() + title.slice(1)}
-    </a>
-  );
-
   const handleLogoClick = () => {
     setIsOpen(false);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  return (
-    <>
-    <a href="#main-content" className="sr-only">
-      Skip to main content
-    </a>
-    <header
+  const ThemeToggle = ({ className = "" }) => (
+    <button
+      onClick={toggle}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       className={clsx(
-        "w-full py-10 transition-all duration-500 max-xl:py-4 max-xl:overflow-x-hidden",
-        hasScrolled && "py-2 bg-black-100 backdrop-blur-[8px]"
+        "flex items-center justify-center w-9 h-9 rounded-full border border-p1/50 bg-s2 text-p1 hover:bg-s3 transition-colors duration-200",
+        className
       )}
     >
-      {/* Top Bar Desktop Only */}
-      <div className="container flex justify-between items-center mb-4 max-xl:hidden">
-        {/* Left side: theme toggle + Book Us Now */}
-        <div className="flex items-center gap-3">
-          {/* Theme Toggle */}
-          <button
-            onClick={toggle}
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            className="flex items-center justify-center w-9 h-9 rounded-full border border-p1/30 text-p1 hover:bg-p1/10 transition-all duration-300"
-          >
-            {isDark ? <SunIcon /> : <MoonIcon />}
-          </button>
+      {isDark ? <SunIcon /> : <MoonIcon />}
+    </button>
+  );
 
-          {/* DESKTOP Book Us Now Button */}
+  return (
+    <>
+      <a href="#main-content" className="sr-only">Skip to main content</a>
+
+      <header
+        className={clsx(
+          "w-full py-10 transition-all duration-500 max-xl:py-0 max-xl:overflow-x-hidden",
+          hasScrolled && "py-2 bg-black-100 backdrop-blur-[8px]"
+        )}
+      >
+        {/* ── Desktop top bar ────────────────────────────────── */}
+        <div className="max-xl:hidden container flex justify-between items-center mb-4">
           <a
             href="/#contact"
             className="flex items-center gap-3 px-6 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
@@ -113,130 +97,74 @@ const Header = () => {
             <img src="/images/zap.svg" alt="zap" className="w-5 h-5" />
             Book Us Now
           </a>
-        </div>
-
-        {/* Social Media Links */}
-        <div className="flex items-center gap-3">
-          {socials.map(({ id, url, icon, title }) => (
-            <a
-              key={id}
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Visit Ella Tech Solutions on ${title}`}
-              className="social-icon w-8 h-8 flex items-center justify-center rounded-full bg-s2 hover:bg-s3 transition-all duration-300"
-            >
-              <img src={icon} alt="" aria-hidden="true" className="w-4 h-4 object-contain" />
-            </a>
-          ))}
-        </div>
-      </div>
-
-      <div className="container flex items-center max-xl:flex-wrap max-xl:px-5 max-xl:py-3">
-        {/* Mobile logo only when menu closed */}
-        {!isOpen && (
-          <Link
-            to="/"
-            className="xl:hidden cursor-pointer z-2 max-xl:order-2 max-xl:mt-2 max-xl:w-full"
-            onClick={handleLogoClick}
-          >
-            <img src="/images/ellalogo.svg" alt="Ella Tech Solutions" className="w-full h-auto" />
-          </Link>
-        )}
-
-        {/* Mobile Menu Overlay */}
-        <div
-          className={clsx(
-            "w-full max-xl:fixed max-xl:top-0 max-xl:left-0 max-xl:w-full max-xl:h-screen max-xl:bg-s2 max-xl:opacity-0 max-xl:z-[100]",
-            isOpen ? "max-xl:opacity-100" : "max-xl:pointer-events-none"
-          )}
-        >
-          <div className="max-xl:relative max-xl:flex max-xl:flex-col max-xl:min-h-screen max-xl:p-6 max-xl:pt-20 max-xl:overflow-hidden sidebar-before max-md:px-4">
-            {/* Mobile Logo in Menu */}
-            <Link
-              to="/"
-              className="xl:hidden flex justify-center cursor-pointer z-2"
-              onClick={handleLogoClick}
-            >
-              <img
-                src="/images/ellalogo.svg"
-                alt="Ella Tech Solutions"
-                className="w-[320px] max-w-[88vw] h-auto"
-              />
-            </Link>
-
-            {/* Mobile Social Media Links */}
-            <ul className="xl:hidden flex justify-center gap-4 mt-10">
-              {socials.map(({ id, url, icon, title }) => (
-                <li key={id}>
-                  <a
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit Ella Tech Solutions on ${title}`}
-                    className="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
-                  >
-                    <img src={icon} alt="" aria-hidden="true" className="w-5 h-5 object-contain" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            {/* Mobile Book Us Now Button */}
-            <div className="xl:hidden flex justify-center mt-8 mb-10">
+          <div className="flex items-center gap-3">
+            {socials.map(({ id, url, icon, title }) => (
               <a
-                href="/#contact"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-2 px-5 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
+                key={id}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visit Ella Tech Solutions on ${title}`}
+                className="social-icon w-8 h-8 flex items-center justify-center rounded-full bg-s2 hover:bg-s3 transition-all duration-300"
               >
-                <img src="/images/zap.svg" alt="zap" className="w-5 h-5" />
-                Book Us Now
+                <img src={icon} alt="" aria-hidden="true" className="w-4 h-4 object-contain" />
               </a>
-            </div>
-
-            {/* Navigation Links */}
-            <nav id="mobile-nav" className="max-xl:relative max-xl:z-2 max-xl:flex-1 max-xl:flex max-xl:items-center">
-              <ul className="flex max-xl:block max-xl:px-12">
-                <li className="nav-li">
-                  <NavLink title="services" firstLink={true} />
-                  <div className="dot" />
-                  <NavLink title="plans" />
-                </li>
-
-                <li className="nav-logo">
-                  <Link
-                    to="/"
-                    className="max-xl:hidden transition-transform duration-500 cursor-pointer"
-                    onClick={handleLogoClick}
-                  >
-                    <img src="/images/ellalogo.svg" alt="Ella Tech Solutions" className="w-full h-auto" />
-                  </Link>
-                </li>
-
-                <li className="nav-li">
-                  <NavLink title="faq" />
-                  <div className="dot" />
-                  <NavLink title="contact" />
-                </li>
-              </ul>
-            </nav>
+            ))}
           </div>
         </div>
 
-        {/* Mobile controls row: theme toggle + hamburger */}
-        <div className="xl:hidden z-[110] flex items-center gap-2 max-xl:ml-auto max-xl:order-1">
-          {/* Mobile Theme Toggle */}
-          <button
-            onClick={toggle}
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-            className="flex items-center justify-center w-9 h-9 rounded-full border border-p1/50 bg-s2 text-p1 hover:bg-s3 transition-colors duration-200"
-          >
-            {isDark ? <SunIcon /> : <MoonIcon />}
-          </button>
+        {/* ── Desktop nav row (toggle lives here, left of logo) ─ */}
+        <div className="max-xl:hidden container">
+          <ul className="flex items-center">
+            <li className="nav-li">
+              <a href="/#services" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Services</a>
+              <div className="dot" />
+              <a href="/#plans" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Plans</a>
+            </li>
 
-          {/* Menu Toggle Button */}
+            {/* Logo cell — toggle is absolute-left of the logo */}
+            <li className="nav-logo relative">
+              <button
+                onClick={toggle}
+                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+                className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full border border-p1/30 text-p1 hover:bg-p1/10 transition-all duration-300"
+              >
+                {isDark ? <SunIcon /> : <MoonIcon />}
+              </button>
+
+              <Link to="/" onClick={handleLogoClick} className="transition-transform duration-500 cursor-pointer">
+                <img src="/images/ellalogo.svg" alt="Ella Tech Solutions" className="theme-logo w-full h-auto" />
+              </Link>
+            </li>
+
+            <li className="nav-li">
+              <a href="/#faq" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Faq</a>
+              <div className="dot" />
+              <a href="/#contact" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Contact</a>
+            </li>
+          </ul>
+        </div>
+
+        {/* ── Mobile header row: [toggle] [logo] [menu] ─────── */}
+        <div className="xl:hidden container flex items-center gap-3 px-5 py-4">
+          {/* Theme toggle — left of logo */}
+          <ThemeToggle className="flex-shrink-0 z-[110]" />
+
+          {/* Logo — center */}
+          {!isOpen && (
+            <Link to="/" className="flex-1 min-w-0 z-[110]" onClick={handleLogoClick}>
+              <img
+                src="/images/ellalogo.svg"
+                alt="Ella Tech Solutions"
+                className="theme-logo w-full h-auto"
+              />
+            </Link>
+          )}
+          {isOpen && <div className="flex-1" />}
+
+          {/* Hamburger — right */}
           <button
-            className="flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200"
+            className="flex-shrink-0 z-[110] flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200"
             onClick={() => setIsOpen((prev) => !prev)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-expanded={isOpen}
@@ -256,8 +184,70 @@ const Header = () => {
             </span>
           </button>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* ── Mobile full-screen overlay ─────────────────────── */}
+      {isOpen && (
+        <div className="xl:hidden fixed inset-0 bg-s2 z-[100] flex flex-col overflow-hidden sidebar-before">
+          <div className="flex flex-col min-h-screen p-6 pt-20 max-md:px-4">
+            {/* Logo */}
+            <Link to="/" className="flex justify-center cursor-pointer" onClick={handleLogoClick}>
+              <img
+                src="/images/ellalogo.svg"
+                alt="Ella Tech Solutions"
+                className="theme-logo w-[320px] max-w-[88vw] h-auto"
+              />
+            </Link>
+
+            {/* Socials */}
+            <ul className="flex justify-center gap-4 mt-10">
+              {socials.map(({ id, url, icon, title }) => (
+                <li key={id}>
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit Ella Tech Solutions on ${title}`}
+                    className="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
+                  >
+                    <img src={icon} alt="" aria-hidden="true" className="w-5 h-5 object-contain" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {/* Book Us Now */}
+            <div className="flex justify-center mt-8 mb-10">
+              <a
+                href="/#contact"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-2 px-5 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
+              >
+                <img src="/images/zap.svg" alt="zap" className="w-5 h-5" />
+                Book Us Now
+              </a>
+            </div>
+
+            {/* Nav links */}
+            <nav id="mobile-nav" className="flex-1 flex items-center">
+              <ul className="block px-12">
+                {["services", "plans", "faq", "contact"].map((title, i) => (
+                  <li key={title} className="my-4">
+                    <a
+                      ref={i === 0 ? firstNavLinkRef : null}
+                      href={`/#${title}`}
+                      onClick={() => setIsOpen(false)}
+                      className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1 h5"
+                    >
+                      {title.charAt(0).toUpperCase() + title.slice(1)}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </div>
+        </div>
+      )}
     </>
   );
 };
