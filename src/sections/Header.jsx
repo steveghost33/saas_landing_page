@@ -145,44 +145,45 @@ const Header = () => {
           </ul>
         </div>
 
-        {/* ── Mobile header row: [toggle] [logo] [menu] ─────── */}
-        <div className="xl:hidden container flex items-center gap-3 px-5 py-4">
-          {/* Theme toggle — left of logo */}
-          <ThemeToggle className="flex-shrink-0 z-[110]" />
-
-          {/* Logo — center */}
+        {/* ── Mobile header: logo row + controls row ─────────── */}
+        <div className="xl:hidden">
+          {/* Logo — full-width row for maximum display size */}
           {!isOpen && (
-            <Link to="/" className="flex-1 min-w-0 z-[110]" onClick={handleLogoClick}>
-              <img
-                src="/images/ellalogo.svg"
-                alt="Ella Tech Solutions"
-                className="theme-logo w-full h-auto"
-              />
-            </Link>
+            <div className="container pt-4 pb-2 relative z-[110]">
+              <Link to="/" onClick={handleLogoClick} className="block">
+                <img
+                  src="/images/ellalogo.svg"
+                  alt="Ella Tech Solutions"
+                  className="theme-logo w-full h-auto"
+                />
+              </Link>
+            </div>
           )}
-          {isOpen && <div className="flex-1" />}
 
-          {/* Hamburger — right */}
-          <button
-            className="flex-shrink-0 z-[110] flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200"
-            onClick={() => setIsOpen((prev) => !prev)}
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            aria-expanded={isOpen}
-            aria-controls="mobile-nav"
-          >
-            {isOpen ? (
-              <img src="/images/close.svg" alt="close" className="w-4 h-4 object-contain" />
-            ) : (
-              <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="16" height="2" rx="1" fill="#2EF2FF"/>
-                <rect y="5" width="16" height="2" rx="1" fill="#2EF2FF"/>
-                <rect y="10" width="16" height="2" rx="1" fill="#2EF2FF"/>
-              </svg>
-            )}
-            <span className="text-xs font-bold uppercase tracking-widest text-p1">
-              {isOpen ? "Close" : "Menu"}
-            </span>
-          </button>
+          {/* Controls: toggle left, menu right */}
+          <div className="container flex items-center justify-between py-3">
+            <ThemeToggle className="flex-shrink-0 z-[110]" />
+            <button
+              className="flex-shrink-0 z-[110] flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200"
+              onClick={() => setIsOpen((prev) => !prev)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-nav"
+            >
+              {isOpen ? (
+                <img src="/images/close.svg" alt="close" className="w-4 h-4 object-contain" />
+              ) : (
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="16" height="2" rx="1" fill="#2EF2FF"/>
+                  <rect y="5" width="16" height="2" rx="1" fill="#2EF2FF"/>
+                  <rect y="10" width="16" height="2" rx="1" fill="#2EF2FF"/>
+                </svg>
+              )}
+              <span className="text-xs font-bold uppercase tracking-widest text-p1">
+                {isOpen ? "Close" : "Menu"}
+              </span>
+            </button>
+          </div>
         </div>
       </header>
 
