@@ -3,7 +3,7 @@ import Button from "../components/Button.jsx";
 
 const Hero = () => {
   return (
-    <section className="relative pt-20 pb-40 max-lg:pt-14 max-lg:pb-36 max-md:pt-32 max-md:pb-32">
+    <section className="relative pt-20 pb-40 max-lg:pt-14 max-lg:pb-36 max-md:pt-6 max-md:pb-32">
       <Element name="hero">
         <div className="container relative z-2 flex flex-col lg:flex-row items-start lg:items-center">
           {/* Text */}

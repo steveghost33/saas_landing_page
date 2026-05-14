@@ -32,26 +32,26 @@
 
 html.light {
   /* Light mode — RGB channels */
-  --color-p1: 3 105 161;
-  --color-p2: 60 82 217;
-  --color-p3: 77 111 0;
-  --color-p4: 15 23 42;
-  --color-p5: 62 78 135;
-  --color-s1: 245 247 255;
-  --color-s2: 235 238 253;
-  --color-s3: 158 174 216;
-  --color-s4: 25 89 173;
-  --color-s5: 197 208 240;
-  --color-black-100: 218 226 245;
+  --color-p1: 37 99 235;       /* #2563eb — vibrant blue for links/accents */
+  --color-p2: 79 70 229;       /* #4f46e5 — indigo */
+  --color-p3: 22 163 74;       /* #16a34a — clean emerald for captions */
+  --color-p4: 15 23 42;        /* #0f172a — near-black headings */
+  --color-p5: 71 85 105;       /* #475569 — slate body text */
+  --color-s1: 255 255 255;     /* #ffffff — white page background */
+  --color-s2: 248 250 252;     /* #f8fafc — surface / card background */
+  --color-s3: 148 163 184;     /* #94a3b8 — borders / dividers */
+  --color-s4: 29 78 216;       /* #1d4ed8 — button / strong blue */
+  --color-s5: 226 232 240;     /* #e2e8f0 — lightest borders */
+  --color-black-100: 241 245 249; /* #f1f5f9 — scrolled header bg */
 
   /* Light mode gradients */
-  --g3-from: #c5d0f0; --g3-to: #dce5fb;
+  --g3-from: #dbeafe; --g3-to: #eff6ff;
   --g4-from: #1d4ed8; --g4-to: #1e40af;
   --g5-from: #2563eb; --g5-to: #1d4ed8;
-  --g6-from: #c8d4f0; --g6-to: #d8e4fb;
-  --g7-from: #ebeefd; --g7-to: #f5f7ff;
-  --g8-mid: #0369a1;
-  --g9-from: #f5f7ff;
+  --g6-from: #dbeafe; --g6-to: #f0f9ff;
+  --g7-from: #f0f9ff; --g7-to: #ffffff;
+  --g8-mid: #2563eb;
+  --g9-from: #f8fafc;
 }
 
 /* Light mode: button text (text-p1 on dark g4/g5 buttons) → white */

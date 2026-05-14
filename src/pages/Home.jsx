@@ -33,7 +33,7 @@ function Home() {
         schema={faqSchema}
       />
       <PageShell
-        mainClassName="overflow-hidden pt-[140px]"
+        mainClassName="overflow-hidden pt-[100px] md:pt-[140px]"
         showMobileBookingBar
       >
         <Hero />

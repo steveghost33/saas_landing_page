@@ -147,15 +147,15 @@ const Header = () => {
 
         {/* ── Mobile header: single row — toggle | logo | menu ── */}
         <div className="xl:hidden">
-          <div className="container flex items-center justify-between gap-3 py-2 relative z-[110]">
+          <div className="container flex items-center justify-between gap-3 py-3 relative z-[110]">
             <ThemeToggle className="flex-shrink-0" />
 
             {!isOpen && (
-              <Link to="/" onClick={handleLogoClick} className="flex-1 min-w-0">
+              <Link to="/" onClick={handleLogoClick} className="flex-1 min-w-0 flex justify-center">
                 <img
                   src="/images/ellalogo.svg"
                   alt="Ella Tech Solutions"
-                  className="theme-logo w-full h-auto"
+                  className="theme-logo h-11 w-auto max-w-full"
                 />
               </Link>
             )}
