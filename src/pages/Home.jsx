@@ -2,7 +2,7 @@ import Hero from "../sections/Hero.jsx";
 import Services from "../sections/Services.jsx";
 import Plans from "../sections/Plans.jsx";
 import Faq from "../sections/Faq.jsx";
-import Contact from "../sections/Contact.jsx";
+import SocialProof from "../sections/SocialProof.jsx";
 import PageSEO from "../components/PageSEO.jsx";
 import PageShell from "../components/PageShell.jsx";
 import { faq } from "../constants/index.jsx";
@@ -40,7 +40,7 @@ function Home() {
         <Services />
         <Plans />
         <Faq />
-        <Contact />
+        <SocialProof />
       </PageShell>
     </>
   );

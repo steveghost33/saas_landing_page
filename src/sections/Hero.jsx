@@ -1,5 +1,6 @@
-import { Element, Link as LinkScroll } from "react-scroll";
+import { Element } from "react-scroll";
 import Button from "../components/Button.jsx";
+import { BOOKING_PATH } from "../data/site.js";
 
 const Hero = () => {
   return (
@@ -20,9 +21,9 @@ const Hero = () => {
             <p className="max-w-440 mb-14 body-1 max-md:mb-10 text-p5">
               Most organizations already have the tools. What they are missing is a strategy that makes those tools actually work. Ella Tech brings 15 years of hands-on experience so you get implementation that sticks — not software that collects dust.
             </p>
-            <LinkScroll to="contact" offset={-100} spy smooth>
-              <Button icon="/images/zap.svg">Book a Consultation</Button>
-            </LinkScroll>
+            <Button icon="/images/zap.svg" href={BOOKING_PATH} target="_blank">
+              Book a Consultation
+            </Button>
           </div>
 
           {/* Hero Image */}

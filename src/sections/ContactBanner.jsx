@@ -13,6 +13,8 @@ function ContactBanner() {
       <span className="text-[#0A2540]/50 hidden sm:inline">—</span>
       <a
         href={BOOKING_PATH}
+        target="_blank"
+        rel="noopener noreferrer"
         className="inline-flex items-center gap-1.5 bg-[#0A2540] text-[#00C8E8] px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest hover:opacity-90 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0A2540] whitespace-nowrap"
       >
         Schedule Now

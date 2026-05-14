@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Element } from "react-scroll";
 import { plans } from "../constants/index.jsx";
 import Button from "../components/Button.jsx";
+import { BOOKING_PATH } from "../data/site.js";
 
 function Plans() {
   const [expandedIds, setExpandedIds] = useState([]);
@@ -98,7 +99,7 @@ function Plans() {
 
           {/* CTA */}
           <div className="text-center mb-4">
-            <Button href="/#contact" containerClassName="inline-block mx-auto">
+            <Button href={BOOKING_PATH} target="_blank" containerClassName="inline-block mx-auto">
               Schedule a Consultation
             </Button>
           </div>

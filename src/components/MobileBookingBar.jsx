@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { CHATBOT_EVENT_MOBILE_MENU } from "../features/chatbot/chatbotConfig.js";
+import { BOOKING_PATH } from "../data/site.js";
 
 const MobileBookingBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,7 +18,9 @@ const MobileBookingBar = () => {
     <div className="lg:hidden fixed bottom-0 left-0 right-0 z-[90]">
       <div className="bg-black-100/95 backdrop-blur-sm border-t border-s2 px-4 py-3">
         <a
-          href="/#contact"
+          href={BOOKING_PATH}
+          target="_blank"
+          rel="noopener noreferrer"
           className="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl bg-p1 hover:bg-p1/90 transition-colors duration-200"
         >
           <img src="/images/zap.svg" alt="" className="w-5 h-5" />

@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { socials } from "../constants/index.jsx";
 import { CHATBOT_EVENT_MOBILE_MENU } from "../features/chatbot/chatbotConfig.js";
+import { BOOKING_PATH } from "../data/site.js";
 import { useTheme } from "../context/ThemeContext.jsx";
 
 const SunIcon = () => (
@@ -91,7 +92,9 @@ const Header = () => {
         {/* ── Desktop top bar ────────────────────────────────── */}
         <div className="max-xl:hidden container flex justify-between items-center mb-2">
           <a
-            href="/#contact"
+            href={BOOKING_PATH}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-3 px-6 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
           >
             <img src="/images/zap.svg" alt="zap" className="w-5 h-5" />
@@ -138,7 +141,7 @@ const Header = () => {
           <div className="flex items-center gap-6">
             <a href="/#faq" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Faq</a>
             <div className="dot" />
-            <a href="/#contact" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Contact</a>
+            <a href={BOOKING_PATH} target="_blank" rel="noopener noreferrer" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Book a Session</a>
           </div>
         </div>
 
@@ -202,7 +205,9 @@ const Header = () => {
             {/* Book Us Now */}
             <div className="flex justify-center mt-8 mb-10">
               <a
-                href="/#contact"
+                href={BOOKING_PATH}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="flex items-center gap-2 px-5 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
               >
@@ -214,7 +219,7 @@ const Header = () => {
             {/* Nav links */}
             <nav id="mobile-nav" className="flex-1 flex items-center">
               <ul className="block px-12">
-                {["services", "plans", "faq", "contact"].map((title, i) => (
+                {["services", "plans", "faq"].map((title, i) => (
                   <li key={title} className="my-4">
                     <a
                       ref={i === 0 ? firstNavLinkRef : null}
