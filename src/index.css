@@ -74,6 +74,16 @@ html.light .hover\:bg-white\/5:hover { background-color: rgba(15, 23, 42, 0.05);
 /* Light mode: transition color for header backdrop */
 html.light header { transition: background-color 0.5s ease, padding 0.5s ease; }
 
+/* Light mode: white logo → dark (all fills are #fff so invert makes them #000) */
+html.light .theme-logo {
+  filter: invert(1);
+}
+
+/* Light mode: social icon images are near-white fills, invert to near-black */
+html.light .social-icon img {
+  filter: invert(1);
+}
+
 @layer base {
   *,
   *::before,
