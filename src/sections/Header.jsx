@@ -48,11 +48,7 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    if (isOpen && window.innerWidth < 1280) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = "";
     return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
@@ -188,57 +184,52 @@ const Header = () => {
         </div>
       </header>
 
-      {/* ── Mobile site menu overlay ───────────────────────── */}
+      {/* ── Mobile menu panel ─────────────────────────────── */}
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex flex-col overflow-hidden bg-s2 sidebar-before xl:hidden">
-          <div className="flex min-h-screen flex-col p-6 pt-24 max-md:px-4 xl:px-10">
-            <div className="mx-auto flex w-full max-w-[540px] flex-1 flex-col items-center xl:max-w-[680px] xl:justify-center xl:gap-8 xl:pt-4">
-            {/* Socials */}
-              <ul className="flex justify-center gap-4">
-                {socials.map(({ id, url, icon, title }) => (
-                  <li key={id}>
+        <div className="fixed left-0 right-0 top-[100px] md:top-[120px] z-[99] bg-s2/98 backdrop-blur-xl border-b border-white/10 shadow-2xl xl:hidden">
+          <div className="container py-3">
+            <nav id="site-nav" aria-label="Mobile menu">
+              <ul className="space-y-0.5">
+                {["services", "plans", "faq", "contact"].map((title, i) => (
+                  <li key={title}>
                     <a
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Visit Ella Tech Solutions on ${title}`}
-                      className="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
+                      ref={i === 0 ? firstNavLinkRef : null}
+                      href={`/#${title}`}
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center justify-between rounded-xl px-4 py-3 text-base font-semibold uppercase tracking-[0.06em] text-p4 transition-colors duration-200 hover:bg-white/5 hover:text-p1"
                     >
-                      <img src={icon} alt="" aria-hidden="true" className="w-5 h-5 object-contain" />
+                      <span>{title.charAt(0).toUpperCase() + title.slice(1)}</span>
+                      <span className="text-p1/60 text-lg">+</span>
                     </a>
                   </li>
                 ))}
               </ul>
+            </nav>
 
-              {/* Book Us Now */}
-              <div className="mt-8 flex justify-center xl:mt-0">
-                <a
-                  href="/#contact"
-                  onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-2 px-5 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
-                >
-                  <img src="/images/zap.svg" alt="zap" className="w-5 h-5" />
-                  Book Us Now
-                </a>
+            <div className="mt-2 pt-3 border-t border-white/10 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                {socials.map(({ id, url, icon, title }) => (
+                  <a
+                    key={id}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Visit Ella Tech Solutions on ${title}`}
+                    className="w-9 h-9 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
+                  >
+                    <img src={icon} alt="" aria-hidden="true" className="w-4 h-4 object-contain" />
+                  </a>
+                ))}
               </div>
 
-              {/* Nav links */}
-              <nav id="site-nav" className="flex flex-1 items-center justify-center xl:flex-none">
-                <ul className="block px-8 text-center xl:px-12">
-                  {["services", "plans", "faq", "contact"].map((title, i) => (
-                    <li key={title} className="my-4 xl:my-3">
-                      <a
-                        ref={i === 0 ? firstNavLinkRef : null}
-                        href={`/#${title}`}
-                        onClick={() => setIsOpen(false)}
-                        className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1 h5 xl:text-[2rem] xl:leading-[2.5rem]"
-                      >
-                        {title.charAt(0).toUpperCase() + title.slice(1)}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+              <a
+                href="/#contact"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
+              >
+                <img src="/images/zap.svg" alt="" className="w-4 h-4" />
+                Book Us Now
+              </a>
             </div>
           </div>
         </div>

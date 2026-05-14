@@ -7,7 +7,7 @@ import MobileBookingBar from "./MobileBookingBar.jsx";
 function PageShell({ children, mainClassName = "overflow-hidden", showMobileBookingBar = false }) {
   return (
     <>
-      <div className="fixed top-0 left-0 w-full z-50 overflow-hidden">
+      <div className="fixed top-0 left-0 w-full z-50">
         <Header />
         <ContactBanner />
       </div>
