@@ -4,6 +4,76 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Theme color tokens ─────────────────────────────────────────────────── */
+
+:root {
+  /* Dark mode (default) — RGB channels for Tailwind opacity modifiers */
+  --color-p1: 46 242 255;
+  --color-p2: 60 82 217;
+  --color-p3: 200 234 128;
+  --color-p4: 234 237 255;
+  --color-p5: 196 203 245;
+  --color-s1: 8 13 39;
+  --color-s2: 12 24 56;
+  --color-s3: 51 70 121;
+  --color-s4: 25 89 173;
+  --color-s5: 38 52 102;
+  --color-black-100: 5 9 29;
+
+  /* Gradient hex helpers (used inside .g* classes below) */
+  --g3-from: #3c52d9; --g3-to: #0c1838;
+  --g4-from: #253575; --g4-to: #162561;
+  --g5-from: #334679; --g5-to: #162561;
+  --g6-from: #334679; --g6-to: #0c1838;
+  --g7-from: #1b275a; --g7-to: #0e1434;
+  --g8-mid: #2ef2ff;
+  --g9-from: #080d27;
+}
+
+html.light {
+  /* Light mode — RGB channels */
+  --color-p1: 3 105 161;
+  --color-p2: 60 82 217;
+  --color-p3: 77 111 0;
+  --color-p4: 15 23 42;
+  --color-p5: 62 78 135;
+  --color-s1: 245 247 255;
+  --color-s2: 235 238 253;
+  --color-s3: 158 174 216;
+  --color-s4: 25 89 173;
+  --color-s5: 197 208 240;
+  --color-black-100: 218 226 245;
+
+  /* Light mode gradients */
+  --g3-from: #c5d0f0; --g3-to: #dce5fb;
+  --g4-from: #1d4ed8; --g4-to: #1e40af;
+  --g5-from: #2563eb; --g5-to: #1d4ed8;
+  --g6-from: #c8d4f0; --g6-to: #d8e4fb;
+  --g7-from: #ebeefd; --g7-to: #f5f7ff;
+  --g8-mid: #0369a1;
+  --g9-from: #f5f7ff;
+}
+
+/* Light mode: button text (text-p1 on dark g4/g5 buttons) → white */
+html.light .g4 .text-p1 {
+  color: #ffffff;
+}
+
+/* Light mode: white borders on cards → dark-tinted */
+html.light .border-white\/10  { border-color: rgba(15, 23, 42, 0.10) !important; }
+html.light .border-white\/15  { border-color: rgba(15, 23, 42, 0.15) !important; }
+html.light .border-white\/20  { border-color: rgba(15, 23, 42, 0.20) !important; }
+html.light .border-t.border-white\/10 { border-color: rgba(15, 23, 42, 0.10) !important; }
+
+/* Light mode: ring utilities on cards */
+html.light .ring-white\/10 { --tw-ring-color: rgba(15, 23, 42, 0.10); }
+
+/* Light mode: hover bg tint used in project/tech pages */
+html.light .hover\:bg-white\/5:hover { background-color: rgba(15, 23, 42, 0.05); }
+
+/* Light mode: transition color for header backdrop */
+html.light header { transition: background-color 0.5s ease, padding 0.5s ease; }
+
 @layer base {
   *,
   *::before,
@@ -18,14 +88,17 @@
 
   html {
     @apply min-h-full overflow-x-hidden bg-s1;
+    transition: background-color 0.4s ease;
   }
 
   body {
     @apply min-h-full overflow-x-hidden bg-s1 font-poppins text-[16px] tracking-[-0.03em] text-p5;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 
   #root {
     @apply min-h-screen bg-s1;
+    transition: background-color 0.4s ease;
   }
 
   a {
@@ -162,31 +235,31 @@
   }
 
   .g3 {
-    background: linear-gradient(#3c52d9, #0c1838);
+    background: linear-gradient(var(--g3-from), var(--g3-to));
   }
 
   .g4 {
-    background: linear-gradient(#253575, #162561);
+    background: linear-gradient(var(--g4-from), var(--g4-to));
   }
 
   .g5 {
-    background: linear-gradient(#334679, #162561);
+    background: linear-gradient(var(--g5-from), var(--g5-to));
   }
 
   .g6 {
-    background: linear-gradient(#334679, #0c1838);
+    background: linear-gradient(var(--g6-from), var(--g6-to));
   }
 
   .g7 {
-    background: linear-gradient(#1b275a, #0e1434);
+    background: linear-gradient(var(--g7-from), var(--g7-to));
   }
 
   .g8 {
-    background: linear-gradient(to right, transparent, #2ef2ff, transparent);
+    background: linear-gradient(to right, transparent, var(--g8-mid), transparent);
   }
 
   .g9 {
-    background: linear-gradient(#080d27, transparent);
+    background: linear-gradient(var(--g9-from), transparent);
   }
 
   /* END of Gradients */
@@ -360,37 +433,9 @@
     cursor: grab;
     z-index: 1000;
 
-    /* same gradient + glow as “Book Us Now” */
+    /* same gradient + glow as "Book Us Now" */
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     color: #ffffff;
-    font-size: 16px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-shadow:
-            0 4px 12px rgba(79, 172, 254, 0.6),
-            0 0 20px rgba(79, 172, 254, 0.4);
-    transition: transform 0.1s ease, box-shadow 0.3s ease;
-  }
-  .chatbot-toggle:active {
-    cursor: grabbing;
-    transform: scale(0.95);
-  }
-
-  /* ─── Chatbot Toggle Button (draggable & styled) ─────────────────────────── */
-  .chatbot-toggle {
-    position: fixed;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    cursor: grab;
-    z-index: 1000;
-
-    /* Gradient background + glow */
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-    color: #fff;
     font-size: 16px;
     font-weight: 500;
     display: flex;

@@ -4,19 +4,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        p1: "#2EF2FF",
-        p2: "#3C52D9",
-        p3: "#C8EA80",
-        p4: "#EAEDFF",
-        p5: "#C4CBF5",
-        s1: "#080D27",
-        s2: "#0C1838",
-        s3: "#334679",
-        s4: "#1959AD",
-        s5: "#263466",
+        p1: "rgb(var(--color-p1) / <alpha-value>)",
+        p2: "rgb(var(--color-p2) / <alpha-value>)",
+        p3: "rgb(var(--color-p3) / <alpha-value>)",
+        p4: "rgb(var(--color-p4) / <alpha-value>)",
+        p5: "rgb(var(--color-p5) / <alpha-value>)",
+        s1: "rgb(var(--color-s1) / <alpha-value>)",
+        s2: "rgb(var(--color-s2) / <alpha-value>)",
+        s3: "rgb(var(--color-s3) / <alpha-value>)",
+        s4: "rgb(var(--color-s4) / <alpha-value>)",
+        s5: "rgb(var(--color-s5) / <alpha-value>)",
         black: {
           DEFAULT: "#000000",
-          100: "#05091D",
+          100: "rgb(var(--color-black-100) / <alpha-value>)",
         },
       },
       boxShadow: {
@@ -85,4 +85,3 @@ export default {
   },
   plugins: [],
 };
-
