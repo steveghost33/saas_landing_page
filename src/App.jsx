@@ -1,6 +1,7 @@
 // src/App.jsx
 import { Routes, Route } from "react-router-dom";
 import ScrollToHash from "./components/ScrollToHash.jsx";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
 
 import Home from "./pages/Home.jsx";
 import WebProjects from "./pages/WebProjects.jsx";
@@ -10,7 +11,7 @@ import Legal from "./pages/Legal.jsx";
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <ScrollToHash offset={140} />
 
       <Routes>
@@ -20,7 +21,7 @@ function App() {
         <Route path="/terms-of-use" element={<TermsOfUse />} />
         <Route path="/legal" element={<Legal />} />
       </Routes>
-    </>
+    </ThemeProvider>
   );
 }
 

@@ -31,7 +31,7 @@ function FaqItem({ item, index }) {
             "flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300",
             active
               ? "rotate-45 border-p3 text-p3"
-              : "border-white/20 text-white"
+              : "border-p4/20 text-p4"
           )}
         >
           +
