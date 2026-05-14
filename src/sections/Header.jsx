@@ -84,12 +84,12 @@ const Header = () => {
 
       <header
         className={clsx(
-          "w-full py-10 transition-all duration-500 max-xl:py-0 max-xl:overflow-x-hidden",
+          "w-full py-4 transition-all duration-500 max-xl:py-0 max-xl:overflow-x-hidden",
           hasScrolled && "py-2 bg-black-100 backdrop-blur-[8px]"
         )}
       >
         {/* ── Desktop top bar ────────────────────────────────── */}
-        <div className="max-xl:hidden container flex justify-between items-center mb-4">
+        <div className="max-xl:hidden container flex justify-between items-center mb-2">
           <a
             href="/#contact"
             className="flex items-center gap-3 px-6 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
@@ -145,24 +145,22 @@ const Header = () => {
           </ul>
         </div>
 
-        {/* ── Mobile header: logo row + controls row ─────────── */}
+        {/* ── Mobile header: single row — toggle | logo | menu ── */}
         <div className="xl:hidden">
-          {/* Logo — full-width row for maximum display size */}
-          {!isOpen && (
-            <div className="container pt-4 pb-2 relative z-[110]">
-              <Link to="/" onClick={handleLogoClick} className="block">
+          <div className="container flex items-center justify-between gap-3 py-2 relative z-[110]">
+            <ThemeToggle className="flex-shrink-0" />
+
+            {!isOpen && (
+              <Link to="/" onClick={handleLogoClick} className="flex-1 min-w-0">
                 <img
                   src="/images/ellalogo.svg"
                   alt="Ella Tech Solutions"
                   className="theme-logo w-full h-auto"
                 />
               </Link>
-            </div>
-          )}
+            )}
+            {isOpen && <div className="flex-1" />}
 
-          {/* Controls: toggle left, menu right */}
-          <div className="container flex items-center justify-between py-3">
-            <ThemeToggle className="flex-shrink-0 z-[110]" />
             <button
               className="flex-shrink-0 z-[110] flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200"
               onClick={() => setIsOpen((prev) => !prev)}
