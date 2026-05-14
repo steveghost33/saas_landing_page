@@ -115,14 +115,15 @@ const Header = () => {
         )}
       >
         <div className="container relative z-[110]">
-          <div className="flex items-center justify-between gap-4 py-3 xl:py-4">
-            <div className="flex min-w-0 items-center gap-3 xl:gap-4">
-              <ThemeToggle />
-              <Link to="/" onClick={handleLogoClick} className="block min-w-0 cursor-pointer">
+          <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3 xl:py-4">
+            <ThemeToggle />
+
+            <div className="flex justify-center">
+              <Link to="/" onClick={handleLogoClick} className="block cursor-pointer">
                 <img
                   src="/images/ellalogo.svg"
                   alt="Ella Tech Solutions"
-                  className="theme-logo h-auto w-[220px] max-w-full sm:w-[280px] lg:w-[360px] xl:w-[420px]"
+                  className="theme-logo h-auto w-[440px] max-w-full sm:w-[560px] lg:w-[720px] xl:w-[840px]"
                 />
               </Link>
             </div>
