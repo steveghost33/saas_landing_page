@@ -123,7 +123,7 @@ const Header = () => {
                 <img
                   src="/images/ellalogo.svg"
                   alt="Ella Tech Solutions"
-                  className="theme-logo h-auto w-[440px] max-w-full sm:w-[560px] lg:w-[720px] xl:w-[840px]"
+                  className="theme-logo h-auto w-[880px] max-w-full sm:w-[560px] lg:w-[720px] xl:w-[840px]"
                 />
               </Link>
             </div>
