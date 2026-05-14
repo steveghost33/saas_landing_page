@@ -27,6 +27,14 @@ const MoonIcon = () => (
   </svg>
 );
 
+const MenuIcon = () => (
+  <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect width="16" height="2" rx="1" fill="#2EF2FF" />
+    <rect y="5" width="16" height="2" rx="1" fill="#2EF2FF" />
+    <rect y="10" width="16" height="2" rx="1" fill="#2EF2FF" />
+  </svg>
+);
+
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -78,6 +86,25 @@ const Header = () => {
     </button>
   );
 
+  const MenuToggle = ({ className = "" }) => (
+    <button
+      className={clsx(
+        "flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-p1/50 bg-s2 hover:bg-s3 transition-colors duration-200",
+        className
+      )}
+      onClick={() => setIsOpen((prev) => !prev)}
+      aria-label={isOpen ? "Close menu" : "Open menu"}
+      aria-expanded={isOpen}
+      aria-controls="site-nav"
+    >
+      {isOpen ? (
+        <img src="/images/close.svg" alt="" aria-hidden="true" className="w-4 h-4 object-contain" />
+      ) : (
+        <MenuIcon />
+      )}
+    </button>
+  );
+
   return (
     <>
       <a href="#main-content" className="sr-only">Skip to main content</a>
@@ -88,100 +115,28 @@ const Header = () => {
           hasScrolled && "py-2 bg-black-100 backdrop-blur-[8px]"
         )}
       >
-        {/* ── Desktop top bar ────────────────────────────────── */}
-        <div className="max-xl:hidden container flex justify-between items-center mb-2">
-          <a
-            href="/#contact"
-            className="flex items-center gap-3 px-6 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
-          >
-            <img src="/images/zap.svg" alt="zap" className="w-5 h-5" />
-            Book Us Now
-          </a>
-          <div className="flex items-center gap-3">
-            {socials.map(({ id, url, icon, title }) => (
-              <a
-                key={id}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={`Visit Ella Tech Solutions on ${title}`}
-                className="social-icon w-8 h-8 flex items-center justify-center rounded-full bg-s2 hover:bg-s3 transition-all duration-300"
-              >
-                <img src={icon} alt="" aria-hidden="true" className="w-4 h-4 object-contain" />
-              </a>
-            ))}
-          </div>
-        </div>
+        <div className="container relative z-[110]">
+          <div className="flex items-center justify-between gap-4 py-3 xl:py-4">
+            <div className="flex min-w-0 items-center gap-3 xl:gap-4">
+              <ThemeToggle />
+              <Link to="/" onClick={handleLogoClick} className="block min-w-0 cursor-pointer">
+                <img
+                  src="/images/ellalogo.svg"
+                  alt="Ella Tech Solutions"
+                  className="theme-logo h-auto w-[220px] max-w-full sm:w-[280px] lg:w-[360px] xl:w-[420px]"
+                />
+              </Link>
+            </div>
 
-        {/* ── Desktop logo — full viewport width ──────────────── */}
-        <div className="max-xl:hidden w-full">
-          <Link to="/" onClick={handleLogoClick} className="block cursor-pointer">
-            <img src="/images/ellalogo.svg" alt="Ella Tech Solutions" className="theme-logo w-full h-auto block" />
-          </Link>
-        </div>
-
-        {/* ── Desktop nav links row — below logo ───────────────── */}
-        <div className="max-xl:hidden container flex items-center justify-between py-2">
-          <div className="flex items-center gap-6">
-            <button
-              onClick={toggle}
-              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-              className="flex items-center justify-center w-9 h-9 rounded-full border border-p1/30 text-p1 hover:bg-p1/10 transition-all duration-300"
-            >
-              {isDark ? <SunIcon /> : <MoonIcon />}
-            </button>
-            <div className="dot" />
-            <a href="/#services" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Services</a>
-            <div className="dot" />
-            <a href="/#plans" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Plans</a>
-          </div>
-          <div className="flex items-center gap-6">
-            <a href="/#faq" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Faq</a>
-            <div className="dot" />
-            <a href="/#contact" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Contact</a>
-          </div>
-        </div>
-
-        {/* ── Mobile header: full-width logo with buttons overlaid ── */}
-        <div className="xl:hidden relative z-[110]">
-          {/* Logo spans the full width — sets the row height */}
-          <Link to="/" onClick={handleLogoClick} className="block w-full py-3">
-            <img
-              src="/images/ellalogo.svg"
-              alt="Ella Tech Solutions"
-              className="theme-logo w-full h-auto block"
-            />
-          </Link>
-
-          {/* Toggle + menu icon pinned to left/right edges, centred vertically */}
-          <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
-            <ThemeToggle className="pointer-events-auto flex-shrink-0" />
-
-            <button
-              className="pointer-events-auto flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-full border border-p1/50 bg-s2 hover:bg-s3 transition-colors duration-200"
-              onClick={() => setIsOpen((prev) => !prev)}
-              aria-label={isOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isOpen}
-              aria-controls="mobile-nav"
-            >
-              {isOpen ? (
-                <img src="/images/close.svg" alt="close" className="w-4 h-4 object-contain" />
-              ) : (
-                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="16" height="2" rx="1" fill="#2EF2FF"/>
-                  <rect y="5" width="16" height="2" rx="1" fill="#2EF2FF"/>
-                  <rect y="10" width="16" height="2" rx="1" fill="#2EF2FF"/>
-                </svg>
-              )}
-            </button>
+            <MenuToggle />
           </div>
         </div>
       </header>
 
-      {/* ── Mobile full-screen overlay ─────────────────────── */}
+      {/* ── Site menu overlay ──────────────────────────────── */}
       {isOpen && (
-        <div className="xl:hidden fixed inset-0 bg-s2 z-[100] flex flex-col overflow-hidden sidebar-before">
-          <div className="flex flex-col min-h-screen p-6 pt-20 max-md:px-4">
+        <div className="fixed inset-0 bg-s2 z-[100] flex flex-col overflow-hidden sidebar-before">
+          <div className="flex flex-col min-h-screen p-6 pt-24 max-md:px-4 xl:px-10">
             {/* Socials */}
             <ul className="flex justify-center gap-4">
               {socials.map(({ id, url, icon, title }) => (
@@ -212,8 +167,8 @@ const Header = () => {
             </div>
 
             {/* Nav links */}
-            <nav id="mobile-nav" className="flex-1 flex items-center">
-              <ul className="block px-12">
+            <nav id="site-nav" className="flex flex-1 items-center justify-center">
+              <ul className="block px-8 text-center xl:px-12">
                 {["services", "plans", "faq", "contact"].map((title, i) => (
                   <li key={title} className="my-4">
                     <a
