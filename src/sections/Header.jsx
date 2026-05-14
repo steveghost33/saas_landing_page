@@ -154,30 +154,19 @@ const Header = () => {
 
                 <div className="my-5 h-px bg-white/10" />
 
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    {socials.map(({ id, url, icon, title }) => (
-                      <a
-                        key={id}
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={`Visit Ella Tech Solutions on ${title}`}
-                        className="social-icon flex h-10 w-10 items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
-                      >
-                        <img src={icon} alt="" aria-hidden="true" className="h-5 w-5 object-contain" />
-                      </a>
-                    ))}
-                  </div>
-
-                  <a
-                    href="/#contact"
-                    onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-2 rounded-full border border-p1/30 px-4 py-2 text-xs font-semibold uppercase text-p1 transition-all duration-300 hover:bg-p1/10"
-                  >
-                    <img src="/images/zap.svg" alt="zap" className="h-4 w-4" />
-                    Book Us Now
-                  </a>
+                <div className="flex items-center gap-3">
+                  {socials.map(({ id, url, icon, title }) => (
+                    <a
+                      key={id}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit Ella Tech Solutions on ${title}`}
+                      className="social-icon flex h-10 w-10 items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
+                    >
+                      <img src={icon} alt="" aria-hidden="true" className="h-5 w-5 object-contain" />
+                    </a>
+                  ))}
                 </div>
               </div>
             </div>
@@ -207,30 +196,19 @@ const Header = () => {
               </ul>
             </nav>
 
-            <div className="mt-2 pt-3 border-t border-white/10 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                {socials.map(({ id, url, icon, title }) => (
-                  <a
-                    key={id}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit Ella Tech Solutions on ${title}`}
-                    className="w-9 h-9 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
-                  >
-                    <img src={icon} alt="" aria-hidden="true" className="w-4 h-4 object-contain" />
-                  </a>
-                ))}
-              </div>
-
-              <a
-                href="/#contact"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
-              >
-                <img src="/images/zap.svg" alt="" className="w-4 h-4" />
-                Book Us Now
-              </a>
+            <div className="mt-2 pt-3 border-t border-white/10 flex items-center gap-2">
+              {socials.map(({ id, url, icon, title }) => (
+                <a
+                  key={id}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Visit Ella Tech Solutions on ${title}`}
+                  className="w-9 h-9 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
+                >
+                  <img src={icon} alt="" aria-hidden="true" className="w-4 h-4 object-contain" />
+                </a>
+              ))}
             </div>
           </div>
         </div>
