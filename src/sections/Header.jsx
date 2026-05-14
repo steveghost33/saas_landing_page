@@ -113,53 +113,39 @@ const Header = () => {
           </div>
         </div>
 
-        {/* ── Desktop nav row (toggle lives here, left of logo) ─ */}
-        <div className="max-xl:hidden container">
-          <ul className="flex items-center">
-            <li className="nav-li">
-              <a href="/#services" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Services</a>
-              <div className="dot" />
-              <a href="/#plans" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Plans</a>
-            </li>
-
-            {/* Logo cell — toggle is absolute-left of the logo */}
-            <li className="nav-logo relative">
-              <button
-                onClick={toggle}
-                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-                className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center justify-center w-9 h-9 rounded-full border border-p1/30 text-p1 hover:bg-p1/10 transition-all duration-300"
-              >
-                {isDark ? <SunIcon /> : <MoonIcon />}
-              </button>
-
-              <Link to="/" onClick={handleLogoClick} className="transition-transform duration-500 cursor-pointer">
-                <img src="/images/ellalogo.svg" alt="Ella Tech Solutions" className="theme-logo w-full h-auto" />
-              </Link>
-            </li>
-
-            <li className="nav-li">
-              <a href="/#faq" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Faq</a>
-              <div className="dot" />
-              <a href="/#contact" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Contact</a>
-            </li>
-          </ul>
+        {/* ── Desktop logo — full viewport width ──────────────── */}
+        <div className="max-xl:hidden w-full">
+          <Link to="/" onClick={handleLogoClick} className="block cursor-pointer">
+            <img src="/images/ellalogo.svg" alt="Ella Tech Solutions" className="theme-logo w-full h-auto block" />
+          </Link>
         </div>
 
-        {/* ── Mobile header: single row — toggle | logo | menu ── */}
+        {/* ── Desktop nav links row — below logo ───────────────── */}
+        <div className="max-xl:hidden container flex items-center justify-between py-2">
+          <div className="flex items-center gap-6">
+            <button
+              onClick={toggle}
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              className="flex items-center justify-center w-9 h-9 rounded-full border border-p1/30 text-p1 hover:bg-p1/10 transition-all duration-300"
+            >
+              {isDark ? <SunIcon /> : <MoonIcon />}
+            </button>
+            <div className="dot" />
+            <a href="/#services" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Services</a>
+            <div className="dot" />
+            <a href="/#plans" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Plans</a>
+          </div>
+          <div className="flex items-center gap-6">
+            <a href="/#faq" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Faq</a>
+            <div className="dot" />
+            <a href="/#contact" className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1">Contact</a>
+          </div>
+        </div>
+
+        {/* ── Mobile header: controls row + full-width logo row ── */}
         <div className="xl:hidden">
           <div className="container flex items-center justify-between gap-3 py-3 relative z-[110]">
             <ThemeToggle className="flex-shrink-0" />
-
-            {!isOpen && (
-              <Link to="/" onClick={handleLogoClick} className="flex-1 min-w-0 flex justify-center">
-                <img
-                  src="/images/ellalogo.svg"
-                  alt="Ella Tech Solutions"
-                  className="theme-logo h-11 w-auto max-w-full"
-                />
-              </Link>
-            )}
-            {isOpen && <div className="flex-1" />}
 
             <button
               className="flex-shrink-0 z-[110] flex items-center gap-2 px-3 py-2 border border-p1/50 rounded-full bg-s2 hover:bg-s3 transition-colors duration-200"
@@ -182,6 +168,16 @@ const Header = () => {
               </span>
             </button>
           </div>
+
+          {!isOpen && (
+            <Link to="/" onClick={handleLogoClick} className="block w-full">
+              <img
+                src="/images/ellalogo.svg"
+                alt="Ella Tech Solutions"
+                className="theme-logo w-full h-auto block"
+              />
+            </Link>
+          )}
         </div>
       </header>
 
@@ -190,11 +186,11 @@ const Header = () => {
         <div className="xl:hidden fixed inset-0 bg-s2 z-[100] flex flex-col overflow-hidden sidebar-before">
           <div className="flex flex-col min-h-screen p-6 pt-20 max-md:px-4">
             {/* Logo */}
-            <Link to="/" className="flex justify-center cursor-pointer" onClick={handleLogoClick}>
+            <Link to="/" className="block w-full cursor-pointer" onClick={handleLogoClick}>
               <img
                 src="/images/ellalogo.svg"
                 alt="Ella Tech Solutions"
-                className="theme-logo w-[320px] max-w-[88vw] h-auto"
+                className="theme-logo w-full h-auto block"
               />
             </Link>
 
