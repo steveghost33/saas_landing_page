@@ -89,7 +89,7 @@ const Header = () => {
   const MenuToggle = ({ className = "" }) => (
     <button
       className={clsx(
-        "flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border border-p1/50 bg-s2 hover:bg-s3 transition-colors duration-200",
+        "flex h-9 flex-shrink-0 items-center justify-center gap-2 rounded-full border border-p1/50 bg-s2 px-3 text-sm font-semibold uppercase tracking-[0.08em] text-p1 hover:bg-s3 transition-colors duration-200",
         className
       )}
       onClick={() => setIsOpen((prev) => !prev)}
@@ -100,7 +100,10 @@ const Header = () => {
       {isOpen ? (
         <img src="/images/close.svg" alt="" aria-hidden="true" className="w-4 h-4 object-contain" />
       ) : (
-        <MenuIcon />
+        <>
+          <span>Menu</span>
+          <MenuIcon />
+        </>
       )}
     </button>
   );
@@ -136,53 +139,55 @@ const Header = () => {
       {/* ── Site menu overlay ──────────────────────────────── */}
       {isOpen && (
         <div className="fixed inset-0 bg-s2 z-[100] flex flex-col overflow-hidden sidebar-before">
-          <div className="flex flex-col min-h-screen p-6 pt-24 max-md:px-4 xl:px-10">
+          <div className="flex min-h-screen flex-col p-6 pt-24 max-md:px-4 xl:px-10">
+            <div className="mx-auto flex w-full max-w-[540px] flex-1 flex-col items-center xl:max-w-[680px] xl:justify-center xl:gap-8 xl:pt-4">
             {/* Socials */}
-            <ul className="flex justify-center gap-4">
-              {socials.map(({ id, url, icon, title }) => (
-                <li key={id}>
-                  <a
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Visit Ella Tech Solutions on ${title}`}
-                    className="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
-                  >
-                    <img src={icon} alt="" aria-hidden="true" className="w-5 h-5 object-contain" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            {/* Book Us Now */}
-            <div className="flex justify-center mt-8 mb-10">
-              <a
-                href="/#contact"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-2 px-5 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
-              >
-                <img src="/images/zap.svg" alt="zap" className="w-5 h-5" />
-                Book Us Now
-              </a>
-            </div>
-
-            {/* Nav links */}
-            <nav id="site-nav" className="flex flex-1 items-center justify-center">
-              <ul className="block px-8 text-center xl:px-12">
-                {["services", "plans", "faq", "contact"].map((title, i) => (
-                  <li key={title} className="my-4">
+              <ul className="flex justify-center gap-4">
+                {socials.map(({ id, url, icon, title }) => (
+                  <li key={id}>
                     <a
-                      ref={i === 0 ? firstNavLinkRef : null}
-                      href={`/#${title}`}
-                      onClick={() => setIsOpen(false)}
-                      className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1 h5"
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit Ella Tech Solutions on ${title}`}
+                      className="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
                     >
-                      {title.charAt(0).toUpperCase() + title.slice(1)}
+                      <img src={icon} alt="" aria-hidden="true" className="w-5 h-5 object-contain" />
                     </a>
                   </li>
                 ))}
               </ul>
-            </nav>
+
+              {/* Book Us Now */}
+              <div className="mt-8 flex justify-center xl:mt-0">
+                <a
+                  href="/#contact"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-2 px-5 py-3 text-sm font-semibold uppercase text-p1 border border-p1/30 rounded-full hover:bg-p1/10 transition-all duration-300"
+                >
+                  <img src="/images/zap.svg" alt="zap" className="w-5 h-5" />
+                  Book Us Now
+                </a>
+              </div>
+
+              {/* Nav links */}
+              <nav id="site-nav" className="flex flex-1 items-center justify-center xl:flex-none">
+                <ul className="block px-8 text-center xl:px-12">
+                  {["services", "plans", "faq", "contact"].map((title, i) => (
+                    <li key={title} className="my-4 xl:my-3">
+                      <a
+                        ref={i === 0 ? firstNavLinkRef : null}
+                        href={`/#${title}`}
+                        onClick={() => setIsOpen(false)}
+                        className="base-bold text-p4 uppercase transition-colors duration-500 cursor-pointer hover:text-p1 h5 xl:text-[2rem] xl:leading-[2.5rem]"
+                      >
+                        {title.charAt(0).toUpperCase() + title.slice(1)}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
           </div>
         </div>
       )}
