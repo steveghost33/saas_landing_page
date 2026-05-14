@@ -48,7 +48,7 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && window.innerWidth < 1280) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -133,12 +133,64 @@ const Header = () => {
 
             <MenuToggle />
           </div>
+
+          {isOpen && (
+            <div className="relative hidden xl:block">
+              <div className="absolute right-0 top-2 w-[340px] rounded-[28px] border border-white/10 bg-s2/95 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+                <nav id="site-nav" aria-label="Desktop menu">
+                  <ul className="space-y-2">
+                    {["services", "plans", "faq", "contact"].map((title, i) => (
+                      <li key={title}>
+                        <a
+                          ref={i === 0 ? firstNavLinkRef : null}
+                          href={`/#${title}`}
+                          onClick={() => setIsOpen(false)}
+                          className="flex items-center justify-between rounded-2xl px-4 py-3 text-left text-lg font-semibold uppercase tracking-[0.04em] text-p4 transition-colors duration-300 hover:bg-white/5 hover:text-p1"
+                        >
+                          <span>{title.charAt(0).toUpperCase() + title.slice(1)}</span>
+                          <span className="text-p1/70">+</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </nav>
+
+                <div className="my-5 h-px bg-white/10" />
+
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    {socials.map(({ id, url, icon, title }) => (
+                      <a
+                        key={id}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit Ella Tech Solutions on ${title}`}
+                        className="social-icon flex h-10 w-10 items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
+                      >
+                        <img src={icon} alt="" aria-hidden="true" className="h-5 w-5 object-contain" />
+                      </a>
+                    ))}
+                  </div>
+
+                  <a
+                    href="/#contact"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center gap-2 rounded-full border border-p1/30 px-4 py-2 text-xs font-semibold uppercase text-p1 transition-all duration-300 hover:bg-p1/10"
+                  >
+                    <img src="/images/zap.svg" alt="zap" className="h-4 w-4" />
+                    Book Us Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </header>
 
-      {/* ── Site menu overlay ──────────────────────────────── */}
+      {/* ── Mobile site menu overlay ───────────────────────── */}
       {isOpen && (
-        <div className="fixed inset-0 bg-s2 z-[100] flex flex-col overflow-hidden sidebar-before">
+        <div className="fixed inset-0 z-[100] flex flex-col overflow-hidden bg-s2 sidebar-before xl:hidden">
           <div className="flex min-h-screen flex-col p-6 pt-24 max-md:px-4 xl:px-10">
             <div className="mx-auto flex w-full max-w-[540px] flex-1 flex-col items-center xl:max-w-[680px] xl:justify-center xl:gap-8 xl:pt-4">
             {/* Socials */}

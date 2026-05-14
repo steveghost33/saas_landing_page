@@ -30,13 +30,13 @@ function Plans() {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="text-sm md:text-base text-p3 font-medium tracking-wide">
-              Every engagement is scoped to your organization and your needs.
+              What we deliver
             </div>
             <h2 className="mt-2 font-bold text-p4 uppercase text-4xl md:text-5xl">
               Our Services
             </h2>
             <p className="mt-4 text-p5 max-w-2xl mx-auto body-1">
-              Every engagement is scoped to your needs. Mission-driven pricing available.
+              Every engagement is scoped to your organization's needs. Mission-driven pricing available.
             </p>
           </div>
 
