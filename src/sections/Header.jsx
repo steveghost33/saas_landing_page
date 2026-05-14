@@ -181,7 +181,7 @@ const Header = () => {
       {/* ── Mobile full-screen overlay ─────────────────────── */}
       {isOpen && (
         <div className="xl:hidden fixed inset-0 bg-s2 z-[100] flex flex-col overflow-hidden sidebar-before">
-          <div className="flex flex-col min-h-screen p-6 pt-20 max-md:px-4">
+          <div className="flex flex-col p-6 pt-16 max-md:px-4">
             {/* Socials */}
             <ul className="flex justify-center gap-4">
               {socials.map(({ id, url, icon, title }) => (
@@ -200,7 +200,7 @@ const Header = () => {
             </ul>
 
             {/* Book Us Now */}
-            <div className="flex justify-center mt-8 mb-10">
+            <div className="flex justify-center mt-5 mb-6">
               <a
                 href="/#contact"
                 onClick={() => setIsOpen(false)}
@@ -212,10 +212,10 @@ const Header = () => {
             </div>
 
             {/* Nav links */}
-            <nav id="mobile-nav" className="flex-1 flex items-center">
+            <nav id="mobile-nav">
               <ul className="block px-12">
                 {["services", "plans", "faq", "contact"].map((title, i) => (
-                  <li key={title} className="my-4">
+                  <li key={title} className="my-3">
                     <a
                       ref={i === 0 ? firstNavLinkRef : null}
                       href={`/#${title}`}
