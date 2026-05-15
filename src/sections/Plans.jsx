@@ -23,8 +23,8 @@ function Plans() {
     );
 
   return (
-    <Element name="plans">
-      <section id="plans" className="py-16 bg-s1">
+    <Element name="services">
+      <section id="services" className="py-16 bg-s1">
         <div className="container mx-auto px-4">
 
           {/* Header */}

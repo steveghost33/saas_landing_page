@@ -136,7 +136,7 @@ const Header = () => {
               <div className="absolute right-0 top-2 w-[340px] rounded-[28px] border border-white/10 bg-s2/95 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl">
                 <nav id="site-nav" aria-label="Desktop menu">
                   <ul className="space-y-2">
-                    {["services", "plans", "faq", "contact"].map((title, i) => (
+                    {["overview", "services", "faq", "contact"].map((title, i) => (
                       <li key={title}>
                         <a
                           ref={i === 0 ? firstNavLinkRef : null}
@@ -180,7 +180,7 @@ const Header = () => {
           <div className="container py-3">
             <nav id="site-nav" aria-label="Mobile menu">
               <ul className="space-y-0.5">
-                {["services", "plans", "faq", "contact"].map((title, i) => (
+                {["overview", "services", "faq", "contact"].map((title, i) => (
                   <li key={title}>
                     <a
                       ref={i === 0 ? firstNavLinkRef : null}
