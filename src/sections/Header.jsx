@@ -115,20 +115,20 @@ const Header = () => {
         )}
       >
         <div className="container relative z-[110]">
-          <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3 xl:py-4">
-            <ThemeToggle />
+          <div className="relative flex items-center justify-center py-3 xl:grid xl:grid-cols-[auto_1fr_auto] xl:gap-4 xl:py-4">
+            <ThemeToggle className="absolute left-0 top-1/2 -translate-y-1/2 xl:static xl:translate-y-0" />
 
-            <div className="flex justify-center">
-              <Link to="/" onClick={handleLogoClick} className="block cursor-pointer">
+            <div className="flex w-full justify-center px-[52px] xl:w-auto xl:px-0">
+              <Link to="/" onClick={handleLogoClick} className="block w-full cursor-pointer xl:w-auto">
                 <img
                   src="/images/ellalogo.svg"
                   alt="Ella Tech Solutions"
-                  className="theme-logo h-auto w-[880px] max-w-full sm:w-[560px] lg:w-[720px] xl:w-[840px]"
+                  className="theme-logo h-auto w-full xl:w-[840px]"
                 />
               </Link>
             </div>
 
-            <MenuToggle />
+            <MenuToggle className="absolute right-0 top-1/2 -translate-y-1/2 min-w-[72px] xl:static xl:translate-y-0 xl:min-w-0" />
           </div>
 
           {isOpen && (
