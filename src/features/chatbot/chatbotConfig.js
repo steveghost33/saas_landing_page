@@ -9,9 +9,6 @@ export const ETS_BOOKING_URL = BOOKING_HASH;
 export const ETS_PHONE = CONTACT_PHONE;
 export const ETS_EMAIL = CONTACT_EMAIL;
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL?.replace(/\/$/, "") || "";
-export const CHAT_ENDPOINT = `${API_BASE_URL}/api/chat`;
-
 export const BOOKING_ONLY_CTA = "Next step: [[ETS_BOOK]]";
 export const CONTACT_ONLY_CTA =
   "Phone: [[ETS_PHONE]]\nEmail: [[ETS_EMAIL]]\n\nElla Tech Solutions replies within one business day.";

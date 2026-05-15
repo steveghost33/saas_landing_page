@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import axios from "axios";
 import { useLocation } from "react-router-dom";
 import ChatbotMessage from "../features/chatbot/ChatbotMessage.jsx";
 import QuickActions from "../features/chatbot/QuickActions.jsx";
 import {
-  BOOKING_ONLY_CTA,
-  CHAT_ENDPOINT,
   CHATBOT_EVENT_MOBILE_MENU,
   DOCK_GAP,
   DOCK_MARGIN,
@@ -17,7 +14,6 @@ import {
   cleanBotText,
   contactReply,
   intentFromText,
-  makeSpacing,
   serviceReply,
   userAskedForPhoneOrEmail,
 } from "../features/chatbot/chatbotText.js";
@@ -27,7 +23,6 @@ const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 function Chatbot() {
   const location = useLocation();
   const bottomRef = useRef(null);
-  const messagesRef = useRef(INITIAL_MESSAGES);
 
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState(INITIAL_MESSAGES);
@@ -36,10 +31,6 @@ function Chatbot() {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [dragging, setDragging] = useState(false);
   const [rel, setRel] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    messagesRef.current = messages;
-  }, [messages]);
 
   const reDock = () => {
     setDragging(false);
@@ -164,19 +155,6 @@ function Chatbot() {
     };
   }, []);
 
-  const buildChatHistory = (latestMessages, userText) => {
-    const history = [
-      ...latestMessages.map((message) => ({
-        role: message.from === "bot" ? "assistant" : "user",
-        content: message.text,
-      })),
-      { role: "user", content: userText },
-    ];
-
-    const maxTurns = 14;
-    return history.slice(-maxTurns);
-  };
-
   const pushBot = (raw) => {
     setMessages((currentMessages) => [
       ...currentMessages,
@@ -184,7 +162,7 @@ function Chatbot() {
     ]);
   };
 
-  const sendMessage = async (overrideText) => {
+  const sendMessage = (overrideText) => {
     const userText = (overrideText ?? input).trim();
     if (!userText) return;
 
@@ -197,23 +175,7 @@ function Chatbot() {
     }
 
     const intent = intentFromText(userText);
-    if (intent) {
-      pushBot(serviceReply(intent));
-      return;
-    }
-
-    try {
-      const response = await axios.post(
-        CHAT_ENDPOINT,
-        { messages: buildChatHistory(messagesRef.current, userText) },
-        { headers: { "Content-Type": "application/json" } }
-      );
-
-      const botReply = response?.data?.reply?.trim() || "Sorry, I did not get a response. Please try again.";
-      pushBot(makeSpacing(`${botReply}\n\n${BOOKING_ONLY_CTA}`));
-    } catch {
-      pushBot(makeSpacing(`Sorry, something went wrong on our side.\n\n${BOOKING_ONLY_CTA}`));
-    }
+    pushBot(serviceReply(intent));
   };
 
   const handleKeyDown = (event) => {
