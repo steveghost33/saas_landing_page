@@ -39,6 +39,8 @@ const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const firstNavLinkRef = useRef(null);
+  const headerRef = useRef(null);
+  const mobilePanelRef = useRef(null);
   const { isDark, toggle } = useTheme();
 
   useEffect(() => {
@@ -46,6 +48,17 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e) => {
+      const inHeader = headerRef.current?.contains(e.target);
+      const inPanel = mobilePanelRef.current?.contains(e.target);
+      if (!inHeader && !inPanel) setIsOpen(false);
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isOpen]);
 
   useEffect(() => {
     document.body.style.overflow = "";
@@ -109,6 +122,7 @@ const Header = () => {
       <a href="#main-content" className="sr-only">Skip to main content</a>
 
       <header
+        ref={headerRef}
         className={clsx(
           "w-full py-4 transition-all duration-500 max-xl:py-0 max-xl:overflow-x-hidden",
           hasScrolled && "py-2 bg-black-100 backdrop-blur-[8px]"
@@ -176,7 +190,7 @@ const Header = () => {
 
       {/* ── Mobile menu panel ─────────────────────────────── */}
       {isOpen && (
-        <div className="fixed left-0 right-0 top-[100px] md:top-[120px] z-[99] bg-s2/98 backdrop-blur-xl border-b border-white/10 shadow-2xl xl:hidden">
+        <div ref={mobilePanelRef} className="fixed left-0 right-0 top-[100px] md:top-[120px] z-[99] bg-s2/98 backdrop-blur-xl border-b border-white/10 shadow-2xl xl:hidden">
           <div className="container py-3">
             <nav id="site-nav" aria-label="Mobile menu">
               <ul className="space-y-0.5">
