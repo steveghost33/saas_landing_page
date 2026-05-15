@@ -155,6 +155,7 @@ export const intentFromText = (text) => {
     normalized.includes("advise") ||
     normalized.includes("advice");
   const hasSupport =
+    normalized === "support" ||
     normalized.includes("help desk") ||
     normalized.includes("troubleshoot") ||
     normalized.includes("ongoing help") ||
