@@ -22,7 +22,7 @@ const faqSchema = {
 };
 
 function Home() {
-  useScrollToHash();
+  useScrollToHash({ defaultToTop: true });
 
   return (
     <>
