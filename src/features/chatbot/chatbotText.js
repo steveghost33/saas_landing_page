@@ -32,7 +32,7 @@ export const stripChatgptArtifacts = (text) => {
   value = value.replace(/\bOpenAI\b/gi, "");
   value = value.replace(/\bGPT\b/gi, "");
   value = value.replace(/\(\s*\)/g, "");
-  value = value.replace(/\s{2,}/g, " ");
+  value = value.replace(/[ \t]{2,}/g, " ");
   return makeSpacing(value);
 };
 
