@@ -14,12 +14,12 @@ export const CONTACT_ONLY_CTA =
   "Phone: [[ETS_PHONE]]\nEmail: [[ETS_EMAIL]]\n\nElla Tech Solutions replies within one business day.";
 
 export const INITIAL_MESSAGES = [
-  { from: "bot", text: "Hi! I'm the Ella Tech Strategy Expert. How can I help?" },
+  { from: "bot", text: "Hi! I'm the Ella Tech Strategy Expert. Ask me anything about our services, pricing, or how to get started." },
 ];
 
 export const QUICK_ACTIONS = [
-  "Tech consulting",
-  "Staff training",
-  "Support",
+  "What do you do?",
+  "Services & pricing",
+  "LMS or HRIS help",
   "Get a quote",
 ];

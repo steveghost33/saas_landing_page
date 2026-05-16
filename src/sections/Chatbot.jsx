@@ -23,6 +23,7 @@ const clamp = (val, min, max) => Math.min(Math.max(val, min), max);
 function Chatbot() {
   const location = useLocation();
   const bottomRef = useRef(null);
+  const lastBotRef = useRef(null);
 
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState(INITIAL_MESSAGES);
@@ -38,7 +39,12 @@ function Chatbot() {
   };
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    const last = messages[messages.length - 1];
+    if (last?.from === "bot" && lastBotRef.current) {
+      lastBotRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    }
   }, [messages]);
 
   useEffect(() => {
@@ -299,23 +305,29 @@ function Chatbot() {
           >
             <QuickActions onSelect={sendMessage} />
 
-            {messages.map((message, index) => (
-              <div
-                key={`${message.from}-${index}-${message.text.slice(0, 16)}`}
-                className={`message ${message.from}`}
-                style={{
-                  marginBottom: 8,
-                  alignSelf: message.from === "bot" ? "flex-start" : "flex-end",
-                  background: message.from === "bot" ? "#e1f5fe" : "#c8e6c9",
-                  padding: "8px 10px",
-                  borderRadius: 6,
-                  maxWidth: "80%",
-                  wordWrap: "break-word",
-                }}
-              >
-                <ChatbotMessage message={message} />
-              </div>
-            ))}
+            {messages.map((message, index) => {
+              const isLastBot =
+                message.from === "bot" &&
+                index === messages.reduce((last, m, i) => (m.from === "bot" ? i : last), -1);
+              return (
+                <div
+                  key={`${message.from}-${index}-${message.text.slice(0, 16)}`}
+                  ref={isLastBot ? lastBotRef : null}
+                  className={`message ${message.from}`}
+                  style={{
+                    marginBottom: 8,
+                    alignSelf: message.from === "bot" ? "flex-start" : "flex-end",
+                    background: message.from === "bot" ? "#e1f5fe" : "#c8e6c9",
+                    padding: "8px 10px",
+                    borderRadius: 6,
+                    maxWidth: "80%",
+                    wordWrap: "break-word",
+                  }}
+                >
+                  <ChatbotMessage message={message} />
+                </div>
+              );
+            })}
             <div ref={bottomRef} />
           </div>
 
