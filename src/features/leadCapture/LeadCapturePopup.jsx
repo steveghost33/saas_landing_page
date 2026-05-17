@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import DownloadSuccess from "../../components/LandingPages/DownloadSuccess.jsx";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
@@ -47,6 +47,8 @@ const LeadCapturePopup = () => {
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState("");
   const [success, setSuccess] = useState(false);
+  const nameRef = useRef(null);
+  const emailRef = useRef(null);
 
   useEffect(() => {
     if (!isSocialTraffic() || hasDismissed()) return;
@@ -83,17 +85,16 @@ const LeadCapturePopup = () => {
 
   if (!visible) return null;
 
-  const validate = () => {
-    const e = {};
-    if (!name.trim()) e.name = "Name is required.";
-    if (!email.trim()) e.email = "Email is required.";
-    else if (!isValidEmail(email)) e.email = "Please enter a valid email.";
-    return e;
-  };
-
   const handleSubmit = async (ev) => {
     ev.preventDefault();
-    const e = validate();
+    // Read directly from DOM to handle browser autofill
+    const nameVal = (nameRef.current?.value || name).trim();
+    const emailVal = (emailRef.current?.value || email).trim().toLowerCase();
+
+    const e = {};
+    if (!nameVal) e.name = "Name is required.";
+    if (!emailVal) e.email = "Email is required.";
+    else if (!isValidEmail(emailVal)) e.email = "Please enter a valid email.";
     if (Object.keys(e).length) { setErrors(e); return; }
     setErrors({});
     setServerError("");
@@ -104,8 +105,8 @@ const LeadCapturePopup = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim().toLowerCase(),
+          name: nameVal,
+          email: emailVal,
           source: "social-popup",
         }),
       });
@@ -189,8 +190,8 @@ const LeadCapturePopup = () => {
                 <form onSubmit={handleSubmit} noValidate className="space-y-3">
                   <div>
                     <input
-                      type="text" autoComplete="given-name"
-                      value={name} onChange={(e) => setName(e.target.value)} onInput={(e) => setName(e.target.value)}
+                      ref={nameRef} type="text" autoComplete="given-name"
+                      value={name} onChange={(e) => setName(e.target.value)}
                       disabled={loading} placeholder="Your first name"
                       className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.name ? "border-red-400 bg-red-50" : "border-slate-200"}`}
                     />
@@ -198,8 +199,8 @@ const LeadCapturePopup = () => {
                   </div>
                   <div>
                     <input
-                      type="email" autoComplete="email"
-                      value={email} onChange={(e) => setEmail(e.target.value)} onInput={(e) => setEmail(e.target.value)}
+                      ref={emailRef} type="email" autoComplete="email"
+                      value={email} onChange={(e) => setEmail(e.target.value)}
                       disabled={loading} placeholder="Email address"
                       className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.email ? "border-red-400 bg-red-50" : "border-slate-200"}`}
                     />
