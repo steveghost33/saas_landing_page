@@ -4,9 +4,9 @@ export const services = [
   {
     id: "0",
     icon: "/images/feature-1.png",
-    caption: "Built for mission-driven organizations.",
-    title: "Website Creation & CRM Strategy",
-    text: "We build clean, responsive websites and implement CRM (Customer Relationship Management) systems designed for how nonprofits and small businesses actually operate. No generic templates. No tools your team will ignore.",
+    caption: "Your online presence, finally working.",
+    title: "Website Build and CRM Setup",
+    text: "Stop sending people to a site that embarrasses you. We build clean, fast websites and set up a CRM (Customer Relationship Management system) so your team can track donors, clients, and contacts without living in spreadsheets.",
     button: {
       icon: "/images/magictouch.svg",
       title: "View Web Projects",
@@ -16,9 +16,9 @@ export const services = [
   {
     id: "1",
     icon: "/images/feature-2.png",
-    caption: "Practical AI. Real implementation.",
-    title: "AI Workflows, LMS & Staff Training",
-    text: "We integrate AI tools, build learning systems, and train your staff so the technology actually gets used. From LMS (Learning Management System) builds to HRIS (Human Resources Information System) setup and micro-learning development, we handle the full implementation.",
+    caption: "Tech your staff will actually use.",
+    title: "Training, Automation, and Learning Systems",
+    text: "We set up Microsoft 365, build staff training platforms using an LMS (Learning Management System), and automate the repetitive tasks eating your team's time. Every implementation includes hands-on training so nothing sits unused.",
     button: {
       icon: "/images/docs.svg",
       title: "See Tech Solutions",
@@ -31,22 +31,22 @@ export const details = [
   {
     id: "0",
     icon: "/images/detail-1.png",
-    title: "CRM Strategy & Implementation",
+    title: "CRM Setup and Training",
   },
   {
     id: "1",
     icon: "/images/detail-2.png",
-    title: "HRIS Implementation",
+    title: "Microsoft 365 Onboarding",
   },
   {
     id: "2",
     icon: "/images/detail-3.png",
-    title: "LMS & Micro-Learning Development",
+    title: "LMS Development",
   },
   {
     id: "3",
     icon: "/images/detail-4.png",
-    title: "AI Workflow Integration & Literacy",
+    title: "AI Workflow Automation",
   },
 ];
 
@@ -67,7 +67,7 @@ export const faq = [
     id: "2",
     question: "What does CRM implementation include?",
     answer:
-      "CRM stands for Customer Relationship Management — it is the system your organization uses to track donors, clients, volunteers, or contacts. We handle CRM selection, configuration, data migration, and staff training. We configure the system around how your organization actually works, not around how the software assumes you work. Most nonprofits we work with have bought CRMs that sit unused. We make sure that does not happen.",
+      "CRM stands for Customer Relationship Management. It is the system your organization uses to track donors, clients, volunteers, or contacts. We handle CRM selection, configuration, data migration, and staff training. We configure the system around how your organization actually works, not around how the software assumes you work. Most nonprofits we work with have bought CRMs that sit unused. We make sure that does not happen.",
   },
   {
     id: "3",
@@ -79,13 +79,13 @@ export const faq = [
     id: "4",
     question: "What does LMS and micro-learning development mean?",
     answer:
-      "LMS stands for Learning Management System — it is the platform your staff uses to complete training and track progress. Think of tools like Canvas, TalentLMS, or Absorb. Micro-learning is short, focused training content built for busy teams, usually 5 to 10 minutes per module. We select and implement the LMS, build the course content using Articulate or SCORM-compliant tools, and train your administrators so the system runs without outside help.",
+      "LMS stands for Learning Management System. It is the platform your staff uses to complete training and track progress. Think of tools like Canvas, TalentLMS, or Absorb. Micro-learning is short, focused training content built for busy teams, usually 5 to 10 minutes per module. We select and implement the LMS, build the course content using Articulate or SCORM-compliant tools, and train your administrators so the system runs without outside help.",
   },
   {
     id: "5",
     question: "What does AI workflow integration actually look like?",
     answer:
-      "We start by identifying where your team spends time on repetitive tasks — email management, report generation, data entry, scheduling. Then we implement AI tools that handle those tasks automatically. We also run AI literacy training so your staff understands what the tools do and how to use them confidently. No hype. No tools your team will not touch.",
+      "We start by identifying where your team spends time on repetitive tasks: email management, report generation, data entry, scheduling. Then we implement AI tools that handle those tasks automatically. We also run AI literacy training so your staff understands what the tools do and how to use them confidently. No hype. No tools your team will not touch.",
   },
   {
     id: "6",
@@ -103,7 +103,7 @@ export const faq = [
     id: "8",
     question: "How much do your services cost?",
     answer:
-      "Pricing is scoped to your project, your organization type, and what you need. We offer mission-driven pricing for nonprofits and community-based organizations. The best way to get a clear number is to book a discovery session — we will scope the work and give you a straightforward quote.",
+      "Pricing is scoped to your project, your organization type, and what you need. We offer mission-driven pricing for nonprofits and community-based organizations. The best way to get a clear number is to book a discovery session. We will scope the work and give you a straightforward quote.",
   },
   {
     id: "9",
@@ -115,51 +115,75 @@ export const faq = [
 
 export const plans = [
   {
-    id: "website-crm",
-    title: "Website & CRM Strategy",
+    id: "website",
+    title: "Website Build and Support",
     description:
-      "A professional website and CRM (Customer Relationship Management) system built around how your organization actually works. Not a generic setup your team will stop using in 60 days.",
+      "Your website should make people want to work with you. We build clean, fast sites and keep them running so you are never on your own after launch.",
     details: [
-      "Fully responsive design for all devices",
-      "CRM configured for your workflows and staff capacity",
-      "Contact forms, intake flows, and donor or client tracking",
+      "Responsive design that looks right on phones, tablets, and desktops",
+      "Clear calls to action that guide visitors to take the next step",
+      "Ongoing support so you are not stuck when something changes",
       "Mission-driven pricing available for nonprofits",
     ],
   },
   {
-    id: "ai-workflows",
-    title: "AI Workflow Integration",
+    id: "crm",
+    title: "CRM Setup and Training",
     description:
-      "Practical AI implementation without the hype. We identify where AI saves your team time and build workflows that actually get adopted.",
+      "Stop losing track of donors, clients, and contacts in spreadsheets. We set up a CRM (Customer Relationship Management system) that fits how your organization actually works, then train your staff to use it.",
     details: [
-      "AI literacy training for staff and leadership",
-      "Workflow automation using tools your team already has",
-      "No jargon. Clear, grounded implementation.",
+      "System selection based on your budget and team size",
+      "Data migration from spreadsheets or a previous system",
+      "Staff training included, not sold separately",
       "Mission-driven pricing available for nonprofits",
     ],
   },
   {
-    id: "lms-training",
-    title: "LMS & Staff Training",
+    id: "lms",
+    title: "LMS Development",
     description:
-      "An LMS (Learning Management System) and professional development built for lean teams. We design, build, and train so your staff can keep up without burning out.",
+      "Your staff needs training that fits into their day. We build and launch a learning platform using an LMS (Learning Management System) with focused content your team can actually finish.",
     details: [
-      "LMS platform selection, setup, and content migration",
-      "Micro-learning modules built in Articulate or SCORM-compliant tools",
-      "HRIS (Human Resources Information System — HR records, onboarding, time off) implementation and integration",
+      "Platform selection and full setup from scratch",
+      "Short, focused training modules built for busy staff",
+      "Admin training so your team can manage it without us",
       "Mission-driven pricing available for nonprofits",
     ],
   },
   {
-    id: "digital-strategy",
-    title: "Digital Strategy Consulting",
+    id: "m365",
+    title: "Microsoft 365 Onboarding",
     description:
-      "Not sure where to start? We help you build a technology roadmap that fits your budget, your team, and your mission.",
+      "If your team is paying for Microsoft 365 but barely using it, that is money left on the table. We set it up right and train your staff so email, Teams, SharePoint, and the rest actually work together.",
     details: [
-      "Technology audit and gap analysis",
-      "Vendor selection and implementation planning",
-      "Flexible session formats for nonprofits and standard clients",
-      "No long-term commitment required to start",
+      "Full setup of email, Teams, SharePoint, and OneDrive",
+      "Staff training in plain language, no IT background required",
+      "Permissions and policies configured so nothing falls through the cracks",
+      "Mission-driven pricing available for nonprofits",
+    ],
+  },
+  {
+    id: "training",
+    title: "Staff Tech Training",
+    description:
+      "Technology only works if the people using it feel confident. We train your staff on whatever tools your organization uses, in plain language, at a pace that works for your team.",
+    details: [
+      "Live group sessions, self-paced content, or both",
+      "Quick-reference guides your staff can keep and use",
+      "Tailored to the tools your organization already has",
+      "Mission-driven pricing available for nonprofits",
+    ],
+  },
+  {
+    id: "ai",
+    title: "AI Workflow Automation",
+    description:
+      "If your team spends hours on tasks a computer could handle, we can fix that. We find where automation saves the most time and build it into workflows your staff will actually use.",
+    details: [
+      "Workflow audit to find where automation helps most",
+      "Implementation using tools your team already has access to",
+      "AI literacy training so your staff understands and trusts the tools",
+      "Mission-driven pricing available for nonprofits",
     ],
   },
 ];

@@ -36,32 +36,24 @@ function Plans() {
               Our Services
             </h2>
             <p className="mt-4 text-p5 max-w-2xl mx-auto body-1">
-              Every engagement is scoped to your organization's needs. Mission-driven pricing available.
+              Every engagement is scoped to your organization. Mission-driven pricing available for nonprofits and community organizations.
             </p>
           </div>
 
-          {/* Cards */}
-          <div className="flex flex-col md:flex-row gap-4 md:gap-6 mb-12 max-w-6xl mx-auto">
+          {/* Cards — 3-column grid on large screens, 2-column on medium, 1-column on mobile */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12 max-w-6xl mx-auto">
             {plans.map(({ id, title, description, details }) => {
               const isExpanded = expandedIds.includes(id);
-              const desktopHeightClass = isExpanded
-                ? "md:min-h-[580px]"
-                : "md:min-h-[460px]";
 
               return (
                 <div
                   key={id}
-                  className="relative w-full md:flex-1 overflow-hidden rounded-[2rem] shadow-2xl bg-gradient-to-br from-s2 to-s1"
+                  className="relative w-full overflow-hidden rounded-[2rem] shadow-2xl bg-gradient-to-br from-s2 to-s1"
                 >
                   <div className="absolute inset-0 z-0 rounded-[2rem] border border-white/15 pointer-events-none" />
                   <div className="absolute inset-0 z-0 rounded-[2rem] ring-1 ring-inset ring-white/10 pointer-events-none" />
 
-                  <div
-                    className={`
-                      relative z-10 p-6 flex flex-col transition-all duration-300 ease-in-out
-                      ${desktopHeightClass}
-                    `}
-                  >
+                  <div className="relative z-10 p-6 flex flex-col min-h-[300px] transition-all duration-300 ease-in-out">
                     <h3 className="text-p4 uppercase font-bold text-xl mb-3 tracking-wide">
                       {title}
                     </h3>
@@ -96,16 +88,31 @@ function Plans() {
             })}
           </div>
 
-          {/* CTA */}
+          {/* Bottom services CTA */}
           <div className="text-center mb-4">
             <Button href="/#contact" containerClassName="inline-block mx-auto">
-              Schedule a Consultation
+              Book a free tech audit
             </Button>
           </div>
 
           <p className="text-center text-p5 mt-4">
             Not sure which service fits your needs? We will figure it out together.
           </p>
+        </div>
+      </section>
+
+      {/* Mid-page CTA */}
+      <section className="py-20 bg-s2">
+        <div className="container mx-auto px-4 text-center max-w-2xl">
+          <h2 className="font-bold text-p4 uppercase text-3xl md:text-4xl mb-4">
+            Not sure where to start? That is exactly why we are here.
+          </h2>
+          <p className="text-p5 body-1 mb-10">
+            Book a free 30-minute call and we will tell you exactly what your org needs. No pitch, no pressure.
+          </p>
+          <Button href="/#contact" containerClassName="inline-block mx-auto">
+            Book your free audit
+          </Button>
         </div>
       </section>
     </Element>

@@ -11,17 +11,14 @@ const Hero = () => {
             <div className="caption small-2 uppercase text-p3">
               Detroit Rooted. Mission Driven.
             </div>
-            <h1 className="mb-6 h1 text-p4 uppercase max-lg:mb-7 max-lg:h2 max-md:mb-4 max-md:text-5xl max-md:leading-12">
-              Technology That Actually Gets Used
+            <h1 className="mb-6 h1 text-p4 max-lg:mb-7 max-lg:h2 max-md:mb-4 max-md:text-5xl max-md:leading-12">
+              Your mission deserves tech that actually works.
             </h1>
-            <p className="max-w-440 mb-3 body-1 text-p3 font-medium">
-              Based in Detroit. Built for organizations that mean business.
-            </p>
             <p className="max-w-440 mb-14 body-1 max-md:mb-10 text-p5">
-              Most organizations already have the tools. What they are missing is a strategy that makes those tools actually work. Ella Tech brings 15 years of hands-on experience so you get implementation that sticks — not software that collects dust.
+              We help Detroit nonprofits and small businesses get the right tools in place, train the people who use them, and stop paying for tech that no one touches.
             </p>
             <LinkScroll to="contact" offset={-100} spy smooth>
-              <Button icon="/images/zap.svg">Book a Consultation</Button>
+              <Button icon="/images/zap.svg">Book a free 30-minute tech audit</Button>
             </LinkScroll>
           </div>
 

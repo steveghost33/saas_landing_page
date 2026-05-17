@@ -1,4 +1,5 @@
 import Hero from "../sections/Hero.jsx";
+import SocialProof from "../sections/SocialProof.jsx";
 import Services from "../sections/Services.jsx";
 import Plans from "../sections/Plans.jsx";
 import Faq from "../sections/Faq.jsx";
@@ -27,8 +28,8 @@ function Home() {
   return (
     <>
       <PageSEO
-        title="Ella Tech Solutions | Technology Consulting Detroit — Nonprofits, Businesses &amp; Entrepreneurs"
-        description="Ella Tech Solutions helps Detroit nonprofits and small businesses build websites, automate tasks, manage contacts, and train staff — practical technology consulting."
+        title="Ella Tech Solutions | Nonprofit and Small Business Tech Consulting — Detroit"
+        description="Ella Tech Solutions helps Detroit nonprofits and small businesses build websites, set up CRMs, train staff, and automate workflows. Technology that actually gets used."
         canonical="https://www.ellatechsolutions.com/"
         schema={faqSchema}
       />
@@ -37,6 +38,7 @@ function Home() {
         showMobileBookingBar
       >
         <Hero />
+        <SocialProof />
         <Services />
         <Plans />
         <Faq />
