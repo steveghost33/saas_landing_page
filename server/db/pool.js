@@ -17,9 +17,18 @@ const initDb = async () => {
         source        VARCHAR(100) DEFAULT 'crm-setup-checklist',
         created_at    TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         contacted     BOOLEAN DEFAULT false,
-        contacted_at  TIMESTAMP
+        contacted_at  TIMESTAMP,
+        sequence_step INTEGER DEFAULT 0,
+        next_email_at TIMESTAMP
       )
     `);
+
+    await pool.query(`
+      ALTER TABLE subscribers
+        ADD COLUMN IF NOT EXISTS sequence_step INTEGER DEFAULT 0,
+        ADD COLUMN IF NOT EXISTS next_email_at TIMESTAMP
+    `);
+
     console.log("Database initialized — subscribers table ready.");
   } catch (err) {
     console.error("Database initialization failed:", err.message);

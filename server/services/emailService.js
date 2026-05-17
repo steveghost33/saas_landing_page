@@ -1,43 +1,31 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { email1, email2, email3, email4 } from "../emails/templates.js";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const FROM = process.env.FROM_EMAIL || "Steven at Ella Tech <info@ellatechsolutions.com>";
+const createTransport = () =>
+  nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  });
 
-const daysFromNow = (days) => {
-  const d = new Date();
-  d.setDate(d.getDate() + days);
-  return d.toISOString();
+const FROM = `Steven at Ella Tech <${process.env.GMAIL_USER}>`;
+
+export const sendEmail = async ({ to, subject, html }) => {
+  const transporter = createTransport();
+  await transporter.sendMail({ from: FROM, to, subject, html });
 };
 
 export const scheduleEmailSequence = async ({ name, email }) => {
-  if (!process.env.RESEND_API_KEY) {
-    console.warn("RESEND_API_KEY not set — skipping email sequence.");
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
+    console.warn("Gmail credentials not set — skipping email sequence.");
     return;
   }
 
-  const sequence = [
-    { template: email1(name), scheduledAt: null },        // immediate
-    { template: email2(name), scheduledAt: daysFromNow(2) },
-    { template: email3(name), scheduledAt: daysFromNow(5) },
-    { template: email4(name), scheduledAt: daysFromNow(8) },
-  ];
-
-  for (const { template, scheduledAt } of sequence) {
-    const payload = {
-      from: FROM,
-      to: email,
-      subject: template.subject,
-      html: template.html,
-    };
-    if (scheduledAt) payload.scheduledAt = scheduledAt;
-
-    try {
-      await resend.emails.send(payload);
-    } catch (err) {
-      console.error(`Email sequence error (${template.subject}):`, err.message);
-    }
-  }
-
-  console.log(`Email sequence scheduled for ${email}`);
+  const template = email1(name);
+  await sendEmail({ to: email, subject: template.subject, html: template.html });
+  console.log(`Email 1 sent to ${email}`);
 };
