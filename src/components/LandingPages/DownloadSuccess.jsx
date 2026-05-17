@@ -1,4 +1,6 @@
-const DownloadSuccess = ({ name, onBookSession }) => {
+import { openCalPopup } from "../../utils/cal.js";
+
+const DownloadSuccess = ({ name }) => {
   const firstName = name?.split(" ")[0] || "there";
 
   return (
@@ -54,13 +56,13 @@ const DownloadSuccess = ({ name, onBookSession }) => {
         <p className="text-blue-100 text-sm mb-4">
           Free 30-min session — I'll help you figure out what to fix first.
         </p>
-        <a
-          href="/#booking-embed"
-          onClick={onBookSession}
-          className="block w-full rounded-xl bg-white text-blue-700 font-bold py-3 text-sm hover:bg-blue-50 transition"
+        <button
+          type="button"
+          onClick={openCalPopup}
+          className="block w-full rounded-xl bg-white text-blue-700 font-bold py-3 text-sm hover:bg-blue-50 transition cursor-pointer"
         >
           Book my free session →
-        </a>
+        </button>
       </div>
     </div>
   );
