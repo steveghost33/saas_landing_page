@@ -82,6 +82,13 @@ const Header = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const navLinks = [
+    { label: "Web Projects", href: "/web-projects" },
+    { label: "Tech Solutions", href: "/tech-solutions" },
+    { label: "Blog", href: "/blog" },
+    { label: "Contact", href: "/#contact" },
+  ];
+
   const ThemeToggle = ({ className = "" }) => (
     <button
       onClick={toggle}
@@ -150,15 +157,15 @@ const Header = () => {
               <div className="absolute right-0 top-2 w-[340px] rounded-[28px] border border-white/10 bg-s2/95 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl">
                 <nav id="site-nav" aria-label="Desktop menu">
                   <ul className="space-y-2">
-                    {["overview", "services", "faq", "contact"].map((title, i) => (
-                      <li key={title}>
+                    {navLinks.map(({ label, href }, i) => (
+                      <li key={label}>
                         <a
                           ref={i === 0 ? firstNavLinkRef : null}
-                          href={`/#${title}`}
+                          href={href}
                           onClick={() => setIsOpen(false)}
                           className="flex items-center justify-between rounded-2xl px-4 py-3 text-left text-lg font-semibold uppercase tracking-[0.04em] text-p4 transition-colors duration-300 hover:bg-white/5 hover:text-p1"
                         >
-                          <span>{title.charAt(0).toUpperCase() + title.slice(1)}</span>
+                          <span>{label}</span>
                           <span className="text-p1/70">+</span>
                         </a>
                       </li>
@@ -194,15 +201,15 @@ const Header = () => {
           <div className="container py-3">
             <nav id="site-nav" aria-label="Mobile menu">
               <ul className="space-y-0.5">
-                {["overview", "services", "faq", "contact"].map((title, i) => (
-                  <li key={title}>
+                {navLinks.map(({ label, href }, i) => (
+                  <li key={label}>
                     <a
                       ref={i === 0 ? firstNavLinkRef : null}
-                      href={`/#${title}`}
+                      href={href}
                       onClick={() => setIsOpen(false)}
                       className="flex items-center justify-between rounded-xl px-4 py-3 text-base font-semibold uppercase tracking-[0.06em] text-p4 transition-colors duration-200 hover:bg-white/5 hover:text-p1"
                     >
-                      <span>{title.charAt(0).toUpperCase() + title.slice(1)}</span>
+                      <span>{label}</span>
                       <span className="text-p1/60 text-lg">+</span>
                     </a>
                   </li>

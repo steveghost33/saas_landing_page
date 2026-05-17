@@ -20,6 +20,23 @@ const Footer = () => {
         </div>
       </div>
 
+      {/* Audience nav row */}
+      <div className="border-t border-s3/20">
+        <div className="container py-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+          <a href="/services/small-business" className="text-p5 text-sm opacity-60 hover:opacity-100 transition-opacity whitespace-nowrap">Small Business Tech</a>
+          <span className="opacity-20 text-p5 hidden sm:block">|</span>
+          <a href="/services/nonprofits" className="text-p5 text-sm opacity-60 hover:opacity-100 transition-opacity whitespace-nowrap">Nonprofit Tech</a>
+          <span className="opacity-20 text-p5 hidden sm:block">|</span>
+          <a href="/services/entrepreneurs" className="text-p5 text-sm opacity-60 hover:opacity-100 transition-opacity whitespace-nowrap">Entrepreneur Tech</a>
+          <span className="opacity-20 text-p5 hidden sm:block">|</span>
+          <a href="/web-projects" className="text-p5 text-sm opacity-60 hover:opacity-100 transition-opacity whitespace-nowrap">Web Projects</a>
+          <span className="opacity-20 text-p5 hidden sm:block">|</span>
+          <a href="/tech-solutions" className="text-p5 text-sm opacity-60 hover:opacity-100 transition-opacity whitespace-nowrap">Tech Solutions</a>
+          <span className="opacity-20 text-p5 hidden sm:block">|</span>
+          <a href="/blog" className="text-p5 text-sm opacity-60 hover:opacity-100 transition-opacity whitespace-nowrap">Blog</a>
+        </div>
+      </div>
+
       {/* Contact info row */}
       <div className="border-t border-s3/30">
         <div className="container py-6 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">

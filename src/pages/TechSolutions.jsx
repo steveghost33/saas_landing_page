@@ -10,8 +10,8 @@ function TechSolutions() {
   return (
     <>
       <PageSEO
-        title="Tech Solutions & Training | Ella Tech Solutions — CRM, AI, LMS, HRIS"
-        description="CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits and small businesses. Detroit-founded. Serving organizations nationwide. Practical tech consulting that gets adopted, not just installed."
+        title="Tech Solutions & Training | CRM, AI Automation, LMS, HRIS — Detroit"
+        description="CRM setup, AI automation, LMS development, HRIS, and staff training for small businesses, nonprofits, and entrepreneurs. Detroit-based. Serving clients nationwide."
         canonical="https://www.ellatechsolutions.com/tech-solutions"
         schema={techSolutionsSchema}
       />
@@ -36,7 +36,7 @@ function TechSolutions() {
                 Tech Solutions & Training
               </h1>
               <p className="body-1 text-white drop-shadow-lg max-w-2xl">
-                Practical technology implementation for nonprofits and mission-driven organizations. We build systems your staff will actually use.
+                Practical technology implementation for small businesses, nonprofits, and entrepreneurs. We build systems your team will actually use.
               </p>
             </div>
           </div>
@@ -45,7 +45,7 @@ function TechSolutions() {
           <div className="container mb-20 max-w-3xl mx-auto text-center">
             <h2 className="h3 text-p4 mb-4">The problem is not the tool. It is the implementation.</h2>
             <p className="body-1 text-p5">
-              Most organizations do not need better software. They need better systems. The Ella Tech team has spent 15 years building technology infrastructure inside nonprofits, school districts, and community organizations. We know what it takes to get tools adopted, not just installed.
+              Most organizations do not need better software. They need better systems. The Ella Tech team has spent 15 years building technology infrastructure inside nonprofits, small businesses, and growing organizations. We know what it takes to get tools adopted, not just installed.
             </p>
           </div>
 
@@ -88,7 +88,7 @@ function TechSolutions() {
                 <ul className="list-disc pl-5 space-y-2 body-3 text-p5 mb-8">
                   <li>Technology audit and gap analysis</li>
                   <li>Vendor selection and implementation planning</li>
-                  <li>Flexible options for nonprofits and standard clients</li>
+                  <li>Flexible options for nonprofits, small businesses, and entrepreneurs</li>
                   <li>No long-term commitment required to start</li>
                 </ul>
                 <Button href="/#contact" containerClassName="inline-block">
@@ -101,9 +101,9 @@ function TechSolutions() {
           {/* Nonprofit note */}
           <div className="container mb-20 max-w-3xl mx-auto">
             <div className="border border-white/10 rounded-2xl p-8 text-center">
-              <h3 className="h4 text-p4 mb-3">Mission-Driven Pricing Available</h3>
+              <h3 className="h4 text-p4 mb-3">Pricing Scoped to Your Organization</h3>
               <p className="body-1 text-p5">
-                Ella Tech Solutions offers mission-driven pricing for verified 501(c)(3) nonprofits and community-based organizations. Quality technology consulting should not be out of reach for organizations doing important work. Book a consultation to discuss your project and what it would cost.
+                Ella Tech Solutions offers mission-driven pricing for verified 501(c)(3) nonprofits and community-based organizations, and straightforward project-based pricing for small businesses and entrepreneurs. Book a consultation to discuss your project and what it would cost.
               </p>
             </div>
           </div>
@@ -112,7 +112,7 @@ function TechSolutions() {
           <div className="container text-center mb-32">
             <h2 className="h4 mb-6">Ready to build systems your team will actually use?</h2>
             <p className="body-1 mb-8 max-w-2xl mx-auto text-p5">
-              Book a consultation and we will identify where technology can save your team time, reduce overhead, and strengthen your mission.
+              Book a consultation and we will identify where technology can save your team time, reduce overhead, and help you focus on the work that matters.
             </p>
             <Button href="/#contact" containerClassName="inline-block mx-auto">
               Book a Consultation
