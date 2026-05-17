@@ -1,4 +1,5 @@
 import pool from "../db/pool.js";
+import { scheduleEmailSequence } from "../services/emailService.js";
 
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -24,11 +25,8 @@ export const subscribe = async (req, res) => {
       await pool.query("UPDATE subscribers SET name = $1 WHERE email = $2", [name, email]);
       return res.json({
         success: true,
-        message: "You're already on the list — downloads are ready.",
-        downloads: {
-          checklist: "/downloads/CRM-Setup-Checklist.pdf",
-          healthCheck: "/downloads/Tech-Health-Check.pdf",
-        },
+        isReturning: true,
+        message: "You're already on the list — your download is ready.",
       });
     }
 
@@ -39,13 +37,15 @@ export const subscribe = async (req, res) => {
 
     console.log(`New subscriber: ${name} <${email}> [${source}]`);
 
+    // Fire-and-forget — don't block the response on email delivery
+    scheduleEmailSequence({ name, email }).catch((err) =>
+      console.error("Email sequence failed:", err.message),
+    );
+
     return res.status(201).json({
       success: true,
-      message: "Welcome! Your downloads are ready.",
-      downloads: {
-        checklist: "/downloads/CRM-Setup-Checklist.pdf",
-        healthCheck: "/downloads/Tech-Health-Check.pdf",
-      },
+      isReturning: false,
+      message: "You're all set! Check your email — the Tech Health Check is on its way.",
     });
   } catch (err) {
     console.error("Subscribe error:", err.message);

@@ -200,7 +200,7 @@ const LeadCapturePopup = () => {
                     <input
                       type="email" autoComplete="email"
                       value={email} onChange={(e) => setEmail(e.target.value)}
-                      disabled={loading} placeholder="Work email"
+                      disabled={loading} placeholder="Email address"
                       className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.email ? "border-red-400 bg-red-50" : "border-slate-200"}`}
                     />
                     {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}

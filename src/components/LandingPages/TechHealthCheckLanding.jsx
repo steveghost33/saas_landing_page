@@ -118,7 +118,7 @@ const TechHealthCheckLanding = () => {
                     {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
                   </div>
                   <div>
-                    <label htmlFor="th-email" className="block text-sm font-semibold text-slate-700 mb-1">Work email</label>
+                    <label htmlFor="th-email" className="block text-sm font-semibold text-slate-700 mb-1">Email</label>
                     <input
                       id="th-email" type="email" autoComplete="email"
                       value={email} onChange={(e) => setEmail(e.target.value)}
