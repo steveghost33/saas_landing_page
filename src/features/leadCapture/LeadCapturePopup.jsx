@@ -143,16 +143,27 @@ const LeadCapturePopup = () => {
           }`}
         >
           {/* Header bar */}
-          <div className="relative bg-gradient-to-r from-blue-600 to-blue-700 px-6 pt-6 pb-5">
+          <div className="relative bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 px-6 pt-8 pb-6 text-center">
             <button
               onClick={() => close()}
               aria-label="Close"
-              className="absolute top-4 right-4 text-white/70 hover:text-white transition"
+              className="absolute top-4 right-4 text-white/60 hover:text-white transition"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
+
+            {/* Logo */}
+            <div className="flex justify-center mb-4">
+              <div className="h-16 w-16 rounded-full bg-white shadow-lg flex items-center justify-center p-1">
+                <img
+                  src="/images/ellacirclelogo.svg"
+                  alt="Ella Tech Solutions"
+                  className="h-full w-full object-contain"
+                />
+              </div>
+            </div>
 
             <span className="inline-block rounded-full bg-white/15 text-white/90 text-[10px] font-bold uppercase tracking-widest px-3 py-1 mb-3">
               Free Resources
