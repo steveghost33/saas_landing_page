@@ -190,7 +190,7 @@ const LeadCapturePopup = () => {
                   <div>
                     <input
                       type="text" autoComplete="given-name"
-                      value={name} onChange={(e) => setName(e.target.value)}
+                      value={name} onChange={(e) => setName(e.target.value)} onInput={(e) => setName(e.target.value)}
                       disabled={loading} placeholder="Your first name"
                       className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.name ? "border-red-400 bg-red-50" : "border-slate-200"}`}
                     />
@@ -199,7 +199,7 @@ const LeadCapturePopup = () => {
                   <div>
                     <input
                       type="email" autoComplete="email"
-                      value={email} onChange={(e) => setEmail(e.target.value)}
+                      value={email} onChange={(e) => setEmail(e.target.value)} onInput={(e) => setEmail(e.target.value)}
                       disabled={loading} placeholder="Email address"
                       className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.email ? "border-red-400 bg-red-50" : "border-slate-200"}`}
                     />
