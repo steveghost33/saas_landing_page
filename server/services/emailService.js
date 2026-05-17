@@ -6,9 +6,9 @@ const createTransport = () =>
     host: "smtp.gmail.com",
     port: 465,
     secure: true,
+    family: 4, // Force IPv4 — Render free tier can't reach IPv6
     auth: {
       user: process.env.GMAIL_USER,
-      // Strip spaces in case app password was saved with spaces
       pass: (process.env.GMAIL_APP_PASSWORD || "").replace(/\s/g, ""),
     },
   });
