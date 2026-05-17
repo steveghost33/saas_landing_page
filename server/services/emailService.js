@@ -12,7 +12,7 @@ const createTransport = () =>
     },
   });
 
-const FROM = `Steven at Ella Tech <${process.env.GMAIL_USER}>`;
+const FROM = `Steven <${process.env.GMAIL_USER}>`;
 
 export const sendEmail = async ({ to, subject, html }) => {
   const transporter = createTransport();

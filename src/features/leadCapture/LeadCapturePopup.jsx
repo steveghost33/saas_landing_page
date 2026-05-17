@@ -175,7 +175,7 @@ const LeadCapturePopup = () => {
                   {[
                     "See exactly where your systems are leaking time",
                     "Step-by-step CRM setup guide — launch in 3 weeks",
-                    "Followed up personally by Steven at Ella Tech",
+                    "Real follow-up from a real person — not a bot",
                   ].map((b, i) => (
                     <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600">
                       <svg className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
