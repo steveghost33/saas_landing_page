@@ -8,8 +8,11 @@ const Hero = () => {
         <div className="container relative z-2 flex flex-col lg:flex-row items-start lg:items-center">
           {/* Text */}
           <div className="relative z-10 lg:w-1/2 max-w-512 max-lg:max-w-388">
-            <div className="caption small-2 uppercase text-p3">
+            <div className="mb-5 text-[18px] font-bold leading-[24px] tracking-[0.2em] uppercase text-p3">
               Mission Driven. Results Focused.
+            </div>
+            <div className="mb-3 text-[13px] font-semibold tracking-[0.15em] uppercase text-p3/70">
+              Detroit-Based. Built for Impact.
             </div>
             <h1 className="mb-6 h1 text-p4 max-lg:mb-7 max-lg:h2 max-md:mb-4 max-md:text-5xl max-md:leading-12">
               Your mission deserves tech that actually works.
