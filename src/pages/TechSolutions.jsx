@@ -11,7 +11,7 @@ function TechSolutions() {
     <>
       <PageSEO
         title="Tech Solutions & Training | Ella Tech Solutions — CRM, AI, LMS, HRIS"
-        description="CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits, small businesses, and entrepreneurs. Practical tech consulting that gets adopted, not just installed."
+        description="CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits and small businesses. Detroit-founded. Serving organizations nationwide. Practical tech consulting that gets adopted, not just installed."
         canonical="https://www.ellatechsolutions.com/tech-solutions"
         schema={techSolutionsSchema}
       />

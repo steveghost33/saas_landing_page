@@ -12,7 +12,7 @@ export const webProjectsSchema = {
     name: BUSINESS_NAME,
     url: SITE_URL,
   },
-  areaServed: ["United States", "International"],
+  areaServed: ["Detroit, MI", "United States", "International"],
   url: `${SITE_URL}/web-projects`,
   breadcrumb: {
     "@type": "BreadcrumbList",
