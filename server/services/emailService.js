@@ -1,33 +1,21 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 import { email1, email2, email3, email4 } from "../emails/templates.js";
 
-const createTransport = () =>
-  nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true,
-    family: 4, // Force IPv4 — Render free tier can't reach IPv6
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: (process.env.GMAIL_APP_PASSWORD || "").replace(/\s/g, ""),
-    },
-  });
-
-const FROM = `Steven <${process.env.GMAIL_USER}>`;
+const resend = new Resend(process.env.RESEND_API_KEY);
+const FROM = `Steven <onboarding@resend.dev>`;
 
 export const sendEmail = async ({ to, subject, html }) => {
-  const transporter = createTransport();
   console.log(`Attempting to send email to ${to} — subject: ${subject}`);
-  await transporter.sendMail({ from: FROM, to, subject, html });
+  const { error } = await resend.emails.send({ from: FROM, to, subject, html });
+  if (error) throw new Error(error.message);
   console.log(`Email sent successfully to ${to}`);
 };
 
 export const scheduleEmailSequence = async ({ name, email }) => {
-  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) {
-    console.warn("Gmail credentials not set — skipping email sequence.");
+  if (!process.env.RESEND_API_KEY) {
+    console.warn("RESEND_API_KEY not set — skipping email sequence.");
     return;
   }
-
   console.log(`Starting email sequence for ${email}`);
   const template = email1(name);
   await sendEmail({ to: email, subject: template.subject, html: template.html });
