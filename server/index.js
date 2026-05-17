@@ -4,6 +4,7 @@ import fs from "fs-extra";
 import path from "path";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
+import subscribeRouter from "./routes/subscribe.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -119,6 +120,7 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use("/api", subscribeRouter);
 app.use((req, res, next) => {
   if (["GET", "HEAD", "OPTIONS"].includes(req.method)) return next();
 
