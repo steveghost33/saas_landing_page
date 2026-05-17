@@ -2,7 +2,7 @@ import { Resend } from "resend";
 import { email1, email2, email3, email4 } from "../emails/templates.js";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const FROM = `Steven <onboarding@resend.dev>`;
+const FROM = `Steven at Ella Tech <info@ellatechsolutions.com>`;
 
 export const sendEmail = async ({ to, subject, html }) => {
   console.log(`Attempting to send email to ${to} — subject: ${subject}`);

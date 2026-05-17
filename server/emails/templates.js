@@ -20,7 +20,7 @@ const base = (content) => `
           <!-- Logo bar -->
           <tr>
             <td style="padding-bottom:24px;">
-              <span style="font-size:17px;font-weight:800;color:#1e40af;letter-spacing:-0.5px;">Ella Tech Solutions</span>
+              <img src="https://www.ellatechsolutions.com/images/ellalogo.png" alt="Ella Tech Solutions" width="120" style="display:block;" />
             </td>
           </tr>
 
