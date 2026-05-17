@@ -129,7 +129,7 @@ const Header = () => {
         )}
       >
         <div className="container relative z-[110]">
-          <div className="relative flex items-center justify-center py-3 xl:grid xl:grid-cols-[auto_1fr_auto] xl:gap-4 xl:py-4">
+          <div className="relative flex items-center justify-center py-3 xl:grid xl:grid-cols-[1fr_auto_1fr] xl:gap-4 xl:py-4">
             <ThemeToggle className="absolute left-0 top-1/2 -translate-y-1/2 xl:static xl:translate-y-0" />
 
             <div className="flex w-full justify-center px-[52px] xl:w-auto xl:px-0">
@@ -142,7 +142,7 @@ const Header = () => {
               </Link>
             </div>
 
-            <MenuToggle className="absolute right-0 top-1/2 -translate-y-1/2 min-w-[72px] xl:static xl:translate-y-0 xl:min-w-0" />
+            <MenuToggle className="absolute right-0 top-1/2 -translate-y-1/2 min-w-[72px] xl:static xl:translate-y-0 xl:min-w-0 xl:justify-self-end" />
           </div>
 
           {isOpen && (
