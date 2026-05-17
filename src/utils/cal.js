@@ -54,6 +54,28 @@ export const openCalPopup = () => {
   const cal = ensureCalLoader();
   if (!cal) return;
   cal("init", { origin: CAL_ORIGIN });
+  cal("ui", {
+    theme: "dark",
+    hideEventTypeDetails: false,
+    layout: "month_view",
+    styles: {
+      body: { background: "#0d1117" },
+      enabledDateButton: { background: "#2EF2FF", color: "#080D27" },
+    },
+    cssVarsPerTheme: {
+      dark: {
+        "cal-brand": "#2EF2FF",
+        "cal-brand-emphasis": "#080D27",
+        "cal-bg": "#0d1117",
+        "cal-bg-subtle": "#161b22",
+        "cal-bg-muted": "#1a2030",
+        "cal-border": "#30363d",
+        "cal-text": "#e6edf3",
+        "cal-text-subtle": "#8b949e",
+        "cal-text-emphasis": "#ffffff",
+      },
+    },
+  });
   cal("modal", {
     calLink: CAL_LINK,
     config: { layout: "month_view", theme: "dark" },
