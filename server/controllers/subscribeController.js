@@ -116,6 +116,22 @@ export const getSubscribers = async (req, res) => {
   }
 };
 
+export const clearSubscribers = async (req, res) => {
+  const token = req.headers["x-admin-token"] || req.query.token;
+  const secret = process.env.ADMIN_SECRET;
+  if (!secret || token !== secret) {
+    return res.status(401).json({ error: "Unauthorized." });
+  }
+  try {
+    const result = await pool.query("DELETE FROM subscribers");
+    console.log(`Cleared ${result.rowCount} subscribers.`);
+    return res.json({ success: true, deleted: result.rowCount });
+  } catch (err) {
+    console.error("clearSubscribers error:", err.message);
+    return res.status(500).json({ error: "Failed to clear subscribers." });
+  }
+};
+
 export const markContacted = async (req, res) => {
   const { id } = req.params;
   try {
