@@ -120,7 +120,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use("/api", subscribeRouter);
 app.use((req, res, next) => {
   if (["GET", "HEAD", "OPTIONS"].includes(req.method)) return next();
 
@@ -133,6 +132,7 @@ app.use((req, res, next) => {
   return res.status(415).json({ error: "Content-Type must be application/json." });
 });
 app.use(express.json({ limit: "32kb", strict: true }));
+app.use("/api", subscribeRouter);
 
 const createRateLimiter = ({ windowMs, max }) => {
   const hits = new Map();
