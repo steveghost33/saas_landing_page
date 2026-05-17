@@ -9,16 +9,16 @@ const Hero = () => {
           {/* Text */}
           <div className="relative z-10 lg:w-1/2 max-w-512 max-lg:max-w-388">
             <div className="mb-5 text-[18px] font-bold leading-[24px] tracking-[0.2em] uppercase text-p3">
-              Mission Driven. Results Focused.
+              Simple Tech. Real Results.
             </div>
             <div className="mb-3 text-[13px] font-semibold tracking-[0.15em] uppercase text-p3/70">
-              Detroit-Based. Built for Impact.
+              Detroit-Based. Serving Clients Nationwide.
             </div>
             <h1 className="mb-6 h1 text-p4 max-lg:mb-7 max-lg:h2 max-md:mb-4 max-md:text-5xl max-md:leading-12">
-              Your mission deserves tech that actually works.
+              We handle the tech. You run your business.
             </h1>
             <p className="max-w-440 mb-14 body-1 max-md:mb-10 text-p5">
-              We help nonprofits and small businesses get the right tools in place, train the people who use them, and stop paying for tech that no one touches.
+              From CRM setup to AI automation, we help small businesses, nonprofits, and entrepreneurs get the right tools working — and make sure your team actually uses them.
             </p>
             <LinkScroll to="contact" offset={-100} spy smooth>
               <Button icon="/images/zap.svg">Book a free 30-minute tech audit</Button>
