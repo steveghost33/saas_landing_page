@@ -10,8 +10,8 @@ function TechSolutions() {
   return (
     <>
       <PageSEO
-        title="Tech Solutions & Training | Ella Tech Solutions — CRM, AI, LMS, HRIS Detroit"
-        description="CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits, small businesses, and entrepreneurs in Detroit. Practical tech consulting that gets adopted, not just installed."
+        title="Tech Solutions & Training | Ella Tech Solutions — CRM, AI, LMS, HRIS"
+        description="CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits, small businesses, and entrepreneurs. Practical tech consulting that gets adopted, not just installed."
         canonical="https://www.ellatechsolutions.com/tech-solutions"
         schema={techSolutionsSchema}
       />
@@ -45,7 +45,7 @@ function TechSolutions() {
           <div className="container mb-20 max-w-3xl mx-auto text-center">
             <h2 className="h3 text-p4 mb-4">The problem is not the tool. It is the implementation.</h2>
             <p className="body-1 text-p5">
-              Most organizations do not need better software. They need better systems. Steven Bowman and the Ella Tech team have spent 15 years building technology infrastructure inside nonprofits, school districts, and community organizations. We know what it takes to get tools adopted, not just installed.
+              Most organizations do not need better software. They need better systems. The Ella Tech team has spent 15 years building technology infrastructure inside nonprofits, school districts, and community organizations. We know what it takes to get tools adopted, not just installed.
             </p>
           </div>
 

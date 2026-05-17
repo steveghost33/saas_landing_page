@@ -61,7 +61,7 @@ export const faq = [
     id: "1",
     question: "Do you offer nonprofit pricing?",
     answer:
-      "Yes. Ella Tech Solutions offers a mission-driven discount for verified 501(c)(3) nonprofits and community-based organizations with demonstrated community impact. This reflects our values alignment with mission-driven work and our commitment to making quality technology consulting accessible to organizations serving Detroit and similar communities. Book a consultation to discuss what your project would cost.",
+      "Yes. Ella Tech Solutions offers a mission-driven discount for verified 501(c)(3) nonprofits and community-based organizations with demonstrated community impact. This reflects our values alignment with mission-driven work and our commitment to making quality technology consulting accessible to organizations doing work that matters. Book a consultation to discuss what your project would cost.",
   },
   {
     id: "2",

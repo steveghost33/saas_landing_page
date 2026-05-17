@@ -6,13 +6,13 @@ export const webProjectsSchema = {
   name: "Website Creation & CRM Strategy",
   serviceType: "Website Design and CRM Implementation",
   description:
-    "Custom websites and CRM systems built for nonprofits, small businesses, and mission-driven organizations in Detroit and beyond.",
+    "Custom websites and CRM systems built for nonprofits, small businesses, and mission-driven organizations.",
   provider: {
     "@type": "LocalBusiness",
     name: BUSINESS_NAME,
     url: SITE_URL,
   },
-  areaServed: ["Detroit, MI", "Metro Detroit", "Michigan"],
+  areaServed: ["United States", "International"],
   url: `${SITE_URL}/web-projects`,
   breadcrumb: {
     "@type": "BreadcrumbList",
@@ -33,7 +33,7 @@ export const webProjects = [
     title: "Ella Tech Solutions Website",
     img: "/images/projects/ellatech.png",
     desc:
-      "A modern SaaS-style website built for a Detroit-based technology consulting firm. Showcases services, pricing, and client intake - optimized for nonprofit and small business audiences.",
+      "A modern SaaS-style website built for a technology consulting firm. Showcases services, pricing, and client intake - optimized for nonprofit and small business audiences.",
     tags: ["React", "Tailwind CSS", "Vite"],
     link: "/",
     internal: true,

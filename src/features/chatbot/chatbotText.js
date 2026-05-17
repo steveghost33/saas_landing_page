@@ -384,7 +384,7 @@ export const serviceReply = (intent) => {
     return makeSpacing(
       `Ella Tech Solutions is a technology consulting firm focused on nonprofits, small businesses, and community organizations.\n\n` +
         `We help you set up and use your technology the right way — websites, CRMs, AI workflows, LMS platforms, HRIS systems, and Microsoft 365. We also train your staff so the tools actually get used.\n\n` +
-        `We're based in Detroit and work with organizations across the country. No jargon, no generic templates, no tools your team will stop using in 60 days.\n\n` +
+        `We work with organizations across the country and internationally. No jargon, no generic templates, no tools your team will stop using in 60 days.\n\n` +
         BOOKING_ONLY_CTA
     );
   }
@@ -445,7 +445,7 @@ export const serviceReply = (intent) => {
   if (intent === "nonprofit_pricing") {
     return makeSpacing(
       `Yes — Ella Tech Solutions offers mission-driven pricing for verified 501(c)(3) nonprofits and community-based organizations.\n\n` +
-        `This isn't a token discount. It reflects our values alignment with mission-driven work and our commitment to making quality technology consulting accessible to organizations serving Detroit and similar communities.\n\n` +
+        `This isn't a token discount. It reflects our values alignment with mission-driven work and our commitment to making quality technology consulting accessible to organizations doing work that matters.\n\n` +
         `Book a consultation to talk through what your project would cost with nonprofit pricing applied.\n\n` +
         BOOKING_ONLY_CTA
     );
@@ -552,8 +552,8 @@ export const serviceReply = (intent) => {
 
   if (intent === "location") {
     return makeSpacing(
-      `Ella Tech Solutions is based in Detroit and works with organizations across the country.\n\n` +
-        `Most of our work is done remotely — video calls, shared documents, and screen sessions work well for everything we do. For Detroit-area clients, in-person sessions can be arranged when it makes sense.\n\n` +
+      `Ella Tech Solutions works with organizations across the country and internationally.\n\n` +
+        `Most of our work is done remotely — video calls, shared documents, and screen sessions work well for everything we do. In-person sessions can be arranged when it makes sense.\n\n` +
         `Our focus is on nonprofits, small businesses, and community organizations — wherever they are.\n\n` +
         BOOKING_ONLY_CTA
     );

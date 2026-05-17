@@ -28,8 +28,8 @@ function Home() {
   return (
     <>
       <PageSEO
-        title="Ella Tech Solutions | Nonprofit and Small Business Tech Consulting — Detroit"
-        description="Ella Tech Solutions helps Detroit nonprofits and small businesses build websites, set up CRMs, train staff, and automate workflows. Technology that actually gets used."
+        title="Ella Tech Solutions | Nonprofit and Small Business Tech Consulting"
+        description="Ella Tech Solutions helps nonprofits and small businesses build websites, set up CRMs, train staff, and automate workflows. Technology that actually gets used."
         canonical="https://www.ellatechsolutions.com/"
         schema={faqSchema}
       />

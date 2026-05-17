@@ -9,13 +9,13 @@ const Hero = () => {
           {/* Text */}
           <div className="relative z-10 lg:w-1/2 max-w-512 max-lg:max-w-388">
             <div className="caption small-2 uppercase text-p3">
-              Detroit Rooted. Mission Driven.
+              Mission Driven. Results Focused.
             </div>
             <h1 className="mb-6 h1 text-p4 max-lg:mb-7 max-lg:h2 max-md:mb-4 max-md:text-5xl max-md:leading-12">
               Your mission deserves tech that actually works.
             </h1>
             <p className="max-w-440 mb-14 body-1 max-md:mb-10 text-p5">
-              We help Detroit nonprofits and small businesses get the right tools in place, train the people who use them, and stop paying for tech that no one touches.
+              We help nonprofits and small businesses get the right tools in place, train the people who use them, and stop paying for tech that no one touches.
             </p>
             <LinkScroll to="contact" offset={-100} spy smooth>
               <Button icon="/images/zap.svg">Book a free 30-minute tech audit</Button>

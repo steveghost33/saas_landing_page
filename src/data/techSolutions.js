@@ -6,13 +6,13 @@ export const techSolutionsSchema = {
   name: "Tech Solutions & Staff Training",
   serviceType: "Technology Consulting and Staff Training",
   description:
-    "CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits, small businesses, and entrepreneurs in Detroit.",
+    "CRM, HRIS, AI workflow integration, LMS development, and staff technology training for nonprofits, small businesses, and entrepreneurs.",
   provider: {
     "@type": "LocalBusiness",
     name: BUSINESS_NAME,
     url: SITE_URL,
   },
-  areaServed: ["Detroit, MI", "Metro Detroit", "Michigan"],
+  areaServed: ["United States", "International"],
   url: `${SITE_URL}/tech-solutions`,
   hasOfferCatalog: {
     "@type": "OfferCatalog",

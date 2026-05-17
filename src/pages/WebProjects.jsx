@@ -104,8 +104,8 @@ function WebProjects() {
   return (
     <>
       <PageSEO
-        title="Web Projects | Ella Tech Solutions — Detroit Web Design for Nonprofits, Businesses &amp; Entrepreneurs"
-        description="Custom websites built for nonprofits, small businesses, and entrepreneurs in Detroit. Responsive, fast, and built around your audience and goals."
+        title="Web Projects | Ella Tech Solutions — Web Design for Nonprofits, Businesses &amp; Entrepreneurs"
+        description="Custom websites built for nonprofits, small businesses, and entrepreneurs. Responsive, fast, and built around your audience and goals."
         canonical="https://www.ellatechsolutions.com/web-projects"
         schema={webProjectsSchema}
       />
@@ -130,7 +130,7 @@ function WebProjects() {
                 Web Projects
               </h1>
               <p className="body-1 text-white drop-shadow-lg max-w-2xl">
-                Custom websites built for nonprofits, small businesses, and mission-driven organizations in Detroit and beyond.
+                Custom websites built for nonprofits, small businesses, and mission-driven organizations — wherever you are.
               </p>
             </div>
           </div>
