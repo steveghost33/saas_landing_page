@@ -189,6 +189,7 @@ export const plans = [
 ];
 
 export const socials = [
+  { id: "1", title: "LinkedIn", icon: "/images/socials/linkedin.svg", url: "https://www.linkedin.com/company/ella-tech-solutions" },
   { id: "2", title: "Instagram", icon: "/images/socials/instagram.svg", url: "https://www.instagram.com/ellatechdetroit/" },
   { id: "3", title: "Discord", icon: "/images/socials/discord.svg", url: "https://discord.gg/4tkGK7YE" },
 ];

@@ -227,11 +227,11 @@ html.light .social-icon img {
   }
 
   .small-2 {
-    @apply text-[12px] font-bold leading-[16px] tracking-[0.3em];
+    @apply text-[14px] font-bold leading-[18px] tracking-[0.3em];
   }
 
   .small-compact {
-    @apply text-[12px] font-semibold leading-[18px] tracking-[0.03em];
+    @apply text-[14px] font-semibold leading-[18px] tracking-[0.03em];
   }
 
   /* END of Typography */
