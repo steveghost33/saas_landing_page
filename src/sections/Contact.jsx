@@ -111,7 +111,7 @@ const Contact = () => {
               </p>
 
               {/* Scheduler card */}
-              <div className="relative rounded-[28px] border border-s3/50 bg-s2/60 shadow-500 overflow-hidden">
+              <div id="booking-embed" className="relative rounded-[28px] border border-s3/50 bg-s2/60 shadow-500 overflow-hidden">
                 {/* Subtle top accent line */}
                 <div
                   aria-hidden="true"

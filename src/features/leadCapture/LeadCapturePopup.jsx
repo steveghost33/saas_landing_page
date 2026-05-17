@@ -168,7 +168,7 @@ const LeadCapturePopup = () => {
           {/* Body */}
           <div className="px-6 py-6">
             {success ? (
-              <DownloadSuccess name={name} />
+              <DownloadSuccess name={name} onBookSession={() => close("dismissed")} />
             ) : (
               <>
                 {/* Mini benefit list */}

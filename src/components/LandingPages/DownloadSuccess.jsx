@@ -1,4 +1,4 @@
-const DownloadSuccess = ({ name }) => {
+const DownloadSuccess = ({ name, onBookSession }) => {
   const firstName = name?.split(" ")[0] || "there";
 
   return (
@@ -55,7 +55,8 @@ const DownloadSuccess = ({ name }) => {
           Free 30-min session — I'll help you figure out what to fix first.
         </p>
         <a
-          href="/#contact"
+          href="/#booking-embed"
+          onClick={onBookSession}
           className="block w-full rounded-xl bg-white text-blue-700 font-bold py-3 text-sm hover:bg-blue-50 transition"
         >
           Book my free session →
