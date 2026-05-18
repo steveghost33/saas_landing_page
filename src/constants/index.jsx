@@ -71,9 +71,9 @@ export const faq = [
   },
   {
     id: "3",
-    question: "What is HRIS implementation and who needs it?",
+    question: "Who do you work with?",
     answer:
-      "HRIS stands for Human Resources Information System. It is the platform your organization uses to manage staff records, onboarding, time off, performance, and payroll in one place instead of scattered spreadsheets. If your HR team is still managing these things manually, an HRIS centralizes all of it. We handle system selection, setup, data migration, and staff training so your team can use it from day one.",
+      "We work primarily with nonprofits, small businesses, and community-based organizations that are growing faster than their current technology can keep up with. Our clients are often doing meaningful work with lean teams and limited IT support. If you are managing programs, staff, or donors with a patchwork of tools and spreadsheets, we can help you replace that with systems that actually work together.",
   },
   {
     id: "4",
