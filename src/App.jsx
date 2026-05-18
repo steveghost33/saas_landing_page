@@ -15,6 +15,7 @@ import SmallBusiness from "./pages/services/SmallBusiness.jsx";
 import Nonprofits from "./pages/services/Nonprofits.jsx";
 import Entrepreneurs from "./pages/services/Entrepreneurs.jsx";
 import Blog from "./pages/Blog.jsx";
+import BlogPost from "./pages/BlogPost.jsx";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path="/services/nonprofits" element={<Nonprofits />} />
         <Route path="/services/entrepreneurs" element={<Entrepreneurs />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>
     </ThemeProvider>
   );

@@ -25,8 +25,23 @@
 
   <url>
     <loc>https://www.ellatechsolutions.com/blog</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-18</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog posts -->
+  <url>
+    <loc>https://www.ellatechsolutions.com/blog/how-to-set-up-crm-for-nonprofit</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.ellatechsolutions.com/blog/nonprofit-website-mistakes</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
