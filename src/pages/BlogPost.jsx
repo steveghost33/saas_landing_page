@@ -42,16 +42,22 @@ function BlogPost() {
     "@type": "Article",
     headline: post.title,
     description: post.metaDescription,
-    datePublished: post.publishDate,
-    dateModified: post.updatedDate,
+    image: `${SITE_URL}${post.featuredImage}`,
+    datePublished: `${post.publishDate}T00:00:00-04:00`,
+    dateModified: `${post.updatedDate}T00:00:00-04:00`,
     author: {
       "@type": "Person",
       name: post.author,
+      url: SITE_URL,
     },
     publisher: {
       "@type": "Organization",
       name: "Ella Tech Solutions",
       url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}/images/ellalogo.png`,
+      },
     },
     url: canonicalUrl,
     breadcrumb: {
