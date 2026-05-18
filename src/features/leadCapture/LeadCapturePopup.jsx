@@ -21,11 +21,8 @@ const hasDismissed = () => {
   try {
     const val = localStorage.getItem(STORAGE_KEY);
     if (!val) return false;
-    // Suppress for 7 days after dismiss, forever after subscribe
-    const { reason, at } = JSON.parse(val);
-    if (reason === "subscribed") return true;
-    if (reason === "dismissed") return Date.now() - at < 7 * 24 * 60 * 60 * 1000;
-    return false;
+    const { reason } = JSON.parse(val);
+    return reason === "subscribed";
   } catch {
     return false;
   }
@@ -62,9 +59,9 @@ const LeadCapturePopup = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const close = useCallback((reason = "dismissed") => {
+  const close = useCallback((reason) => {
     setAnimateIn(false);
-    markDismissed(reason);
+    if (reason === "subscribed") markDismissed("subscribed");
     setTimeout(() => setVisible(false), 300);
   }, []);
 
