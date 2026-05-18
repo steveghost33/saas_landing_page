@@ -34,18 +34,75 @@ export const webProjects = [
     img: "/images/projects/ellatech.png",
     desc:
       "A modern SaaS-style website built for a technology consulting firm. Showcases services, pricing, and client intake - optimized for nonprofit and small business audiences.",
-    tags: ["React", "Tailwind CSS", "Vite"],
+    tags: ["React", "Node.js", "PostgreSQL"],
     link: "/",
     internal: true,
+    skills: {
+      Languages: [
+        "JavaScript (JSX) — all React components, pages, sections, hooks, and utilities",
+        "CSS — global styles and design tokens via src/index.css",
+        "HTML — index.html entry point and semantic markup",
+        "JSON — config files and contacts.json data store",
+      ],
+      Frontend: [
+        "React 19 — UI framework powering all components and pages",
+        "React Router DOM v7 — client-side routing across all pages",
+        "Tailwind CSS v3 — utility-first styling with PostCSS and Autoprefixer",
+        "React Helmet Async — per-page SEO meta tags",
+        "Axios — HTTP requests for contact form and lead capture",
+        "Cal.com embed — booking widget integration",
+        "react-scroll — smooth scroll-to-section behavior",
+        "clsx — conditional className utility",
+        "Vite — dev server, HMR, and optimized production builds",
+      ],
+      Backend: [
+        "Node.js / Express — REST API server (server/index.js)",
+        "PostgreSQL (pg) — database for contacts and leads",
+        "Nodemailer / Resend — transactional email delivery",
+        "fs-extra — file system operations with contacts.json fallback",
+        "CORS — cross-origin request handling",
+      ],
+      "SEO / Tooling": [
+        "JSON-LD structured data — schemas for Organization, Service, Article, FAQPage, BreadcrumbList",
+        "Sitemap & robots.txt — search engine crawl configuration",
+        "ESLint — linting with React-specific plugins",
+        "Netlify — deployment with _headers and _redirects configuration",
+      ],
+    },
   },
   {
     title: "Build by Steven",
     img: "/images/projects/build-by-steven.png",
     desc:
       "A personal brand and portfolio website focused on clear project presentation, responsive performance, and a polished client-facing experience.",
-    tags: ["Portfolio", "Web Design", "Personal Brand"],
+    tags: ["React", "Tailwind CSS", "Vite"],
     link: "https://www.buildbysteven.com",
     internal: false,
+    skills: {
+      Languages: [
+        "JavaScript (JSX) — all source code: components, pages, sections, and data",
+        "CSS — global styles via src/index.css",
+        "HTML — index.html entry point",
+        "SVG / XML — icons, social logos, and background graphics",
+      ],
+      "Frameworks & Libraries": [
+        "React 19 — UI framework",
+        "React Router DOM v7 — client-side routing",
+        "Tailwind CSS v3 — utility-first styling",
+        "react-scroll — smooth in-page anchor scrolling",
+        "clsx — conditional className utility",
+      ],
+      "Build & Tooling": [
+        "Vite 6 — dev server and bundler",
+        "PostCSS + Autoprefixer — CSS processing pipeline",
+        "ESLint — code linting and style enforcement",
+      ],
+      Architecture: [
+        "Fully static frontend — no backend, no database, pure SPA",
+        "Component library — Button, ProjectCard, SectionHeading, SocialLink, ThemeToggle, and more",
+        "Static data layer — all content sourced from src/data/portfolio.js",
+      ],
+    },
   },
   {
     title: "Team Cabin",
