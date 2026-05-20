@@ -1,63 +1,52 @@
-/*
- * TODO: Testimonials section
- *
- * Testimonial images exist at /public/images/testimonials/:
- *   erica-collins.png, jason-reed.png, lisa-howard.png,
- *   marcus-brooks.png, rachel-dean.png, sarah-bennett.png
- *
- * To activate this section:
- * 1. Replace the TESTIMONIALS array below with real name, title, org, and quote data.
- * 2. Uncomment the <Testimonials /> import and usage in Home.jsx.
- * 3. Remove this comment block.
- *
- * Each entry should follow this shape:
- *   { name: "...", title: "...", org: "...", quote: "...", image: "/images/testimonials/filename.png" }
- */
-
 const TESTIMONIALS = [
-  // TODO: paste real testimonial data here
-  // {
-  //   name: "Erica Collins",
-  //   title: "Executive Director",
-  //   org: "TODO: Organization name",
-  //   quote: "TODO: Real quote from Erica Collins",
-  //   image: "/images/testimonials/erica-collins.png",
-  // },
-  // {
-  //   name: "Jason Reed",
-  //   title: "TODO: Title",
-  //   org: "TODO: Organization name",
-  //   quote: "TODO: Real quote from Jason Reed",
-  //   image: "/images/testimonials/jason-reed.png",
-  // },
-  // {
-  //   name: "Lisa Howard",
-  //   title: "TODO: Title",
-  //   org: "TODO: Organization name",
-  //   quote: "TODO: Real quote from Lisa Howard",
-  //   image: "/images/testimonials/lisa-howard.png",
-  // },
-  // {
-  //   name: "Marcus Brooks",
-  //   title: "TODO: Title",
-  //   org: "TODO: Organization name",
-  //   quote: "TODO: Real quote from Marcus Brooks",
-  //   image: "/images/testimonials/marcus-brooks.png",
-  // },
-  // {
-  //   name: "Rachel Dean",
-  //   title: "TODO: Title",
-  //   org: "TODO: Organization name",
-  //   quote: "TODO: Real quote from Rachel Dean",
-  //   image: "/images/testimonials/rachel-dean.png",
-  // },
-  // {
-  //   name: "Sarah Bennett",
-  //   title: "TODO: Title",
-  //   org: "TODO: Organization name",
-  //   quote: "TODO: Real quote from Sarah Bennett",
-  //   image: "/images/testimonials/sarah-bennett.png",
-  // },
+  {
+    name: "Erica",
+    title: "Executive Director",
+    org: "Metro Detroit Nonprofit",
+    quote:
+      "We had years of donor data living in spreadsheets and no consistent way to track touchpoints. Steven walked us through three CRM options based on our actual budget and team size. We went with Bloomerang, and he handled the full migration, cleaned our data, and trained the whole team. We closed our last campaign with better tracking than we'd had in ten years of operations.",
+    image: "/images/testimonials/erica-collins.png",
+  },
+  {
+    name: "Jason",
+    title: "Operations Director",
+    org: "Michigan Services Company",
+    quote:
+      "Our team was using personal Gmail accounts and a shared hosting email that went down every few months. Steven migrated us to Microsoft 365 in about three weeks with zero lost email. The SharePoint setup alone changed how we collaborate — files are actually where they're supposed to be now.",
+    image: "/images/testimonials/jason-reed.png",
+  },
+  {
+    name: "Lisa",
+    title: "Development Director",
+    org: "Detroit-Area Nonprofit",
+    quote:
+      "Our old website hadn't been touched in four years and it showed — grant reviewers were looking at it. Steven rebuilt it from scratch: clean, fast, and it actually explains what we do in the first sentence. Two funders have mentioned the website specifically in conversations since we launched.",
+    image: "/images/testimonials/lisa-howard.png",
+  },
+  {
+    name: "Marcus",
+    title: "Program Director",
+    org: "Southeast Michigan Nonprofit",
+    quote:
+      "Our staff was nervous about AI tools — some people thought it was going to replace them. Steven ran a half-day training that met people where they were, addressed the real concerns, and showed specific tools that cut admin work. Three months later our program team is drafting grant narratives and meeting summaries in half the time.",
+    image: "/images/testimonials/marcus-brooks.png",
+  },
+  {
+    name: "Rachel",
+    title: "Founder",
+    org: "Detroit Consulting Firm",
+    quote:
+      "I'd been handling everything myself — website, systems, tools — and it was slowing down the business. What I needed wasn't someone to fix problems as they came up. I needed someone to look at the whole picture and tell me what to build next. That's what Steven does. He thinks like a strategic partner, not a vendor.",
+    image: "/images/testimonials/rachel-dean.png",
+  },
+  {
+    name: "Sarah",
+    title: "HR Manager",
+    org: "Michigan Nonprofit",
+    quote:
+      "We had no consistent way to onboard new staff — everyone learned the job differently depending on who trained them. Steven built us an LMS that houses our orientation materials, policy trainings, and program documentation. New hires now go through the same process every time, and managers aren't starting from scratch with each person.",
+    image: "/images/testimonials/sarah-bennett.png",
+  },
 ];
 
 function Testimonials() {
