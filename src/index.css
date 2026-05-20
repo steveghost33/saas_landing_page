@@ -566,6 +566,24 @@ html.light .social-icon img {
   }
 
   /*  END of Footer*/
+
+  /* ─── Responsive Typography ─────────────────────────────────────────────── */
+  /* Mobile  < 768px */
+  @media (max-width: 767px) {
+    .h1    { font-size: 2.25rem;  line-height: 1.25; }   /* 36px  ← was 84px */
+    .h2    { font-size: 1.875rem; line-height: 1.25; }   /* 30px  ← was 64px */
+    .h3    { font-size: 1.5rem;   line-height: 1.35; }   /* 24px  ← was 48px */
+    .h4    { font-size: 1.375rem; line-height: 1.35; }   /* 22px  ← was 40px */
+    .body-1 { font-size: 1rem;   line-height: 1.625; }   /* 16px  ← was 22px */
+    .body-2 { font-size: 0.875rem; line-height: 1.625; } /* 14px  ← was 18px */
+  }
+
+  /* Tablet  768px – 1023px */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .h1 { font-size: 3.25rem; line-height: 1.15; }  /* 52px  ← was 84px */
+    .h2 { font-size: 2.5rem;  line-height: 1.2;  }  /* 40px  ← was 64px */
+    .h3 { font-size: 2rem;    line-height: 1.3;  }  /* 32px  ← was 48px */
+  }
 }
 /* Fix anchor scroll cutoff from fixed header + banner */
 html {
