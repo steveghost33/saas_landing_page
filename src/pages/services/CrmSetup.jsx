@@ -7,10 +7,10 @@ import { SITE_URL } from "../../data/site.js";
 const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "CRM Setup and Strategy for Nonprofits and Small Businesses",
-  serviceType: "Technology Consulting",
+  name: "CRM Setup and Optimization for Nonprofits and Small Businesses",
+  serviceType: "Nonprofit Operations Technology Consulting",
   description:
-    "Ella Tech Solutions implements CRM (Customer Relationship Management) systems for nonprofits and small businesses, handling platform selection, configuration, data migration from spreadsheets or a previous system, and staff training so the system is actually adopted.",
+    "Ella Tech Solutions implements and configures CRM systems for nonprofits and small businesses so donors, clients, and program participants are tracked in one place — with data migration, staff training, and configurations built around real workflows, not software defaults.",
   provider: {
     "@type": "LocalBusiness",
     name: "Ella Tech Solutions",
@@ -83,8 +83,8 @@ function CrmSetup() {
   return (
     <>
       <PageSEO
-        title="CRM Setup and Strategy for Nonprofits and Small Businesses | Ella Tech Solutions"
-        description="Ella Tech Solutions implements CRM systems for nonprofits and small businesses nationwide. Platform selection, configuration, data migration, and staff training. Works with Salesforce NPSP, HubSpot, Bloomerang, and more."
+        title="Stop Losing Donor and Contact Data in Spreadsheets | CRM Setup | Ella Tech Solutions"
+        description="Ella Tech Solutions sets up and configures CRM systems for nonprofits and small businesses — platform selection, data migration, and staff training built around real workflows. Works with Salesforce NPSP, HubSpot, Bloomerang, and more."
         canonical={`${SITE_URL}/services/crm-setup`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />
@@ -94,9 +94,9 @@ function CrmSetup() {
 
           {/* Page Header */}
           <div className="container mb-16 max-w-3xl mx-auto">
-            <h1 className="h2 text-p4 mb-6">CRM Setup and Strategy for Nonprofits and Small Businesses</h1>
+            <h1 className="h2 text-p4 mb-6">Stop Losing Donor and Contact Data in Spreadsheets</h1>
             <p className="body-1 text-p5">
-              Ella Tech Solutions implements CRM (Customer Relationship Management) systems for nonprofits and small businesses, handling platform selection, configuration, data migration from spreadsheets or a previous system, and staff training so the system is actually adopted.
+              Ella Tech Solutions implements and configures CRM systems for nonprofits and small businesses so donors, clients, and program participants are tracked in one place — with data migration, staff training, and configurations built around real workflows, not software defaults.
             </p>
           </div>
 
@@ -169,7 +169,7 @@ function CrmSetup() {
           {/* CTA */}
           <div className="container text-center mb-32 max-w-3xl mx-auto">
             <Button href="/#contact" containerClassName="inline-block mx-auto">
-              Book a free consultation
+              Book a free CRM audit
             </Button>
           </div>
 

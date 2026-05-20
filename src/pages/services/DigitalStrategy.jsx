@@ -7,10 +7,10 @@ import { SITE_URL } from "../../data/site.js";
 const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Digital Strategy Consulting Sessions for Nonprofits and Small Businesses",
-  serviceType: "Technology Consulting",
+  name: "Operational Technology Strategy Sessions for Nonprofits and Small Businesses",
+  serviceType: "Nonprofit Operations Technology Consulting",
   description:
-    "Ella Tech Solutions delivers focused digital strategy sessions for nonprofits and small businesses, providing a technology audit, gap analysis, and prioritized action plan in a 30-to-60 minute consultation with no long-term commitment required.",
+    "Ella Tech Solutions delivers focused operational strategy sessions for nonprofits and small businesses — a technology audit, gap analysis, and prioritized action plan delivered in a single 30-to-60 minute consultation with no long-term commitment required.",
   provider: {
     "@type": "LocalBusiness",
     name: "Ella Tech Solutions",
@@ -75,8 +75,8 @@ function DigitalStrategy() {
   return (
     <>
       <PageSEO
-        title="Digital Strategy Consulting Sessions for Nonprofits and Small Businesses | Ella Tech Solutions"
-        description="Ella Tech Solutions delivers focused paid digital strategy sessions for nonprofits and small businesses nationwide. Technology audit, gap analysis, and prioritized action plan. No long-term commitment required."
+        title="Get a Clear Picture of Your Technology Gaps and a Plan to Fix Them | Ella Tech Solutions"
+        description="Ella Tech Solutions delivers focused operational strategy sessions for nonprofits and small businesses — a technology audit, gap analysis, and prioritized action plan in a single consultation. No long-term commitment required."
         canonical={`${SITE_URL}/services/digital-strategy`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />
@@ -86,9 +86,9 @@ function DigitalStrategy() {
 
           {/* Page Header */}
           <div className="container mb-16 max-w-3xl mx-auto">
-            <h1 className="h2 text-p4 mb-6">Digital Strategy Consulting Sessions for Nonprofits and Small Businesses</h1>
+            <h1 className="h2 text-p4 mb-6">Get a Clear Picture of Your Technology Gaps and a Prioritized Plan to Address Them</h1>
             <p className="body-1 text-p5">
-              Ella Tech Solutions delivers focused digital strategy sessions for nonprofits and small businesses, providing a technology audit, gap analysis, and prioritized action plan in a 30-to-60 minute consultation with no long-term commitment required.
+              Ella Tech Solutions delivers focused operational strategy sessions for nonprofits and small businesses — a technology audit, gap analysis, and prioritized action plan delivered in a single 30-to-60 minute consultation with no long-term commitment required.
             </p>
           </div>
 
@@ -157,7 +157,7 @@ function DigitalStrategy() {
           {/* CTA */}
           <div className="container text-center mb-32 max-w-3xl mx-auto">
             <Button href="/#contact" containerClassName="inline-block mx-auto">
-              Book a free consultation
+              Book a free strategy session
             </Button>
           </div>
 

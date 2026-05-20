@@ -8,9 +8,9 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Microsoft 365 Implementation for Nonprofits and Small Businesses",
-  serviceType: "Technology Consulting",
+  serviceType: "Nonprofit Operations Technology Consulting",
   description:
-    "Ella Tech Solutions implements Microsoft 365 for nonprofits and small businesses, including business email, Teams, SharePoint, and OneDrive, with permissions configuration and staff training so the tools are actually used after setup.",
+    "Ella Tech Solutions implements Microsoft 365 for nonprofits and small businesses — business email, Teams, SharePoint, and OneDrive configured correctly from the start, with permissions setup and staff training so the tools are adopted, not abandoned.",
   provider: {
     "@type": "LocalBusiness",
     name: "Ella Tech Solutions",
@@ -83,8 +83,8 @@ function Microsoft365() {
   return (
     <>
       <PageSEO
-        title="Microsoft 365 Implementation for Nonprofits and Small Businesses | Ella Tech Solutions"
-        description="Ella Tech Solutions implements Microsoft 365 for nonprofits and small businesses nationwide. Business email, Teams, SharePoint, OneDrive setup with permissions configuration and staff training."
+        title="Get Your Team Actually Using the Microsoft 365 You're Paying For | Ella Tech Solutions"
+        description="Ella Tech Solutions implements Microsoft 365 for nonprofits and small businesses — business email, Teams, SharePoint, and OneDrive configured correctly from the start, with staff training so the tools are adopted after setup."
         canonical={`${SITE_URL}/services/microsoft-365`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />
@@ -94,9 +94,9 @@ function Microsoft365() {
 
           {/* Page Header */}
           <div className="container mb-16 max-w-3xl mx-auto">
-            <h1 className="h2 text-p4 mb-6">Microsoft 365 Implementation for Nonprofits and Small Businesses</h1>
+            <h1 className="h2 text-p4 mb-6">Get Your Team Actually Using the Microsoft 365 Tools You're Already Paying For</h1>
             <p className="body-1 text-p5">
-              Ella Tech Solutions implements Microsoft 365 for nonprofits and small businesses, including business email, Teams, SharePoint, and OneDrive, with permissions configuration and staff training so the tools are actually used after setup.
+              Ella Tech Solutions implements Microsoft 365 for nonprofits and small businesses — business email, Teams, SharePoint, and OneDrive configured correctly from the start, with permissions setup and staff training so the tools are adopted, not abandoned.
             </p>
           </div>
 
@@ -170,7 +170,7 @@ function Microsoft365() {
           {/* CTA */}
           <div className="container text-center mb-32 max-w-3xl mx-auto">
             <Button href="/#contact" containerClassName="inline-block mx-auto">
-              Book a free consultation
+              Book a free Microsoft 365 audit
             </Button>
           </div>
 

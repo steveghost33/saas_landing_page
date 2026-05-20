@@ -7,10 +7,10 @@ import { SITE_URL } from "../../data/site.js";
 const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Website Creation and Redesign for Nonprofits and Small Businesses",
-  serviceType: "Technology Consulting",
+  name: "Website Development for Nonprofits and Small Businesses",
+  serviceType: "Nonprofit Operations Technology Consulting",
   description:
-    "Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses nationwide, creating fast, mobile-first sites that clearly communicate the organization's mission and convert visitors into donors, clients, or program participants.",
+    "Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses — fast, mobile-first sites that clearly communicate the organization's mission and make it easy for visitors to donate, sign up, or become clients.",
   provider: {
     "@type": "LocalBusiness",
     name: "Ella Tech Solutions",
@@ -83,8 +83,8 @@ function WebsiteDesign() {
   return (
     <>
       <PageSEO
-        title="Website Creation and Redesign for Nonprofits and Small Businesses | Ella Tech Solutions"
-        description="Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses nationwide. Responsive design, donation flow integration, on-page SEO, and post-launch training included."
+        title="A Website That Represents Your Organization and Converts Visitors | Ella Tech Solutions"
+        description="Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses — fast, mobile-first sites that clearly communicate the mission and make it easy for visitors to donate, sign up, or become clients."
         canonical={`${SITE_URL}/services/website-design`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />
@@ -94,9 +94,9 @@ function WebsiteDesign() {
 
           {/* Page Header */}
           <div className="container mb-16 max-w-3xl mx-auto">
-            <h1 className="h2 text-p4 mb-6">Website Creation and Redesign for Nonprofits and Small Businesses</h1>
+            <h1 className="h2 text-p4 mb-6">A Website That Accurately Represents Your Organization and Converts Visitors</h1>
             <p className="body-1 text-p5">
-              Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses nationwide, creating fast, mobile-first sites that clearly communicate the organization's mission and convert visitors into donors, clients, or program participants.
+              Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses — fast, mobile-first sites that clearly communicate the organization's mission and make it easy for visitors to donate, sign up, or become clients.
             </p>
           </div>
 
@@ -170,7 +170,7 @@ function WebsiteDesign() {
           {/* CTA */}
           <div className="container text-center mb-32 max-w-3xl mx-auto">
             <Button href="/#contact" containerClassName="inline-block mx-auto">
-              Book a free consultation
+              Book a free project consultation
             </Button>
           </div>
 

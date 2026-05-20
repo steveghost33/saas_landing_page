@@ -8,9 +8,9 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "Staff Technology Training for Nonprofits and Small Businesses",
-  serviceType: "Technology Consulting",
+  serviceType: "Nonprofit Operations Technology Consulting",
   description:
-    "Ella Tech Solutions delivers live and self-paced technology training for nonprofit and small business staff on the tools their organizations already use, in plain language without assuming a technical background.",
+    "Ella Tech Solutions delivers live and self-paced technology training for nonprofit and small business staff on the tools their organizations already use — practical, plain-language sessions that build confident, independent users without assuming any technical background.",
   provider: {
     "@type": "LocalBusiness",
     name: "Ella Tech Solutions",
@@ -75,8 +75,8 @@ function StaffTraining() {
   return (
     <>
       <PageSEO
-        title="Staff Technology Training for Nonprofits and Small Businesses | Ella Tech Solutions"
-        description="Ella Tech Solutions delivers live and self-paced technology training for nonprofit and small business staff nationwide. Training in plain language, no technical background required."
+        title="Technology Training That Makes Staff Confident, Not Overwhelmed | Ella Tech Solutions"
+        description="Ella Tech Solutions delivers live and self-paced technology training for nonprofit and small business staff on tools they already use — practical, plain-language sessions that build confident, independent users."
         canonical={`${SITE_URL}/services/staff-training`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />
@@ -86,9 +86,9 @@ function StaffTraining() {
 
           {/* Page Header */}
           <div className="container mb-16 max-w-3xl mx-auto">
-            <h1 className="h2 text-p4 mb-6">Staff Technology Training for Nonprofits and Small Businesses</h1>
+            <h1 className="h2 text-p4 mb-6">Technology Training That Makes Staff Confident, Not Overwhelmed</h1>
             <p className="body-1 text-p5">
-              Ella Tech Solutions delivers live and self-paced technology training for nonprofit and small business staff on the tools their organizations already use, in plain language without assuming a technical background.
+              Ella Tech Solutions delivers live and self-paced technology training for nonprofit and small business staff on the tools their organizations already use — practical, plain-language sessions that build confident, independent users without assuming any technical background.
             </p>
           </div>
 
@@ -157,7 +157,7 @@ function StaffTraining() {
           {/* CTA */}
           <div className="container text-center mb-32 max-w-3xl mx-auto">
             <Button href="/#contact" containerClassName="inline-block mx-auto">
-              Book a free consultation
+              Book a free training consultation
             </Button>
           </div>
 

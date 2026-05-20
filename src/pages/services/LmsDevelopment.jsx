@@ -8,9 +8,9 @@ const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
   name: "LMS and Microlearning Development for Nonprofits and Small Businesses",
-  serviceType: "Technology Consulting",
+  serviceType: "Nonprofit Operations Technology Consulting",
   description:
-    "Ella Tech Solutions selects and implements Learning Management Systems (LMS) for nonprofits and small businesses, builds SCORM-compliant microlearning content using Articulate 360, and trains administrators to manage the platform independently.",
+    "Ella Tech Solutions selects, implements, and configures Learning Management Systems for nonprofits and small businesses — including SCORM-compliant course development in Articulate 360 and administrator training so the platform runs without outside help after launch.",
   provider: {
     "@type": "LocalBusiness",
     name: "Ella Tech Solutions",
@@ -75,8 +75,8 @@ function LmsDevelopment() {
   return (
     <>
       <PageSEO
-        title="LMS and Microlearning Development for Nonprofits | Ella Tech Solutions"
-        description="Ella Tech Solutions selects and implements Learning Management Systems (LMS) for nonprofits and small businesses nationwide. SCORM-compliant course development in Articulate 360. Administrator training included."
+        title="Replace Informal Onboarding With a Training System Your Org Owns | Ella Tech Solutions"
+        description="Ella Tech Solutions implements Learning Management Systems for nonprofits and small businesses — SCORM-compliant course development in Articulate 360, full platform setup, and administrator training so the system runs without outside help."
         canonical={`${SITE_URL}/services/lms-development`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />
@@ -86,9 +86,9 @@ function LmsDevelopment() {
 
           {/* Page Header */}
           <div className="container mb-16 max-w-3xl mx-auto">
-            <h1 className="h2 text-p4 mb-6">LMS and Microlearning Development for Nonprofits and Small Businesses</h1>
+            <h1 className="h2 text-p4 mb-6">Replace Informal Onboarding With a Training System Your Organization Owns</h1>
             <p className="body-1 text-p5">
-              Ella Tech Solutions selects and implements Learning Management Systems (LMS) for nonprofits and small businesses, builds SCORM-compliant microlearning content using Articulate 360, and trains administrators to manage the platform independently.
+              Ella Tech Solutions selects, implements, and configures Learning Management Systems for nonprofits and small businesses — including SCORM-compliant course development in Articulate 360 and administrator training so the platform runs without outside help after launch.
             </p>
           </div>
 
@@ -158,7 +158,7 @@ function LmsDevelopment() {
           {/* CTA */}
           <div className="container text-center mb-32 max-w-3xl mx-auto">
             <Button href="/#contact" containerClassName="inline-block mx-auto">
-              Book a free consultation
+              Book a free LMS consultation
             </Button>
           </div>
 

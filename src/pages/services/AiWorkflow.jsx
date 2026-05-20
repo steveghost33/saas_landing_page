@@ -7,10 +7,10 @@ import { SITE_URL } from "../../data/site.js";
 const schema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "AI Workflow Integration and AI Literacy Training",
-  serviceType: "Technology Consulting",
+  name: "Workflow Automation and AI-Assisted Operations for Nonprofits",
+  serviceType: "Nonprofit Operations Technology Consulting",
   description:
-    "Ella Tech Solutions audits organizational workflows to identify where AI tools can reduce repetitive administrative tasks, implements the automations using tools the organization already has, and delivers AI literacy training so staff can use the tools confidently.",
+    "Ella Tech Solutions audits nonprofit and small business workflows, identifies where repetitive administrative tasks can be automated using tools the organization already has, implements those automations, and trains staff to use them confidently.",
   provider: {
     "@type": "LocalBusiness",
     name: "Ella Tech Solutions",
@@ -75,8 +75,8 @@ function AiWorkflow() {
   return (
     <>
       <PageSEO
-        title="AI Workflow Integration and AI Literacy Training | Ella Tech Solutions"
-        description="Ella Tech Solutions identifies where AI tools can reduce repetitive work for nonprofits and small businesses, implements the automations, and trains staff to use them confidently. Remote-capable, serving clients nationwide."
+        title="Reduce Staff Administrative Burden Through Workflow Automation | Ella Tech Solutions"
+        description="Ella Tech Solutions audits nonprofit and small business workflows, automates repetitive administrative tasks using tools the organization already has, and trains staff to use the automations confidently. Serving clients nationwide."
         canonical={`${SITE_URL}/services/ai-workflow`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />
@@ -86,9 +86,9 @@ function AiWorkflow() {
 
           {/* Page Header */}
           <div className="container mb-16 max-w-3xl mx-auto">
-            <h1 className="h2 text-p4 mb-6">AI Workflow Integration and AI Literacy Training for Nonprofits and Small Businesses</h1>
+            <h1 className="h2 text-p4 mb-6">Reduce Staff Administrative Burden Through Practical Workflow Automation</h1>
             <p className="body-1 text-p5">
-              Ella Tech Solutions audits organizational workflows to identify where AI tools can reduce repetitive administrative tasks, implements the automations using tools the organization already has, and delivers AI literacy training so staff can use the tools confidently.
+              Ella Tech Solutions audits nonprofit and small business workflows, identifies where repetitive administrative tasks can be automated using tools the organization already has, implements those automations, and trains staff to use them confidently.
             </p>
           </div>
 
@@ -157,7 +157,7 @@ function AiWorkflow() {
           {/* CTA */}
           <div className="container text-center mb-32 max-w-3xl mx-auto">
             <Button href="/#contact" containerClassName="inline-block mx-auto">
-              Book a free consultation
+              Book a free workflow audit
             </Button>
           </div>
 
