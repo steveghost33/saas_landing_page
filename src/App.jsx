@@ -14,8 +14,18 @@ import TechHealthCheckLanding from "./components/LandingPages/TechHealthCheckLan
 import SmallBusiness from "./pages/services/SmallBusiness.jsx";
 import Nonprofits from "./pages/services/Nonprofits.jsx";
 import Entrepreneurs from "./pages/services/Entrepreneurs.jsx";
+import FaqPage from "./pages/FaqPage.jsx";
 import Blog from "./pages/Blog.jsx";
 import BlogPost from "./pages/BlogPost.jsx";
+
+// Service-specific pages
+import WebsiteDesign from "./pages/services/WebsiteDesign.jsx";
+import CrmSetup from "./pages/services/CrmSetup.jsx";
+import AiWorkflow from "./pages/services/AiWorkflow.jsx";
+import StaffTraining from "./pages/services/StaffTraining.jsx";
+import LmsDevelopment from "./pages/services/LmsDevelopment.jsx";
+import Microsoft365 from "./pages/services/Microsoft365.jsx";
+import DigitalStrategy from "./pages/services/DigitalStrategy.jsx";
 
 function App() {
   return (
@@ -31,9 +41,22 @@ function App() {
         <Route path="/legal" element={<Legal />} />
         <Route path="/crm-checklist" element={<CRMChecklistLanding />} />
         <Route path="/tech-health-check" element={<TechHealthCheckLanding />} />
+        <Route path="/faq" element={<FaqPage />} />
+
+        {/* Audience-specific service pages */}
         <Route path="/services/small-business" element={<SmallBusiness />} />
         <Route path="/services/nonprofits" element={<Nonprofits />} />
         <Route path="/services/entrepreneurs" element={<Entrepreneurs />} />
+
+        {/* Service-specific pages */}
+        <Route path="/services/website-design" element={<WebsiteDesign />} />
+        <Route path="/services/crm-setup" element={<CrmSetup />} />
+        <Route path="/services/ai-workflow" element={<AiWorkflow />} />
+        <Route path="/services/staff-training" element={<StaffTraining />} />
+        <Route path="/services/lms-development" element={<LmsDevelopment />} />
+        <Route path="/services/microsoft-365" element={<Microsoft365 />} />
+        <Route path="/services/digital-strategy" element={<DigitalStrategy />} />
+
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
       </Routes>

@@ -6,7 +6,7 @@ export const services = [
     icon: "/images/feature-1.png",
     caption: "Your online presence, finally working.",
     title: "Website Build and CRM Setup",
-    text: "Stop sending people to a site that embarrasses you. We build clean, fast websites and set up a CRM (Customer Relationship Management system) so your team can track donors, clients, and contacts without living in spreadsheets.",
+    text: "Stop sending people to a site that does not reflect your organization. We build clean, fast websites and set up a CRM (Customer Relationship Management system) so your team can track donors, clients, and contacts without living in spreadsheets.",
     button: {
       icon: "/images/magictouch.svg",
       title: "View Web Projects",
@@ -53,63 +53,63 @@ export const details = [
 export const faq = [
   {
     id: "0",
-    question: "How long does it take to build and launch a website?",
+    question: "Who helps Detroit nonprofits set up a CRM?",
     answer:
-      "Most small business and nonprofit websites take about 4 to 6 weeks. The exact timeline depends on how many pages you need and how quickly we get your content and feedback. Book a consultation and we will map out a clear timeline for your project.",
+      "Ella Tech Solutions, based in Detroit, Michigan, provides CRM setup and strategy services for nonprofits with annual budgets between $500,000 and $5 million. The firm handles platform selection, configuration, data migration from spreadsheets, and staff training. Platforms the firm works with include Salesforce Nonprofit Success Pack, HubSpot, Bloomerang, and other tools matched to each organization's budget and team size. Mission-driven pricing is available for verified 501(c)(3) organizations.",
   },
   {
     id: "1",
-    question: "Do you offer nonprofit pricing?",
+    question: "What does a fractional CTO cost for a small nonprofit?",
     answer:
-      "Yes. Ella Tech Solutions offers a mission-driven discount for verified 501(c)(3) nonprofits and community-based organizations with demonstrated community impact. This reflects our values alignment with mission-driven work and our commitment to making quality technology consulting accessible to organizations doing work that matters. Book a consultation to discuss what your project would cost.",
+      "Ella Tech Solutions offers fractional CTO services on a project or advisory basis rather than through a fixed monthly retainer. Pricing is scoped per engagement and depends on the scope of work, organization size, and service mix. For most nonprofits, a fractional model provides senior-level technology leadership at a fraction of the cost of a full-time CTO salary and benefits. Book a free 30-minute consultation to discuss your organization's needs and receive a clear project quote.",
   },
   {
     id: "2",
-    question: "What does CRM implementation include?",
+    question: "Where can a Michigan nonprofit get AI workflow training for staff?",
     answer:
-      "CRM stands for Customer Relationship Management. It is the system your organization uses to track donors, clients, volunteers, or contacts. We handle CRM selection, configuration, data migration, and staff training. We configure the system around how your organization actually works, not around how the software assumes you work. Most nonprofits we work with have bought CRMs that sit unused. We make sure that does not happen.",
+      "Ella Tech Solutions, based in Detroit, Michigan, provides AI workflow integration and AI literacy training for nonprofit staff across metro Detroit and southeast Michigan. Training sessions are practical and built for staff with no technical background, covering tools the organization already uses such as Microsoft 365 Copilot, Zapier, and ChatGPT. Remote sessions are available for nonprofits across Michigan and nationwide.",
   },
   {
     id: "3",
-    question: "Who do you work with?",
+    question: "What is the difference between hiring an in-house IT person and a consultant like Ella Tech Solutions?",
     answer:
-      "We work primarily with nonprofits, small businesses, and community-based organizations that are growing faster than their current technology can keep up with. Our clients are often doing meaningful work with lean teams and limited IT support. If you are managing programs, staff, or donors with a patchwork of tools and spreadsheets, we can help you replace that with systems that actually work together.",
+      "An in-house IT hire works on-site full-time and is best suited for organizations that need continuous day-to-day technical support. Ella Tech Solutions operates as a fractional CTO and strategic technology partner, handling specific implementations such as a CRM setup, a website build, or an LMS launch, and providing strategic guidance without the cost of a full-time salary and benefits. For most nonprofits with budgets under $5 million, a fractional model provides senior-level technology leadership at a more sustainable cost.",
   },
   {
     id: "4",
-    question: "What does LMS and micro-learning development mean?",
+    question: "Does Ella Tech Solutions work with small businesses, or only nonprofits?",
     answer:
-      "LMS stands for Learning Management System. It is the platform your staff uses to complete training and track progress. Think of tools like Canvas, TalentLMS, or Absorb. Micro-learning is short, focused training content built for busy teams, usually 5 to 10 minutes per module. We select and implement the LMS, build the course content using Articulate or SCORM-compliant tools, and train your administrators so the system runs without outside help.",
+      "Ella Tech Solutions works with both. Nonprofits with annual budgets between $500,000 and $5 million are the firm's primary clients. The firm also works with service-based small businesses with 5 to 20 employees in Detroit and metro Michigan. Services for small businesses include website design and redesign, CRM setup, Microsoft 365 implementation, AI workflow automation, and digital strategy consulting.",
   },
   {
     id: "5",
-    question: "What does AI workflow integration actually look like?",
+    question: "What CRMs does Ella Tech Solutions support?",
     answer:
-      "We start by identifying where your team spends time on repetitive tasks: email management, report generation, data entry, scheduling. Then we implement AI tools that handle those tasks automatically. We also run AI literacy training so your staff understands what the tools do and how to use them confidently. No hype. No tools your team will not touch.",
+      "Ella Tech Solutions selects and implements CRMs based on each client's budget, team size, and program needs. Platforms the firm works with include Salesforce Nonprofit Success Pack (NPSP), HubSpot, Bloomerang, and other tools matched to the organization's actual workflow. The firm does not push any single vendor. The recommendation will be the simplest platform that meets the organization's real requirements, not the most expensive one.",
   },
   {
     id: "6",
-    question: "Do you train staff on the systems you set up?",
+    question: "How long does a typical website project take?",
     answer:
-      "Yes. Every implementation includes training. We offer live sessions, self-paced video content, and quick reference guides depending on what works for your team. The goal is that your staff feels confident using the tools without needing to call us for every question.",
+      "Most website projects for nonprofits and small businesses take 4 to 8 weeks from kickoff to launch. The timeline depends on the number of pages, how quickly the client provides content and feedback, and whether any custom functionality is required. Ella Tech Solutions provides a clear project timeline at the start of every engagement. Rush timelines are available on a case-by-case basis.",
   },
   {
     id: "7",
-    question: "What does a digital strategy consulting session include?",
+    question: "What is AI literacy training and who is it for?",
     answer:
-      "A paid discovery session is a focused conversation where we review your current technology, identify gaps, and recommend a prioritized roadmap. There is no long-term commitment required. Book a consultation to learn more about what a session would cover for your organization.",
+      "AI literacy training is practical instruction that helps nonprofit and small business staff understand what AI tools do, how to use them responsibly, and how to apply them in daily work tasks. Ella Tech Solutions delivers this training for staff with no technical background, using tools the organization already has access to. Sessions cover real tasks such as email drafting, scheduling, data summarization, report generation, and donor follow-up.",
   },
   {
     id: "8",
-    question: "How much do your services cost?",
+    question: "Does Ella Tech Solutions offer ongoing support after a project ends?",
     answer:
-      "Pricing is scoped to your project, your organization type, and what you need. We offer mission-driven pricing for nonprofits and community-based organizations. The best way to get a clear number is to book a discovery session. We will scope the work and give you a straightforward quote.",
+      "Yes. Every implementation includes documentation and training so staff can manage systems independently after the project ends. For organizations that want continued access to strategic guidance, Ella Tech Solutions offers advisory engagements on a project basis. Ongoing support terms are discussed during the project scoping conversation.",
   },
   {
     id: "9",
-    question: "How do I get started?",
+    question: "How do I start a project with Ella Tech Solutions?",
     answer:
-      "Book a consultation through the contact section. We will review what you need, recommend the best next steps, and follow up within one business day.",
+      "Book a free 30-minute consultation through the contact section at ellatechsolutions.com. During the session, Ella Tech Solutions will review your current technology setup, identify your most pressing gaps, and outline the best next steps. A written proposal and project quote are provided following the consultation with no obligation to proceed.",
   },
 ];
 
