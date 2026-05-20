@@ -1,7 +1,7 @@
 const stats = [
   {
     value: "15+",
-    label: "Years in tech\n& education",
+    label: "Years in tech\nleadership",
   },
   {
     value: "100%",
@@ -9,7 +9,7 @@ const stats = [
   },
   {
     value: "Mission\nDriven",
-    label: "Nonprofits, small\nbusinesses, community orgs",
+    label: "Nonprofits and\nsmall businesses",
   },
 ];
 

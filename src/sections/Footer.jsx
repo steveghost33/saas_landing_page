@@ -61,8 +61,9 @@ const Footer = () => {
         <div className="container py-6 lg:pb-6 pb-24">
           <div className="flex w-full flex-col items-center gap-6 lg:flex-row lg:gap-4">
             {/* Copyright */}
-            <div className="small-compact flex items-center justify-center lg:flex-1 lg:justify-start">
+            <div className="small-compact flex flex-col items-center justify-center lg:flex-1 lg:items-start gap-1">
               <p className="opacity-70">Copyright, ELLA TECH SOLUTIONS LLC</p>
+              <p className="opacity-40 text-p5 text-xs">Last updated: May 20, 2026</p>
             </div>
 
             {/* Legal Links */}
