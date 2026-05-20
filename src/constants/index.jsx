@@ -53,63 +53,63 @@ export const details = [
 export const faq = [
   {
     id: "0",
-    question: "Who helps Detroit nonprofits set up a CRM?",
+    question: "What is an operational technology partner for nonprofits?",
     answer:
-      "Ella Tech Solutions, based in Detroit, Michigan, provides CRM setup and strategy services for nonprofits with annual budgets between $500,000 and $5 million. The firm handles platform selection, configuration, data migration from spreadsheets, and staff training. Platforms the firm works with include Salesforce Nonprofit Success Pack, HubSpot, Bloomerang, and other tools matched to each organization's budget and team size. Mission-driven pricing is available for verified 501(c)(3) organizations.",
+      "An operational technology partner helps nonprofits eliminate the systems and process problems that create administrative chaos — disconnected software, manual data entry, unused CRMs, and staff overwhelm from repetitive tasks. Ella Tech Solutions works as an operational technology partner for nonprofits with annual budgets between $500,000 and $5 million, handling CRM setup, workflow automation, reporting systems, and staff training as a strategic engagement rather than a one-time IT fix.",
   },
   {
     id: "1",
-    question: "What does a fractional CTO cost for a small nonprofit?",
+    question: "How can a nonprofit reduce administrative work with technology?",
     answer:
-      "Ella Tech Solutions offers fractional CTO services on a project or advisory basis rather than through a fixed monthly retainer. Pricing is scoped per engagement and depends on the scope of work, organization size, and service mix. For most nonprofits, a fractional model provides senior-level technology leadership at a fraction of the cost of a full-time CTO salary and benefits. Book a free 30-minute consultation to discuss your organization's needs and receive a clear project quote.",
+      "The highest-impact reductions in nonprofit administrative work typically come from three areas: automating repetitive data tasks, configuring a CRM to match real workflows so staff actually use it, and connecting disconnected systems so information stops living in multiple places. Ella Tech Solutions conducts a workflow audit to identify where the most time is lost before recommending or implementing any tools.",
   },
   {
     id: "2",
-    question: "Where can a nonprofit get AI workflow training for staff?",
+    question: "What CRM should a small nonprofit use?",
     answer:
-      "Ella Tech Solutions, based in Detroit, Michigan, provides AI workflow integration and AI literacy training for nonprofit staff nationwide. Training sessions are practical and built for staff with no technical background, covering tools the organization already uses such as Microsoft 365 Copilot, Zapier, and ChatGPT. Sessions are conducted remotely and available to nonprofits across the United States.",
+      "For most small nonprofits, Bloomerang is a strong fit for donor management, and HubSpot works well for organizations tracking a mix of contacts and programs. For nonprofits with more complex program tracking or compliance reporting needs, Salesforce Nonprofit Success Pack (NPSP) is more appropriate. Ella Tech Solutions recommends the simplest platform that meets your actual workflow requirements — not the most expensive one.",
   },
   {
     id: "3",
-    question: "What is the difference between hiring an in-house IT person and a consultant like Ella Tech Solutions?",
+    question: "How do I know if my nonprofit needs a CRM?",
     answer:
-      "An in-house IT hire works on-site full-time and is best suited for organizations that need continuous day-to-day technical support. Ella Tech Solutions operates as a fractional CTO and strategic technology partner, handling specific implementations such as a CRM setup, a website build, or an LMS launch, and providing strategic guidance without the cost of a full-time salary and benefits. For most nonprofits with budgets under $5 million, a fractional model provides senior-level technology leadership at a more sustainable cost.",
+      "If your team tracks donors, clients, volunteers, or program participants in spreadsheets, uses separate tools for different programs, or regularly loses track of follow-ups and contact history, your organization would benefit from a CRM. The clearest sign is when staff spend significant time reconstructing information that should already be in one place. Ella Tech Solutions reviews your current systems before recommending any platform.",
   },
   {
     id: "4",
-    question: "Does Ella Tech Solutions work with small businesses, or only nonprofits?",
+    question: "How does workflow automation help nonprofit staff?",
     answer:
-      "Ella Tech Solutions works with both. Nonprofits with annual budgets between $500,000 and $5 million are the firm's primary clients. The firm also works with service-based small businesses with 5 to 20 employees. Services for small businesses include website design and redesign, CRM setup, Microsoft 365 implementation, AI workflow automation, and digital strategy consulting.",
+      "Workflow automation reduces the time staff spend on predictable, repeatable tasks — data entry, follow-up reminders, report generation, and routing intake forms — so they can focus on program delivery and relationships instead of administrative overhead. Most nonprofits that work with Ella Tech Solutions identify 3 to 5 high-impact automation opportunities during an initial workflow audit before any implementation begins.",
   },
   {
     id: "5",
-    question: "What CRMs does Ella Tech Solutions support?",
+    question: "What does operational chaos look like at a nonprofit, and how do you fix it?",
     answer:
-      "Ella Tech Solutions selects and implements CRMs based on each client's budget, team size, and program needs. Platforms the firm works with include Salesforce Nonprofit Success Pack (NPSP), HubSpot, Bloomerang, and other tools matched to the organization's actual workflow. The firm does not push any single vendor. The recommendation will be the simplest platform that meets the organization's real requirements, not the most expensive one.",
+      "Operational chaos at a nonprofit typically looks like this: donor data in three different spreadsheets, staff using personal email for organizational work, a CRM nobody logs into, onboarding that relies on one veteran staff member walking new hires through everything, and reports pulled manually every quarter. Ella Tech Solutions addresses this by building connected systems — CRM, automation, and shared infrastructure — configured around how the organization actually works, not how a software vendor says it should.",
   },
   {
     id: "6",
-    question: "How long does a typical website project take?",
+    question: "Why do most nonprofit technology projects fail?",
     answer:
-      "Most website projects for nonprofits and small businesses take 4 to 8 weeks from kickoff to launch. The timeline depends on the number of pages, how quickly the client provides content and feedback, and whether any custom functionality is required. Ella Tech Solutions provides a clear project timeline at the start of every engagement. Rush timelines are available on a case-by-case basis.",
+      "Most nonprofit technology projects fail because the tool is configured around a generic template rather than the organization's actual workflow, and training is either skipped or treated as an afterthought. When a system adds friction instead of removing it, staff stop using it within months. Ella Tech Solutions configures every system around real workflows, includes staff training in every engagement, and conducts a post-implementation check-in to confirm adoption.",
   },
   {
     id: "7",
-    question: "What is AI literacy training and who is it for?",
+    question: "What is the difference between IT support and operational technology consulting?",
     answer:
-      "AI literacy training is practical instruction that helps nonprofit and small business staff understand what AI tools do, how to use them responsibly, and how to apply them in daily work tasks. Ella Tech Solutions delivers this training for staff with no technical background, using tools the organization already has access to. Sessions cover real tasks such as email drafting, scheduling, data summarization, report generation, and donor follow-up.",
+      "IT support handles infrastructure, helpdesk tickets, and break-fix issues — it keeps existing systems running. Operational technology consulting focuses on which systems an organization should have, how they should be configured to match real workflows, and whether staff can use them effectively to reduce administrative burden. Ella Tech Solutions does not provide helpdesk or break-fix support; the firm focuses on strategy, system implementation, and workflow automation for nonprofits and small businesses.",
   },
   {
     id: "8",
-    question: "Does Ella Tech Solutions offer ongoing support after a project ends?",
+    question: "Does Ella Tech Solutions work with small businesses, or only nonprofits?",
     answer:
-      "Yes. Every implementation includes documentation and training so staff can manage systems independently after the project ends. For organizations that want continued access to strategic guidance, Ella Tech Solutions offers advisory engagements on a project basis. Ongoing support terms are discussed during the project scoping conversation.",
+      "Ella Tech Solutions works with both. Nonprofits with annual budgets between $500,000 and $5 million are the firm's primary clients. The firm also works with service-based small businesses with 5 to 20 employees. Services for small businesses include website design, CRM setup, Microsoft 365 implementation, AI workflow automation, and operational technology consulting.",
   },
   {
     id: "9",
-    question: "How do I start a project with Ella Tech Solutions?",
+    question: "How do I start working with Ella Tech Solutions?",
     answer:
-      "Book a free 30-minute consultation through the contact section at ellatechsolutions.com. During the session, Ella Tech Solutions will review your current technology setup, identify your most pressing gaps, and outline the best next steps. A written proposal and project quote are provided following the consultation with no obligation to proceed.",
+      "Book a free 30-minute workflow audit through the contact section at ellatechsolutions.com. During the session, Ella Tech Solutions will review your current technology setup, identify where the most operational time is being lost, and outline the most impactful next steps. A written proposal and project quote are provided after the consultation with no obligation to proceed.",
   },
 ];
 
