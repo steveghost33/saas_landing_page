@@ -15,7 +15,7 @@ function AboutFounder() {
               Steven Bowman founded Ella Tech Solutions after approximately 15 years as an IT leader and program director inside nonprofits and large organizations across Michigan. He has direct, hands-on experience implementing CRM systems, building learning platforms, setting up Microsoft 365 environments, and training staff in organizational settings where budgets are limited and technology decisions have real operational consequences.
             </p>
             <p className="body-1 text-p5 mb-5">
-              Ella Tech Solutions operates as Steven's fractional CTO practice. Organizations that work with Ella Tech get senior-level technology strategy without hiring a full-time executive. Most clients are nonprofits with annual budgets between $500,000 and $5 million that need a trusted technology partner, not a generic vendor.
+              Steven serves as CTO of Ella Tech Solutions, providing senior-level technology strategy directly to each client. Most clients are nonprofits with annual budgets between $500,000 and $5 million that need a trusted technology partner, not a generic vendor.
             </p>
             <p className="body-1 text-p5 mb-8">
               Steven is based in Detroit, Michigan and works with organizations in metro Detroit, southeast Michigan, and nationwide via remote engagements.
