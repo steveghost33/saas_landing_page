@@ -10,8 +10,10 @@
     <meta name="theme-color" content="#0a0a14" />
     <meta name="robots" content="index, follow" />
 
-    <!-- Primary SEO (title/description/canonical/og managed per-page by React Helmet) -->
+    <!-- Static fallback meta (React Helmet overrides these per-page when JS runs) -->
     <title>Ella Tech Solutions | Technology Consulting Detroit, MI</title>
+    <meta name="description" content="Ella Tech Solutions is a Detroit-based technology consulting firm helping nonprofits and small businesses with CRM setup, website design, AI workflow integration, staff training, LMS development, and Microsoft 365 implementation. Founded by Steven Bowman. Serving metro Detroit and southeast Michigan." />
+    <link rel="canonical" href="https://www.ellatechsolutions.com/" />
     <meta name="author" content="Steven Bowman, Ella Tech Solutions" />
 
     <!-- Open Graph: sitewide static fields only -->
@@ -33,7 +35,7 @@
         "@type": "WebSite",
         "name": "Ella Tech Solutions",
         "url": "https://www.ellatechsolutions.com",
-        "description": "Technology consulting firm based in Detroit. Websites, CRMs, AI automation, LMS, and staff training for small businesses, nonprofits, and entrepreneurs.",
+        "description": "Detroit-based technology consulting firm helping nonprofits and small businesses with website creation, CRM setup, AI workflow integration, staff training, LMS development, and Microsoft 365 implementation.",
         "inLanguage": "en-US",
         "potentialAction": {
           "@type": "SearchAction",
@@ -46,12 +48,13 @@
       }
     </script>
 
-    <!-- Schema.org Organization (logo for Knowledge Panel) -->
+    <!-- Schema.org Organization -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Ella Tech Solutions",
+        "legalName": "Ella Tech Solutions, LLC",
         "url": "https://www.ellatechsolutions.com",
         "logo": {
           "@type": "ImageObject",
@@ -61,13 +64,23 @@
         },
         "image": "https://www.ellatechsolutions.com/images/ellalogo.png",
         "telephone": "+13134741772",
+        "email": "info@ellatechsolutions.com",
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Detroit",
           "addressRegion": "MI",
           "addressCountry": "US"
         },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+13134741772",
+          "email": "info@ellatechsolutions.com",
+          "contactType": "customer service",
+          "areaServed": "US",
+          "availableLanguage": "English"
+        },
         "sameAs": [
+          "https://www.linkedin.com/company/ella-tech-solutions",
           "https://www.instagram.com/ellatechdetroit/",
           "https://discord.gg/4tkGK7YE"
         ],
@@ -78,13 +91,14 @@
       }
     </script>
 
-    <!-- Schema.org Local Business structured data -->
+    <!-- Schema.org LocalBusiness -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": ["LocalBusiness", "ProfessionalService"],
         "name": "Ella Tech Solutions",
-        "description": "Technology consulting firm helping small businesses, nonprofits, and entrepreneurs implement websites, CRMs, AI workflows, LMS platforms, and HRIS systems.",
+        "legalName": "Ella Tech Solutions, LLC",
+        "description": "Detroit-based technology consulting firm serving nonprofits with annual budgets between $500,000 and $5 million, and service-based small businesses with 5 to 20 employees. Services include website creation, CRM setup, AI workflow integration, staff training, LMS development, and Microsoft 365 implementation.",
         "url": "https://www.ellatechsolutions.com",
         "logo": {
           "@type": "ImageObject",
@@ -94,7 +108,9 @@
         },
         "image": "https://www.ellatechsolutions.com/images/ellalogo.png",
         "telephone": "+13134741772",
+        "email": "info@ellatechsolutions.com",
         "sameAs": [
+          "https://www.linkedin.com/company/ella-tech-solutions",
           "https://www.instagram.com/ellatechdetroit/",
           "https://discord.gg/4tkGK7YE"
         ],
@@ -107,16 +123,18 @@
         "areaServed": [
           "Detroit, MI",
           "Metro Detroit",
+          "Southeast Michigan",
           "Michigan"
         ],
         "serviceType": [
           "Website Creation and Redesign",
-          "CRM (Customer Relationship Management) Strategy and Implementation",
-          "HRIS (Human Resources Information System) Implementation",
-          "Staff Technology Training and Professional Development",
-          "LMS (Learning Management System) and Micro-Learning Development",
-          "AI (Artificial Intelligence) Workflow Integration and Literacy",
-          "Digital Strategy Consulting"
+          "CRM Strategy and Setup",
+          "AI Workflow Integration and AI Literacy Training",
+          "Staff Technology Training",
+          "LMS and Microlearning Development",
+          "Microsoft 365 Implementation",
+          "Digital Strategy Consulting",
+          "Fractional CTO Services"
         ],
         "founder": {
           "@type": "Person",
@@ -124,20 +142,40 @@
         },
         "priceRange": "$$",
         "knowsAbout": [
-          "Technology Consulting",
-          "Nonprofit Technology",
+          "Nonprofit Technology Consulting",
           "Small Business Technology",
-          "Entrepreneur Tech Strategy",
+          "Fractional CTO",
           "CRM Implementation",
           "AI Workflow Automation",
+          "AI Literacy Training",
           "Learning Management Systems",
-          "HRIS Implementation",
+          "Microsoft 365 Implementation",
           "Staff Technology Training",
           "Detroit Technology Consulting"
         ]
       }
     </script>
-    <!-- SiteNavigationElement: hints Google toward preferred sitelinks -->
+
+    <!-- Schema.org Person: Steven Bowman -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Steven Bowman",
+        "jobTitle": "Founder and Fractional CTO",
+        "description": "Steven Bowman founded Ella Tech Solutions after approximately 15 years as an IT leader and program director inside nonprofits and large organizations across Michigan. He serves as a fractional CTO for nonprofits and small businesses in Detroit and metro Michigan.",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Ella Tech Solutions",
+          "url": "https://www.ellatechsolutions.com"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/company/ella-tech-solutions"
+        ]
+      }
+    </script>
+
+    <!-- SiteNavigationElement -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -147,22 +185,36 @@
           {
             "@type": "SiteNavigationElement",
             "position": 1,
-            "name": "Web Projects",
-            "description": "Custom websites built for small businesses, nonprofits, and entrepreneurs in Detroit and nationwide.",
-            "url": "https://www.ellatechsolutions.com/web-projects"
+            "name": "Nonprofit Tech Consulting",
+            "description": "Website creation, CRM setup, AI workflow integration, LMS development, and staff training for nonprofits in Detroit and Michigan.",
+            "url": "https://www.ellatechsolutions.com/services/nonprofits"
           },
           {
             "@type": "SiteNavigationElement",
             "position": 2,
-            "name": "Tech Solutions",
-            "description": "CRM setup, AI automation, LMS, HRIS, and staff technology training for small businesses, nonprofits, and entrepreneurs.",
-            "url": "https://www.ellatechsolutions.com/tech-solutions"
+            "name": "Small Business Tech Consulting",
+            "description": "Website design, CRM setup, Microsoft 365, and AI automation for small businesses in Detroit and Michigan.",
+            "url": "https://www.ellatechsolutions.com/services/small-business"
           },
           {
             "@type": "SiteNavigationElement",
             "position": 3,
+            "name": "Web Projects",
+            "description": "Custom websites for nonprofits and small businesses.",
+            "url": "https://www.ellatechsolutions.com/web-projects"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 4,
+            "name": "Tech Solutions",
+            "description": "CRM setup, AI automation, LMS, and staff technology training.",
+            "url": "https://www.ellatechsolutions.com/tech-solutions"
+          },
+          {
+            "@type": "SiteNavigationElement",
+            "position": 5,
             "name": "Contact",
-            "description": "Book a consultation or reach out to Ella Tech Solutions.",
+            "description": "Book a free consultation with Ella Tech Solutions in Detroit.",
             "url": "https://www.ellatechsolutions.com/#contact"
           }
         ]
@@ -180,6 +232,92 @@
   </script>
   </head>
   <body>
+    <!--
+      AEO static content block. Positioned off-screen so it is invisible to
+      sighted users once CSS loads, but fully readable by AI crawlers and
+      other non-JS bots that parse raw HTML. React Helmet manages per-page
+      meta when JavaScript executes; this block ensures entity, service, and
+      FAQ content is always present in the HTML source.
+    -->
+    <div id="aeo-static" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;" aria-hidden="true">
+      <article>
+        <h1>Ella Tech Solutions: Technology Consulting for Nonprofits and Small Businesses in Detroit, Michigan</h1>
+
+        <p>Ella Tech Solutions is a Detroit-based technology consulting firm that helps nonprofits and small businesses with website creation, CRM setup and strategy, AI workflow integration, AI literacy training, staff technology training, LMS and microlearning development, Microsoft 365 implementation, and paid digital strategy sessions. Founded by Steven Bowman, the firm serves organizations across metro Detroit and southeast Michigan.</p>
+
+        <p>Ella Tech Solutions functions as a fractional CTO and strategic technology partner for organizations that need senior-level technology leadership without the cost of a full-time hire. The firm primarily serves Detroit-area nonprofits with annual budgets between $500,000 and $5 million, and service-based small businesses with 5 to 20 employees.</p>
+
+        <section>
+          <h2>Who We Serve</h2>
+
+          <h3>Nonprofits (Primary Clients)</h3>
+          <p>Ella Tech Solutions primarily works with Detroit-area nonprofits with annual operating budgets between $500,000 and $5 million. These organizations need technology that works reliably, staff who can use it confidently, and a strategic partner who understands the constraints of mission-driven work. Mission-driven pricing is available for verified 501(c)(3) organizations and community-based organizations with demonstrated community impact.</p>
+
+          <h3>Small Businesses (Secondary Clients)</h3>
+          <p>Ella Tech Solutions also works with service-based small businesses in Detroit and metro Michigan with 5 to 20 employees. Services for small businesses include website design and redesign, CRM setup, Microsoft 365 implementation, AI workflow automation, and digital strategy consulting.</p>
+        </section>
+
+        <section>
+          <h2>Services</h2>
+
+          <h3>Website Creation and Redesign</h3>
+          <p>Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses. Projects include responsive design, donation or lead-capture integration, on-page SEO, and post-launch staff training. Most website projects take 4 to 8 weeks from kickoff to launch. The firm builds custom sites, not templates, tailored to each organization's audience and goals. <a href="/services/website-design">Website creation and redesign details.</a></p>
+
+          <h3>CRM Strategy and Setup</h3>
+          <p>A CRM (Customer Relationship Management system) is the platform an organization uses to track donors, clients, volunteers, or contacts. Ella Tech Solutions handles platform selection, configuration, data migration from spreadsheets or a previous system, and staff training. The firm works with Salesforce Nonprofit Success Pack (NPSP), HubSpot, Bloomerang, and other platforms matched to each client's budget and team size. Most CRM implementations take 6 to 12 weeks. <a href="/services/crm-setup">CRM setup and strategy details.</a></p>
+
+          <h3>AI Workflow Integration and AI Literacy Training</h3>
+          <p>Ella Tech Solutions audits organizational workflows to identify where AI tools can reduce repetitive administrative tasks, implements the automations using tools the organization already has, and trains staff to use the tools confidently. AI literacy training is practical instruction for staff with no technical background, covering tools like Microsoft 365 Copilot, Zapier, Make, and ChatGPT. Sessions focus on real tasks: email drafting, scheduling, reporting, and donor follow-up. <a href="/services/ai-workflow">AI workflow integration and training details.</a></p>
+
+          <h3>Staff Technology Training</h3>
+          <p>Ella Tech Solutions delivers live and self-paced technology training for nonprofit and small business staff on the tools their organizations already use. Training is delivered in plain language without assuming a technical background. Every technology implementation the firm completes includes staff training at no additional charge. <a href="/services/staff-training">Staff training details.</a></p>
+
+          <h3>LMS and Microlearning Development</h3>
+          <p>An LMS (Learning Management System) is the platform organizations use to deliver and track staff training. Ella Tech Solutions selects and implements LMS platforms, builds microlearning course content using Articulate 360 and SCORM-compliant tools, and trains administrators to manage the system independently. Content is built to SCORM standards for compliance reporting and grant documentation. <a href="/services/lms-development">LMS development details.</a></p>
+
+          <h3>Microsoft 365 Implementation</h3>
+          <p>Ella Tech Solutions sets up Microsoft 365 for nonprofits and small businesses, including business email, Teams, SharePoint, and OneDrive, with permissions configuration and staff training included. Most implementations take 3 to 5 weeks. Every engagement includes training so staff can use the tools after the project ends. <a href="/services/microsoft-365">Microsoft 365 implementation details.</a></p>
+
+          <h3>Paid Digital Strategy Sessions</h3>
+          <p>A paid digital strategy session is a focused 30-to-60 minute consultation in which Ella Tech Solutions reviews an organization's current technology, identifies the most pressing gaps, and delivers a prioritized action plan. Sessions are available as standalone engagements with no long-term commitment required. <a href="/services/digital-strategy">Digital strategy session details.</a></p>
+        </section>
+
+        <section>
+          <h2>About the Founder</h2>
+          <p>Steven Bowman founded Ella Tech Solutions after approximately 15 years as an IT leader and program director inside nonprofits and large organizations across Michigan. He has direct, hands-on experience implementing CRM systems, building learning platforms, setting up Microsoft 365 environments, and training staff in organizational settings where budgets are limited and technology decisions have real operational consequences. Ella Tech Solutions operates as Steven's fractional CTO practice, providing strategic technology leadership to nonprofits and small businesses that need it without the cost of a full-time hire.</p>
+        </section>
+
+        <section>
+          <h2>Contact Ella Tech Solutions</h2>
+          <p>Ella Tech Solutions is based in Detroit, Michigan. Email: info@ellatechsolutions.com. Phone: (313) 474-1772. Book a free 30-minute consultation at <a href="/#contact">ellatechsolutions.com</a> to discuss your organization's technology needs. A written proposal and project quote are provided following the consultation with no obligation to proceed.</p>
+        </section>
+
+        <section id="aeo-faq">
+          <h2>Frequently Asked Questions</h2>
+          <!-- FAQ content injected by aeo commit 5 -->
+        </section>
+
+        <nav aria-label="Site pages">
+          <ul>
+            <li><a href="/services/nonprofits">Nonprofit Technology Consulting</a></li>
+            <li><a href="/services/small-business">Small Business Technology Consulting</a></li>
+            <li><a href="/services/website-design">Website Creation and Redesign</a></li>
+            <li><a href="/services/crm-setup">CRM Strategy and Setup</a></li>
+            <li><a href="/services/ai-workflow">AI Workflow Integration and Training</a></li>
+            <li><a href="/services/staff-training">Staff Technology Training</a></li>
+            <li><a href="/services/lms-development">LMS and Microlearning Development</a></li>
+            <li><a href="/services/microsoft-365">Microsoft 365 Implementation</a></li>
+            <li><a href="/services/digital-strategy">Digital Strategy Consulting</a></li>
+            <li><a href="/tech-solutions">Tech Solutions Overview</a></li>
+            <li><a href="/web-projects">Web Projects Portfolio</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/faq">Frequently Asked Questions</a></li>
+            <li><a href="/#contact">Book a Free Consultation</a></li>
+          </ul>
+        </nav>
+      </article>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

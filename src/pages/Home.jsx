@@ -1,7 +1,9 @@
 import Hero from "../sections/Hero.jsx";
+import WhoWeServe from "../sections/WhoWeServe.jsx";
 import SocialProof from "../sections/SocialProof.jsx";
 import Services from "../sections/Services.jsx";
 import Plans from "../sections/Plans.jsx";
+import AboutFounder from "../sections/AboutFounder.jsx";
 import Faq from "../sections/Faq.jsx";
 import Contact from "../sections/Contact.jsx";
 import PageSEO from "../components/PageSEO.jsx";
@@ -29,7 +31,7 @@ function Home() {
     <>
       <PageSEO
         title="Ella Tech Solutions | Technology Consulting Detroit, MI"
-        description="Website builds, CRM setup, AI automation, and staff training for small businesses, nonprofits, and entrepreneurs. Detroit-based. Serving clients nationwide."
+        description="Ella Tech Solutions is a Detroit-based technology consulting firm helping nonprofits and small businesses with CRM setup, website design, AI workflow integration, staff training, LMS development, and Microsoft 365 implementation. Founded by Steven Bowman."
         canonical="https://www.ellatechsolutions.com/"
         schema={faqSchema}
       />
@@ -38,9 +40,11 @@ function Home() {
         showMobileBookingBar
       >
         <Hero />
+        <WhoWeServe />
         <SocialProof />
         <Services />
         <Plans />
+        <AboutFounder />
         <Faq />
         <Contact />
       </PageShell>
