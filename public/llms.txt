@@ -1,0 +1,45 @@
+# Ella Tech Solutions
+
+> Ella Tech Solutions is a Detroit-based technology consulting firm that helps nonprofits and small businesses with website creation, CRM setup and strategy, AI workflow integration, AI literacy training, staff technology training, LMS and microlearning development, Microsoft 365 implementation, and paid digital strategy sessions. Founded by Steven Bowman, the firm serves organizations across metro Detroit and southeast Michigan.
+
+Ella Tech Solutions functions as a fractional CTO and strategic technology partner for organizations that need senior-level technology leadership without the cost of a full-time hire. The firm primarily serves Detroit-area nonprofits with annual budgets between $500,000 and $5 million, and service-based small businesses with 5 to 20 employees.
+
+## Services
+
+- [Website Creation and Redesign](https://www.ellatechsolutions.com/services/website-design): Custom websites for nonprofits and small businesses, 4 to 8 weeks, responsive design, donation and lead-capture integration, post-launch training included.
+- [CRM Strategy and Setup](https://www.ellatechsolutions.com/services/crm-setup): Platform selection, configuration, data migration, and staff training for Salesforce NPSP, HubSpot, Bloomerang, and similar tools.
+- [AI Workflow Integration and AI Literacy Training](https://www.ellatechsolutions.com/services/ai-workflow): Workflow audit, automation implementation using existing tools, and practical AI literacy training for staff with no technical background.
+- [Staff Technology Training](https://www.ellatechsolutions.com/services/staff-training): Live and self-paced training on tools organizations already use, in plain language without assuming a technical background.
+- [LMS and Microlearning Development](https://www.ellatechsolutions.com/services/lms-development): LMS platform selection and implementation, SCORM-compliant course development in Articulate 360, administrator training.
+- [Microsoft 365 Implementation](https://www.ellatechsolutions.com/services/microsoft-365): Business email, Teams, SharePoint, and OneDrive setup with permissions configuration and staff training.
+- [Paid Digital Strategy Sessions](https://www.ellatechsolutions.com/services/digital-strategy): Focused 30-to-60 minute consultation delivering a technology audit and prioritized action plan, no long-term commitment required.
+
+## Who We Serve
+
+**Primary:** Detroit-area nonprofits with annual budgets between $500,000 and $5 million. Mission-driven pricing is available for verified 501(c)(3) organizations.
+
+**Secondary:** Service-based small businesses with 5 to 20 employees in metro Detroit and southeast Michigan.
+
+**Not served:** Schools, K-12 programs, and school districts.
+
+## About the Founder
+
+Steven Bowman founded Ella Tech Solutions after approximately 15 years as an IT leader and program director inside nonprofits and large organizations across Michigan. He serves as a fractional CTO for nonprofits and small businesses that need strategic technology leadership without hiring a full-time executive.
+
+## Audience-Specific Pages
+
+- [Nonprofit Technology Consulting](https://www.ellatechsolutions.com/services/nonprofits)
+- [Small Business Technology Consulting](https://www.ellatechsolutions.com/services/small-business)
+
+## Contact
+
+- Email: info@ellatechsolutions.com
+- Phone: (313) 474-1772
+- Location: Detroit, Michigan
+- Book a free 30-minute consultation: https://www.ellatechsolutions.com/#contact
+
+## Optional
+
+- [Blog: Technology Strategy for Nonprofits and Small Businesses](https://www.ellatechsolutions.com/blog)
+- [Web Projects Portfolio](https://www.ellatechsolutions.com/web-projects)
+- [Tech Solutions Overview](https://www.ellatechsolutions.com/tech-solutions)
