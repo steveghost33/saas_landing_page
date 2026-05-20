@@ -8,19 +8,19 @@ const Hero = () => {
         {/* Text */}
         <div className="relative z-10 lg:w-1/2 max-w-512 max-lg:max-w-388">
           <div className="mb-3 text-[13px] font-semibold tracking-[0.15em] uppercase text-p3/70">
-            Detroit-Based. Serving Clients Nationwide.
+            Detroit-Based. Serving Nonprofits Nationwide.
           </div>
           <h1 className="mb-6 h1 text-p4 max-lg:mb-7 max-lg:h2 max-md:mb-4 max-md:text-4xl max-md:leading-tight">
-            Ella Tech Solutions: Technology Consulting for Nonprofits and Small Businesses
+            Helping Nonprofits Eliminate Operational Chaos
           </h1>
           <p className="max-w-440 mb-6 body-1 max-md:mb-6 text-p5">
-            Ella Tech Solutions is a Detroit-based technology consulting firm that helps nonprofits and small businesses with website creation, CRM setup, AI workflow integration, staff technology training, LMS development, and Microsoft 365 implementation. Founded by Steven Bowman, the firm serves organizations nationwide.
+            Ella Tech Solutions is an operational technology partner for nonprofits with annual budgets between $500,000 and $5 million, replacing disconnected systems, unused CRMs, and manual admin work with practical technology that staff can actually use.
           </p>
           <p className="max-w-440 mb-14 body-2 max-md:mb-10 text-p5/80">
-            We serve as a fractional CTO and strategic technology partner. You get senior-level technology leadership without the cost of a full-time hire.
+            We work directly as your operations technology partner — handling CRM setup, workflow automation, reporting, and staff training so your team spends more time on mission and less time managing broken processes.
           </p>
           <LinkScroll to="contact" offset={-100} spy smooth>
-            <Button icon="/images/zap.svg">Book a free 30-minute tech audit</Button>
+            <Button icon="/images/zap.svg">Book a free workflow audit</Button>
           </LinkScroll>
         </div>
 

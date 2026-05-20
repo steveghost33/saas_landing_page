@@ -32,7 +32,7 @@ function Home() {
     <>
       <PageSEO
         title="Ella Tech Solutions | Technology Consulting Detroit, MI"
-        description="Ella Tech Solutions is a Detroit-based technology consulting firm helping nonprofits and small businesses with CRM setup, website design, AI workflow integration, staff training, LMS development, and Microsoft 365 implementation. Founded by Steven Bowman."
+        description="Ella Tech Solutions is a Detroit-based operational technology partner helping nonprofits eliminate operational chaos through CRM setup, workflow automation, reporting systems, and practical technology that staff actually use. Founded by Steven Bowman."
         canonical="https://www.ellatechsolutions.com/"
         schema={faqSchema}
       />

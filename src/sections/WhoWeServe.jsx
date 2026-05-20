@@ -6,7 +6,7 @@ const audiences = [
     heading: "Nonprofits",
     subheading: "Annual budgets $500K to $5M",
     description:
-      "Ella Tech Solutions primarily works with nonprofits that are growing faster than their current technology can support. These organizations need CRMs that staff actually use, websites that communicate their mission clearly, and AI tools that save time without requiring a technical background. Mission-driven pricing is available for verified 501(c)(3) organizations.",
+      "If your staff is buried in manual admin work, your donor data lives in spreadsheets, or your CRM sits unused, Ella Tech Solutions builds the systems that eliminate that chaos — CRM, automation, reporting, and intake workflows configured around how your team actually operates. Mission-driven pricing is available for verified 501(c)(3) organizations.",
     link: "/services/nonprofits",
     linkLabel: "Nonprofit services",
   },
@@ -15,7 +15,7 @@ const audiences = [
     heading: "Small Businesses",
     subheading: "5 to 20 employees",
     description:
-      "Ella Tech Solutions works with service-based small businesses nationwide that need practical technology setup and staff training without enterprise contracts or long retainers. Common projects include website redesigns, CRM setup, Microsoft 365 implementation, and AI workflow automation.",
+      "If your team is losing leads in spreadsheets, paying for tools nobody uses, or spending hours on tasks that should be automated, Ella Tech Solutions sets up practical systems that reduce that friction — website, CRM, Microsoft 365, and automation — without long contracts or enterprise pricing.",
     link: "/services/small-business",
     linkLabel: "Small business services",
   },
