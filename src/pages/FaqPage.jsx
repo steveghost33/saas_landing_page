@@ -34,7 +34,7 @@ function FaqPage() {
     <>
       <PageSEO
         title="FAQ: Nonprofit and Small Business Technology Consulting | Ella Tech Solutions"
-        description="Answers to common questions about CRM setup, fractional CTO services, AI workflow training, website projects, and working with Ella Tech Solutions in Detroit, Michigan."
+        description="Answers to common questions about CRM setup, technology consulting, AI workflow training, website projects, and working with Ella Tech Solutions."
         canonical={`${SITE_URL}/faq`}
         schema={[schema, breadcrumbSchema]}
       />
@@ -48,7 +48,7 @@ function FaqPage() {
               Questions about working with Ella Tech Solutions
             </h1>
             <p className="body-1 text-p5 text-center mb-16 max-w-2xl mx-auto">
-              Common questions from nonprofits and small businesses about CRM setup, fractional CTO services, AI workflow training, website projects, and how to get started.
+              Common questions from nonprofits and small businesses about CRM setup, technology consulting, AI workflow training, website projects, and how to get started.
             </p>
 
             <dl className="space-y-8">

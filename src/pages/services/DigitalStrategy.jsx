@@ -76,7 +76,7 @@ function DigitalStrategy() {
     <>
       <PageSEO
         title="Digital Strategy Consulting Sessions for Nonprofits and Small Businesses | Ella Tech Solutions"
-        description="Ella Tech Solutions delivers focused paid digital strategy sessions for nonprofits and small businesses in Detroit and Michigan. Technology audit, gap analysis, and prioritized action plan. No long-term commitment required."
+        description="Ella Tech Solutions delivers focused paid digital strategy sessions for nonprofits and small businesses nationwide. Technology audit, gap analysis, and prioritized action plan. No long-term commitment required."
         canonical={`${SITE_URL}/services/digital-strategy`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />

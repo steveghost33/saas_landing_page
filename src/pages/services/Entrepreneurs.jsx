@@ -10,7 +10,7 @@ const schema = {
   name: "Tech Consulting for Entrepreneurs",
   serviceType: "Technology Consulting",
   description:
-    "Website design, CRM setup, and AI workflow automation for entrepreneurs and solopreneurs in Detroit and Michigan. Ella Tech Solutions.",
+    "Website design, CRM setup, and AI workflow automation for entrepreneurs and solopreneurs nationwide. Ella Tech Solutions.",
   provider: {
     "@type": "LocalBusiness",
     name: "Ella Tech Solutions",
@@ -81,8 +81,8 @@ function Entrepreneurs() {
   return (
     <>
       <PageSEO
-        title="Tech Consulting for Entrepreneurs Detroit | Ella Tech"
-        description="Website design, CRM setup, and AI automation for entrepreneurs and solopreneurs in Detroit and Michigan. Ella Tech Solutions — start small, scale fast."
+        title="Tech Consulting for Entrepreneurs | Ella Tech"
+        description="Website design, CRM setup, and AI automation for entrepreneurs and solopreneurs nationwide. Ella Tech Solutions — start small, scale fast."
         canonical={`${SITE_URL}/services/entrepreneurs`}
         schema={schema}
       />

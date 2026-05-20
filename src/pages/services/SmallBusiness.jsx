@@ -81,8 +81,8 @@ function SmallBusiness() {
   return (
     <>
       <PageSEO
-        title="Tech Consulting for Small Businesses Detroit | Ella Tech"
-        description="Website design, CRM setup, Microsoft 365, and AI automation for small businesses in Detroit. Ella Tech Solutions — practical tech that actually drives growth."
+        title="Tech Consulting for Small Businesses | Ella Tech"
+        description="Website design, CRM setup, Microsoft 365, and AI automation for small businesses nationwide. Ella Tech Solutions — practical tech that actually drives growth."
         canonical={`${SITE_URL}/services/small-business`}
         schema={schema}
       />
@@ -171,7 +171,7 @@ function SmallBusiness() {
                   </li>
                   <li className="flex gap-3">
                     <span className="text-p1 font-bold flex-shrink-0">04</span>
-                    <span><strong className="text-p4">Detroit-based, available everywhere.</strong> We work with small businesses across Michigan and nationwide via remote sessions.</span>
+                    <span><strong className="text-p4">Detroit-based, available everywhere.</strong> We work with small businesses across the United States via remote sessions.</span>
                   </li>
                 </ul>
               </div>

@@ -65,9 +65,9 @@ export const faq = [
   },
   {
     id: "2",
-    question: "Where can a Michigan nonprofit get AI workflow training for staff?",
+    question: "Where can a nonprofit get AI workflow training for staff?",
     answer:
-      "Ella Tech Solutions, based in Detroit, Michigan, provides AI workflow integration and AI literacy training for nonprofit staff across metro Detroit and southeast Michigan. Training sessions are practical and built for staff with no technical background, covering tools the organization already uses such as Microsoft 365 Copilot, Zapier, and ChatGPT. Remote sessions are available for nonprofits across Michigan and nationwide.",
+      "Ella Tech Solutions, based in Detroit, Michigan, provides AI workflow integration and AI literacy training for nonprofit staff nationwide. Training sessions are practical and built for staff with no technical background, covering tools the organization already uses such as Microsoft 365 Copilot, Zapier, and ChatGPT. Sessions are conducted remotely and available to nonprofits across the United States.",
   },
   {
     id: "3",
@@ -79,7 +79,7 @@ export const faq = [
     id: "4",
     question: "Does Ella Tech Solutions work with small businesses, or only nonprofits?",
     answer:
-      "Ella Tech Solutions works with both. Nonprofits with annual budgets between $500,000 and $5 million are the firm's primary clients. The firm also works with service-based small businesses with 5 to 20 employees in Detroit and metro Michigan. Services for small businesses include website design and redesign, CRM setup, Microsoft 365 implementation, AI workflow automation, and digital strategy consulting.",
+      "Ella Tech Solutions works with both. Nonprofits with annual budgets between $500,000 and $5 million are the firm's primary clients. The firm also works with service-based small businesses with 5 to 20 employees. Services for small businesses include website design and redesign, CRM setup, Microsoft 365 implementation, AI workflow automation, and digital strategy consulting.",
   },
   {
     id: "5",

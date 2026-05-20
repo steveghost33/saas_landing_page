@@ -92,7 +92,7 @@ function Nonprofits() {
   return (
     <>
       <PageSEO
-        title="Nonprofit Tech Consulting Detroit | Ella Tech Solutions"
+        title="Nonprofit Tech Consulting | Ella Tech Solutions"
         description="Website builds, CRM setup, LMS development, and staff training for nonprofits. Mission-driven pricing available. Ella Tech Solutions — Detroit-based, nationwide."
         canonical={`${SITE_URL}/services/nonprofits`}
         schema={schema}

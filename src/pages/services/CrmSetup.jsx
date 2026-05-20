@@ -84,7 +84,7 @@ function CrmSetup() {
     <>
       <PageSEO
         title="CRM Setup and Strategy for Nonprofits and Small Businesses | Ella Tech Solutions"
-        description="Ella Tech Solutions implements CRM systems for nonprofits and small businesses in Detroit and Michigan. Platform selection, configuration, data migration, and staff training. Works with Salesforce NPSP, HubSpot, Bloomerang, and more."
+        description="Ella Tech Solutions implements CRM systems for nonprofits and small businesses nationwide. Platform selection, configuration, data migration, and staff training. Works with Salesforce NPSP, HubSpot, Bloomerang, and more."
         canonical={`${SITE_URL}/services/crm-setup`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />

@@ -6,7 +6,7 @@ const audiences = [
     heading: "Nonprofits",
     subheading: "Annual budgets $500K to $5M",
     description:
-      "Ella Tech Solutions primarily works with Detroit-area nonprofits that are growing faster than their current technology can support. These organizations need CRMs that staff actually use, websites that communicate their mission clearly, and AI tools that save time without requiring a technical background. Mission-driven pricing is available for verified 501(c)(3) organizations.",
+      "Ella Tech Solutions primarily works with nonprofits that are growing faster than their current technology can support. These organizations need CRMs that staff actually use, websites that communicate their mission clearly, and AI tools that save time without requiring a technical background. Mission-driven pricing is available for verified 501(c)(3) organizations.",
     link: "/services/nonprofits",
     linkLabel: "Nonprofit services",
   },
@@ -15,7 +15,7 @@ const audiences = [
     heading: "Small Businesses",
     subheading: "5 to 20 employees",
     description:
-      "Ella Tech Solutions works with service-based small businesses in Detroit and metro Michigan that need practical technology setup and staff training without enterprise contracts or long retainers. Common projects include website redesigns, CRM setup, Microsoft 365 implementation, and AI workflow automation.",
+      "Ella Tech Solutions works with service-based small businesses nationwide that need practical technology setup and staff training without enterprise contracts or long retainers. Common projects include website redesigns, CRM setup, Microsoft 365 implementation, and AI workflow automation.",
     link: "/services/small-business",
     linkLabel: "Small business services",
   },

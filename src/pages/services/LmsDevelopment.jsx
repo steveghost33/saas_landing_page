@@ -75,8 +75,8 @@ function LmsDevelopment() {
   return (
     <>
       <PageSEO
-        title="LMS and Microlearning Development for Nonprofits | Ella Tech Solutions Detroit"
-        description="Ella Tech Solutions selects and implements Learning Management Systems (LMS) for nonprofits and small businesses in Detroit and Michigan. SCORM-compliant course development in Articulate 360. Administrator training included."
+        title="LMS and Microlearning Development for Nonprofits | Ella Tech Solutions"
+        description="Ella Tech Solutions selects and implements Learning Management Systems (LMS) for nonprofits and small businesses nationwide. SCORM-compliant course development in Articulate 360. Administrator training included."
         canonical={`${SITE_URL}/services/lms-development`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />

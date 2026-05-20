@@ -18,7 +18,7 @@ function AboutFounder() {
               Steven serves as CTO of Ella Tech Solutions, providing senior-level technology strategy directly to each client. Most clients are nonprofits with annual budgets between $500,000 and $5 million that need a trusted technology partner, not a generic vendor.
             </p>
             <p className="body-1 text-p5 mb-8">
-              Steven is based in Detroit, Michigan and works with organizations in metro Detroit, southeast Michigan, and nationwide via remote engagements.
+              Steven is based in Detroit, Michigan and works with organizations across the United States.
             </p>
 
             <div className="flex flex-wrap gap-4">

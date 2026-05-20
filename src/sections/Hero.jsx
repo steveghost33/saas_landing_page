@@ -11,10 +11,10 @@ const Hero = () => {
             Detroit-Based. Serving Clients Nationwide.
           </div>
           <h1 className="mb-6 h1 text-p4 max-lg:mb-7 max-lg:h2 max-md:mb-4 max-md:text-4xl max-md:leading-tight">
-            Ella Tech Solutions: Technology Consulting for Nonprofits and Small Businesses in Detroit
+            Ella Tech Solutions: Technology Consulting for Nonprofits and Small Businesses
           </h1>
           <p className="max-w-440 mb-6 body-1 max-md:mb-6 text-p5">
-            Ella Tech Solutions is a Detroit-based technology consulting firm that helps nonprofits and small businesses with website creation, CRM setup, AI workflow integration, staff technology training, LMS development, and Microsoft 365 implementation. Founded by Steven Bowman, the firm serves organizations across metro Detroit and southeast Michigan.
+            Ella Tech Solutions is a Detroit-based technology consulting firm that helps nonprofits and small businesses with website creation, CRM setup, AI workflow integration, staff technology training, LMS development, and Microsoft 365 implementation. Founded by Steven Bowman, the firm serves organizations nationwide.
           </p>
           <p className="max-w-440 mb-14 body-2 max-md:mb-10 text-p5/80">
             We serve as a fractional CTO and strategic technology partner. You get senior-level technology leadership without the cost of a full-time hire.

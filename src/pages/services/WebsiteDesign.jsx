@@ -10,7 +10,7 @@ const schema = {
   name: "Website Creation and Redesign for Nonprofits and Small Businesses",
   serviceType: "Technology Consulting",
   description:
-    "Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses in Detroit, Michigan, creating fast, mobile-first sites that clearly communicate the organization's mission and convert visitors into donors, clients, or program participants.",
+    "Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses nationwide, creating fast, mobile-first sites that clearly communicate the organization's mission and convert visitors into donors, clients, or program participants.",
   provider: {
     "@type": "LocalBusiness",
     name: "Ella Tech Solutions",
@@ -84,7 +84,7 @@ function WebsiteDesign() {
     <>
       <PageSEO
         title="Website Creation and Redesign for Nonprofits and Small Businesses | Ella Tech Solutions"
-        description="Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses in Detroit and Michigan. Responsive design, donation flow integration, on-page SEO, and post-launch training included."
+        description="Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses nationwide. Responsive design, donation flow integration, on-page SEO, and post-launch training included."
         canonical={`${SITE_URL}/services/website-design`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />
@@ -96,7 +96,7 @@ function WebsiteDesign() {
           <div className="container mb-16 max-w-3xl mx-auto">
             <h1 className="h2 text-p4 mb-6">Website Creation and Redesign for Nonprofits and Small Businesses</h1>
             <p className="body-1 text-p5">
-              Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses in Detroit, Michigan, creating fast, mobile-first sites that clearly communicate the organization's mission and convert visitors into donors, clients, or program participants.
+              Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses nationwide, creating fast, mobile-first sites that clearly communicate the organization's mission and convert visitors into donors, clients, or program participants.
             </p>
           </div>
 

@@ -1,8 +1,8 @@
 # Ella Tech Solutions
 
-> Ella Tech Solutions is a Detroit-based technology consulting firm that helps nonprofits and small businesses with website creation, CRM setup and strategy, AI workflow integration, AI literacy training, staff technology training, LMS and microlearning development, Microsoft 365 implementation, and paid digital strategy sessions. Founded by Steven Bowman, the firm serves organizations across metro Detroit and southeast Michigan.
+> Ella Tech Solutions is a Detroit-based technology consulting firm that helps nonprofits and small businesses with website creation, CRM setup and strategy, AI workflow integration, AI literacy training, staff technology training, LMS and microlearning development, Microsoft 365 implementation, and paid digital strategy sessions. Founded by Steven Bowman, the firm serves organizations nationwide.
 
-Ella Tech Solutions is a strategic technology partner for organizations that need senior-level technology leadership. The firm primarily serves Detroit-area nonprofits with annual budgets between $500,000 and $5 million, and service-based small businesses with 5 to 20 employees.
+Ella Tech Solutions is a strategic technology partner for organizations that need senior-level technology leadership. The firm primarily serves nonprofits with annual budgets between $500,000 and $5 million, and service-based small businesses with 5 to 20 employees, nationwide.
 
 ## Services
 
@@ -16,15 +16,15 @@ Ella Tech Solutions is a strategic technology partner for organizations that nee
 
 ## Who We Serve
 
-**Primary:** Detroit-area nonprofits with annual budgets between $500,000 and $5 million. Mission-driven pricing is available for verified 501(c)(3) organizations.
+**Primary:** Nonprofits with annual budgets between $500,000 and $5 million. Mission-driven pricing is available for verified 501(c)(3) organizations.
 
-**Secondary:** Service-based small businesses with 5 to 20 employees in metro Detroit and southeast Michigan.
+**Secondary:** Service-based small businesses with 5 to 20 employees, nationwide.
 
 **Not served:** Schools, K-12 programs, and school districts.
 
 ## About the Founder
 
-Steven Bowman founded Ella Tech Solutions after approximately 15 years as an IT leader and program director inside nonprofits and large organizations across Michigan. He serves as CTO of Ella Tech Solutions, delivering technology strategy and implementation directly to nonprofits and small businesses across Detroit and metro Michigan.
+Steven Bowman founded Ella Tech Solutions after approximately 15 years as an IT leader and program director inside nonprofits and large organizations across Michigan. He serves as CTO of Ella Tech Solutions, delivering technology strategy and implementation directly to nonprofits and small businesses across the United States.
 
 ## Audience-Specific Pages
 

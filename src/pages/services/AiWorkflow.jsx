@@ -75,8 +75,8 @@ function AiWorkflow() {
   return (
     <>
       <PageSEO
-        title="AI Workflow Integration and AI Literacy Training | Ella Tech Solutions Detroit"
-        description="Ella Tech Solutions identifies where AI tools can reduce repetitive work for nonprofits and small businesses, implements the automations, and trains staff to use them confidently. Based in Detroit, Michigan."
+        title="AI Workflow Integration and AI Literacy Training | Ella Tech Solutions"
+        description="Ella Tech Solutions identifies where AI tools can reduce repetitive work for nonprofits and small businesses, implements the automations, and trains staff to use them confidently. Remote-capable, serving clients nationwide."
         canonical={`${SITE_URL}/services/ai-workflow`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />
