@@ -53,63 +53,63 @@ export const details = [
 export const faq = [
   {
     id: "0",
-    question: "Who helps Detroit nonprofits set up a CRM?",
+    question: "Who helps Detroit nonprofits set up a contact management system?",
     answer:
-      "Ella Tech Solutions, based in Detroit, Michigan, provides CRM setup and strategy services for nonprofits and small businesses nationwide. The firm handles platform selection, configuration, data migration from spreadsheets, and staff training. Platforms the firm works with include Salesforce Nonprofit Success Pack, HubSpot, Bloomerang, and other tools matched to each organization's budget and team size. Mission-driven pricing is available for verified 501(c)(3) organizations.",
+      "Ella Tech Solutions, based in Detroit, Michigan, helps nonprofits and small businesses get organized with the right contact management tools — commonly called a CRM, short for Customer Relationship Management system. Think of it as a shared address book your whole team can use to track donors, clients, volunteers, and contacts instead of juggling spreadsheets. The firm handles everything: picking the right platform, getting it set up, moving your existing data in, and training your staff. Special pricing is available for registered nonprofits.",
   },
   {
     id: "1",
     question: "How does Ella Tech Solutions price its services?",
     answer:
-      "Pricing is scoped per engagement and depends on the scope of work, organization size, and service mix. There is no standard rate card because every project is different. Book a free 30-minute consultation to discuss your organization's needs and receive a clear project quote.",
+      "Pricing is based on the specific project and what your organization actually needs — there is no one-size-fits-all price list. Every engagement is scoped individually based on the work involved, your organization's size, and which services you need. Book a free 30-minute consultation and you will get a clear, written quote with no obligation to move forward.",
   },
   {
     id: "2",
-    question: "Where can a nonprofit get AI workflow training for staff?",
+    question: "Where can a nonprofit get AI training for staff?",
     answer:
-      "Ella Tech Solutions, based in Detroit, Michigan, provides AI workflow integration and AI literacy training for nonprofit staff nationwide. Training sessions are practical and built for staff with no technical background, covering tools the organization already uses such as Microsoft 365 Copilot, Zapier, and ChatGPT. Sessions are conducted remotely and available to nonprofits across the United States.",
+      "Ella Tech Solutions, based in Detroit, Michigan, provides AI training for nonprofit and small business staff nationwide. Sessions are built for people with no technical background — no jargon, no intimidating slides. Training covers tools your organization likely already has access to, like Microsoft's built-in AI assistant, tools that automatically connect your apps so repetitive data entry disappears, and popular AI writing tools. Everything is hands-on and conducted remotely so your team can join from anywhere.",
   },
   {
     id: "3",
     question: "What is the difference between hiring an in-house IT person and a consultant like Ella Tech Solutions?",
     answer:
-      "An in-house IT hire works on-site full-time and is best suited for organizations that need continuous day-to-day technical support. Ella Tech Solutions handles specific implementations such as a CRM setup, a website build, or an LMS launch, and provides strategic guidance without the cost of a full-time salary and benefits. For most nonprofits and small businesses, this model provides experienced technology leadership at a more sustainable cost.",
+      "An in-house IT person works on-site full-time and makes sense if your organization needs daily, hands-on technical help. Ella Tech Solutions is brought in to handle specific projects — building your website, setting up a contact management system, launching a staff training platform, or automating repetitive work — and then hands everything off with full training so your team can manage it independently. For most nonprofits and small businesses, this provides experienced technology leadership at a fraction of the cost of a full-time hire.",
   },
   {
     id: "4",
     question: "Does Ella Tech Solutions work with small businesses, or only nonprofits?",
     answer:
-      "Ella Tech Solutions works with both, as well as entrepreneurs and independent operators. The firm serves nonprofits, service-based small businesses, and early-stage founders who need practical technology help without enterprise contracts. Services include website design and redesign, CRM setup, Microsoft 365 implementation, AI workflow automation, LMS development, and digital strategy consulting.",
+      "Ella Tech Solutions works with both, as well as independent operators and early-stage founders. Services include website design and redesign, contact management system setup, Microsoft 365 setup and training, AI automation for repetitive tasks, online staff training platform development, and digital strategy consulting. If you need practical technology help without an enterprise-level contract, this firm is built for you.",
   },
   {
     id: "5",
-    question: "What CRMs does Ella Tech Solutions support?",
+    question: "What contact management platforms does Ella Tech Solutions work with?",
     answer:
-      "Ella Tech Solutions selects and implements CRMs based on each client's budget, team size, and program needs. Platforms the firm works with include Salesforce Nonprofit Success Pack (NPSP), HubSpot, Bloomerang, and other tools matched to the organization's actual workflow. The firm does not push any single vendor. The recommendation will be the simplest platform that meets the organization's real requirements, not the most expensive one.",
+      "The recommendation depends on your budget, team size, and how your organization works day to day. Platforms the firm has experience with include Salesforce (including its nonprofit-specific version), HubSpot, and Bloomerang — a platform built specifically for nonprofits that tracks donors and fundraising. Ella Tech Solutions does not push any single vendor. The goal is to find the simplest tool that does what you actually need, not the most expensive one.",
   },
   {
     id: "6",
     question: "How long does a typical website project take?",
     answer:
-      "Most website projects for nonprofits and small businesses take 4 to 8 weeks from kickoff to launch. The timeline depends on the number of pages, how quickly the client provides content and feedback, and whether any custom functionality is required. Ella Tech Solutions provides a clear project timeline at the start of every engagement. Rush timelines are available on a case-by-case basis.",
+      "Most website projects for nonprofits and small businesses take 4 to 8 weeks from kickoff to launch. The timeline depends on the number of pages, how quickly you provide content and feedback, and whether anything custom is needed. A clear project timeline is provided at the start of every engagement. Rush timelines are available on a case-by-case basis.",
   },
   {
     id: "7",
-    question: "What is AI literacy training and who is it for?",
+    question: "What is AI training and who is it for?",
     answer:
-      "AI literacy training is practical instruction that helps nonprofit and small business staff understand what AI tools do, how to use them responsibly, and how to apply them in daily work tasks. Ella Tech Solutions delivers this training for staff with no technical background, using tools the organization already has access to. Sessions cover real tasks such as email drafting, scheduling, data summarization, report generation, and donor follow-up.",
+      "AI training from Ella Tech Solutions is practical, plain-language instruction that helps your staff understand what AI tools actually do, how to use them responsibly, and how to apply them to real daily tasks — like drafting emails, summarizing reports, scheduling, and following up with donors or clients. It is designed for people with no technology background. If your team is curious about AI but does not know where to start, this is where to start.",
   },
   {
     id: "8",
     question: "Does Ella Tech Solutions offer ongoing support after a project ends?",
     answer:
-      "Yes. Every implementation includes documentation and training so staff can manage systems independently after the project ends. For organizations that want continued access to strategic guidance, Ella Tech Solutions offers advisory engagements on a project basis. Ongoing support terms are discussed during the project scoping conversation.",
+      "Yes. Every project wraps up with documentation and hands-on training so your staff can manage things independently after the work is done. For organizations that want continued guidance as their needs grow, ongoing advisory support is available on a project basis. Support terms are discussed during the initial scoping conversation.",
   },
   {
     id: "9",
     question: "How do I start a project with Ella Tech Solutions?",
     answer:
-      "Book a free 30-minute consultation through the contact section at ellatechsolutions.com. During the session, Ella Tech Solutions will review your current technology setup, identify your most pressing gaps, and outline the best next steps. A written proposal and project quote are provided following the consultation with no obligation to proceed.",
+      "Book a free 30-minute consultation through the contact section at ellatechsolutions.com. During that call, we will look at what your organization is working with right now, identify where the biggest gaps are, and lay out the clearest path forward. You will receive a written proposal and project quote after the call with no pressure to move forward.",
   },
 ];
 

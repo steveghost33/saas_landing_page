@@ -48,7 +48,7 @@ function FaqPage() {
               Questions about working with Ella Tech Solutions
             </h1>
             <p className="body-1 text-p5 text-center mb-16 max-w-2xl mx-auto">
-              Common questions from nonprofits and small businesses about CRM setup, technology consulting, AI workflow training, website projects, and how to get started.
+              Common questions from nonprofits and small businesses about setting up contact management systems, technology consulting, AI training for staff, website projects, and how to get started.
             </p>
 
             <dl className="space-y-8">
