@@ -97,7 +97,7 @@ const Header = () => {
       onClick={toggle}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       className={clsx(
-        "flex items-center justify-center w-9 h-9 rounded-full border border-p1/50 bg-s2 text-p1 hover:bg-s3 transition-colors duration-200",
+        "flex items-center justify-center w-10 h-10 rounded-full border border-p1/50 bg-s2 text-p1 hover:bg-s3 transition-colors duration-200",
         className
       )}
     >
@@ -108,7 +108,7 @@ const Header = () => {
   const MenuToggle = ({ className = "" }) => (
     <button
       className={clsx(
-        "flex h-9 flex-shrink-0 items-center justify-center gap-2 rounded-full border border-p1/50 bg-s2 px-3 text-sm font-semibold uppercase tracking-[0.08em] text-p1 hover:bg-s3 transition-colors duration-200",
+        "flex h-10 flex-shrink-0 items-center justify-center gap-2 rounded-full border border-p1/50 bg-s2 px-4 text-sm font-semibold uppercase tracking-[0.08em] text-p1 hover:bg-s3 transition-colors duration-200",
         className
       )}
       onClick={() => setIsOpen((prev) => !prev)}
@@ -134,27 +134,40 @@ const Header = () => {
       <header
         ref={headerRef}
         className={clsx(
-          "w-full py-4 transition-all duration-500 max-xl:py-0 max-xl:overflow-x-hidden",
-          hasScrolled && "py-2 bg-black-100 backdrop-blur-[8px]"
+          "w-full transition-all duration-500",
+          hasScrolled && "bg-black-100/90 backdrop-blur-[8px]"
         )}
       >
         <div className="container relative z-[110]">
-          <div className="relative flex items-center justify-center py-3 xl:grid xl:grid-cols-[1fr_auto_1fr] xl:gap-4 xl:py-4">
-            <ThemeToggle className="absolute left-0 top-1/2 -translate-y-1/2 xl:static xl:translate-y-0" />
+          <div className="flex items-center justify-between py-4 sm:py-5">
 
-            <div className="flex w-full justify-center px-[52px] xl:w-auto xl:px-0">
-              <Link to="/" onClick={handleLogoClick} className="block w-full cursor-pointer xl:w-auto">
-                <img
-                  src="/images/ellalogo.svg"
-                  alt="Ella Tech Solutions"
-                  className="theme-logo h-auto w-full xl:w-[840px]"
-                />
-              </Link>
+            {/* Logo + Brand Name */}
+            <Link
+              to="/"
+              onClick={handleLogoClick}
+              className="flex items-center gap-3 group flex-shrink-0"
+              aria-label="Ella Tech Solutions — Home"
+            >
+              <img
+                src="/images/ellacirclelogo.svg"
+                alt=""
+                aria-hidden="true"
+                className="h-20 w-20 sm:h-24 sm:w-24 rounded-full object-cover ring-2 ring-p1/30 group-hover:ring-p1/70 group-hover:shadow-[0_0_20px_rgba(46,242,255,0.25)] transition-all duration-300 flex-shrink-0"
+              />
+              <div className="hidden sm:flex sm:flex-col sm:gap-1">
+                <span className="text-base font-bold text-p4 leading-none tracking-tight">Ella Tech</span>
+                <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-p1 leading-none">Solutions</span>
+              </div>
+            </Link>
+
+            {/* Right: Theme toggle + Menu */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              <ThemeToggle />
+              <MenuToggle />
             </div>
-
-            <MenuToggle className="absolute right-0 top-1/2 -translate-y-1/2 min-w-[72px] xl:static xl:translate-y-0 xl:min-w-0 xl:justify-self-end" />
           </div>
 
+          {/* Desktop dropdown menu */}
           {isOpen && (
             <div className="relative hidden xl:block">
               <div className="absolute right-0 top-2 w-[340px] rounded-[28px] border border-white/10 bg-s2/95 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl">
@@ -198,19 +211,22 @@ const Header = () => {
         </div>
       </header>
 
-      {/* ── Mobile menu panel ─────────────────────────────── */}
+      {/* Mobile menu panel — positioned below header (80px) + ContactBanner (36px) */}
       {isOpen && (
-        <div ref={mobilePanelRef} className="fixed left-0 right-0 top-[100px] md:top-[120px] z-[99] bg-s2/98 backdrop-blur-xl border-b border-white/10 shadow-2xl xl:hidden">
-          <div className="container py-3">
+        <div
+          ref={mobilePanelRef}
+          className="fixed left-0 right-0 top-[148px] sm:top-[172px] z-[99] bg-s2/98 backdrop-blur-xl border-b border-white/10 shadow-2xl xl:hidden"
+        >
+          <div className="container py-4">
             <nav id="site-nav" aria-label="Mobile menu">
-              <ul className="space-y-0.5">
+              <ul className="space-y-1">
                 {navLinks.map(({ label, href }, i) => (
                   <li key={label}>
                     <a
                       ref={i === 0 ? firstNavLinkRef : null}
                       href={href}
                       onClick={() => setIsOpen(false)}
-                      className="flex items-center justify-between rounded-xl px-4 py-3 text-base font-semibold uppercase tracking-[0.06em] text-p4 transition-colors duration-200 hover:bg-white/5 hover:text-p1"
+                      className="flex items-center justify-between rounded-xl px-4 py-4 text-base font-semibold uppercase tracking-[0.06em] text-p4 transition-colors duration-200 hover:bg-white/5 hover:text-p1"
                     >
                       <span>{label}</span>
                       <span className="text-p1/60 text-lg">+</span>
@@ -220,7 +236,7 @@ const Header = () => {
               </ul>
             </nav>
 
-            <div className="mt-2 pt-3 border-t border-white/10 flex items-center gap-2">
+            <div className="mt-3 pt-4 border-t border-white/10 flex items-center gap-3">
               {socials.map(({ id, url, icon, title }) => (
                 <a
                   key={id}
@@ -228,9 +244,9 @@ const Header = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`Visit Ella Tech Solutions on ${title}`}
-                  className="w-9 h-9 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300"
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-s3 hover:bg-s4 transition-all duration-300 social-icon"
                 >
-                  <img src={icon} alt="" aria-hidden="true" className="w-4 h-4 object-contain" />
+                  <img src={icon} alt="" aria-hidden="true" className="w-5 h-5 object-contain" />
                 </a>
               ))}
             </div>
