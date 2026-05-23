@@ -3,7 +3,6 @@ import WhoWeServe from "../sections/WhoWeServe.jsx";
 import SocialProof from "../sections/SocialProof.jsx";
 import Services from "../sections/Services.jsx";
 import Plans from "../sections/Plans.jsx";
-import AboutFounder from "../sections/AboutFounder.jsx";
 import Testimonials from "../sections/Testimonials.jsx";
 import Faq from "../sections/Faq.jsx";
 import Contact from "../sections/Contact.jsx";
@@ -32,7 +31,7 @@ function Home() {
     <>
       <PageSEO
         title="Ella Tech Solutions | Technology Consulting Detroit, MI"
-        description="Ella Tech Solutions is a Detroit-based technology consulting firm helping nonprofits and small businesses with CRM setup, website design, AI workflow integration, staff training, LMS development, and Microsoft 365 implementation. Founded by Steven Bowman."
+        description="Ella Tech Solutions is a technology consulting firm helping nonprofits, small businesses, and entrepreneurs with CRM setup, website design, AI workflow integration, staff training, LMS development, and Microsoft 365 implementation. Detroit-based. Serving clients nationwide."
         canonical="https://www.ellatechsolutions.com/"
         schema={faqSchema}
       />
@@ -45,7 +44,6 @@ function Home() {
         <SocialProof />
         <Services />
         <Plans />
-        <AboutFounder />
         <Testimonials />
         <Faq />
         <Contact />

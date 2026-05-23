@@ -58,12 +58,14 @@ function ProjectCard({ proj }) {
                     </h4>
                     <ul className="space-y-1">
                       {items.map((item) => {
-                        const [label, detail] = item.split(" — ");
+                        const colonIdx = item.indexOf(": ");
+                        const label = colonIdx > -1 ? item.slice(0, colonIdx) : item;
+                        const detail = colonIdx > -1 ? item.slice(colonIdx + 2) : null;
                         return (
                           <li key={label} className="text-xs text-p5 leading-relaxed">
                             <span className="font-semibold text-p3">{label}</span>
                             {detail && (
-                              <span className="text-p5"> — {detail}</span>
+                              <span className="text-p5">: {detail}</span>
                             )}
                           </li>
                         );
@@ -104,7 +106,7 @@ function WebProjects() {
   return (
     <>
       <PageSEO
-        title="Web Projects | Ella Tech Solutions — Web Design for Nonprofits, Businesses &amp; Entrepreneurs"
+        title="Web Projects | Ella Tech Solutions, Web Design for Nonprofits, Businesses &amp; Entrepreneurs"
         description="Custom websites built for nonprofits, small businesses, and entrepreneurs. Detroit-founded, working with organizations nationwide. Responsive, fast, and built around your audience and goals."
         canonical="https://www.ellatechsolutions.com/web-projects"
         schema={webProjectsSchema}
@@ -130,7 +132,7 @@ function WebProjects() {
                 Web Projects
               </h1>
               <p className="body-1 text-white drop-shadow-lg max-w-2xl">
-                Custom websites built for nonprofits, small businesses, and mission-driven organizations — wherever you are.
+                Custom websites built for nonprofits, small businesses, and mission-driven organizations, wherever you are.
               </p>
             </div>
           </div>

@@ -69,11 +69,11 @@ const TechHealthCheckLanding = () => {
               Free Assessment
             </span>
             <h1 className="text-4xl lg:text-5xl font-black text-white leading-tight mb-5">
-              Is Your Tech Working For You — or Against You?
+              Is Your Tech Working For You, or Against You?
             </h1>
             <p className="text-slate-300 text-lg leading-relaxed mb-8">
               The Tech Health Check is a free assessment that shows you exactly where
-              your systems are holding you back — and what to fix first.
+              your systems are holding you back, and what to fix first.
             </p>
 
             <p className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-4">
@@ -91,7 +91,7 @@ const TechHealthCheckLanding = () => {
             <div className="rounded-2xl bg-white/5 border border-white/10 px-5 py-4">
               <p className="text-slate-300 text-sm leading-relaxed">
                 After you download the assessment, you'll also get the{" "}
-                <span className="text-white font-semibold">CRM Setup Checklist</span> — the
+                <span className="text-white font-semibold">CRM Setup Checklist</span>, the
                 most-requested resource from Ella Tech clients.
               </p>
             </div>
@@ -104,7 +104,7 @@ const TechHealthCheckLanding = () => {
             ) : (
               <>
                 <h2 className="text-xl font-black text-slate-900 mb-1">Get both resources free</h2>
-                <p className="text-slate-400 text-sm mb-6">Tech Health Check + CRM Setup Checklist — instant download.</p>
+                <p className="text-slate-400 text-sm mb-6">Tech Health Check + CRM Setup Checklist, instant download.</p>
 
                 <form onSubmit={handleSubmit} noValidate className="space-y-4">
                   <div>

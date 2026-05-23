@@ -169,7 +169,7 @@ const LeadCapturePopup = () => {
               Is your tech holding your team back?
             </h2>
             <p className="text-blue-100 text-sm mt-1.5 leading-relaxed">
-              Get the Tech Health Check + CRM Setup Checklist — both free.
+              Get the Tech Health Check + CRM Setup Checklist, both free.
             </p>
           </div>
 
@@ -183,8 +183,8 @@ const LeadCapturePopup = () => {
                 <ul className="space-y-2 mb-5">
                   {[
                     "See exactly where your systems are leaking time",
-                    "Step-by-step CRM setup guide — launch in 3 weeks",
-                    "Real follow-up from a real person — not a bot",
+                    "Step-by-step CRM setup guide, launch in 3 weeks",
+                    "Real follow-up from a real person, not a bot",
                   ].map((b, i) => (
                     <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600">
                       <svg className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

@@ -14,7 +14,7 @@ const DownloadSuccess = ({ name }) => {
 
       <h2 className="text-2xl font-black text-slate-900 mb-2">You're in, {firstName}!</h2>
       <p className="text-slate-500 text-[15px] mb-6 max-w-sm mx-auto leading-relaxed">
-        Check your email — the Tech Health Check is on its way now.
+        Check your email, the Tech Health Check is on its way now.
         I'll send the CRM Setup Checklist in 2 days once you've had time to work through it.
       </p>
 
@@ -31,7 +31,7 @@ const DownloadSuccess = ({ name }) => {
         </div>
         <div className="flex-1 min-w-0">
           <p className="font-bold text-slate-800 text-sm">Tech Health Check</p>
-          <p className="text-slate-400 text-xs">Download now — takes ~10 minutes</p>
+          <p className="text-slate-400 text-xs">Download now, takes ~10 minutes</p>
         </div>
         <svg className="h-4 w-4 text-slate-400 group-hover:text-blue-600 transition flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -45,7 +45,7 @@ const DownloadSuccess = ({ name }) => {
         </svg>
         <p className="text-slate-500 text-xs leading-relaxed">
           <span className="font-semibold text-slate-700">CRM Setup Checklist coming in 2 days.</span>{" "}
-          It pairs directly with what you find in the health check — so go through that first.
+          It pairs directly with what you find in the health check, so go through that first.
         </p>
       </div>
 
@@ -54,7 +54,7 @@ const DownloadSuccess = ({ name }) => {
         <p className="text-xs font-semibold uppercase tracking-widest text-blue-200 mb-2">Optional next step</p>
         <h3 className="font-black text-lg mb-1">Talk through what you find</h3>
         <p className="text-blue-100 text-sm mb-4">
-          Free 30-min session — I'll help you figure out what to fix first.
+          Free 30-min session, I'll help you figure out what to fix first.
         </p>
         <button
           type="button"

@@ -32,10 +32,10 @@ const services = [
   {
     title: "Professional Website That Works While You Work",
     description:
-      "As a founder, your website is your best salesperson. We build fast, professional sites that establish credibility, capture leads, and convert visitors — without making you learn a website builder or manage a developer relationship for the rest of your life.",
+      "As a founder, your website is your best salesperson. We build fast, professional sites that establish credibility, capture leads, and convert visitors, without making you learn a website builder or manage a developer relationship for the rest of your life.",
     details: [
       "Clean, fast site designed to convert visitors into clients",
-      "Lead capture built in — contact forms, booking links, email opt-ins",
+      "Lead capture built in, contact forms, booking links, email opt-ins",
       "Easy for you to update without touching code",
       "SEO-optimized so people can find you when they search your services",
     ],
@@ -43,7 +43,7 @@ const services = [
   {
     title: "CRM Setup for One-Person Teams",
     description:
-      "Entrepreneurs lose deals by not following up. Not because they don't care — because they're running everything at once and things fall through the cracks. We set up a lightweight CRM that keeps your pipeline visible without adding another thing to manage.",
+      "Entrepreneurs lose deals by not following up. Not because they don't care, because they're running everything at once and things fall through the cracks. We set up a lightweight CRM that keeps your pipeline visible without adding another thing to manage.",
     details: [
       "CRM selection matched to your budget and complexity",
       "Pipeline setup, contact import, and workflow automation",
@@ -54,7 +54,7 @@ const services = [
   {
     title: "AI Automation for Founders",
     description:
-      "The most valuable thing you have is your time. We automate the admin tasks that consume it — email triage, follow-up sequences, proposal generation, scheduling, social media — so you can focus on building, selling, and delivering.",
+      "The most valuable thing you have is your time. We automate the admin tasks that consume it, email triage, follow-up sequences, proposal generation, scheduling, social media, so you can focus on building, selling, and delivering.",
     details: [
       "Audit of where your time goes and where automation helps most",
       "Implementation using tools you likely already subscribe to",
@@ -70,7 +70,7 @@ const services = [
       "Full review of current tools, subscriptions, and workflows",
       "Honest assessment of what to keep, cut, and add",
       "Prioritized implementation roadmap with cost estimates",
-      "One-time session or ongoing advisory — your choice",
+      "One-time session or ongoing advisory, your choice",
     ],
   },
 ];
@@ -82,7 +82,7 @@ function Entrepreneurs() {
     <>
       <PageSEO
         title="Tech Consulting for Entrepreneurs | Ella Tech"
-        description="Website design, CRM setup, and AI automation for entrepreneurs and solopreneurs nationwide. Ella Tech Solutions — start small, scale fast."
+        description="Website design, CRM setup, and AI automation for entrepreneurs and solopreneurs nationwide. Ella Tech Solutions, start small, scale fast."
         canonical={`${SITE_URL}/services/entrepreneurs`}
         schema={schema}
       />
@@ -106,7 +106,7 @@ function Entrepreneurs() {
                 Tech that keeps up when you're building fast.
               </h1>
               <p className="body-1 text-white/90 drop-shadow-lg max-w-2xl">
-                You're running the whole operation. We handle the tools, the setup, and the systems — so your technology works as hard as you do.
+                You're running the whole operation. We handle the tools, the setup, and the systems, so your technology works as hard as you do.
               </p>
             </div>
           </div>
@@ -115,7 +115,7 @@ function Entrepreneurs() {
           <div className="container mb-20 max-w-3xl mx-auto text-center">
             <h2 className="h3 text-p4 mb-4">You don't need enterprise software. You need the right setup.</h2>
             <p className="body-1 text-p5">
-              Most entrepreneurs overpay for tools they underuse, or skip tools entirely and lose hours to manual work. We help you find the right balance — a lean, functional tech stack that fits where you are now and can grow with you. No bloat, no subscriptions you won't touch, no tools that require a full-time IT person to manage.
+              Most entrepreneurs overpay for tools they underuse, or skip tools entirely and lose hours to manual work. We help you find the right balance, a lean, functional tech stack that fits where you are now and can grow with you. No bloat, no subscriptions you won't touch, no tools that require a full-time IT person to manage.
             </p>
           </div>
 
@@ -157,7 +157,7 @@ function Entrepreneurs() {
               <div className="max-w-2xl">
                 <h2 className="h3 text-p4 mb-4">How we work with entrepreneurs</h2>
                 <p className="body-1 text-p5 mb-6">
-                  We know you don't have time for a six-month engagement. We scope work in tight, deliverable phases — start with a website or a CRM, add automation when you're ready. No long-term contract required to get started.
+                  We know you don't have time for a six-month engagement. We scope work in tight, deliverable phases, start with a website or a CRM, add automation when you're ready. No long-term contract required to get started.
                 </p>
                 <ul className="space-y-4 body-1 text-p5">
                   <li className="flex gap-3">

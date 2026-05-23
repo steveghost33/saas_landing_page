@@ -146,7 +146,7 @@ const Header = () => {
               to="/"
               onClick={handleLogoClick}
               className="flex items-center gap-3 group flex-shrink-0"
-              aria-label="Ella Tech Solutions — Home"
+              aria-label="Ella Tech Solutions, Home"
             >
               <img
                 src="/images/ellacirclelogo.svg"
@@ -211,7 +211,7 @@ const Header = () => {
         </div>
       </header>
 
-      {/* Mobile menu panel — positioned below header (80px) + ContactBanner (36px) */}
+      {/* Mobile menu panel, positioned below header (80px) + ContactBanner (36px) */}
       {isOpen && (
         <div
           ref={mobilePanelRef}

@@ -7,7 +7,7 @@ export const blogPosts = [
       "Most nonprofits fail at CRM before they pick a tool. Here's what actually matters.",
     excerpt:
       "Most nonprofits fail at CRM implementation before they've evaluated a single tool. The problem isn't software. It's organizational readiness. Before your team selects a platform, there are five diagnostic questions that reveal whether your implementation will succeed or repeat the failures of the last one.",
-    author: "Steven Bowman",
+    author: "Ella Tech Solutions",
     publishDate: "2026-05-11",
     updatedDate: "2026-05-11",
     readingTime: 7,
@@ -103,7 +103,7 @@ export const blogPosts = [
     metaDescription: "Three reasons nonprofit websites fail. Here's what actually converts.",
     excerpt:
       "Most nonprofit websites fail for three predictable reasons, none of which are about design. Content organized for staff instead of visitors. Donation flows that lose donors at the final step. And the compounding cost of waiting for budget while the current site continues to underperform. Here's what the diagnostic actually looks like.",
-    author: "Steven Bowman",
+    author: "Ella Tech Solutions",
     publishDate: "2026-05-18",
     updatedDate: "2026-05-18",
     readingTime: 7,

@@ -55,13 +55,13 @@ export const faq = [
     id: "0",
     question: "Who helps Detroit nonprofits set up a CRM?",
     answer:
-      "Ella Tech Solutions, based in Detroit, Michigan, provides CRM setup and strategy services for nonprofits with annual budgets between $500,000 and $5 million. The firm handles platform selection, configuration, data migration from spreadsheets, and staff training. Platforms the firm works with include Salesforce Nonprofit Success Pack, HubSpot, Bloomerang, and other tools matched to each organization's budget and team size. Mission-driven pricing is available for verified 501(c)(3) organizations.",
+      "Ella Tech Solutions, based in Detroit, Michigan, provides CRM setup and strategy services for nonprofits and small businesses nationwide. The firm handles platform selection, configuration, data migration from spreadsheets, and staff training. Platforms the firm works with include Salesforce Nonprofit Success Pack, HubSpot, Bloomerang, and other tools matched to each organization's budget and team size. Mission-driven pricing is available for verified 501(c)(3) organizations.",
   },
   {
     id: "1",
-    question: "What does a fractional CTO cost for a small nonprofit?",
+    question: "How does Ella Tech Solutions price its services?",
     answer:
-      "Ella Tech Solutions offers fractional CTO services on a project or advisory basis rather than through a fixed monthly retainer. Pricing is scoped per engagement and depends on the scope of work, organization size, and service mix. For most nonprofits, a fractional model provides senior-level technology leadership at a fraction of the cost of a full-time CTO salary and benefits. Book a free 30-minute consultation to discuss your organization's needs and receive a clear project quote.",
+      "Pricing is scoped per engagement and depends on the scope of work, organization size, and service mix. There is no standard rate card because every project is different. Book a free 30-minute consultation to discuss your organization's needs and receive a clear project quote.",
   },
   {
     id: "2",
@@ -73,13 +73,13 @@ export const faq = [
     id: "3",
     question: "What is the difference between hiring an in-house IT person and a consultant like Ella Tech Solutions?",
     answer:
-      "An in-house IT hire works on-site full-time and is best suited for organizations that need continuous day-to-day technical support. Ella Tech Solutions operates as a fractional CTO and strategic technology partner, handling specific implementations such as a CRM setup, a website build, or an LMS launch, and providing strategic guidance without the cost of a full-time salary and benefits. For most nonprofits with budgets under $5 million, a fractional model provides senior-level technology leadership at a more sustainable cost.",
+      "An in-house IT hire works on-site full-time and is best suited for organizations that need continuous day-to-day technical support. Ella Tech Solutions handles specific implementations such as a CRM setup, a website build, or an LMS launch, and provides strategic guidance without the cost of a full-time salary and benefits. For most nonprofits and small businesses, this model provides experienced technology leadership at a more sustainable cost.",
   },
   {
     id: "4",
     question: "Does Ella Tech Solutions work with small businesses, or only nonprofits?",
     answer:
-      "Ella Tech Solutions works with both. Nonprofits with annual budgets between $500,000 and $5 million are the firm's primary clients. The firm also works with service-based small businesses with 5 to 20 employees. Services for small businesses include website design and redesign, CRM setup, Microsoft 365 implementation, AI workflow automation, and digital strategy consulting.",
+      "Ella Tech Solutions works with both, as well as entrepreneurs and independent operators. The firm serves nonprofits, service-based small businesses, and early-stage founders who need practical technology help without enterprise contracts. Services include website design and redesign, CRM setup, Microsoft 365 implementation, AI workflow automation, LMS development, and digital strategy consulting.",
   },
   {
     id: "5",

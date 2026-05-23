@@ -16,7 +16,7 @@ const schema = {
   "@type": "Blog",
   name: "Ella Tech Solutions Blog",
   description:
-    "Technology strategy and diagnostic insights for nonprofits, small businesses, and entrepreneurs. CRM readiness, website effectiveness, and digital infrastructure — in plain language.",
+    "Technology strategy and diagnostic insights for nonprofits, small businesses, and entrepreneurs. CRM readiness, website effectiveness, and digital infrastructure, in plain language.",
   url: `${SITE_URL}/blog`,
   publisher: {
     "@type": "Organization",
@@ -43,7 +43,7 @@ function Blog() {
     <>
       <PageSEO
         title="Tech Strategy Blog | Ella Tech Solutions"
-        description="Technology strategy and diagnostic insights for nonprofits, small businesses, and entrepreneurs. CRM readiness, website effectiveness, and digital infrastructure — in plain language."
+        description="Technology strategy and diagnostic insights for nonprofits, small businesses, and entrepreneurs. CRM readiness, website effectiveness, and digital infrastructure, in plain language."
         canonical={`${SITE_URL}/blog`}
         schema={schema}
       />
@@ -62,7 +62,7 @@ function Blog() {
               </h1>
               <p className="body-1 text-p5 max-w-2xl">
                 Not tutorials. Not vendor reviews. Practical diagnostic insights on why technology
-                initiatives fail — and what the real problem usually is.
+                initiatives fail, and what the real problem usually is.
               </p>
             </div>
 
@@ -117,7 +117,7 @@ function Blog() {
               <h2 className="h4 mb-4 text-p4">Have a technology question we haven't covered?</h2>
               <p className="body-1 mb-8 max-w-xl mx-auto text-p5">
                 Book a free 30-minute consultation. We'll address your specific situation and give
-                you a clear path forward — no blog post required.
+                you a clear path forward, no blog post required.
               </p>
               <Button href="/#contact" containerClassName="inline-block mx-auto">
                 Book a Free Consultation

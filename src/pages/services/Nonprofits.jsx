@@ -43,7 +43,7 @@ const services = [
   {
     title: "CRM Setup & Training",
     description:
-      "Most nonprofits have bought a CRM — and stopped using it within six months. We configure your CRM around how your organization actually operates, migrate your donor and contact data, and train your staff so adoption sticks.",
+      "Most nonprofits have bought a CRM, and stopped using it within six months. We configure your CRM around how your organization actually operates, migrate your donor and contact data, and train your staff so adoption sticks.",
     details: [
       "CRM selection based on your budget, team size, and program needs",
       "Data migration from spreadsheets or a previous system",
@@ -70,13 +70,13 @@ const services = [
       "HRIS selection, configuration, and staff record migration",
       "Microsoft 365 setup including Teams, SharePoint, and business email",
       "Onboarding workflows and permissions configured end to end",
-      "Staff training in plain language — no IT background required",
+      "Staff training in plain language, no IT background required",
     ],
   },
   {
     title: "AI Workflow Automation",
     description:
-      "Nonprofit staff wear too many hats to spend hours on repetitive admin work. We identify where AI can save real time — grant reporting, donor follow-ups, scheduling, data entry — and implement automations your team will actually trust.",
+      "Nonprofit staff wear too many hats to spend hours on repetitive admin work. We identify where AI can save real time, grant reporting, donor follow-ups, scheduling, data entry, and implement automations your team will actually trust.",
     details: [
       "Workflow audit to identify the highest-impact automation opportunities",
       "Implementation using tools your organization already has",
@@ -93,7 +93,7 @@ function Nonprofits() {
     <>
       <PageSEO
         title="Nonprofit Tech Consulting | Ella Tech Solutions"
-        description="Website builds, CRM setup, LMS development, and staff training for nonprofits. Mission-driven pricing available. Ella Tech Solutions — Detroit-based, nationwide."
+        description="Website builds, CRM setup, LMS development, and staff training for nonprofits. Mission-driven pricing available. Ella Tech Solutions, Detroit-based, nationwide."
         canonical={`${SITE_URL}/services/nonprofits`}
         schema={schema}
       />
@@ -126,7 +126,7 @@ function Nonprofits() {
           <div className="container mb-20 max-w-3xl mx-auto text-center">
             <h2 className="h3 text-p4 mb-4">The problem isn't the tools. It's that nobody set them up right.</h2>
             <p className="body-1 text-p5">
-              Nonprofits don't have a technology shortage — they have an implementation problem. Staff are busy, budgets are tight, and most vendors sell software without providing the training or configuration it takes to get it used. We do both. Every engagement includes full setup and hands-on training, so the tools we implement actually become part of how your organization works.
+              Nonprofits don't have a technology shortage, they have an implementation problem. Staff are busy, budgets are tight, and most vendors sell software without providing the training or configuration it takes to get it used. We do both. Every engagement includes full setup and hands-on training, so the tools we implement actually become part of how your organization works.
             </p>
           </div>
 
@@ -178,7 +178,7 @@ function Nonprofits() {
                   </li>
                   <li className="flex gap-3">
                     <span className="text-p1 font-bold flex-shrink-0">—</span>
-                    <span>Scoped per project — no hidden fees or hourly overruns</span>
+                    <span>Scoped per project, no hidden fees or hourly overruns</span>
                   </li>
                   <li className="flex gap-3">
                     <span className="text-p1 font-bold flex-shrink-0">—</span>
@@ -196,7 +196,7 @@ function Nonprofits() {
           <div className="container text-center mb-32">
             <h2 className="h4 mb-6 text-p4">Ready to build systems your team will actually use?</h2>
             <p className="body-1 mb-8 max-w-2xl mx-auto text-p5">
-              Book a free 30-minute consultation. We'll review your current technology, identify the gaps, and give you a prioritized list of what to fix first — no commitment required.
+              Book a free 30-minute consultation. We'll review your current technology, identify the gaps, and give you a prioritized list of what to fix first, no commitment required.
             </p>
             <Button href="/#contact" containerClassName="inline-block mx-auto">
               Book a Free Consultation

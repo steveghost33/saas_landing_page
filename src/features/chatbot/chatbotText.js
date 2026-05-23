@@ -383,7 +383,7 @@ export const serviceReply = (intent) => {
   if (intent === "about") {
     return makeSpacing(
       `Ella Tech Solutions is a technology consulting firm focused on nonprofits, small businesses, and community organizations.\n\n` +
-        `We help you set up and use your technology the right way — websites, CRMs, AI workflows, LMS platforms, HRIS systems, and Microsoft 365. We also train your staff so the tools actually get used.\n\n` +
+        `We help you set up and use your technology the right way, websites, CRMs, AI workflows, LMS platforms, HRIS systems, and Microsoft 365. We also train your staff so the tools actually get used.\n\n` +
         `We work with organizations across the country and internationally. No jargon, no generic templates, no tools your team will stop using in 60 days.\n\n` +
         BOOKING_ONLY_CTA
     );
@@ -391,7 +391,7 @@ export const serviceReply = (intent) => {
 
   if (intent === "ai_automation") {
     return makeSpacing(
-      `AI workflow automation is one of the highest-value things Ella Tech does — and it's more practical than it sounds.\n\n` +
+      `AI workflow automation is one of the highest-value things Ella Tech does, and it's more practical than it sounds.\n\n` +
         `It typically means building workflows that save your team time on repetitive tasks: drafting emails, sorting intake forms, summarizing documents, or routing requests automatically.\n\n` +
         `No coding required on your end. We figure out where your staff is losing time and build something that actually fits how you work.\n\n` +
         BOOKING_ONLY_CTA
@@ -401,7 +401,7 @@ export const serviceReply = (intent) => {
   if (intent === "m365") {
     return makeSpacing(
       `A lot of organizations are paying for Microsoft 365 and barely using it.\n\n` +
-        `Ella Tech helps you actually get value out of it — setting up Teams properly, organizing SharePoint so people can find things, getting OneDrive working across your staff, and cleaning up email chaos in Outlook.\n\n` +
+        `Ella Tech helps you actually get value out of it, setting up Teams properly, organizing SharePoint so people can find things, getting OneDrive working across your staff, and cleaning up email chaos in Outlook.\n\n` +
         `You don't need to start over. Usually the licenses you already have are more than enough.\n\n` +
         BOOKING_ONLY_CTA
     );
@@ -409,8 +409,8 @@ export const serviceReply = (intent) => {
 
   if (intent === "lms") {
     return makeSpacing(
-      `An LMS (Learning Management System) is the platform your staff uses to complete training and track progress — tools like TalentLMS, Canvas, or Absorb.\n\n` +
-        `Ella Tech handles the full implementation: platform selection, setup, content migration, and building micro-learning modules using Articulate or SCORM-compliant tools. Each module is typically 5 to 10 minutes — built for busy teams who can't sit through long training sessions.\n\n` +
+      `An LMS (Learning Management System) is the platform your staff uses to complete training and track progress, tools like TalentLMS, Canvas, or Absorb.\n\n` +
+        `Ella Tech handles the full implementation: platform selection, setup, content migration, and building micro-learning modules using Articulate or SCORM-compliant tools. Each module is typically 5 to 10 minutes, built for busy teams who can't sit through long training sessions.\n\n` +
         `We also train your administrators so the system runs without outside help after handoff.\n\n` +
         BOOKING_ONLY_CTA
     );
@@ -418,9 +418,9 @@ export const serviceReply = (intent) => {
 
   if (intent === "hris") {
     return makeSpacing(
-      `An HRIS (Human Resources Information System) is the platform your organization uses to manage staff records, onboarding, time off, performance, and payroll in one place — instead of scattered spreadsheets.\n\n` +
+      `An HRIS (Human Resources Information System) is the platform your organization uses to manage staff records, onboarding, time off, performance, and payroll in one place, instead of scattered spreadsheets.\n\n` +
         `If your HR team is still juggling these things manually, an HRIS centralizes all of it. We handle system selection, setup, data migration, and staff training so your team can use it from day one.\n\n` +
-        `Common platforms we work with include BambooHR, Gusto, and Rippling — but we select based on your size, budget, and workflows.\n\n` +
+        `Common platforms we work with include BambooHR, Gusto, and Rippling, but we select based on your size, budget, and workflows.\n\n` +
         BOOKING_ONLY_CTA
     );
   }
@@ -428,7 +428,7 @@ export const serviceReply = (intent) => {
   if (intent === "crm") {
     return makeSpacing(
       `CRM setup is especially common for nonprofits managing donors, volunteers, or program clients.\n\n` +
-        `Ella Tech helps you pick the right tool for your size and budget, get it set up correctly, and make sure your team actually uses it — not just another system that collects dust.\n\n` +
+        `Ella Tech helps you pick the right tool for your size and budget, get it set up correctly, and make sure your team actually uses it, not just another system that collects dust.\n\n` +
         `If you already have something in place that isn't working well, we can usually fix that too rather than starting from scratch.\n\n` +
         BOOKING_ONLY_CTA
     );
@@ -436,7 +436,7 @@ export const serviceReply = (intent) => {
 
   if (intent === "website") {
     return makeSpacing(
-      `Ella Tech builds clean, functional websites for nonprofits and small businesses — built so your team can manage them after handoff without needing a developer for every update.\n\n` +
+      `Ella Tech builds clean, functional websites for nonprofits and small businesses, built so your team can manage them after handoff without needing a developer for every update.\n\n` +
         `Whether you need a new site, a redesign, or just want your current site to stop being a headache, the free consultation is where we'd figure out what makes sense.\n\n` +
         BOOKING_ONLY_CTA
     );
@@ -444,7 +444,7 @@ export const serviceReply = (intent) => {
 
   if (intent === "nonprofit_pricing") {
     return makeSpacing(
-      `Yes — Ella Tech Solutions offers mission-driven pricing for verified 501(c)(3) nonprofits and community-based organizations.\n\n` +
+      `Yes, Ella Tech Solutions offers mission-driven pricing for verified 501(c)(3) nonprofits and community-based organizations.\n\n` +
         `This isn't a token discount. It reflects our values alignment with mission-driven work and our commitment to making quality technology consulting accessible to organizations doing work that matters.\n\n` +
         `Book a consultation to talk through what your project would cost with nonprofit pricing applied.\n\n` +
         BOOKING_ONLY_CTA
@@ -453,7 +453,7 @@ export const serviceReply = (intent) => {
 
   if (intent === "nonprofit") {
     return makeSpacing(
-      `Nonprofits are Ella Tech's primary focus — especially organizations with 5 to 50 staff who are growing fast or trying to clean up messy systems.\n\n` +
+      `Nonprofits are Ella Tech's primary focus, especially organizations with 5 to 50 staff who are growing fast or trying to clean up messy systems.\n\n` +
         `The work usually involves getting your tech stack under control: Microsoft 365, CRM, AI-powered workflows, staff training, or a website that actually represents you well.\n\n` +
         `You don't need a big budget or a dedicated IT person to get started. That's exactly what the free consultation is for.\n\n` +
         BOOKING_ONLY_CTA
@@ -463,7 +463,7 @@ export const serviceReply = (intent) => {
   if (intent === "budget") {
     return makeSpacing(
       `Budget is a real conversation, not a disqualifier.\n\n` +
-        `Ella Tech works with nonprofits and small organizations specifically — the free 30-minute consultation exists so we can figure out what's realistic for your situation before anyone commits to anything.\n\n` +
+        `Ella Tech works with nonprofits and small organizations specifically, the free 30-minute consultation exists so we can figure out what's realistic for your situation before anyone commits to anything.\n\n` +
         `You don't need to have your budget figured out before we talk.\n\n` +
         BOOKING_ONLY_CTA
     );
@@ -482,15 +482,15 @@ export const serviceReply = (intent) => {
     return makeSpacing(
       `Starting over is rarely the answer.\n\n` +
         `Ella Tech typically starts by understanding what you already have in place before recommending anything new. Most of the time, the tools you're already paying for just need to be set up and used correctly.\n\n` +
-        `If something genuinely isn't working, we'll say so — but we won't push you to replace things unless there's a real reason.\n\n` +
+        `If something genuinely isn't working, we'll say so, but we won't push you to replace things unless there's a real reason.\n\n` +
         BOOKING_ONLY_CTA
     );
   }
 
   if (intent === "staff_training") {
     return makeSpacing(
-      `Staff training from Ella Tech isn't a webinar or a manual — it's hands-on sessions tailored to your team and the tools you're actually using.\n\n` +
-        `Whether it's getting everyone on the same page with Microsoft 365, onboarding new hires to your systems, or just making sure people stop working around tools they don't understand — we meet people where they are.\n\n` +
+      `Staff training from Ella Tech isn't a webinar or a manual, it's hands-on sessions tailored to your team and the tools you're actually using.\n\n` +
+        `Whether it's getting everyone on the same page with Microsoft 365, onboarding new hires to your systems, or just making sure people stop working around tools they don't understand, we meet people where they are.\n\n` +
         BOOKING_ONLY_CTA
     );
   }
@@ -499,7 +499,7 @@ export const serviceReply = (intent) => {
     return makeSpacing(
       `Digital strategy consulting is where we start if you're not sure what you need or where your technology is breaking down.\n\n` +
         `It includes a technology audit, a gap analysis of what's missing or not working, vendor selection guidance, and a prioritized implementation roadmap. No long-term commitment required to begin.\n\n` +
-        `Most clients come in thinking they need one specific fix and leave with a much clearer picture of their whole tech stack — and a plan that actually fits their budget and team capacity.\n\n` +
+        `Most clients come in thinking they need one specific fix and leave with a much clearer picture of their whole tech stack, and a plan that actually fits their budget and team capacity.\n\n` +
         BOOKING_ONLY_CTA
     );
   }
@@ -507,7 +507,7 @@ export const serviceReply = (intent) => {
   if (intent === "tech_consulting") {
     return makeSpacing(
       `Tech consulting at Ella Tech is less about buzzwords and more about figuring out what actually makes sense for your situation.\n\n` +
-        `It usually starts with understanding your current setup, your goals, and where things are breaking down — then building a clear plan and helping you execute it.\n\n` +
+        `It usually starts with understanding your current setup, your goals, and where things are breaking down, then building a clear plan and helping you execute it.\n\n` +
         `Most clients come in with a specific problem and leave with a clearer picture of their whole tech stack.\n\n` +
         BOOKING_ONLY_CTA
     );
@@ -516,7 +516,7 @@ export const serviceReply = (intent) => {
   if (intent === "support_scope") {
     return makeSpacing(
       `Just to be upfront: Ella Tech doesn't do ongoing IT helpdesk, break-fix support, hardware procurement, or on-site infrastructure work.\n\n` +
-        `What Ella Tech does is help you set up and optimize your systems — Microsoft 365, websites, CRMs, AI workflows — so they're stable and your team can manage them confidently.\n\n` +
+        `What Ella Tech does is help you set up and optimize your systems, Microsoft 365, websites, CRMs, AI workflows, so they're stable and your team can manage them confidently.\n\n` +
         `If you're not sure whether your situation fits, the free consultation is a good place to find out.\n\n` +
         BOOKING_ONLY_CTA
     );
@@ -524,7 +524,7 @@ export const serviceReply = (intent) => {
 
   if (intent === "get_quote") {
     return makeSpacing(
-      `Pricing is scoped per project — there's no standard rate card, and that's intentional.\n\n` +
+      `Pricing is scoped per project, there's no standard rate card, and that's intentional.\n\n` +
         `What something costs depends on what you actually need, your timeline, and your situation. Mission-driven pricing is available for nonprofits and community-based organizations.\n\n` +
         `The free 30-minute consultation is where that conversation starts, and nobody commits to anything during that call.\n\n` +
         BOOKING_ONLY_CTA
@@ -535,7 +535,7 @@ export const serviceReply = (intent) => {
     return makeSpacing(
       `It depends on the project:\n\n` +
         `Websites typically take 4 to 6 weeks, depending on how many pages you need and how quickly we get your content and feedback.\n\n` +
-        `CRM, HRIS, and LMS implementations vary more — a straightforward setup might take a few weeks; a full migration with training can take 6 to 10 weeks.\n\n` +
+        `CRM, HRIS, and LMS implementations vary more, a straightforward setup might take a few weeks; a full migration with training can take 6 to 10 weeks.\n\n` +
         `The free consultation is the best place to map out a clear timeline for your specific project.\n\n` +
         BOOKING_ONLY_CTA
     );
@@ -543,9 +543,9 @@ export const serviceReply = (intent) => {
 
   if (intent === "getting_started") {
     return makeSpacing(
-      `Book a free 30-minute consultation — that's it.\n\n` +
+      `Book a free 30-minute consultation, that's it.\n\n` +
         `We'll review what you need, recommend the right next steps, and follow up within one business day. No long intake forms, no commitment required during the call.\n\n` +
-        `If you're not sure what you need yet, that's fine — figuring that out together is exactly what the consultation is for.\n\n` +
+        `If you're not sure what you need yet, that's fine, figuring that out together is exactly what the consultation is for.\n\n` +
         BOOKING_ONLY_CTA
     );
   }
@@ -553,23 +553,23 @@ export const serviceReply = (intent) => {
   if (intent === "location") {
     return makeSpacing(
       `Ella Tech Solutions works with organizations across the country and internationally.\n\n` +
-        `Most of our work is done remotely — video calls, shared documents, and screen sessions work well for everything we do. In-person sessions can be arranged when it makes sense.\n\n` +
-        `Our focus is on nonprofits, small businesses, and community organizations — wherever they are.\n\n` +
+        `Most of our work is done remotely, video calls, shared documents, and screen sessions work well for everything we do. In-person sessions can be arranged when it makes sense.\n\n` +
+        `Our focus is on nonprofits, small businesses, and community organizations, wherever they are.\n\n` +
         BOOKING_ONLY_CTA
     );
   }
 
   if (intent === "portfolio") {
     return makeSpacing(
-      `You can see examples of our work on the site — web projects are on the Web Projects page, and tech solution implementations are on the Tech Solutions page.\n\n` +
-        `If you're looking for examples similar to your specific situation — your industry, org size, or the tools involved — the consultation is the best place to walk through that directly.\n\n` +
+      `You can see examples of our work on the site, web projects are on the Web Projects page, and tech solution implementations are on the Tech Solutions page.\n\n` +
+        `If you're looking for examples similar to your specific situation, your industry, org size, or the tools involved, the consultation is the best place to walk through that directly.\n\n` +
         BOOKING_ONLY_CTA
     );
   }
 
   if (intent === "out_of_scope") {
     return makeSpacing(
-      `That's not something Ella Tech handles — we stay focused on what we do well.\n\n` +
+      `That's not something Ella Tech handles, we stay focused on what we do well.\n\n` +
         `What we don't do: graphic design, logo and brand identity, social media management, SEO, paid advertising, mobile app development, or video production.\n\n` +
         `What we do handle: websites, CRM setup, AI workflow automation, Microsoft 365, LMS and HRIS implementation, staff training, and digital strategy consulting.\n\n` +
         `If your project involves both, we're happy to point you toward partners for the parts outside our scope.\n\n` +
@@ -579,7 +579,7 @@ export const serviceReply = (intent) => {
 
   if (intent === "data_migration") {
     return makeSpacing(
-      `Data migration is included in most of our implementations — CRM, HRIS, and LMS projects almost always involve moving your existing data into the new system.\n\n` +
+      `Data migration is included in most of our implementations, CRM, HRIS, and LMS projects almost always involve moving your existing data into the new system.\n\n` +
         `We handle the full process: auditing what you have, cleaning it up if needed, importing it correctly, and verifying it's accurate before handoff.\n\n` +
         `If you're starting with messy spreadsheets or data scattered across multiple tools, that's a very normal starting point.\n\n` +
         BOOKING_ONLY_CTA
@@ -587,7 +587,7 @@ export const serviceReply = (intent) => {
   }
 
   return makeSpacing(
-    `Good question — the free 30-minute consultation is the best place to dig into that.\n\n` +
+    `Good question, the free 30-minute consultation is the best place to dig into that.\n\n` +
       `Ella Tech works with nonprofits, small businesses, and community organizations on things like AI workflow automation, Microsoft 365, CRM setup, staff training, and website builds.\n\n` +
       `You don't need to have it all figured out before we talk.\n\n` +
       BOOKING_ONLY_CTA

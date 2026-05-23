@@ -40,7 +40,7 @@ function Plans() {
             </p>
           </div>
 
-          {/* Cards — 3-column grid on large screens, 2-column on medium, 1-column on mobile */}
+          {/* Cards, 3-column grid on large screens, 2-column on medium, 1-column on mobile */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12 max-w-6xl mx-auto">
             {plans.map(({ id, title, description, details }) => {
               const isExpanded = expandedIds.includes(id);

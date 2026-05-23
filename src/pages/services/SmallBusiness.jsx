@@ -32,7 +32,7 @@ const services = [
   {
     title: "Website Design & CRM Setup",
     description:
-      "Your website is the first thing potential customers see. We build clean, fast sites that convert visitors into leads — then set up a CRM so you never lose track of a prospect, customer, or follow-up again.",
+      "Your website is the first thing potential customers see. We build clean, fast sites that convert visitors into leads, then set up a CRM so you never lose track of a prospect, customer, or follow-up again.",
     details: [
       "Professional website built for speed, mobile, and search",
       "CRM selection, configuration, and data migration from spreadsheets",
@@ -54,7 +54,7 @@ const services = [
   {
     title: "AI Workflow Automation",
     description:
-      "Small business owners spend hours on tasks a computer could handle. We identify the repetitive work eating your time — email, scheduling, reporting, data entry — and automate it using tools you already have access to.",
+      "Small business owners spend hours on tasks a computer could handle. We identify the repetitive work eating your time, email, scheduling, reporting, data entry, and automate it using tools you already have access to.",
     details: [
       "Workflow audit to find where automation saves the most time",
       "Implementation using Microsoft 365, Zapier, Make, or similar tools",
@@ -65,7 +65,7 @@ const services = [
   {
     title: "Digital Strategy Consulting",
     description:
-      "Not sure where to start? A 30-minute strategy session gives you a clear picture of your technology gaps and a prioritized list of what to fix first. No jargon, no upsell — just a straight answer about what your business actually needs.",
+      "Not sure where to start? A 30-minute strategy session gives you a clear picture of your technology gaps and a prioritized list of what to fix first. No jargon, no upsell, just a straight answer about what your business actually needs.",
     details: [
       "Tech audit covering your website, CRM, email, and operations tools",
       "Prioritized recommendations with honest cost estimates",
@@ -82,7 +82,7 @@ function SmallBusiness() {
     <>
       <PageSEO
         title="Tech Consulting for Small Businesses | Ella Tech"
-        description="Website design, CRM setup, Microsoft 365, and AI automation for small businesses nationwide. Ella Tech Solutions — practical tech that actually drives growth."
+        description="Website design, CRM setup, Microsoft 365, and AI automation for small businesses nationwide. Ella Tech Solutions, practical tech that actually drives growth."
         canonical={`${SITE_URL}/services/small-business`}
         schema={schema}
       />
@@ -106,7 +106,7 @@ function SmallBusiness() {
                 Technology that helps your small business grow.
               </h1>
               <p className="body-1 text-white/90 drop-shadow-lg max-w-2xl">
-                We handle the tools, training, and setup — so you can focus on running the business, not troubleshooting it.
+                We handle the tools, training, and setup, so you can focus on running the business, not troubleshooting it.
               </p>
             </div>
           </div>
@@ -115,7 +115,7 @@ function SmallBusiness() {
           <div className="container mb-20 max-w-3xl mx-auto text-center">
             <h2 className="h3 text-p4 mb-4">The problem isn't the software. It's the implementation.</h2>
             <p className="body-1 text-p5">
-              Most small business owners have bought tools they barely use — a CRM that's still empty, a Microsoft 365 subscription nobody's fully set up, an email system that's a mess. We fix that. We handle selection, setup, and training end to end so you get technology that works from day one.
+              Most small business owners have bought tools they barely use, a CRM that's still empty, a Microsoft 365 subscription nobody's fully set up, an email system that's a mess. We fix that. We handle selection, setup, and training end to end so you get technology that works from day one.
             </p>
           </div>
 
@@ -143,7 +143,7 @@ function SmallBusiness() {
                   <p className="body-1 text-p5">
                     {idx === 0 && "Small business owners who are sending people to an embarrassing website, losing leads in spreadsheets, or tracking customers by memory."}
                     {idx === 1 && "Business owners paying for Microsoft 365 but running on personal Gmail, shared login credentials, and folders nobody can find."}
-                    {idx === 2 && "Owners spending hours each week on tasks that should take minutes — scheduling, follow-ups, data entry, status updates."}
+                    {idx === 2 && "Owners spending hours each week on tasks that should take minutes, scheduling, follow-ups, data entry, status updates."}
                     {idx === 3 && "Business owners who know they need better tech but don't know where to start, what to buy, or what order to do things in."}
                   </p>
                 </div>
@@ -182,7 +182,7 @@ function SmallBusiness() {
           <div className="container text-center mb-32">
             <h2 className="h4 mb-6 text-p4">Ready to get your tech working for you?</h2>
             <p className="body-1 mb-8 max-w-2xl mx-auto text-p5">
-              Book a free 30-minute consultation. We'll review your current tools, identify what's slowing you down, and give you a clear picture of what to fix first — no commitment required.
+              Book a free 30-minute consultation. We'll review your current tools, identify what's slowing you down, and give you a clear picture of what to fix first, no commitment required.
             </p>
             <Button href="/#contact" containerClassName="inline-block mx-auto">
               Book a Free Consultation

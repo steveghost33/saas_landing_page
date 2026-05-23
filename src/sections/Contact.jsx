@@ -36,7 +36,7 @@ const Contact = () => {
           {/* Two-column layout */}
           <div className="flex flex-col lg:flex-row gap-6 lg:gap-14 items-start max-w-[1100px] mx-auto">
 
-            {/* LEFT — Copy */}
+            {/* LEFT, Copy */}
             <div className="w-full lg:w-5/12 flex-shrink-0">
 
               {/* Who this is for */}
@@ -45,7 +45,7 @@ const Contact = () => {
                   A working session for nonprofits, small businesses, and teams
                   ready to improve their digital systems. We'll cover your
                   current tools, what's slowing you down, and what to fix first.
-                  No sales pressure — just clarity.
+                  No sales pressure, just clarity.
                 </p>
               </div>
 
@@ -77,7 +77,7 @@ const Contact = () => {
                 </p>
               </div>
 
-              {/* Contact fallback — desktop only (left column) */}
+              {/* Contact fallback, desktop only (left column) */}
               <div className="hidden lg:block">
                 <p className="text-p5/70 text-sm uppercase tracking-wider font-semibold mb-3">
                   Prefer to reach out directly?
@@ -102,7 +102,7 @@ const Contact = () => {
 
             </div>
 
-            {/* RIGHT — Scheduler */}
+            {/* RIGHT, Scheduler */}
             <div className="w-full lg:flex-1">
               {/* Framing line */}
               <p className="text-p5/60 text-sm text-center mb-4 italic">
@@ -127,7 +127,7 @@ const Contact = () => {
                 We reply to all booking confirmations within one business day.
               </p>
 
-              {/* Contact fallback — mobile only (below embed) */}
+              {/* Contact fallback, mobile only (below embed) */}
               <div className="mt-6 lg:hidden">
                 <p className="text-p5/70 text-sm uppercase tracking-wider font-semibold mb-3">
                   Prefer to reach out directly?

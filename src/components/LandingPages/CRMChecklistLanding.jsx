@@ -100,7 +100,7 @@ const CRMChecklistLanding = () => {
             ) : (
               <>
                 <h2 className="text-xl font-black text-slate-900 mb-1">Get instant access</h2>
-                <p className="text-slate-400 text-sm mb-6">We'll also send the Tech Health Check — free.</p>
+                <p className="text-slate-400 text-sm mb-6">We'll also send the Tech Health Check, free.</p>
 
                 <form onSubmit={handleSubmit} noValidate className="space-y-4">
                   <div>

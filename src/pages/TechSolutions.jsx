@@ -10,7 +10,7 @@ function TechSolutions() {
   return (
     <>
       <PageSEO
-        title="Tech Solutions & Training | CRM, AI Automation, LMS, HRIS — Detroit"
+        title="Tech Solutions & Training | CRM, AI Automation, LMS, HRIS, Detroit"
         description="CRM setup, AI automation, LMS development, HRIS, and staff training for small businesses, nonprofits, and entrepreneurs. Detroit-based. Serving clients nationwide."
         canonical="https://www.ellatechsolutions.com/tech-solutions"
         schema={techSolutionsSchema}
@@ -49,7 +49,7 @@ function TechSolutions() {
             </p>
           </div>
 
-          {/* Services — alternating layout */}
+          {/* Services, alternating layout */}
           {techServices.map((service, idx) => (
             <div
               key={service.id}
@@ -77,7 +77,7 @@ function TechSolutions() {
             </div>
           ))}
 
-          {/* Digital Strategy Consulting — full width callout */}
+          {/* Digital Strategy Consulting, full width callout */}
           <div className="container mb-24">
             <div className="bg-s2 rounded-3xl p-10 md:p-14 border border-white/10">
               <div className="max-w-2xl">
