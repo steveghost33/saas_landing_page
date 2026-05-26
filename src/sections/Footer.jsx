@@ -12,7 +12,7 @@ const Footer = () => {
             <p className="text-p5 text-sm opacity-70">30 minutes. No pitch. Just clarity on what your org needs.</p>
           </div>
           <a
-            href="/#contact"
+            href="https://cal.com/ella-tech-7ze7wk"
             className="inline-flex items-center gap-2 bg-p1 text-s1 px-6 py-3 rounded-2xl font-bold text-sm uppercase tracking-wide hover:opacity-90 transition-opacity whitespace-nowrap"
           >
             Book your free audit

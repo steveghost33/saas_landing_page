@@ -157,7 +157,7 @@ function LmsDevelopment() {
 
           {/* CTA */}
           <div className="container text-center mb-32 max-w-3xl mx-auto">
-            <Button href="/#contact" containerClassName="inline-block mx-auto">
+            <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block mx-auto">
               Book a free consultation
             </Button>
           </div>

@@ -184,7 +184,7 @@ function WebProjects() {
             <p className="body-1 mb-6 max-w-2xl mx-auto text-p5">
               Book a consultation and we will map out what your website needs to do, who it needs to serve, and how to build it within your budget.
             </p>
-            <Button href="/#contact" containerClassName="inline-block mx-auto">
+            <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block mx-auto">
               Book a Consultation
             </Button>
           </div>

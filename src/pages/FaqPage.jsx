@@ -68,7 +68,7 @@ function FaqPage() {
               <p className="body-1 text-p5 mb-8 max-w-xl mx-auto">
                 Book a free 30-minute consultation. We will review your situation and answer any questions about working together.
               </p>
-              <Button href="/#contact" containerClassName="inline-block mx-auto">
+              <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block mx-auto">
                 Book a free consultation
               </Button>
             </div>

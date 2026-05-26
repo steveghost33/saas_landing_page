@@ -90,7 +90,7 @@ function Plans() {
 
           {/* Bottom services CTA */}
           <div className="text-center mb-4">
-            <Button href="/#contact" containerClassName="inline-block mx-auto">
+            <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block mx-auto">
               Book a free tech audit
             </Button>
           </div>
@@ -110,7 +110,7 @@ function Plans() {
           <p className="text-p5 body-1 mb-10">
             Book a free 30-minute call and we will tell you exactly what your org needs. No pitch, no pressure.
           </p>
-          <Button href="/#contact" containerClassName="inline-block mx-auto">
+          <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block mx-auto">
             Book your free audit
           </Button>
         </div>

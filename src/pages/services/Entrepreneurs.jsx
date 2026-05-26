@@ -187,7 +187,7 @@ function Entrepreneurs() {
             <p className="body-1 mb-8 max-w-2xl mx-auto text-p5">
               Book a free 30-minute consultation. We'll identify the one thing slowing you down the most and tell you exactly what it would take to fix it.
             </p>
-            <Button href="/#contact" containerClassName="inline-block mx-auto">
+            <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block mx-auto">
               Book a Free Consultation
             </Button>
           </div>

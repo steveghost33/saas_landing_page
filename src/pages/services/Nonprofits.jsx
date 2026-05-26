@@ -185,7 +185,7 @@ function Nonprofits() {
                     <span>Training and documentation included in every engagement</span>
                   </li>
                 </ul>
-                <Button href="/#contact" containerClassName="inline-block">
+                <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block">
                   Book a Free Consultation
                 </Button>
               </div>
@@ -198,7 +198,7 @@ function Nonprofits() {
             <p className="body-1 mb-8 max-w-2xl mx-auto text-p5">
               Book a free 30-minute consultation. We'll review your current technology, identify the gaps, and give you a prioritized list of what to fix first, no commitment required.
             </p>
-            <Button href="/#contact" containerClassName="inline-block mx-auto">
+            <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block mx-auto">
               Book a Free Consultation
             </Button>
           </div>

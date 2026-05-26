@@ -119,7 +119,7 @@ function Blog() {
                 Book a free 30-minute consultation. We'll address your specific situation and give
                 you a clear path forward, no blog post required.
               </p>
-              <Button href="/#contact" containerClassName="inline-block mx-auto">
+              <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block mx-auto">
                 Book a Free Consultation
               </Button>
             </div>

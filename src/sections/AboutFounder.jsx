@@ -22,7 +22,7 @@ function AboutFounder() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <Button href="/#contact" containerClassName="inline-block">
+              <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block">
                 Book a free consultation
               </Button>
               <a

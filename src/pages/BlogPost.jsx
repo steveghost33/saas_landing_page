@@ -141,7 +141,7 @@ function BlogPost() {
               </p>
               <h2 className="h4 text-p4 mb-4">{post.ctaHeading}</h2>
               <p className="body-1 text-p5 max-w-xl mx-auto mb-8">{post.ctaBody}</p>
-              <Button href="/#contact" containerClassName="inline-block mx-auto">
+              <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block mx-auto">
                 {post.ctaButton}
               </Button>
             </div>

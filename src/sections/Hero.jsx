@@ -1,4 +1,3 @@
-import { Link as LinkScroll } from "react-scroll";
 import Button from "../components/Button.jsx";
 
 const Hero = () => {
@@ -16,9 +15,7 @@ const Hero = () => {
           <p className="max-w-440 mb-6 body-1 max-md:mb-6 max-md:text-base max-md:leading-relaxed text-p5">
             We build websites, set up the tools your organization needs, automate the repetitive work eating your staff's time, and train your team to use it all confidently. If your tools are a mess, or your team is working around them instead of with them, that's exactly where we come in.
           </p>
-          <LinkScroll to="contact" offset={-100} spy smooth>
-            <Button icon="/images/zap.svg">Book a free 30-minute tech audit</Button>
-          </LinkScroll>
+          <Button href="https://cal.com/ella-tech-7ze7wk" icon="/images/zap.svg">Book a free 30-minute tech audit</Button>
         </div>
 
         {/* Hero Image */}

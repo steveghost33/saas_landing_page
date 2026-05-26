@@ -91,7 +91,7 @@ function TechSolutions() {
                   <li>Flexible options for nonprofits, small businesses, and entrepreneurs</li>
                   <li>No long-term commitment required to start</li>
                 </ul>
-                <Button href="/#contact" containerClassName="inline-block">
+                <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block">
                   Book a Free Consultation
                 </Button>
               </div>
@@ -114,7 +114,7 @@ function TechSolutions() {
             <p className="body-1 mb-8 max-w-2xl mx-auto text-p5">
               Book a consultation and we will identify where technology can save your team time, reduce overhead, and help you focus on the work that matters.
             </p>
-            <Button href="/#contact" containerClassName="inline-block mx-auto">
+            <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block mx-auto">
               Book a Consultation
             </Button>
           </div>
