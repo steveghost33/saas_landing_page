@@ -3,7 +3,6 @@ import WhoWeServe from "../sections/WhoWeServe.jsx";
 import SocialProof from "../sections/SocialProof.jsx";
 import Services from "../sections/Services.jsx";
 import Plans from "../sections/Plans.jsx";
-import Testimonials from "../sections/Testimonials.jsx";
 import Faq from "../sections/Faq.jsx";
 import Contact from "../sections/Contact.jsx";
 import PageSEO from "../components/PageSEO.jsx";
@@ -44,7 +43,6 @@ function Home() {
         <SocialProof />
         <Services />
         <Plans />
-        <Testimonials />
         <Faq />
         <Contact />
       </PageShell>
