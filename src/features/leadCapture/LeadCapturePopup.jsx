@@ -156,11 +156,11 @@ const LeadCapturePopup = () => {
 
             {/* Logo */}
             <div className="flex justify-center mb-4">
-              <div className="h-16 w-16 rounded-2xl bg-white shadow-lg flex items-center justify-center p-1">
+              <div className="h-16 w-16 rounded-full bg-white shadow-lg flex items-center justify-center p-1">
                 <img
-                  src="/images/ella-icon.svg"
+                  src="/images/ellalogo.png"
                   alt="Ella Tech Solutions"
-                  className="h-full w-full object-contain rounded-xl"
+                  className="h-full w-full object-contain"
                 />
               </div>
             </div>
