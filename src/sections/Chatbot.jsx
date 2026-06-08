@@ -237,7 +237,7 @@ function Chatbot() {
             border: "1px solid #ccc",
             borderRadius: 8,
             boxShadow: "0 6px 20px rgba(0,0,0,0.2)",
-            zIndex: 1000,
+            zIndex: 900,
           }}
           aria-label="Ella Tech chat"
         >
@@ -390,7 +390,7 @@ function Chatbot() {
           color: "#fff",
           border: "none",
           cursor: "pointer",
-          zIndex: 1000,
+          zIndex: 900,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

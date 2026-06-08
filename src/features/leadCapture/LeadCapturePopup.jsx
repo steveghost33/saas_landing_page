@@ -122,7 +122,6 @@ const LeadCapturePopup = () => {
     <>
       {/* Backdrop */}
       <div
-        onClick={() => close()}
         className={`fixed inset-0 z-[998] bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${animateIn ? "opacity-100" : "opacity-0"}`}
         aria-hidden="true"
       />
@@ -132,13 +131,17 @@ const LeadCapturePopup = () => {
         role="dialog"
         aria-modal="true"
         aria-labelledby="popup-title"
-        className={`fixed inset-0 z-[999] flex items-end sm:items-center justify-center p-4 sm:p-6 pointer-events-none`}
+        className="fixed inset-0 z-[999] overflow-y-auto overscroll-contain"
       >
         <div
-          className={`pointer-events-auto w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 ${
-            animateIn ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
-          }`}
+          onClick={(ev) => { if (ev.target === ev.currentTarget) close(); }}
+          className="min-h-full flex items-center justify-center p-4 sm:p-6"
         >
+          <div
+            className={`w-full max-w-md bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 ${
+              animateIn ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
+            }`}
+          >
           {/* Header bar */}
           <div className="relative bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 px-6 pt-8 pb-6 text-center">
             <button
@@ -247,6 +250,7 @@ const LeadCapturePopup = () => {
               </>
             )}
           </div>
+        </div>
         </div>
       </div>
     </>
