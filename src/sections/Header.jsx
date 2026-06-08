@@ -149,10 +149,10 @@ const Header = () => {
               aria-label="Ella Tech Solutions, Home"
             >
               <img
-                src="/images/ellacirclelogo.svg"
+                src="/images/ella-icon.svg"
                 alt=""
                 aria-hidden="true"
-                className="h-20 w-20 sm:h-24 sm:w-24 rounded-full object-cover ring-2 ring-p1/30 group-hover:ring-p1/70 group-hover:shadow-[0_0_20px_rgba(46,242,255,0.25)] transition-all duration-300 flex-shrink-0"
+                className="h-20 w-20 sm:h-24 sm:w-24 rounded-2xl object-cover ring-2 ring-p1/30 group-hover:ring-p1/70 group-hover:shadow-[0_0_20px_rgba(46,242,255,0.25)] transition-all duration-300 flex-shrink-0"
               />
               <div className="hidden sm:flex sm:flex-col sm:gap-1">
                 <span className="text-base font-bold text-p4 leading-none tracking-tight">Ella Tech</span>
