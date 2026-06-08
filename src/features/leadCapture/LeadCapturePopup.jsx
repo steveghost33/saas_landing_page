@@ -5,18 +5,6 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
 const STORAGE_KEY = "ella_lead_popup_dismissed";
 const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
-const SOCIAL_SOURCES = new Set([
-  "linkedin", "instagram", "facebook", "twitter", "x",
-  "tiktok", "social", "ig", "fb", "li",
-]);
-
-const isSocialTraffic = () => {
-  const params = new URLSearchParams(window.location.search);
-  const utmSource = (params.get("utm_source") || "").toLowerCase();
-  const utmMedium = (params.get("utm_medium") || "").toLowerCase();
-  return SOCIAL_SOURCES.has(utmSource) || utmMedium === "social";
-};
-
 const hasDismissed = () => {
   try {
     const val = localStorage.getItem(STORAGE_KEY);
@@ -48,7 +36,7 @@ const LeadCapturePopup = () => {
   const emailRef = useRef(null);
 
   useEffect(() => {
-    if (!isSocialTraffic() || hasDismissed()) return;
+    if (hasDismissed()) return;
 
     // Show after 2.5 seconds so the page has time to paint
     const timer = setTimeout(() => {
@@ -156,11 +144,11 @@ const LeadCapturePopup = () => {
 
             {/* Logo */}
             <div className="flex justify-center mb-4">
-              <div className="h-16 w-16 rounded-full bg-white shadow-lg flex items-center justify-center p-1">
+              <div className="h-16 w-16 rounded-full bg-white shadow-lg flex items-center justify-center p-2">
                 <img
-                  src="/images/ellalogo.png"
+                  src="/images/ella-badge-icon.png"
                   alt="Ella Tech Solutions"
-                  className="h-full w-full object-contain"
+                  className="h-full w-full object-contain rounded-full"
                 />
               </div>
             </div>
