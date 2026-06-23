@@ -33,12 +33,12 @@ function WhoWeServe() {
           We work with organizations and individuals who need practical technology help, not enterprise contracts or one-size-fits-all solutions.
         </p>
 
-        <div className="relative flex md:flex-row flex-col gap-4 border-2 border-s3 rounded-7xl md:overflow-hidden g7 max-md:border-none max-md:rounded-none max-md:g0">
+        <div className="relative flex lg:flex-row flex-col gap-4 border-2 border-s3 rounded-7xl lg:overflow-hidden g7 max-lg:border-none max-lg:rounded-none max-lg:g0">
           {audiences.map(({ heading, description, link, linkLabel }, i) => (
             <div
               key={heading}
-              className={`flex-1 flex flex-col px-8 py-10 max-md:g7 max-md:border-2 max-md:border-s3 max-md:rounded-3xl ${
-                i < audiences.length - 1 ? "md:border-r-2 md:border-r-s3" : ""
+              className={`flex-1 flex flex-col px-8 py-10 max-lg:g7 max-lg:border-2 max-lg:border-s3 max-lg:rounded-3xl ${
+                i < audiences.length - 1 ? "lg:border-r-2 lg:border-r-s3" : ""
               }`}
             >
               <h3 className="h4 text-p4 mb-5">{heading}</h3>

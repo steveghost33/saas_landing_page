@@ -141,23 +141,19 @@ const Header = () => {
         <div className="container relative z-[110]">
           <div className="flex items-center justify-between py-4 sm:py-5">
 
-            {/* Logo + Brand Name */}
+            {/* Logo */}
             <Link
               to="/"
               onClick={handleLogoClick}
-              className="flex items-center gap-3 group flex-shrink-0"
+              className="flex items-center group flex-shrink-0"
               aria-label="Ella Tech Solutions, Home"
             >
               <img
                 src="/images/ellalogo.png"
                 alt=""
                 aria-hidden="true"
-                className="h-20 w-20 sm:h-24 sm:w-24 rounded-full object-cover ring-2 ring-p1/30 group-hover:ring-p1/70 group-hover:shadow-[0_0_20px_rgba(46,242,255,0.25)] transition-all duration-300 flex-shrink-0"
+                className="h-16 w-16 sm:h-20 sm:w-20 rounded-full object-cover ring-2 ring-p1/30 group-hover:ring-p1/70 group-hover:shadow-[0_0_20px_rgba(46,242,255,0.25)] transition-all duration-300 flex-shrink-0"
               />
-              <div className="hidden sm:flex sm:flex-col sm:gap-1">
-                <span className="text-base font-bold text-p4 leading-none tracking-tight">Ella Tech</span>
-                <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-p1 leading-none">Solutions</span>
-              </div>
             </Link>
 
             {/* Right: Theme toggle + Menu */}

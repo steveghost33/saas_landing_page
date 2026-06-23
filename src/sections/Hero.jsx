@@ -2,10 +2,31 @@ import Button from "../components/Button.jsx";
 
 const Hero = () => {
   return (
-    <section className="relative pt-20 pb-40 max-lg:pt-14 max-lg:pb-36 max-md:pt-6 max-md:pb-32 overflow-x-hidden">
-      <div className="container relative z-2 flex flex-col lg:flex-row items-start lg:items-center">
+    <section className="relative pt-20 pb-40 max-lg:pt-14 max-lg:pb-36 max-md:pt-12 max-md:pb-32 overflow-hidden">
+      {/* Background photo */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/images/main-photo.jpg"
+          alt="Ella Tech Solutions, technology consulting for nonprofits, small businesses, and entrepreneurs"
+          width="1920"
+          height="1080"
+          fetchpriority="high"
+          className="w-full h-full object-cover object-[28%_75%]"
+        />
+        {/* Fade the photo into the background color under the text, left-to-right and top-to-bottom */}
+        <div className="absolute inset-0 bg-gradient-to-r from-s1 via-s1/70 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-s1 via-s1/10 to-transparent" />
+        <div className="absolute inset-0 lg:hidden bg-s1/55" />
+      </div>
+
+      <div className="container relative z-10 flex flex-col lg:flex-row items-start lg:items-center">
         {/* Text */}
         <div className="relative z-10 lg:w-1/2 max-w-512 max-lg:max-w-388 w-full">
+          <img
+            src="/images/ellalogo.svg"
+            alt="Ella Tech Solutions"
+            className="h-7 max-md:h-6 w-auto mb-5 max-lg:mb-6"
+          />
           <div className="mb-3 text-[13px] font-semibold tracking-[0.15em] uppercase text-p3/70">
             Detroit-Based. Serving Clients Nationwide.
           </div>
@@ -16,22 +37,6 @@ const Hero = () => {
             We build websites, set up the tools your organization needs, automate the repetitive work eating your staff's time, and train your team to use it all confidently. If your tools are a mess, or your team is working around them instead of with them, that's exactly where we come in.
           </p>
           <Button href="https://cal.com/ella-tech-7ze7wk" icon="/images/zap.svg">Book a free 30-minute tech audit</Button>
-        </div>
-
-        {/* Hero Image */}
-        <div className="mt-8 lg:mt-0 lg:absolute lg:top-[20vh] lg:right-0 lg:w-[70%] lg:max-w-[920px] pointer-events-none z-0 w-full">
-          <div className="relative overflow-hidden rounded-[2rem] max-md:rounded-2xl shadow-2xl max-lg:aspect-video max-md:aspect-[4/3]">
-            <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-s1 to-transparent pointer-events-none z-10" />
-            <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-s1 to-transparent pointer-events-none z-10 lg:hidden" />
-            <img
-              src="/images/main-photo.jpg"
-              alt="Ella Tech Solutions, technology consulting for nonprofits, small businesses, and entrepreneurs"
-              width="920"
-              height="614"
-              fetchpriority="high"
-              className="w-full h-full object-cover object-top block"
-            />
-          </div>
         </div>
       </div>
     </section>
