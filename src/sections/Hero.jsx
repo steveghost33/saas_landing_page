@@ -11,7 +11,7 @@ const Hero = () => {
           width="1920"
           height="1080"
           fetchpriority="high"
-          className="w-full h-full object-cover object-[28%_75%]"
+          className="w-full h-full object-cover scale-[1.9] origin-[50%_62%]"
         />
         {/* Fade the photo into the background color under the text, left-to-right and top-to-bottom */}
         <div className="absolute inset-0 bg-gradient-to-r from-s1 via-s1/70 to-transparent" />
