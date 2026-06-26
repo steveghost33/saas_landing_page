@@ -36,7 +36,7 @@ function Plans() {
               Three Ways to Get Found
             </h2>
             <p className="mt-4 text-p5 max-w-2xl mx-auto body-1">
-              Every tier includes the same flat monthly care plan, the scope just grows with how much ground you want to cover. Pick the level that matches how fast you want to be the obvious local choice.
+              Every tier includes a monthly care plan that scales with how much ground you want to cover. Pick the level that matches how fast you want to be the obvious local choice.
             </p>
           </div>
 

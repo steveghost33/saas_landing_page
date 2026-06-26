@@ -55,7 +55,7 @@ export const faq = [
     id: "0",
     question: "What is the actual difference between Get Found, Get Called, and Own the Area?",
     answer:
-      "Get Found gets your business a website and an optimized Google Business Profile so people searching nearby can find you. Get Called adds expanded local SEO and AEO (AI answer engine optimization), so you also show up when people use AI tools to find a business like yours, plus a review generation strategy. Own the Area builds on both with ongoing content, competitor tracking, and monthly reporting so you stay ahead of competitors over time, not just at launch. All three include the same flat monthly care plan, the scope of work just grows.",
+      "Get Found gets your business a website and an optimized Google Business Profile so people searching nearby can find you. Get Called adds expanded local SEO and AEO (AI answer engine optimization), so you also show up when people use AI tools to find a business like yours, plus a review generation strategy. Own the Area builds on both with ongoing content, competitor tracking, and monthly reporting so you stay ahead of competitors over time, not just at launch. The monthly care plan scales with the tier too, since the amount of ongoing work scales with it.",
   },
   {
     id: "1",
@@ -73,7 +73,7 @@ export const faq = [
     id: "3",
     question: "How much does this cost?",
     answer:
-      "Get Found runs $1,200 to $1,800 up front, Get Called runs $2,200 to $3,500, and Own the Area runs $3,500 to $5,500. Every tier includes a flat $200 to $250 per month care plan after launch. Exact pricing depends on your business and what you need built. Book a free 30-minute consultation and you will get a clear, written quote before committing to anything.",
+      "Get Found runs $1,200 to $1,800 up front plus $150 a month, Get Called runs $2,200 to $3,500 up front plus $275 a month, and Own the Area runs $3,500 to $5,500 up front plus $450 to $500 a month. The monthly care plan scales with the tier since the amount of ongoing work scales with it. Exact pricing depends on your business and what you need built. Book a free 30-minute consultation and you will get a clear, written quote before committing to anything.",
   },
   {
     id: "4",
@@ -97,7 +97,7 @@ export const faq = [
     id: "7",
     question: "What happens after my site launches? Is there ongoing cost?",
     answer:
-      "Yes. Every tier includes a flat $200 to $250 per month care plan that covers hosting, monitoring, and keeping your Google Business Profile and SEO work current. What is included in that plan scales with your tier, Own the Area includes ongoing content and competitor tracking, for example. There are no surprise add-on fees.",
+      "Yes. Every tier includes a monthly care plan that covers hosting, monitoring, and keeping your Google Business Profile and SEO work current, starting at $150 a month for Get Found and scaling up to $450 to $500 a month for Own the Area. The fee scales with the tier because the amount of ongoing work does too, Own the Area includes ongoing content and competitor tracking, for example. There are no surprise add-on fees.",
   },
   {
     id: "8",
@@ -118,7 +118,7 @@ export const plans = [
     id: "get-found",
     title: "Get Found",
     price: "$1,200–$1,800",
-    monthly: "+ $200–$250/mo",
+    monthly: "+ $150/mo",
     description:
       "Show up when someone nearby searches for what you do. A fast, mobile-friendly website and a fully optimized Google Business Profile, built so local customers can find you and call.",
     details: [
@@ -132,7 +132,7 @@ export const plans = [
     id: "get-called",
     title: "Get Called",
     price: "$2,200–$3,500",
-    monthly: "+ $200–$250/mo",
+    monthly: "+ $275/mo",
     description:
       "Rank locally and show up in AI answer engines. Everything in Get Found, plus the SEO and AEO work that puts you in front of customers searching on Google and asking AI tools for a recommendation.",
     details: [
@@ -146,7 +146,7 @@ export const plans = [
     id: "own-the-area",
     title: "Own the Area",
     price: "$3,500–$5,500",
-    monthly: "+ $200–$250/mo",
+    monthly: "+ $450–$500/mo",
     description:
       "Be the obvious local choice, consistently. Everything in Get Called, plus the ongoing content and optimization that keeps you ahead of competitors in your service area month after month.",
     details: [
