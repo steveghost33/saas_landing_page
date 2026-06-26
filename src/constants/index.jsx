@@ -53,138 +53,123 @@ export const details = [
 export const faq = [
   {
     id: "0",
-    question: "Who helps Detroit nonprofits set up a contact management system?",
+    question: "What is the actual difference between Get Found, Get Called, and Own the Area?",
     answer:
-      "Ella Tech Solutions, based in Detroit, Michigan, helps nonprofits and small businesses get organized with the right contact management tools — commonly called a CRM, short for Customer Relationship Management system. Think of it as a shared address book your whole team can use to track donors, clients, volunteers, and contacts instead of juggling spreadsheets. The firm handles everything: picking the right platform, getting it set up, moving your existing data in, and training your staff. Special pricing is available for registered nonprofits.",
+      "Get Found gets your business a website and an optimized Google Business Profile so people searching nearby can find you. Get Called adds expanded local SEO and AEO (AI answer engine optimization), so you also show up when people use AI tools to find a business like yours, plus a review generation strategy. Own the Area builds on both with ongoing content, competitor tracking, and monthly reporting so you stay ahead of competitors over time, not just at launch. All three include the same flat monthly care plan, the scope of work just grows.",
   },
   {
     id: "1",
-    question: "How does Ella Tech Solutions price its services?",
+    question: "What does \"AEO\" mean, and why does it matter for a local business?",
     answer:
-      "Pricing is based on the specific project and what your organization actually needs — there is no one-size-fits-all price list. Every engagement is scoped individually based on the work involved, your organization's size, and which services you need. Book a free 30-minute consultation and you will get a clear, written quote with no obligation to move forward.",
+      "AEO stands for AI answer engine optimization. When someone asks an AI tool like ChatGPT or Google's AI Overviews to recommend a business near them, AEO is what makes sure your business shows up in that answer with the right hours, service area, and phone number. More customers are starting their search in an AI chat instead of typing into Google, and a site that is not set up correctly simply will not get mentioned.",
   },
   {
     id: "2",
-    question: "Where can a nonprofit get AI training for staff?",
+    question: "What is the 2-week guarantee?",
     answer:
-      "Ella Tech Solutions, based in Detroit, Michigan, provides AI training for nonprofit and small business staff nationwide. Sessions are built for people with no technical background — no jargon, no intimidating slides. Training covers tools your organization likely already has access to, like Microsoft's built-in AI assistant, tools that automatically connect your apps so repetitive data entry disappears, and popular AI writing tools. Everything is hands-on and conducted remotely so your team can join from anywhere.",
+      "If your site and Google Business Profile are not live within 2 weeks of you providing the content we ask for (your business info, photos, and any text you want included), you get a free month of monitoring. The clock starts once we have what we need from you, so the fastest way to launch fast is to send your content right away.",
   },
   {
     id: "3",
-    question: "What is the difference between hiring an in-house IT person and a consultant like Ella Tech Solutions?",
+    question: "How much does this cost?",
     answer:
-      "An in-house IT person works on-site full-time and makes sense if your organization needs daily, hands-on technical help. Ella Tech Solutions is brought in to handle specific projects — building your website, setting up a contact management system, launching a staff training platform, or automating repetitive work — and then hands everything off with full training so your team can manage it independently. For most nonprofits and small businesses, this provides experienced technology leadership at a fraction of the cost of a full-time hire.",
+      "Get Found runs $1,200 to $1,800 up front, Get Called runs $2,200 to $3,500, and Own the Area runs $3,500 to $5,500. Every tier includes a flat $200 to $250 per month care plan after launch. Exact pricing depends on your business and what you need built. Book a free 30-minute consultation and you will get a clear, written quote before committing to anything.",
   },
   {
     id: "4",
-    question: "Does Ella Tech Solutions work with small businesses, or only nonprofits?",
+    question: "I already have a website. Do I need a new one, or can you just fix my SEO?",
     answer:
-      "Ella Tech Solutions works with both, as well as independent operators and early-stage founders. Services include website design and redesign, contact management system setup, Microsoft 365 setup and training, AI automation for repetitive tasks, online staff training platform development, and digital strategy consulting. If you need practical technology help without an enterprise-level contract, this firm is built for you.",
+      "It depends on what is underneath your current site. Some sites just need the SEO and Google Business Profile work, others are built in a way that makes good SEO impossible without a rebuild. On the consultation call, we will look at your current site and tell you honestly which is the case before recommending anything.",
   },
   {
     id: "5",
-    question: "What contact management platforms does Ella Tech Solutions work with?",
+    question: "What kind of businesses do you work with?",
     answer:
-      "The recommendation depends on your budget, team size, and how your organization works day to day. Platforms the firm has experience with include Salesforce (including its nonprofit-specific version), HubSpot, and Bloomerang — a platform built specifically for nonprofits that tracks donors and fundraising. Ella Tech Solutions does not push any single vendor. The goal is to find the simplest tool that does what you actually need, not the most expensive one.",
+      "Local, service-based businesses, plumbers, HVAC, auto repair, towing, salons, and similar trades that depend on people nearby finding them and calling. If you rely on local search and phone calls to bring in customers, this is built for you.",
   },
   {
     id: "6",
-    question: "How long does a typical website project take?",
+    question: "How long does it take from start to launch?",
     answer:
-      "Most website projects for nonprofits and small businesses take 4 to 8 weeks from kickoff to launch. The timeline depends on the number of pages, how quickly you provide content and feedback, and whether anything custom is needed. A clear project timeline is provided at the start of every engagement. Rush timelines are available on a case-by-case basis.",
+      "Most sites are live within 2 weeks of us receiving your content, that is the guarantee. The timeline depends on how quickly you can send your business details, photos, and any text you want on the site. The faster you provide that, the faster you are live.",
   },
   {
     id: "7",
-    question: "What is AI training and who is it for?",
+    question: "What happens after my site launches? Is there ongoing cost?",
     answer:
-      "AI training from Ella Tech Solutions is practical, plain-language instruction that helps your staff understand what AI tools actually do, how to use them responsibly, and how to apply them to real daily tasks — like drafting emails, summarizing reports, scheduling, and following up with donors or clients. It is designed for people with no technology background. If your team is curious about AI but does not know where to start, this is where to start.",
+      "Yes. Every tier includes a flat $200 to $250 per month care plan that covers hosting, monitoring, and keeping your Google Business Profile and SEO work current. What is included in that plan scales with your tier, Own the Area includes ongoing content and competitor tracking, for example. There are no surprise add-on fees.",
   },
   {
     id: "8",
-    question: "Does Ella Tech Solutions offer ongoing support after a project ends?",
+    question: "Do you offer anything besides websites and SEO?",
     answer:
-      "Yes. Every project wraps up with documentation and hands-on training so your staff can manage things independently after the work is done. For organizations that want continued guidance as their needs grow, ongoing advisory support is available on a project basis. Support terms are discussed during the initial scoping conversation.",
+      "Yes. We help with lead routing automation, CRM setup, Microsoft 365, and staff training for anyone who needs it, not just website clients. That said, if you do not have leads coming in yet, we will usually recommend starting with your site and local search, since automation only pays off once you have inquiries to manage.",
   },
   {
     id: "9",
-    question: "How do I start a project with Ella Tech Solutions?",
+    question: "How do I get started?",
     answer:
-      "Book a free 30-minute consultation through the contact section at ellatechsolutions.com. During that call, we will look at what your organization is working with right now, identify where the biggest gaps are, and lay out the clearest path forward. You will receive a written proposal and project quote after the call with no pressure to move forward.",
+      "Book a free 30-minute consultation. We will look at where your business currently shows up, or does not, in local search, recommend which tier fits, and give you a clear, written quote. No pressure to move forward.",
   },
 ];
 
 export const plans = [
   {
-    id: "website",
-    title: "Website Build and Support",
+    id: "get-found",
+    title: "Get Found",
+    price: "$1,200–$1,800",
+    monthly: "+ $200–$250/mo",
     description:
-      "Your website should make people want to work with you. We build clean, fast sites and keep them running so you are never on your own after launch.",
+      "Show up when someone nearby searches for what you do. A fast, mobile-friendly website and a fully optimized Google Business Profile, built so local customers can find you and call.",
     details: [
-      "Responsive design that looks right on phones, tablets, and desktops",
-      "Clear calls to action that guide visitors to take the next step",
-      "Ongoing support so you are not stuck when something changes",
-      "Mission-driven pricing available for nonprofits",
+      "Mobile-friendly website built around local search",
+      "Google Business Profile setup and optimization",
+      "Local SEO foundation: location pages, listings, structured data",
+      "Live within 2 weeks of receiving your content, guaranteed",
     ],
   },
   {
-    id: "crm",
-    title: "CRM Setup and Training",
+    id: "get-called",
+    title: "Get Called",
+    price: "$2,200–$3,500",
+    monthly: "+ $200–$250/mo",
     description:
-      "Stop losing track of donors, clients, and contacts in spreadsheets. We set up a CRM (Customer Relationship Management system) that fits how your organization actually works, then train your staff to use it.",
+      "Rank locally and show up in AI answer engines. Everything in Get Found, plus the SEO and AEO work that puts you in front of customers searching on Google and asking AI tools for a recommendation.",
     details: [
-      "System selection based on your budget and team size",
-      "Data migration from spreadsheets or a previous system",
-      "Staff training included, not sold separately",
-      "Mission-driven pricing available for nonprofits",
+      "Everything in Get Found",
+      "Expanded local SEO across more search terms and service areas",
+      "AEO (AI answer engine optimization) so AI tools surface your business",
+      "Review generation strategy to build local trust signals",
     ],
   },
   {
-    id: "lms",
-    title: "LMS Development",
+    id: "own-the-area",
+    title: "Own the Area",
+    price: "$3,500–$5,500",
+    monthly: "+ $200–$250/mo",
     description:
-      "Your staff needs training that fits into their day. We build and launch a learning platform using an LMS (Learning Management System) with focused content your team can actually finish.",
+      "Be the obvious local choice, consistently. Everything in Get Called, plus the ongoing content and optimization that keeps you ahead of competitors in your service area month after month.",
     details: [
-      "Platform selection and full setup from scratch",
-      "Short, focused training modules built for busy staff",
-      "Admin training so your team can manage it without us",
-      "Mission-driven pricing available for nonprofits",
+      "Everything in Get Called",
+      "Ongoing content built to target more local searches over time",
+      "Competitor monitoring and rank tracking for your service area",
+      "Priority support and monthly performance reporting",
     ],
   },
+];
+
+export const secondaryServices = [
   {
-    id: "m365",
-    title: "Microsoft 365 Onboarding",
-    description:
-      "If your team is paying for Microsoft 365 but barely using it, that is money left on the table. We set it up right and train your staff so email, Teams, SharePoint, and the rest actually work together.",
-    details: [
-      "Full setup of email, Teams, SharePoint, and OneDrive",
-      "Staff training in plain language, no IT background required",
-      "Permissions and policies configured so nothing falls through the cracks",
-      "Mission-driven pricing available for nonprofits",
-    ],
-  },
-  {
-    id: "training",
-    title: "Staff Tech Training",
-    description:
-      "Technology only works if the people using it feel confident. We train your staff on whatever tools your organization uses, in plain language, at a pace that works for your team.",
-    details: [
-      "Live group sessions, self-paced content, or both",
-      "Quick-reference guides your staff can keep and use",
-      "Tailored to the tools your organization already has",
-      "Mission-driven pricing available for nonprofits",
-    ],
-  },
-  {
-    id: "ai",
-    title: "AI Workflow Automation",
-    description:
-      "If your team spends hours on tasks a computer could handle, we can fix that. We find where automation saves the most time and build it into workflows your staff will actually use.",
-    details: [
-      "Workflow audit to find where automation helps most",
-      "Implementation using tools your team already has access to",
-      "AI literacy training so your staff understands and trusts the tools",
-      "Mission-driven pricing available for nonprofits",
-    ],
+    id: "0",
+    icon: "/images/feature-2.png",
+    caption: "Already have leads coming in?",
+    title: "Tech Setup and CRM Automation",
+    text: "We also handle the tech side once leads start coming in: automating lead routing, setting up a CRM to track every call and contact, building follow-up sequences so nothing falls through the cracks, plus Microsoft 365 setup, staff training, and workflow automation. If your site is already pulling in leads, or you just have a specific tech question, we handle that too.",
+    button: {
+      icon: "/images/docs.svg",
+      title: "Not Sure if You Need This Yet? Start With Your Site First",
+      path: "/tech-solutions",
+    },
   },
 ];
 

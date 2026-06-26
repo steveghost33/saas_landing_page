@@ -1,8 +1,7 @@
 import Hero from "../sections/Hero.jsx";
-import WhoWeServe from "../sections/WhoWeServe.jsx";
-import SocialProof from "../sections/SocialProof.jsx";
-import Services from "../sections/Services.jsx";
 import Plans from "../sections/Plans.jsx";
+import CaseStudy from "../sections/CaseStudy.jsx";
+import Services from "../sections/Services.jsx";
 import Faq from "../sections/Faq.jsx";
 import Contact from "../sections/Contact.jsx";
 import PageSEO from "../components/PageSEO.jsx";
@@ -29,8 +28,8 @@ function Home() {
   return (
     <>
       <PageSEO
-        title="Ella Tech Solutions | Technology Consulting Detroit, MI"
-        description="Ella Tech Solutions is a technology consulting firm helping nonprofits, small businesses, and entrepreneurs with CRM setup, website design, AI workflow integration, staff training, LMS development, and Microsoft 365 implementation. Detroit-based. Serving clients nationwide."
+        title="Ella Tech Solutions | Websites &amp; Local SEO for Service Businesses, Detroit, MI"
+        description="Ella Tech Solutions builds websites and runs the SEO and AEO work that helps local service businesses get found and get called. Detroit-based, serving local businesses nationwide. Ask us about tech setup and CRM automation too."
         canonical="https://www.ellatechsolutions.com/"
         schema={faqSchema}
       />
@@ -39,10 +38,9 @@ function Home() {
         showMobileBookingBar
       >
         <Hero />
-        <WhoWeServe />
-        <SocialProof />
-        <Services />
         <Plans />
+        <CaseStudy />
+        <Services />
         <Faq />
         <Contact />
       </PageShell>

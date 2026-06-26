@@ -28,15 +28,15 @@ const Hero = () => {
             className="h-7 max-md:h-6 w-auto mb-5 max-lg:mb-6"
           />
           <div className="mb-3 text-[13px] font-semibold tracking-[0.15em] uppercase text-p3/70">
-            Detroit-Based. Serving Clients Nationwide.
+            Detroit-Based. Serving Local Businesses Nationwide.
           </div>
           <h1 className="mb-6 h1 text-p4 max-lg:mb-7 max-lg:text-5xl max-lg:leading-tight max-md:mb-4 max-md:text-4xl max-md:leading-tight max-sm:text-3xl">
-            We Get Your Technology Working. And Train Your Team to Use It.
+            Get Found by Your Local Customers
           </h1>
           <p className="max-w-440 mb-6 body-1 max-md:mb-6 max-md:text-base max-md:leading-relaxed text-p5">
-            We build websites, set up the tools your organization needs, automate the repetitive work eating your staff's time, and train your team to use it all confidently. If your tools are a mess, or your team is working around them instead of with them, that's exactly where we come in.
+            We build websites and run the SEO that gets your business showing up, and getting calls, when people nearby search for what you do. Built for local service businesses, live in as little as two weeks.
           </p>
-          <Button href="https://cal.com/ella-tech-7ze7wk" icon="/images/zap.svg">Book a free 30-minute tech audit</Button>
+          <Button href="https://cal.com/ella-tech-7ze7wk" icon="/images/zap.svg">Get Found Locally</Button>
         </div>
       </div>
     </section>

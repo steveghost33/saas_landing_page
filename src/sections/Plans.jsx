@@ -30,19 +30,19 @@ function Plans() {
           {/* Header */}
           <div className="text-center mb-12">
             <div className="text-sm md:text-base text-p3 font-medium tracking-wide">
-              What we deliver
+              How it works
             </div>
             <h2 className="mt-2 font-bold text-p4 uppercase text-4xl md:text-5xl">
-              Our Services
+              Three Ways to Get Found
             </h2>
             <p className="mt-4 text-p5 max-w-2xl mx-auto body-1">
-              Every engagement is scoped to your organization. Mission-driven pricing available for nonprofits and community organizations.
+              Every tier includes the same flat monthly care plan, the scope just grows with how much ground you want to cover. Pick the level that matches how fast you want to be the obvious local choice.
             </p>
           </div>
 
           {/* Cards, 3-column grid on large screens, 2-column on medium, 1-column on mobile */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-12 max-w-6xl mx-auto">
-            {plans.map(({ id, title, description, details }) => {
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8 max-w-6xl mx-auto">
+            {plans.map(({ id, title, price, monthly, description, details }) => {
               const isExpanded = expandedIds.includes(id);
 
               return (
@@ -54,9 +54,12 @@ function Plans() {
                   <div className="absolute inset-0 z-0 rounded-[2rem] ring-1 ring-inset ring-white/10 pointer-events-none" />
 
                   <div className="relative z-10 p-6 flex flex-col min-h-[300px] transition-all duration-300 ease-in-out">
-                    <h3 className="text-p4 uppercase font-bold text-xl mb-3 tracking-wide">
+                    <h3 className="text-p4 uppercase font-bold text-xl mb-1 tracking-wide">
                       {title}
                     </h3>
+                    <p className="text-p3 font-semibold text-sm mb-3">
+                      {price} <span className="text-p5/70 font-normal">{monthly}</span>
+                    </p>
 
                     <div className="mt-1 flex-1 pr-1">
                       <p className="text-p5">{description}</p>
@@ -88,15 +91,19 @@ function Plans() {
             })}
           </div>
 
+          <p className="text-center text-p4 font-semibold mb-4">
+            The guarantee: if your site and Google Business Profile aren&rsquo;t live within 2 weeks of you providing content, you get a free month of monitoring.
+          </p>
+
           {/* Bottom services CTA */}
           <div className="text-center mb-4">
             <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block mx-auto">
-              Book a free tech audit
+              See How It Works
             </Button>
           </div>
 
           <p className="text-center text-p5 mt-4">
-            Not sure which service fits your needs? We will figure it out together.
+            Not sure which tier fits? We will figure it out together on the call.
           </p>
         </div>
       </section>
@@ -108,10 +115,10 @@ function Plans() {
             Not sure where to start? That is exactly why we are here.
           </h2>
           <p className="text-p5 body-1 mb-10">
-            Book a free 30-minute call and we will tell you exactly what your org needs. No pitch, no pressure.
+            Book a free 30-minute call and we will tell you which tier fits your business. No pitch, no pressure.
           </p>
           <Button href="https://cal.com/ella-tech-7ze7wk" containerClassName="inline-block mx-auto">
-            Book your free audit
+            Get Found Locally
           </Button>
         </div>
       </section>

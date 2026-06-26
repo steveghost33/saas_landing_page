@@ -157,10 +157,10 @@ const LeadCapturePopup = () => {
               Free Resources
             </span>
             <h2 id="popup-title" className="text-xl font-black text-white leading-snug">
-              Is your tech holding your team back?
+              Are local customers finding you online?
             </h2>
             <p className="text-blue-100 text-sm mt-1.5 leading-relaxed">
-              Get the Tech Health Check + CRM Setup Checklist, both free.
+              Get a free local search snapshot for your business, no obligation.
             </p>
           </div>
 
@@ -173,8 +173,8 @@ const LeadCapturePopup = () => {
                 {/* Mini benefit list */}
                 <ul className="space-y-2 mb-5">
                   {[
-                    "See exactly where your systems are leaking time",
-                    "Step-by-step CRM setup guide, launch in 3 weeks",
+                    "See where you show up, and don't, in local search results",
+                    "Find out which tier (Get Found, Get Called, Own the Area) fits your business",
                     "Real follow-up from a real person, not a bot",
                   ].map((b, i) => (
                     <li key={i} className="flex items-start gap-2.5 text-sm text-slate-600">

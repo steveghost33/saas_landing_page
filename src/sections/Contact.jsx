@@ -3,9 +3,9 @@ import CalInlineEmbed from "../components/CalInlineEmbed.jsx";
 import { CONTACT_EMAIL, CONTACT_PHONE, CONTACT_PHONE_TEL } from "../data/site.js";
 
 const deliverables = [
-  "A quick diagnosis of your biggest system bottleneck",
-  "3 to 5 practical recommendations you can act on immediately",
-  "Clear next steps for your CRM, automation, website, or workflow needs",
+  "A quick look at where you currently show up, and don't, in local search",
+  "A clear recommendation on which tier (Get Found, Get Called, or Own the Area) fits your business",
+  "Next steps and a straightforward quote, no pressure",
 ];
 
 const Contact = () => {
@@ -27,10 +27,13 @@ const Contact = () => {
 
           {/* Main headline */}
           <h2 className="text-center h3 max-md:text-4xl max-md:leading-tight text-p4 uppercase font-black mb-4 max-w-3xl mx-auto">
-            Book a Free Tech Clarity Session
+            See Which Tier Gets You Found
           </h2>
           <p className="text-center text-p5 body-1 max-w-xl mx-auto mb-14 max-md:mb-10">
-            30 minutes to pinpoint where your tech is slowing you down and what to fix first.
+            30 minutes to see where your business shows up online today and what it would take to start getting calls from local search.
+          </p>
+          <p className="text-center text-p5/70 text-sm mb-10 -mt-8 max-md:-mt-4">
+            Have a specific tech question instead? <a href="/tech-solutions" className="text-p1 font-semibold hover:underline">We handle that too</a>.
           </p>
 
           {/* Two-column layout */}

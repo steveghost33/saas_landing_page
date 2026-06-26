@@ -12,7 +12,7 @@ function Faq() {
         <div className="container relative z-2 pt-20 pb-14">
           <div>
             <h3 className="h3 max-md:h5 max-w-640 max-lg:max-w-md mb-7 text-p4">
-              Your questions about websites, CRM, AI, and tech consulting, answered.
+              Your questions about getting found locally, answered.
             </h3>
             <p className="body-1 max-lg:max-w-sm">You have questions, we have answers.</p>
           </div>

@@ -83,11 +83,12 @@ const Header = () => {
   };
 
   const navLinks = [
-    { label: "Small Business Tech", href: "/services/small-business" },
-    { label: "Nonprofit Tech", href: "/services/nonprofits" },
-    { label: "Entrepreneur Tech", href: "/services/entrepreneurs" },
-    { label: "Web Projects", href: "/web-projects" },
-    { label: "Tech Solutions", href: "/tech-solutions" },
+    { label: "How It Works", href: "/#services" },
+    { label: "Our Website Work", href: "/web-projects" },
+    { label: "Small Business Websites", href: "/services/small-business" },
+    { label: "Nonprofit Websites", href: "/services/nonprofits" },
+    { label: "Entrepreneur Websites", href: "/services/entrepreneurs" },
+    { label: "Tech Setup & CRM", href: "/tech-solutions" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/#contact" },
   ];
