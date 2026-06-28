@@ -28,12 +28,16 @@ const LeadCapturePopup = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [businessName, setBusinessName] = useState("");
+  const [businessLocation, setBusinessLocation] = useState("");
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState("");
   const [success, setSuccess] = useState(false);
   const nameRef = useRef(null);
   const emailRef = useRef(null);
+  const businessNameRef = useRef(null);
+  const businessLocationRef = useRef(null);
 
   useEffect(() => {
     if (hasDismissed()) return;
@@ -75,11 +79,15 @@ const LeadCapturePopup = () => {
     // Read directly from DOM to handle browser autofill
     const nameVal = (nameRef.current?.value || name).trim();
     const emailVal = (emailRef.current?.value || email).trim().toLowerCase();
+    const businessNameVal = (businessNameRef.current?.value || businessName).trim();
+    const businessLocationVal = (businessLocationRef.current?.value || businessLocation).trim();
 
     const e = {};
     if (!nameVal) e.name = "Name is required.";
     if (!emailVal) e.email = "Email is required.";
     else if (!isValidEmail(emailVal)) e.email = "Please enter a valid email.";
+    if (!businessNameVal) e.business_name = "Business name is required.";
+    if (!businessLocationVal) e.business_location = "Business location is required.";
     if (Object.keys(e).length) { setErrors(e); return; }
     setErrors({});
     setServerError("");
@@ -92,7 +100,9 @@ const LeadCapturePopup = () => {
         body: JSON.stringify({
           name: nameVal,
           email: emailVal,
-          source: "social-popup",
+          business_name: businessNameVal,
+          business_location: businessLocationVal,
+          source: "local-seo-audit-popup",
         }),
       });
       const data = await res.json();
@@ -204,6 +214,24 @@ const LeadCapturePopup = () => {
                       className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.email ? "border-red-400 bg-red-50" : "border-slate-200"}`}
                     />
                     {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                  </div>
+                  <div>
+                    <input
+                      ref={businessNameRef} type="text" autoComplete="organization"
+                      value={businessName} onChange={(e) => setBusinessName(e.target.value)}
+                      disabled={loading} placeholder="Business name"
+                      className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.business_name ? "border-red-400 bg-red-50" : "border-slate-200"}`}
+                    />
+                    {errors.business_name && <p className="mt-1 text-xs text-red-500">{errors.business_name}</p>}
+                  </div>
+                  <div>
+                    <input
+                      ref={businessLocationRef} type="text" autoComplete="address-level2"
+                      value={businessLocation} onChange={(e) => setBusinessLocation(e.target.value)}
+                      disabled={loading} placeholder="City, state"
+                      className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.business_location ? "border-red-400 bg-red-50" : "border-slate-200"}`}
+                    />
+                    {errors.business_location && <p className="mt-1 text-xs text-red-500">{errors.business_location}</p>}
                   </div>
 
                   {serverError && (

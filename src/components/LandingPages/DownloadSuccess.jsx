@@ -14,54 +14,71 @@ const DownloadSuccess = ({ name }) => {
 
       <h2 className="text-2xl font-black text-slate-900 mb-2">You're in, {firstName}!</h2>
       <p className="text-slate-500 text-[15px] mb-6 max-w-sm mx-auto leading-relaxed">
-        Check your email, the Tech Health Check is on its way now.
-        I'll send the CRM Setup Checklist in 2 days once you've had time to work through it.
+        We're analyzing your local search presence right now. You'll get your personalized audit within 2 hours.
       </p>
 
-      {/* Tech Health Check download */}
-      <a
-        href="/downloads/Tech-Health-Check.pdf"
-        download
-        className="flex items-center gap-4 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 transition px-5 py-4 text-left group mb-6"
-      >
-        <div className="flex-shrink-0 flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100">
-          <svg className="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-          </svg>
-        </div>
-        <div className="flex-1 min-w-0">
-          <p className="font-bold text-slate-800 text-sm">Tech Health Check</p>
-          <p className="text-slate-400 text-xs">Download now, takes ~10 minutes</p>
-        </div>
-        <svg className="h-4 w-4 text-slate-400 group-hover:text-blue-600 transition flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+      {/* Research underway notice */}
+      <div className="flex items-start gap-3 rounded-xl bg-blue-50 border border-blue-200 px-4 py-3 text-left mb-6">
+        <svg className="h-4 w-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
-      </a>
-
-      {/* Coming up notice */}
-      <div className="flex items-start gap-3 rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-left mb-6">
-        <svg className="h-4 w-4 text-slate-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        <p className="text-slate-500 text-xs leading-relaxed">
-          <span className="font-semibold text-slate-700">CRM Setup Checklist coming in 2 days.</span>{" "}
-          It pairs directly with what you find in the health check, so go through that first.
+        <p className="text-slate-600 text-xs leading-relaxed">
+          <span className="font-semibold text-slate-700">What we're doing:</span> Researching your Google Business Profile, website SEO, and local competition to give you real, actionable insights.
         </p>
       </div>
 
-      {/* Book CTA */}
+      {/* Timeline */}
+      <div className="space-y-3 mb-6">
+        <div className="flex items-start gap-3 text-sm text-left">
+          <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-200 flex items-center justify-center mt-0.5">
+            <svg className="w-3 h-3 text-green-700" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+            </svg>
+          </div>
+          <div>
+            <p className="font-semibold text-slate-700">Today</p>
+            <p className="text-slate-500">You signed up</p>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-3 text-sm text-left">
+          <div className="flex-shrink-0 w-5 h-5 rounded-full bg-blue-200 flex items-center justify-center mt-0.5">
+            <svg className="w-3 h-3 text-blue-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m7-7H5" />
+            </svg>
+          </div>
+          <div>
+            <p className="font-semibold text-slate-700">Within 2 hours</p>
+            <p className="text-slate-500">Your personalized audit lands in email</p>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-3 text-sm text-left">
+          <div className="flex-shrink-0 w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center mt-0.5">
+            <svg className="w-3 h-3 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m7-7H5" />
+            </svg>
+          </div>
+          <div>
+            <p className="font-semibold text-slate-700">Tomorrow + following days</p>
+            <p className="text-slate-500">Follow-up with specific action items and strategy</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Optional CTA */}
       <div className="rounded-2xl bg-gradient-to-br from-blue-600 to-blue-700 p-6 text-white">
-        <p className="text-xs font-semibold uppercase tracking-widest text-blue-200 mb-2">Optional next step</p>
-        <h3 className="font-black text-lg mb-1">Talk through what you find</h3>
+        <p className="text-xs font-semibold uppercase tracking-widest text-blue-200 mb-2">Want to move faster?</p>
+        <h3 className="font-black text-lg mb-1">Book a strategy call now</h3>
         <p className="text-blue-100 text-sm mb-4">
-          Free 30-min session, I'll help you figure out what to fix first.
+          Skip the wait. Let's talk about your local search strategy and what's realistic for your business.
         </p>
         <button
           type="button"
           onClick={openCalPopup}
           className="block w-full rounded-xl bg-white text-blue-700 font-bold py-3 text-sm hover:bg-blue-50 transition cursor-pointer"
         >
-          Book my free session →
+          Book free 30-min call →
         </button>
       </div>
     </div>

@@ -11,14 +11,79 @@ export const sendEmail = async ({ to, subject, html }) => {
   console.log(`Email sent successfully to ${to}`);
 };
 
-export const scheduleEmailSequence = async ({ name, email }) => {
+export const scheduleAuditEmailSequence = async ({ id, name, email, research_data }) => {
   if (!process.env.RESEND_API_KEY) {
-    console.warn("RESEND_API_KEY not set — skipping email sequence.");
+    console.warn("RESEND_API_KEY not set — skipping audit email sequence.");
     return;
   }
-  console.log(`Starting email sequence for ${email}`);
-  const template = email1(name);
+  console.log(`Starting audit email sequence for ${email}`);
+
+  const template = email1(name, research_data);
+
+  // TODO: When PDF generation is ready, attach PDF to email
+  // For now, send email with embedded data
   await sendEmail({ to: email, subject: template.subject, html: template.html });
+
+  // Update sequence_step to 1 (next email in 2 days)
+  const pool = (await import("../db/pool.js")).default;
+  await pool.query(
+    "UPDATE subscribers SET sequence_step = 1, next_email_at = NOW() + INTERVAL '2 days', research_status = $1 WHERE id = $2",
+    ["completed", id]
+  );
+};
+
+export const sendAdminNotification = async ({ name, email, businessName, businessLocation }) => {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn("RESEND_API_KEY not set — skipping admin notification.");
+    return;
+  }
+
+  const adminEmail = process.env.ADMIN_EMAIL || "steven@ellatechsolutions.com";
+  const leadId = ""; // Will be filled by lookup
+
+  const html = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Lead - Research Needed</title>
+</head>
+<body style="margin:0;padding:0;background:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;padding:32px 16px;">
+    <tr>
+      <td align="center">
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;">
+          <tr>
+            <td style="background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;padding:36px 40px;">
+              <h2 style="margin:0 0 16px;font-size:20px;font-weight:800;color:#0f172a;">
+                New lead: ${businessName}
+              </h2>
+              <p style="margin:0 0 20px;font-size:15px;color:#475569;">
+                <strong>${name}</strong><br/>
+                ${businessLocation}<br/>
+                <a href="mailto:${email}" style="color:#1d4ed8;">${email}</a>
+              </p>
+              <p style="margin:0 0 20px;font-size:15px;color:#475569;">
+                Research needed. Click below to start:
+              </p>
+              <a href="${process.env.SITE_URL || "https://www.ellatechsolutions.com"}/admin/research-form" style="display:inline-block;background:#1d4ed8;color:#ffffff;font-weight:700;font-size:15px;padding:13px 28px;border-radius:10px;text-decoration:none;">
+                Start Research →
+              </a>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+
+  await sendEmail({
+    to: adminEmail,
+    subject: `New lead: ${businessName} — Research needed`,
+    html,
+  });
 };
 
 export { email2, email3, email4 };

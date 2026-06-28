@@ -5,6 +5,7 @@ import path from "path";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
 import subscribeRouter from "./routes/subscribe.js";
+import adminResearchRouter from "./routes/admin-research.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -133,6 +134,7 @@ app.use((req, res, next) => {
 });
 app.use(express.json({ limit: "32kb", strict: true }));
 app.use("/api", subscribeRouter);
+app.use("/api/admin", adminResearchRouter);
 
 const createRateLimiter = ({ windowMs, max }) => {
   const hits = new Map();

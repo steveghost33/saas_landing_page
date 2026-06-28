@@ -17,6 +17,7 @@ import Entrepreneurs from "./pages/services/Entrepreneurs.jsx";
 import FaqPage from "./pages/FaqPage.jsx";
 import Blog from "./pages/Blog.jsx";
 import BlogPost from "./pages/BlogPost.jsx";
+import ResearchForm from "./pages/Admin/ResearchForm.jsx";
 
 // Service-specific pages
 import WebsiteDesign from "./pages/services/WebsiteDesign.jsx";
@@ -59,6 +60,9 @@ function App() {
 
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
+
+        {/* Admin routes */}
+        <Route path="/admin/research-form" element={<ResearchForm />} />
       </Routes>
     </ThemeProvider>
   );

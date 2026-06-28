@@ -1,5 +1,5 @@
 import pool from "../db/pool.js";
-import { scheduleEmailSequence } from "../services/emailService.js";
+import { sendAdminNotification } from "../services/emailService.js";
 
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
@@ -15,7 +15,10 @@ const daysFromNow = (days) => {
 export const subscribe = async (req, res) => {
   const name = normalizeField(req.body?.name, 120);
   const email = normalizeField(req.body?.email, 254).toLowerCase();
-  const source = normalizeField(req.body?.source, 100) || "crm-setup-checklist";
+  const businessName = normalizeField(req.body?.business_name, 255);
+  const businessLocation = normalizeField(req.body?.business_location, 255);
+  const serviceType = normalizeField(req.body?.service_type, 100);
+  const source = normalizeField(req.body?.source, 100) || "local-seo-audit-popup";
 
   if (!name) return res.status(400).json({ error: "Name is required." });
   if (!email || !isValidEmail(email)) {
@@ -26,30 +29,35 @@ export const subscribe = async (req, res) => {
     const existing = await pool.query("SELECT id FROM subscribers WHERE email = $1", [email]);
 
     if (existing.rows.length > 0) {
-      await pool.query("UPDATE subscribers SET name = $1 WHERE email = $2", [name, email]);
+      await pool.query(
+        "UPDATE subscribers SET name = $1, business_name = $2, business_location = $3, service_type = $4 WHERE email = $5",
+        [name, businessName, businessLocation, serviceType, email]
+      );
       return res.json({
         success: true,
         isReturning: true,
-        message: "You're already on the list — your download is ready.",
+        message: "You're already on the list — research underway.",
       });
     }
 
-    // sequence_step 1 = email 1 sent, next email (2) goes out in 2 days
+    // For local SEO audit: don't send email immediately, wait for research to be completed
+    // sequence_step 0 = awaiting research
     await pool.query(
-      "INSERT INTO subscribers (name, email, source, sequence_step, next_email_at) VALUES ($1, $2, $3, 1, $4)",
-      [name, email, source, daysFromNow(2)],
+      "INSERT INTO subscribers (name, email, business_name, business_location, service_type, source, sequence_step, research_status) VALUES ($1, $2, $3, $4, $5, $6, 0, $7)",
+      [name, email, businessName, businessLocation, serviceType, source, "pending"],
     );
 
-    console.log(`New subscriber: ${name} <${email}> [${source}]`);
+    console.log(`New subscriber: ${name} <${email}> [${source}] - Business: ${businessName}, ${businessLocation}`);
 
-    scheduleEmailSequence({ name, email }).catch((err) =>
-      console.error("Email send failed:", err.message),
+    // Send admin notification to Steven about new lead
+    sendAdminNotification({ name, email, businessName, businessLocation }).catch((err) =>
+      console.error("Admin notification failed:", err.message),
     );
 
     return res.status(201).json({
       success: true,
       isReturning: false,
-      message: "You're all set! Check your email — the Tech Health Check is on its way.",
+      message: "Research underway — you'll get your personalized audit within 2 hours.",
     });
   } catch (err) {
     console.error("Subscribe error:", err.message);
@@ -72,7 +80,7 @@ export const processEmailSequence = async (req, res) => {
         let template, nextStep, nextAt;
 
         if (sub.sequence_step === 1) {
-          template = email2(sub.name);
+          template = email2(sub.name, sub.research_data);
           nextStep = 2;
           nextAt = daysFromNow(3); // day 5 total
         } else if (sub.sequence_step === 2) {

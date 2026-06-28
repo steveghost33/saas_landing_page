@@ -1,7 +1,5 @@
 const SITE_URL = process.env.SITE_URL || "https://www.ellatechsolutions.com";
 const BOOKING_URL = `${SITE_URL}/#contact`;
-const CHECKLIST_URL = `${SITE_URL}/downloads/CRM-Setup-Checklist.pdf`;
-const HEALTH_CHECK_URL = `${SITE_URL}/downloads/Tech-Health-Check.pdf`;
 
 const base = (content) => `
 <!DOCTYPE html>
@@ -36,7 +34,7 @@ const base = (content) => `
             <td style="padding-top:24px;text-align:center;">
               <p style="margin:0;font-size:12px;color:#94a3b8;line-height:1.6;">
                 Ella Tech Solutions · Detroit, MI<br/>
-                You're receiving this because you downloaded a free resource from
+                You're receiving this because you requested a local search audit from
                 <a href="${SITE_URL}" style="color:#94a3b8;">ellatechsolutions.com</a>.<br/>
                 No spam — ever. Reply to this email to unsubscribe.
               </p>
@@ -55,104 +53,122 @@ const btn = (href, label) =>
 
 const divider = `<hr style="border:none;border-top:1px solid #f1f5f9;margin:24px 0;" />`;
 
-// ── Email 1 — Immediate: Tech Health Check delivery ──────────────────────────
-export const email1 = (name) => ({
-  subject: `Your Tech Health Check is here, ${name}`,
-  html: base(`
-    <h1 style="margin:0 0 8px;font-size:22px;font-weight:800;color:#0f172a;line-height:1.3;">
-      Here's your Tech Health Check, ${name}
-    </h1>
-    <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.7;">
-      Thanks for grabbing this — it takes about 10 minutes to work through and will give you a clear
-      picture of where your systems are actually holding you back.
-    </p>
+// ── Email 1 — Immediate: Local Search Visibility Audit ─────────────────────
+export const email1 = (name, research_data) => {
+  const research = research_data || {};
+  const issues = Array.isArray(research.website_issues) ? research.website_issues.slice(0, 3) : [];
+  const topIssue = issues[0] || "Missing local SEO optimization";
 
-    ${btn(HEALTH_CHECK_URL, "Download Tech Health Check →")}
+  return {
+    subject: `Here's your Local Search Visibility Audit, ${name}`,
+    html: base(`
+      <h1 style="margin:0 0 8px;font-size:22px;font-weight:800;color:#0f172a;line-height:1.3;">
+        Your local search audit is ready, ${name}
+      </h1>
+      <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.7;">
+        I've analyzed your online presence — where you show up, where you don't, and what's holding you back in local search. The full audit PDF is attached.
+      </p>
 
-    ${divider}
+      <div style="background:#f0f4ff;border-left:4px solid #1d4ed8;padding:16px;margin:20px 0;border-radius:6px;">
+        <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#0f172a;">
+          Here's what jumped out:
+        </p>
+        <p style="margin:0;font-size:14px;color:#475569;">
+          ${research.summary || "Your business has opportunities in local search ranking, Google Business Profile optimization, and website visibility."}
+        </p>
+      </div>
 
-    <p style="margin:0 0 8px;font-size:14px;font-weight:700;color:#0f172a;">What to do with it:</p>
-    <ol style="margin:0 0 20px;padding-left:20px;font-size:14px;color:#475569;line-height:1.9;">
-      <li>Go through each section and be honest — most orgs have more gaps than they realize</li>
-      <li>Circle the areas with the lowest scores</li>
-      <li>Those are your priority items — we can work through them together</li>
-    </ol>
+      ${divider}
 
-    <p style="margin:0;font-size:14px;color:#475569;line-height:1.7;">
-      In a couple days I'll send over the CRM Setup Checklist too — it pairs well with what
-      you'll find in the health check.
-    </p>
+      <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#0f172a;">What to do next:</p>
+      <ol style="margin:0 0 20px;padding-left:20px;font-size:14px;color:#475569;line-height:1.9;">
+        <li>Download the full audit PDF — it has the details and scoring</li>
+        <li>Look for "Quick Wins" section — those are things you can tackle yourself right away</li>
+        <li>The bigger gaps? That's where professional help makes the biggest difference</li>
+      </ol>
 
-    ${divider}
+      <p style="margin:0;font-size:14px;color:#475569;line-height:1.7;">
+        Tomorrow I'll send a specific walkthrough of your #1 priority — the one thing that'll move the needle fastest for you.
+      </p>
 
-    <p style="margin:0;font-size:14px;color:#64748b;line-height:1.7;">
-      — Steven<br/>
-      <span style="color:#94a3b8;">Ella Tech Solutions</span>
-    </p>
-  `),
-});
+      ${divider}
 
-// ── Email 2 — Day 2: CRM Setup Checklist delivery ────────────────────────────
-export const email2 = (name) => ({
-  subject: `The CRM checklist I promised you`,
-  html: base(`
-    <h1 style="margin:0 0 8px;font-size:22px;font-weight:800;color:#0f172a;line-height:1.3;">
-      As promised — your CRM Setup Checklist
-    </h1>
-    <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.7;">
-      Hey ${name}, here's the checklist. This is the most-requested resource I share with
-      nonprofits and small businesses — it walks you through choosing and launching a CRM
-      in 3 weeks without the usual chaos.
-    </p>
+      <p style="margin:0;font-size:14px;color:#64748b;line-height:1.7;">
+        — Steven<br/>
+        <span style="color:#94a3b8;">Ella Tech Solutions</span>
+      </p>
+    `),
+  };
+};
 
-    ${btn(CHECKLIST_URL, "Download CRM Setup Checklist →")}
+// ── Email 2 — Day 2: Action Guide for #1 Issue ────────────────────────────
+export const email2 = (name, research_data) => {
+  const research = research_data || {};
+  const issues = Array.isArray(research.website_issues) ? research.website_issues : [];
+  const topIssue = issues[0] || "Improve your local search visibility";
+  const quickWins = Array.isArray(research.quick_wins) ? research.quick_wins : [];
+  const firstWin = quickWins[0] || "Start with your Google Business Profile";
 
-    ${divider}
+  return {
+    subject: `How to fix your #1 local search issue`,
+    html: base(`
+      <h1 style="margin:0 0 8px;font-size:22px;font-weight:800;color:#0f172a;line-height:1.3;">
+        Your #1 priority: ${topIssue}
+      </h1>
+      <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.7;">
+        Hey ${name}, from your audit, this one thing will have the biggest impact on your local search results and customer visibility. Here's how to fix it:
+      </p>
 
-    <p style="margin:0 0 12px;font-size:14px;font-weight:700;color:#0f172a;">
-      Why most CRM projects fail (and how this avoids it):
-    </p>
-    <p style="margin:0 0 20px;font-size:14px;color:#475569;line-height:1.7;">
-      The three things that kill CRM adoption are choosing the wrong tool for the team size,
-      skipping the data cleanup step, and launching without staff buy-in. The checklist
-      addresses all three — in order.
-    </p>
+      <div style="background:#f0f4ff;border-left:4px solid #1d4ed8;padding:16px;margin:20px 0;border-radius:6px;">
+        <p style="margin:0;font-size:14px;color:#475569;line-height:1.7;">
+          ${firstWin}
+        </p>
+      </div>
 
-    <p style="margin:0;font-size:14px;color:#475569;line-height:1.7;">
-      If you worked through the Tech Health Check, you'll already know which section of this
-      checklist matters most for your situation.
-    </p>
+      ${divider}
 
-    ${divider}
+      <p style="margin:0 0 8px;font-size:14px;font-weight:700;color:#0f172a;">Why this matters:</p>
+      <p style="margin:0 0 20px;font-size:14px;color:#475569;line-height:1.7;">
+        This directly impacts whether local customers find you when they search for what you do. It's also something most local businesses miss — which means it's a competitive advantage if you get it right.
+      </p>
 
-    <p style="margin:0;font-size:14px;color:#64748b;line-height:1.7;">
-      — Steven<br/>
-      <span style="color:#94a3b8;">Ella Tech Solutions</span>
-    </p>
-  `),
-});
+      ${divider}
 
-// ── Email 3 — Day 5: Personal check-in ───────────────────────────────────────
+      <p style="margin:0 0 8px;font-size:14px;font-weight:700;color:#0f172a;">Want help with the other issues?</p>
+      <p style="margin:0;font-size:14px;color:#475569;line-height:1.7;">
+        That's where consulting comes in. We can tackle all of them together and have you showing up correctly in local search within weeks, not months.
+      </p>
+
+      ${btn(BOOKING_URL, "Book a free 30-min strategy call →")}
+
+      ${divider}
+
+      <p style="margin:0;font-size:14px;color:#64748b;line-height:1.7;">
+        — Steven<br/>
+        <span style="color:#94a3b8;">Ella Tech Solutions</span>
+      </p>
+    `),
+  };
+};
+
+// ── Email 3 — Day 5: Personal check-in ───────────────────────────────────
 export const email3 = (name) => ({
-  subject: `Quick question, ${name}`,
+  subject: `Did you get a chance to tackle that?`,
   html: base(`
     <p style="margin:0 0 20px;font-size:15px;color:#0f172a;line-height:1.7;">
       Hey ${name},
     </p>
     <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.7;">
-      Did you get a chance to go through the Tech Health Check?
+      I'm curious if you've had a chance to work through your audit and that #1 issue I sent over.
     </p>
     <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.7;">
-      I ask because most people who fill it out find one area that jumps out immediately —
-      usually it's either disconnected tools, a CRM that nobody's actually using, or
-      Microsoft 365 licenses that are basically just collecting dust.
+      If you got stuck, or if you want to talk through the bigger strategy of how to actually own local search (instead of just scraping by), that's exactly what the free 30-minute session is for.
     </p>
     <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.7;">
-      Just curious what you found. If you want to talk through it, I do a free 30-minute
-      session where we go over exactly what to fix first — no pitch, just clarity.
+      No pressure — I just hate to see a business miss opportunities because the technical stuff gets in the way.
     </p>
 
-    ${btn(BOOKING_URL, "Book a free 30-min session →")}
+    ${btn(BOOKING_URL, "Book your free 30-min call →")}
 
     ${divider}
 
@@ -164,9 +180,9 @@ export const email3 = (name) => ({
   `),
 });
 
-// ── Email 4 — Day 8: Direct booking ask ──────────────────────────────────────
+// ── Email 4 — Day 8: Final push ──────────────────────────────────────────
 export const email4 = (name) => ({
-  subject: `Still worth a quick call, ${name}?`,
+  subject: `One more thing about your local search…`,
   html: base(`
     <p style="margin:0 0 20px;font-size:15px;color:#0f172a;line-height:1.7;">
       Hey ${name},
@@ -175,15 +191,13 @@ export const email4 = (name) => ({
       Last note from me — I don't want to clutter your inbox.
     </p>
     <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.7;">
-      If you've looked at the Tech Health Check and want help figuring out what to actually
-      do about it, that's what the free session is for. 30 minutes, I'll tell you exactly
-      what I'd fix first and why.
+      If you've looked at your audit and the priorities are clear but the execution feels overwhelming, that's when a solid strategy call makes all the difference. We can map out the exact path forward and what's realistic for your situation.
     </p>
     <p style="margin:0 0 24px;font-size:15px;color:#475569;line-height:1.7;">
-      No pressure either way — but if the timing's right, here's the link:
+      No pressure either way — but if you want clarity before you move forward, here's the link:
     </p>
 
-    ${btn(BOOKING_URL, "Book my free session →")}
+    ${btn(BOOKING_URL, "Book my free strategy session →")}
 
     ${divider}
 
