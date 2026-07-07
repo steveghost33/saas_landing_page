@@ -1,8 +1,4 @@
 import pdf from "html-pdf";
-import path from "path";
-import { fileURLToPath } from "url";
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const generateAuditPdf = async ({ businessName, businessLocation, research_data }) => {
   if (!research_data) {

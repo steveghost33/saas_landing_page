@@ -26,7 +26,13 @@ const initDb = async () => {
     await pool.query(`
       ALTER TABLE subscribers
         ADD COLUMN IF NOT EXISTS sequence_step INTEGER DEFAULT 0,
-        ADD COLUMN IF NOT EXISTS next_email_at TIMESTAMP
+        ADD COLUMN IF NOT EXISTS next_email_at TIMESTAMP,
+        ADD COLUMN IF NOT EXISTS business_name VARCHAR(255),
+        ADD COLUMN IF NOT EXISTS business_location VARCHAR(255),
+        ADD COLUMN IF NOT EXISTS service_type VARCHAR(100),
+        ADD COLUMN IF NOT EXISTS research_status VARCHAR(50) DEFAULT 'pending',
+        ADD COLUMN IF NOT EXISTS research_data JSONB,
+        ADD COLUMN IF NOT EXISTS research_completed_at TIMESTAMP
     `);
 
     console.log("Database initialized — subscribers table ready.");

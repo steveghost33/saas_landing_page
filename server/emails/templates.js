@@ -57,7 +57,6 @@ const divider = `<hr style="border:none;border-top:1px solid #f1f5f9;margin:24px
 export const email1 = (name, research_data) => {
   const research = research_data || {};
   const issues = Array.isArray(research.website_issues) ? research.website_issues.slice(0, 3) : [];
-  const topIssue = issues[0] || "Missing local SEO optimization";
 
   return {
     subject: `Here's your Local Search Visibility Audit, ${name}`,

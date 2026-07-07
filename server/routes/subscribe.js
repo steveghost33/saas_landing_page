@@ -7,7 +7,6 @@ router.post("/subscribe", subscribe);
 router.get("/subscribers", getSubscribers);
 router.put("/subscribers/:id/contacted", markContacted);
 router.post("/process-emails", processEmailSequence);
-router.get("/process-emails", processEmailSequence);
 router.get("/subscribers/clear", clearSubscribers);
 
 export default router;

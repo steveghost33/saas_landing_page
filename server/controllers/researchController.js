@@ -1,7 +1,20 @@
 import pool from "../db/pool.js";
-import { sendAdminNotification } from "../services/emailService.js";
+
+const requireAdminToken = (req, res) => {
+  const token = req.headers["x-admin-token"] || req.query.token;
+  const secret = process.env.ADMIN_SECRET;
+
+  if (!secret || token !== secret) {
+    res.status(401).json({ error: "Unauthorized." });
+    return false;
+  }
+
+  return true;
+};
 
 export const getResearchForm = async (req, res) => {
+  if (!requireAdminToken(req, res)) return;
+
   try {
     const { lead_id } = req.query;
 
@@ -32,12 +45,7 @@ export const getResearchForm = async (req, res) => {
 };
 
 export const submitResearch = async (req, res) => {
-  const token = req.headers["x-admin-token"] || req.query.token;
-  const secret = process.env.ADMIN_SECRET;
-
-  if (!secret || token !== secret) {
-    return res.status(401).json({ error: "Unauthorized." });
-  }
+  if (!requireAdminToken(req, res)) return;
 
   const { lead_id, gbp_completeness_score, gbp_rating, gbp_review_count, website_issues, competitors, quick_wins, summary } = req.body;
 
@@ -73,6 +81,8 @@ export const submitResearch = async (req, res) => {
       id: lead.id,
       name: lead.name,
       email: lead.email,
+      businessName: lead.business_name,
+      businessLocation: lead.business_location,
       research_data
     }).catch((err) =>
       console.error("Failed to send audit email:", err.message)
@@ -90,12 +100,7 @@ export const submitResearch = async (req, res) => {
 };
 
 export const skipResearch = async (req, res) => {
-  const token = req.headers["x-admin-token"] || req.query.token;
-  const secret = process.env.ADMIN_SECRET;
-
-  if (!secret || token !== secret) {
-    return res.status(401).json({ error: "Unauthorized." });
-  }
+  if (!requireAdminToken(req, res)) return;
 
   const { lead_id } = req.body;
 

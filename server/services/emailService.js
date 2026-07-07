@@ -1,17 +1,38 @@
 import { Resend } from "resend";
 import { email1, email2, email3, email4 } from "../emails/templates.js";
+import { generateAuditPdf } from "./auditPdfService.js";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const FROM = `Steven at Ella Tech <info@ellatechsolutions.com>`;
+let resendClient = null;
 
-export const sendEmail = async ({ to, subject, html }) => {
+const getResendClient = () => {
+  if (!process.env.RESEND_API_KEY) {
+    throw new Error("RESEND_API_KEY is not set.");
+  }
+
+  if (!resendClient) {
+    resendClient = new Resend(process.env.RESEND_API_KEY);
+  }
+
+  return resendClient;
+};
+
+export const sendEmail = async ({ to, subject, html, attachments }) => {
   console.log(`Attempting to send email to ${to} — subject: ${subject}`);
-  const { error } = await resend.emails.send({ from: FROM, to, subject, html });
+  const resend = getResendClient();
+  const { error } = await resend.emails.send({ from: FROM, to, subject, html, attachments });
   if (error) throw new Error(error.message);
   console.log(`Email sent successfully to ${to}`);
 };
 
-export const scheduleAuditEmailSequence = async ({ id, name, email, research_data }) => {
+export const scheduleAuditEmailSequence = async ({
+  id,
+  name,
+  email,
+  businessName,
+  businessLocation,
+  research_data,
+}) => {
   if (!process.env.RESEND_API_KEY) {
     console.warn("RESEND_API_KEY not set — skipping audit email sequence.");
     return;
@@ -19,10 +40,23 @@ export const scheduleAuditEmailSequence = async ({ id, name, email, research_dat
   console.log(`Starting audit email sequence for ${email}`);
 
   const template = email1(name, research_data);
+  const pdfBuffer = await generateAuditPdf({
+    businessName,
+    businessLocation,
+    research_data,
+  });
 
-  // TODO: When PDF generation is ready, attach PDF to email
-  // For now, send email with embedded data
-  await sendEmail({ to: email, subject: template.subject, html: template.html });
+  await sendEmail({
+    to: email,
+    subject: template.subject,
+    html: template.html,
+    attachments: [
+      {
+        filename: `${(businessName || "local-search-audit").replace(/[^a-z0-9]+/gi, "-").replace(/^-+|-+$/g, "").toLowerCase() || "local-search-audit"}.pdf`,
+        content: pdfBuffer,
+      },
+    ],
+  });
 
   // Update sequence_step to 1 (next email in 2 days)
   const pool = (await import("../db/pool.js")).default;
@@ -32,14 +66,17 @@ export const scheduleAuditEmailSequence = async ({ id, name, email, research_dat
   );
 };
 
-export const sendAdminNotification = async ({ name, email, businessName, businessLocation }) => {
+export const sendAdminNotification = async ({ id, name, email, businessName, businessLocation }) => {
   if (!process.env.RESEND_API_KEY) {
     console.warn("RESEND_API_KEY not set — skipping admin notification.");
     return;
   }
 
   const adminEmail = process.env.ADMIN_EMAIL || "steven@ellatechsolutions.com";
-  const leadId = ""; // Will be filled by lookup
+  const siteUrl = process.env.SITE_URL || "https://www.ellatechsolutions.com";
+  const researchUrl = id
+    ? `${siteUrl}/admin/research-form?lead_id=${id}`
+    : `${siteUrl}/admin/research-form`;
 
   const html = `
 <!DOCTYPE html>
@@ -67,7 +104,7 @@ export const sendAdminNotification = async ({ name, email, businessName, busines
               <p style="margin:0 0 20px;font-size:15px;color:#475569;">
                 Research needed. Click below to start:
               </p>
-              <a href="${process.env.SITE_URL || "https://www.ellatechsolutions.com"}/admin/research-form" style="display:inline-block;background:#1d4ed8;color:#ffffff;font-weight:700;font-size:15px;padding:13px 28px;border-radius:10px;text-decoration:none;">
+              <a href="${researchUrl}" style="display:inline-block;background:#1d4ed8;color:#ffffff;font-weight:700;font-size:15px;padding:13px 28px;border-radius:10px;text-decoration:none;">
                 Start Research →
               </a>
             </td>

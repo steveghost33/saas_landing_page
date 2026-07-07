@@ -1,0 +1,51 @@
+services:
+  - type: web
+    name: ella-tech-site
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://ella-tech-api.onrender.com
+
+  - type: web
+    name: ella-tech-api
+    runtime: node
+    rootDir: server
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TRUST_PROXY
+        value: "true"
+      - key: CORS_ORIGINS
+        value: https://www.ellatechsolutions.com,https://ellatechsolutions.com,https://ella-tech-site.onrender.com
+      - key: SITE_URL
+        value: https://www.ellatechsolutions.com
+      - key: DATABASE_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false
+      - key: ADMIN_SECRET
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+
+  - type: cron
+    name: ella-tech-email-sequence
+    runtime: node
+    rootDir: server
+    schedule: "0 * * * *"
+    buildCommand: npm ci
+    startCommand: npm run cron:process-emails
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: RESEND_API_KEY
+        sync: false

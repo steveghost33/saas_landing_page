@@ -1,12 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
+const ADMIN_TOKEN_STORAGE_KEY = "admin_token";
+
+const parseCompetitors = (value) =>
+  value
+    .split("\n")
+    .map((line) => {
+      const [name, rank] = line.split(",").map((part) => part.trim());
+      return { name, ranking_position: rank ? parseInt(rank, 10) : null };
+    })
+    .filter((entry) => entry.name);
 
 const ResearchForm = () => {
   const [leadId, setLeadId] = useState(null);
   const [lead, setLead] = useState(null);
+  const [pendingLeads, setPendingLeads] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("admin_token") || "");
+  const [token, setToken] = useState(localStorage.getItem(ADMIN_TOKEN_STORAGE_KEY) || "");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
 
@@ -23,19 +34,23 @@ const ResearchForm = () => {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const id = params.get("lead_id");
-    if (id) {
-      setLeadId(id);
-      fetchLeadData(id);
-    } else {
-      fetchPendingLeads();
-    }
+    setLeadId(id);
   }, []);
 
-  const fetchLeadData = async (id) => {
+  const getAuthHeaders = () => ({
+    "Content-Type": "application/json",
+    "x-admin-token": token,
+  });
+
+  const fetchLeadData = useCallback(async (id) => {
     try {
       setLoading(true);
-      const res = await fetch(`${API_BASE}/api/admin/research-form?lead_id=${id}`);
+      setError("");
+      const res = await fetch(`${API_BASE}/api/admin/research-form?lead_id=${id}`, {
+        headers: { "x-admin-token": token },
+      });
       const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Failed to load lead");
       if (data.success && data.lead) {
         setLead(data.lead);
       }
@@ -44,20 +59,35 @@ const ResearchForm = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
 
-  const fetchPendingLeads = async () => {
+  const fetchPendingLeads = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await fetch(`${API_BASE}/api/admin/research-form`);
+      setError("");
+      const res = await fetch(`${API_BASE}/api/admin/research-form`, {
+        headers: { "x-admin-token": token },
+      });
       const data = await res.json();
-      console.log("Pending leads:", data);
+      if (!res.ok) throw new Error(data.error || "Failed to load leads");
+      setPendingLeads(Array.isArray(data.leads) ? data.leads : []);
     } catch (err) {
       setError("Failed to load leads: " + err.message);
     } finally {
       setLoading(false);
     }
-  };
+  }, [token]);
+
+  useEffect(() => {
+    if (!token) return;
+
+    if (leadId) {
+      fetchLeadData(leadId);
+      return;
+    }
+
+    fetchPendingLeads();
+  }, [fetchLeadData, fetchPendingLeads, leadId, token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,7 +104,6 @@ const ResearchForm = () => {
       setLoading(true);
       setError("");
 
-      // Parse array inputs
       const issuesArray = websiteIssues
         .split("\n")
         .map((i) => i.trim())
@@ -83,25 +112,16 @@ const ResearchForm = () => {
         .split("\n")
         .map((w) => w.trim())
         .filter(Boolean);
-      const competitorsArray = competitors
-        .split("\n")
-        .map((c) => {
-          const [name, rank] = c.split(",").map((x) => x.trim());
-          return { name, ranking_position: rank ? parseInt(rank) : null };
-        })
-        .filter((c) => c.name);
+      const competitorsArray = parseCompetitors(competitors);
 
       const res = await fetch(`${API_BASE}/api/admin/research-submit`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-admin-token": token,
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify({
           lead_id: leadId,
-          gbp_completeness_score: parseInt(gbpScore),
+          gbp_completeness_score: parseInt(gbpScore, 10),
           gbp_rating: parseFloat(gbpRating),
-          gbp_review_count: parseInt(gbpReviews),
+          gbp_review_count: parseInt(gbpReviews, 10),
           website_issues: issuesArray,
           competitors: competitorsArray,
           quick_wins: winsArray,
@@ -114,14 +134,100 @@ const ResearchForm = () => {
 
       setSuccess(true);
       setTimeout(() => {
-        window.location.href = "/";
-      }, 2000);
+        window.location.href = "/admin/research-form";
+      }, 1800);
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
+
+  const handleTokenChange = (value) => {
+    setToken(value);
+    localStorage.setItem(ADMIN_TOKEN_STORAGE_KEY, value);
+  };
+
+  const handleLeadSelect = (id) => {
+    const nextUrl = new URL(window.location.href);
+    nextUrl.searchParams.set("lead_id", id);
+    window.location.href = nextUrl.toString();
+  };
+
+  if (!token) {
+    return (
+      <div className="min-h-screen bg-slate-50 p-4 py-12">
+        <div className="max-w-xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-8">
+            <h1 className="text-3xl font-black text-white mb-2">Local Search Audit Research</h1>
+            <p className="text-blue-100">Enter your admin token to load pending leads</p>
+          </div>
+          <div className="p-8 space-y-4">
+            <label className="block text-sm font-semibold text-slate-700">
+              Admin Token
+            </label>
+            <input
+              type="password"
+              value={token}
+              onChange={(e) => handleTokenChange(e.target.value)}
+              placeholder="Enter admin token"
+              className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+            <p className="text-sm text-slate-500">
+              This protects lead data and the research workflow.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!leadId) {
+    return (
+      <div className="min-h-screen bg-slate-50 p-4 py-12">
+        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-8">
+            <h1 className="text-3xl font-black text-white mb-2">Pending Audit Leads</h1>
+            <p className="text-blue-100">Choose a lead to research and send the first audit email</p>
+          </div>
+          <div className="p-8">
+            {error && (
+              <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+                <p className="text-sm text-red-700">{error}</p>
+              </div>
+            )}
+
+            {loading ? (
+              <p className="text-slate-600">Loading pending leads...</p>
+            ) : pendingLeads.length === 0 ? (
+              <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center">
+                <h2 className="text-lg font-bold text-slate-900 mb-2">No leads waiting right now</h2>
+                <p className="text-slate-600">New popup signups will show up here once they come in.</p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {pendingLeads.map((pendingLead) => (
+                  <button
+                    key={pendingLead.id}
+                    type="button"
+                    onClick={() => handleLeadSelect(pendingLead.id)}
+                    className="w-full rounded-xl border border-slate-200 bg-white px-5 py-4 text-left hover:border-blue-300 hover:bg-blue-50 transition"
+                  >
+                    <p className="text-sm text-slate-500 mb-1">
+                      Lead #{pendingLead.id} · {new Date(pendingLead.created_at).toLocaleString()}
+                    </p>
+                    <p className="text-lg font-bold text-slate-900">{pendingLead.business_name}</p>
+                    <p className="text-slate-600">{pendingLead.name} · {pendingLead.email}</p>
+                    <p className="text-slate-500 text-sm">{pendingLead.business_location}</p>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (success) {
     return (
@@ -190,10 +296,7 @@ const ResearchForm = () => {
               <input
                 type="password"
                 value={token}
-                onChange={(e) => {
-                  setToken(e.target.value);
-                  localStorage.setItem("admin_token", e.target.value);
-                }}
+                onChange={(e) => handleTokenChange(e.target.value)}
                 placeholder="Enter admin token"
                 className="w-full rounded-lg border border-slate-300 px-4 py-2 text-slate-800 focus:ring-2 focus:ring-blue-500 outline-none"
               />

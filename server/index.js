@@ -133,6 +133,9 @@ app.use((req, res, next) => {
   return res.status(415).json({ error: "Content-Type must be application/json." });
 });
 app.use(express.json({ limit: "32kb", strict: true }));
+app.get("/healthz", (_req, res) => {
+  res.status(200).json({ ok: true });
+});
 app.use("/api", subscribeRouter);
 app.use("/api/admin", adminResearchRouter);
 

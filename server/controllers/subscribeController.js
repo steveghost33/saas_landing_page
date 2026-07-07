@@ -1,15 +1,22 @@
 import pool from "../db/pool.js";
 import { sendAdminNotification } from "../services/emailService.js";
+import { runDueEmailSequence } from "../lib/emailSequence.js";
 
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 const normalizeField = (value, maxLength = 255) =>
   typeof value === "string" ? value.trim().slice(0, maxLength) : "";
 
-const daysFromNow = (days) => {
-  const d = new Date();
-  d.setDate(d.getDate() + days);
-  return d;
+const requireAdminToken = (req, res) => {
+  const token = req.headers["x-admin-token"] || req.query.token;
+  const secret = process.env.ADMIN_SECRET;
+
+  if (!secret || token !== secret) {
+    res.status(401).json({ error: "Unauthorized." });
+    return false;
+  }
+
+  return true;
 };
 
 export const subscribe = async (req, res) => {
@@ -42,15 +49,15 @@ export const subscribe = async (req, res) => {
 
     // For local SEO audit: don't send email immediately, wait for research to be completed
     // sequence_step 0 = awaiting research
-    await pool.query(
-      "INSERT INTO subscribers (name, email, business_name, business_location, service_type, source, sequence_step, research_status) VALUES ($1, $2, $3, $4, $5, $6, 0, $7)",
+    const inserted = await pool.query(
+      "INSERT INTO subscribers (name, email, business_name, business_location, service_type, source, sequence_step, research_status) VALUES ($1, $2, $3, $4, $5, $6, 0, $7) RETURNING id",
       [name, email, businessName, businessLocation, serviceType, source, "pending"],
     );
 
     console.log(`New subscriber: ${name} <${email}> [${source}] - Business: ${businessName}, ${businessLocation}`);
 
     // Send admin notification to Steven about new lead
-    sendAdminNotification({ name, email, businessName, businessLocation }).catch((err) =>
+    sendAdminNotification({ id: inserted.rows[0].id, name, email, businessName, businessLocation }).catch((err) =>
       console.error("Admin notification failed:", err.message),
     );
 
@@ -66,48 +73,11 @@ export const subscribe = async (req, res) => {
 };
 
 export const processEmailSequence = async (req, res) => {
+  if (!requireAdminToken(req, res)) return;
+
   try {
-    const due = await pool.query(
-      "SELECT * FROM subscribers WHERE sequence_step < 4 AND next_email_at <= NOW()",
-    );
-
-    const { email2, email3, email4 } = await import("../emails/templates.js");
-    const { sendEmail } = await import("../services/emailService.js");
-
-    let sent = 0;
-    for (const sub of due.rows) {
-      try {
-        let template, nextStep, nextAt;
-
-        if (sub.sequence_step === 1) {
-          template = email2(sub.name, sub.research_data);
-          nextStep = 2;
-          nextAt = daysFromNow(3); // day 5 total
-        } else if (sub.sequence_step === 2) {
-          template = email3(sub.name);
-          nextStep = 3;
-          nextAt = daysFromNow(3); // day 8 total
-        } else if (sub.sequence_step === 3) {
-          template = email4(sub.name);
-          nextStep = 4;
-          nextAt = null;
-        }
-
-        if (!template) continue;
-
-        await sendEmail({ to: sub.email, subject: template.subject, html: template.html });
-        await pool.query(
-          "UPDATE subscribers SET sequence_step = $1, next_email_at = $2 WHERE id = $3",
-          [nextStep, nextAt, sub.id],
-        );
-        sent++;
-        console.log(`Sequence email ${nextStep} sent to ${sub.email}`);
-      } catch (err) {
-        console.error(`Failed to send to ${sub.email}:`, err.message);
-      }
-    }
-
-    return res.json({ success: true, sent });
+    const result = await runDueEmailSequence();
+    return res.json({ success: true, ...result });
   } catch (err) {
     console.error("processEmailSequence error:", err.message);
     return res.status(500).json({ error: "Failed to process email sequence." });
@@ -115,6 +85,8 @@ export const processEmailSequence = async (req, res) => {
 };
 
 export const getSubscribers = async (req, res) => {
+  if (!requireAdminToken(req, res)) return;
+
   try {
     const result = await pool.query("SELECT * FROM subscribers ORDER BY created_at DESC");
     return res.json({ count: result.rowCount, subscribers: result.rows });
@@ -125,11 +97,7 @@ export const getSubscribers = async (req, res) => {
 };
 
 export const clearSubscribers = async (req, res) => {
-  const token = req.headers["x-admin-token"] || req.query.token;
-  const secret = process.env.ADMIN_SECRET;
-  if (!secret || token !== secret) {
-    return res.status(401).json({ error: "Unauthorized." });
-  }
+  if (!requireAdminToken(req, res)) return;
   try {
     const result = await pool.query("DELETE FROM subscribers");
     console.log(`Cleared ${result.rowCount} subscribers.`);
@@ -141,6 +109,8 @@ export const clearSubscribers = async (req, res) => {
 };
 
 export const markContacted = async (req, res) => {
+  if (!requireAdminToken(req, res)) return;
+
   const { id } = req.params;
   try {
     const result = await pool.query(
