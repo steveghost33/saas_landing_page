@@ -41,6 +41,7 @@ const LeadCapturePopup = () => {
 
   useEffect(() => {
     if (hasDismissed()) return;
+    if (window.location.pathname.startsWith("/admin")) return;
 
     // Show after 2.5 seconds so the page has time to paint
     const timer = setTimeout(() => {
