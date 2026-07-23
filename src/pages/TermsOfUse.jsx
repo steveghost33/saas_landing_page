@@ -9,6 +9,7 @@ function TermsOfUse() {
   return (
     <>
       <Helmet>
+        <title>Terms of Use | Ella Tech Solutions</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 

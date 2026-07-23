@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import { Helmet } from "react-helmet-async";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
 const ADMIN_TOKEN_STORAGE_KEY = "admin_token";
@@ -154,120 +155,141 @@ const ResearchForm = () => {
     window.location.href = nextUrl.toString();
   };
 
+  const noindexTag = (
+    <Helmet>
+      <title>Local Search Audit Research | Ella Tech Solutions</title>
+      <meta name="robots" content="noindex, nofollow" />
+    </Helmet>
+  );
+
   if (!token) {
     return (
-      <div className="min-h-screen bg-slate-50 p-4 py-12">
-        <div className="max-w-xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-8">
-            <h1 className="text-3xl font-black text-white mb-2">Local Search Audit Research</h1>
-            <p className="text-blue-100">Enter your admin token to load pending leads</p>
-          </div>
-          <div className="p-8 space-y-4">
-            <label className="block text-sm font-semibold text-slate-700">
-              Admin Token
-            </label>
-            <input
-              type="password"
-              value={token}
-              onChange={(e) => handleTokenChange(e.target.value)}
-              placeholder="Enter admin token"
-              className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 focus:ring-2 focus:ring-blue-500 outline-none"
-            />
-            <p className="text-sm text-slate-500">
-              This protects lead data and the research workflow.
-            </p>
+      <>
+        {noindexTag}
+        <div className="min-h-screen bg-slate-50 p-4 py-12">
+          <div className="max-w-xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-8">
+              <h1 className="text-3xl font-black text-white mb-2">Local Search Audit Research</h1>
+              <p className="text-blue-100">Enter your admin token to load pending leads</p>
+            </div>
+            <div className="p-8 space-y-4">
+              <label className="block text-sm font-semibold text-slate-700">
+                Admin Token
+              </label>
+              <input
+                type="password"
+                value={token}
+                onChange={(e) => handleTokenChange(e.target.value)}
+                placeholder="Enter admin token"
+                className="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-800 focus:ring-2 focus:ring-blue-500 outline-none"
+              />
+              <p className="text-sm text-slate-500">
+                This protects lead data and the research workflow.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
   if (!leadId) {
     return (
-      <div className="min-h-screen bg-slate-50 p-4 py-12">
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-8">
-            <h1 className="text-3xl font-black text-white mb-2">Pending Audit Leads</h1>
-            <p className="text-blue-100">Choose a lead to research and send the first audit email</p>
-          </div>
-          <div className="p-8">
-            {error && (
-              <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
-                <p className="text-sm text-red-700">{error}</p>
-              </div>
-            )}
+      <>
+        {noindexTag}
+        <div className="min-h-screen bg-slate-50 p-4 py-12">
+          <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-8 py-8">
+              <h1 className="text-3xl font-black text-white mb-2">Pending Audit Leads</h1>
+              <p className="text-blue-100">Choose a lead to research and send the first audit email</p>
+            </div>
+            <div className="p-8">
+              {error && (
+                <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+                  <p className="text-sm text-red-700">{error}</p>
+                </div>
+              )}
 
-            {loading ? (
-              <p className="text-slate-600">Loading pending leads...</p>
-            ) : pendingLeads.length === 0 ? (
-              <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center">
-                <h2 className="text-lg font-bold text-slate-900 mb-2">No leads waiting right now</h2>
-                <p className="text-slate-600">New popup signups will show up here once they come in.</p>
-              </div>
-            ) : (
-              <div className="space-y-3">
-                {pendingLeads.map((pendingLead) => (
-                  <button
-                    key={pendingLead.id}
-                    type="button"
-                    onClick={() => handleLeadSelect(pendingLead.id)}
-                    className="w-full rounded-xl border border-slate-200 bg-white px-5 py-4 text-left hover:border-blue-300 hover:bg-blue-50 transition"
-                  >
-                    <p className="text-sm text-slate-500 mb-1">
-                      Lead #{pendingLead.id} · {new Date(pendingLead.created_at).toLocaleString()}
-                    </p>
-                    <p className="text-lg font-bold text-slate-900">{pendingLead.business_name}</p>
-                    <p className="text-slate-600">{pendingLead.name} · {pendingLead.email}</p>
-                    <p className="text-slate-500 text-sm">{pendingLead.business_location}</p>
-                  </button>
-                ))}
-              </div>
-            )}
+              {loading ? (
+                <p className="text-slate-600">Loading pending leads...</p>
+              ) : pendingLeads.length === 0 ? (
+                <div className="rounded-xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center">
+                  <h2 className="text-lg font-bold text-slate-900 mb-2">No leads waiting right now</h2>
+                  <p className="text-slate-600">New popup signups will show up here once they come in.</p>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {pendingLeads.map((pendingLead) => (
+                    <button
+                      key={pendingLead.id}
+                      type="button"
+                      onClick={() => handleLeadSelect(pendingLead.id)}
+                      className="w-full rounded-xl border border-slate-200 bg-white px-5 py-4 text-left hover:border-blue-300 hover:bg-blue-50 transition"
+                    >
+                      <p className="text-sm text-slate-500 mb-1">
+                        Lead #{pendingLead.id} · {new Date(pendingLead.created_at).toLocaleString()}
+                      </p>
+                      <p className="text-lg font-bold text-slate-900">{pendingLead.business_name}</p>
+                      <p className="text-slate-600">{pendingLead.name} · {pendingLead.email}</p>
+                      <p className="text-slate-500 text-sm">{pendingLead.business_location}</p>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
   if (success) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-slate-50 flex items-center justify-center p-4">
-        <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md text-center">
-          <div className="mb-4 flex justify-center">
-            <div className="h-16 w-16 rounded-full bg-green-100 flex items-center justify-center">
-              <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
+      <>
+        {noindexTag}
+        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-slate-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md text-center">
+            <div className="mb-4 flex justify-center">
+              <div className="h-16 w-16 rounded-full bg-green-100 flex items-center justify-center">
+                <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
             </div>
+            <h2 className="text-xl font-bold text-slate-900 mb-2">Research submitted!</h2>
+            <p className="text-slate-600 mb-4">The audit email is being sent now. Redirecting...</p>
           </div>
-          <h2 className="text-xl font-bold text-slate-900 mb-2">Research submitted!</h2>
-          <p className="text-slate-600 mb-4">The audit email is being sent now. Redirecting...</p>
         </div>
-      </div>
+      </>
     );
   }
 
   if (!lead && leadId) {
     return (
-      <div className="min-h-screen bg-slate-50 p-4">
-        <div className="max-w-2xl mx-auto">
-          <div className="bg-white rounded-lg shadow p-8 text-center">
-            {loading ? (
-              <p className="text-slate-600">Loading lead data...</p>
-            ) : (
-              <>
-                <h2 className="text-lg font-bold text-red-600 mb-2">Lead not found</h2>
-                <p className="text-slate-600">Check the lead ID and try again.</p>
-              </>
-            )}
+      <>
+        {noindexTag}
+        <div className="min-h-screen bg-slate-50 p-4">
+          <div className="max-w-2xl mx-auto">
+            <div className="bg-white rounded-lg shadow p-8 text-center">
+              {loading ? (
+                <p className="text-slate-600">Loading lead data...</p>
+              ) : (
+                <>
+                  <h2 className="text-lg font-bold text-red-600 mb-2">Lead not found</h2>
+                  <p className="text-slate-600">Check the lead ID and try again.</p>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 p-4 py-12">
+    <>
+      {noindexTag}
+      <div className="min-h-screen bg-slate-50 p-4 py-12">
       <div className="max-w-2xl mx-auto">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           {/* Header */}
@@ -424,7 +446,8 @@ const ResearchForm = () => {
           </form>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

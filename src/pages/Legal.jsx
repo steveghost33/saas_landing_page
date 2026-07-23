@@ -9,6 +9,7 @@ function Legal() {
   return (
     <>
       <Helmet>
+        <title>Privacy Policy | Ella Tech Solutions</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 

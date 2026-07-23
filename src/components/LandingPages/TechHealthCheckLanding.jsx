@@ -1,5 +1,7 @@
 import { useState } from "react";
 import DownloadSuccess from "./DownloadSuccess.jsx";
+import PageSEO from "../PageSEO.jsx";
+import { SITE_URL } from "../../data/site.js";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
 const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -54,6 +56,11 @@ const TechHealthCheckLanding = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 flex flex-col text-white">
+      <PageSEO
+        title="Free Tech Health Check | Ella Tech Solutions"
+        description="A free assessment of your organization's technology setup: CRM, Microsoft 365, website, and automation, with a prioritized list of what to fix first."
+        canonical={`${SITE_URL}/tech-health-check`}
+      />
       <header className="py-5 px-6 border-b border-white/10">
         <div className="max-w-5xl mx-auto">
           <a href="/"><img src="/images/ellalogo.png" alt="Ella Tech Solutions" className="h-8 brightness-0 invert" /></a>

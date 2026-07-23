@@ -1,1 +1,24 @@
+# Normalize trailing slashes to the canonical (no trailing slash) URL form,
+# matching the canonical tags set by PageSEO. Must precede the SPA catch-all.
+/faq/                        /faq                        301
+/web-projects/               /web-projects               301
+/tech-solutions/              /tech-solutions             301
+/blog/                        /blog                       301
+/blog/:slug/                  /blog/:slug                 301
+/services/nonprofits/          /services/nonprofits        301
+/services/small-business/      /services/small-business    301
+/services/entrepreneurs/       /services/entrepreneurs     301
+/services/website-design/      /services/website-design    301
+/services/crm-setup/           /services/crm-setup         301
+/services/ai-workflow/         /services/ai-workflow       301
+/services/staff-training/      /services/staff-training    301
+/services/lms-development/     /services/lms-development   301
+/services/microsoft-365/       /services/microsoft-365     301
+/services/digital-strategy/    /services/digital-strategy  301
+/crm-checklist/                /crm-checklist              301
+/tech-health-check/            /tech-health-check          301
+/terms-of-use/                 /terms-of-use               301
+/legal/                        /legal                      301
+/admin/research-form/          /admin/research-form        301
+
 /*    /index.html   200

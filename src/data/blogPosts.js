@@ -110,7 +110,7 @@ export const blogPosts = [
     tags: ["website", "nonprofit", "design", "fundraising"],
     category: "Nonprofit",
     featuredImage: "/images/og-image.jpg",
-    internalLinks: ["how-to-set-up-crm-for-nonprofit"],
+    internalLinks: ["how-to-set-up-crm-for-nonprofit", "why-your-business-isnt-showing-up-in-local-search"],
     cta: "discovery_session",
     ctaHeading: "Not sure if your website is actually working?",
     ctaBody:
@@ -181,6 +181,144 @@ export const blogPosts = [
 <p>The pattern across all of these mistakes is the same: spending on what's visible in a design presentation while underinvesting in what determines whether a visitor becomes a donor, a partner, or a participant. Design is the last mile. Strategy, content structure, and conversion architecture are the first three. Most nonprofit website projects spend nearly everything on mile four and then wonder why the metrics didn't change.</p>
 
 <p>A website that looks credible and performs poorly is still a website that's failing. The goal isn't a redesign. It's a site that does its job every time someone lands on it.</p>`,
+  },
+  {
+    id: 3,
+    slug: "why-your-business-isnt-showing-up-in-local-search",
+    title: "Why Your Small Business Isn't Showing Up in Local Search (And How to Fix It)",
+    metaDescription:
+      "Most small business SEO problems aren't algorithm problems. Here's what actually keeps a site invisible in local search.",
+    excerpt:
+      "Most small businesses treat SEO like a mystery only an agency can solve. It isn't. Local search ranking comes down to three things: whether Google can actually find and read your site, whether your content answers what someone typed, and whether outside signals confirm you're a real, local business. Here's the diagnostic, and the mistakes that quietly cost small businesses customers every month.",
+    author: "Ella Tech Solutions",
+    publishDate: "2026-07-20",
+    updatedDate: "2026-07-20",
+    readingTime: 5,
+    tags: ["seo", "local-seo", "small-business", "marketing"],
+    category: "SEO",
+    featuredImage: "/images/og-image.jpg",
+    internalLinks: ["app-store-optimization-basics", "nonprofit-website-mistakes"],
+    cta: "discovery_session",
+    ctaHeading: "Not sure why your site isn't showing up?",
+    ctaBody:
+      "Book a free 30-minute consultation. We'll look at your actual search visibility together and tell you what's really in the way.",
+    ctaButton: "Book a Free Consultation",
+    content: `<p>Ask a small business owner why their website doesn't show up in Google and you'll usually get a shrug, followed by a theory about the algorithm. Google changed something. A competitor is paying for placement. The website is too new. SEO gets treated like a locked room only a specialist can open.</p>
+
+<p>It isn't a locked room. It's a checklist, and most small businesses have never actually gone through it. They've paid for a nice-looking website and assumed visibility would follow. It doesn't. A website that nobody can find is a business card sitting in a drawer, not a marketing asset.</p>
+
+<p>Local search ranking comes down to three questions, in this order. Can Google actually find and read your site? Does your content answer what someone actually typed? And do outside signals confirm you're a real, established business in the area you're claiming to serve? Get the order backward, chasing content or backlinks before the technical basics are solid, and you're optimizing a site Google can barely see.</p>
+
+<h2>The Three Things That Actually Determine Local Ranking</h2>
+
+<h3>Can Google actually find and read your site?</h3>
+
+<p>Before content or keywords matter at all, Google has to be able to crawl your site and understand what's on it. This is the part small business owners skip because it isn't visible in a browser. A robots.txt file accidentally blocking important pages. A sitemap that's missing, outdated, or never submitted to Search Console. Pages that return errors nobody noticed because nobody checked. A site built entirely in a page builder that renders content in a way that's harder for search engines to parse cleanly.</p>
+
+<p>None of this is exotic. It's the kind of thing that gets missed when a website is built quickly and nobody goes back to verify the plumbing. A business can have excellent content sitting behind a technical wall that keeps it from ever being indexed properly.</p>
+
+<h3>Does your site answer what someone actually typed?</h3>
+
+<p>Most small business websites are written from the inside out. The homepage describes the company: who founded it, what the company believes, a mission statement. That's not what someone searching "emergency plumber near me" or "wedding photographer in [city]" is looking for in the first ten seconds. They want to know, immediately, that this business does the specific thing they need, in their area, and can be reached.</p>
+
+<p>Search intent is unforgiving. If someone searches for a service and your page talks about the company before it talks about the service, you've already lost part of the match between what they typed and what your page appears to be about. This is fixable without a redesign. It's a content and structure problem, not a visual one.</p>
+
+<h3>Do outside signals confirm you're a real, local business?</h3>
+
+<p>Google doesn't rank local businesses on website content alone. It cross-references outside signals: a Google Business Profile with accurate hours and categories, consistent name, address, and phone number across directories, and a pattern of real reviews. A business with a polished website and no claimed Google Business Profile, or one with a profile that lists the wrong category, is fighting with one hand tied behind its back.</p>
+
+<h2>The Local SEO Mistakes That Quietly Cost Small Businesses Customers</h2>
+
+<p>Inconsistent business information is the most common and least visible mistake. The business is listed as "Smith Plumbing LLC" on the website, "Smith Plumbing" on Google Business Profile, and "Smith Plumbing Co." on an old directory listing from years ago. Each version reads as a slightly different entity to search engines cross-referencing signals. Consistency, the exact same name, address, and phone number everywhere, is worth more than most owners assume.</p>
+
+<p>Thin, generic content is the second. Service pages that say a paragraph about "quality service" and "customer satisfaction" without describing the actual service, the actual area served, or the actual problem solved. This content doesn't match how people search, and it doesn't give Google anything specific to match a query against.</p>
+
+<p>An unclaimed or neglected Google Business Profile is the third, and it's the one most likely to be free to fix. An unverified profile, missing hours, no photos, and no response to reviews signals a business that isn't actively managing its presence. That's a real ranking factor, not a cosmetic one.</p>
+
+<p>Ignoring reviews entirely is the fourth. Reviews are both a ranking signal and the first thing a potential customer reads before deciding to call. A business with old reviews and no responses reads as inactive, even if the business itself is thriving.</p>
+
+<h2>Why "We'll Do SEO Later" Costs More the Longer You Wait</h2>
+
+<p>SEO compounds, in both directions. A competitor who's been publishing consistent, locally relevant content and maintaining an accurate Google Business Profile for two years has built a lead that's expensive to close. Every month a business waits to fix the basics is a month a competitor's head start gets longer, and a month of potential customers who searched, found someone else, and never knew the business existed.</p>
+
+<p>The cost of waiting doesn't show up on an invoice. It shows up as calls that never came in, quietly, month after month. Most small businesses have never tried to estimate what that's actually costing them. The ones that do usually stop treating SEO as optional.</p>
+
+<h2>What Not to Waste Money On</h2>
+
+<p>Keyword stuffing, cramming a service and city name into every sentence, reads as spam to both Google and actual visitors. It doesn't help rankings the way it did over a decade ago, and it makes a business sound like it's talking to a search engine instead of a customer.</p>
+
+<p>Buying links from low-quality directories or link farms is a shortcut that frequently backfires. Search engines are built to detect unnatural link patterns, and a business can do more damage to its own credibility than it gains in ranking.</p>
+
+<p>Chasing every algorithm update as a five-alarm fire is its own kind of waste. The fundamentals, crawlability, content that matches search intent, and consistent outside signals, hold up regardless of the specific update cycle. Businesses that build on fundamentals don't need to react to every headline about a Google update.</p>
+
+<p>The same pattern shows up in <a href="/blog/nonprofit-website-mistakes">nonprofit website projects</a>: money spent on what's visible, design and polish, while the fundamentals that actually determine whether anyone finds the site in the first place go unaddressed. A beautiful website nobody can find performs exactly like an invisible one.</p>`,
+  },
+  {
+    id: 4,
+    slug: "app-store-optimization-basics",
+    title: "App Store Optimization Basics: Getting Your App Found Without a Big Budget",
+    metaDescription:
+      "ASO isn't paid ads. It's the difference between an app nobody finds and one that shows up when people are already looking for it.",
+    excerpt:
+      "Most app owners either ignore App Store Optimization entirely or treat it as a one-time task at launch. Neither works. ASO is an ongoing practice, not a checkbox, and most of what determines whether an app gets found has nothing to do with advertising spend. Here's what actually controls app store visibility, and the mistakes that keep a good app invisible.",
+    author: "Ella Tech Solutions",
+    publishDate: "2026-07-23",
+    updatedDate: "2026-07-23",
+    readingTime: 5,
+    tags: ["aso", "app-store-optimization", "mobile", "marketing"],
+    category: "ASO",
+    featuredImage: "/images/og-image.jpg",
+    internalLinks: ["why-your-business-isnt-showing-up-in-local-search"],
+    cta: "discovery_session",
+    ctaHeading: "Have an app and don't know if anyone can actually find it?",
+    ctaBody:
+      "Book a free 30-minute consultation. We'll look at how discoverable your app actually is and what's worth fixing first.",
+    ctaButton: "Book a Free Consultation",
+    content: `<p>Most app owners fall into one of two camps. Either App Store Optimization never comes up at all, or it comes up once, gets a title and a description written at launch, and never gets touched again. Neither approach works, and the difference between them and an app that actually gets found is smaller and cheaper than most people assume.</p>
+
+<p>ASO gets confused with paid app install campaigns often enough that the two get treated as the same conversation. They aren't. Paid campaigns buy visibility. ASO earns it, by making an app easier for the app store's own search and ranking systems to match against what someone is actually typing. Most app discovery starts with a search inside the App Store or Google Play, not an ad. An app that's invisible to that internal search is starting from a deficit no ad budget fully solves on its own.</p>
+
+<h2>What ASO Actually Controls</h2>
+
+<h3>Title and subtitle</h3>
+
+<p>The app's title and subtitle (or short description, depending on the platform) are the highest-weight fields for search matching. A generic, branding-only title with no descriptive keyword tells the app store search algorithm almost nothing about what the app does or who it's for. A nonprofit's membership app or a small business's booking app benefits from a title that includes what the app actually does, not just the organization's name.</p>
+
+<h3>Keywords and category</h3>
+
+<p>The keyword field (on iOS) and the description (which Google Play weighs more heavily for search) are where an app tells the store's algorithm what queries it should match. This isn't about cramming every possible term in. It's about the specific words a real user would type when looking for what this app does, matched honestly to what the app actually delivers. Category selection matters too. An app filed under the wrong category competes in the wrong pool and gets compared against apps it was never actually competing with.</p>
+
+<h3>Icon and screenshots</h3>
+
+<p>Most people decide whether to tap into an app listing, and whether to download after arriving, within seconds. Screenshots that explain individual features in isolation lose people who haven't decided the app is relevant to them yet. Screenshots that lead with the core value, the actual problem the app solves for this specific user, convert better than a feature tour every time.</p>
+
+<h3>Ratings, reviews, and updates</h3>
+
+<p>Both major app stores weigh ratings and review recency as part of ranking. An app with a decent rating but no reviews in the last year reads as abandoned, to both the algorithm and a person deciding whether to trust it. Regular updates, even small ones, signal an actively maintained app. This is one of the most overlooked levers because it doesn't feel like marketing. It's maintenance. It functions like marketing anyway.</p>
+
+<h2>The Mistakes That Keep Apps Invisible</h2>
+
+<p>A generic app name with no descriptive keyword anywhere in the title or subtitle is the most common mistake, and the easiest to fix. "Riverside" tells a search algorithm nothing. "Riverside Member Portal" tells it something concrete to match against.</p>
+
+<p>Screenshots built like a feature tour, explaining what each button does, rather than showing the value in the first three seconds, lose people who are scrolling quickly and deciding fast. Most visitors to an app listing never scroll past the first two or three images.</p>
+
+<p>A category mismatch, filing a niche utility under a broad, crowded category because it seemed more visible, puts the app in competition with listings it has no realistic chance against. A smaller, more accurate category is frequently the better move.</p>
+
+<p>Launching once and never returning is the quiet failure. An app that hasn't been updated in over a year, with reviews that trail off around the same time, reads as abandoned regardless of how well it actually still works. Ongoing, even minor, updates keep both users and the algorithm treating the app as active.</p>
+
+<h2>Why ASO Matters Even for a Small, Niche App</h2>
+
+<p>A nonprofit's donor engagement app or a small business's appointment app isn't competing for the App Store's top chart. It doesn't need to. It needs to show up when the specific people who would use it, existing members, existing clients, people referred by someone who already uses it, search for it or something close to it. That's a winnable, narrow goal, and it's exactly the kind of visibility ASO is built to deliver. Most of the people who would use a niche app find it through search, not discovery browsing, which is precisely where ASO fundamentals apply.</p>
+
+<h2>What Not to Waste Money On</h2>
+
+<p>Keyword stuffing a title until it's unreadable doesn't help the way it did in the earliest days of app stores. Both platforms have gotten better at parsing intent over literal keyword density, and an unreadable title costs more in lost trust than it gains in match rate.</p>
+
+<p>Buying fake reviews or install numbers is a shortcut that can get an app suspended or removed entirely. Both major platforms actively detect and penalize this, and the risk to an app's existence isn't worth the temporary ranking bump.</p>
+
+<p>Reacting to every algorithm rumor with a full listing overhaul wastes effort that would be better spent on the fundamentals: an honest, keyword-relevant title, screenshots that lead with value, and a habit of shipping small updates and responding to reviews. Those hold up regardless of the specific ranking change making the rounds that month.</p>
+
+<p>The same principle runs through <a href="/blog/why-your-business-isnt-showing-up-in-local-search">local search visibility for small businesses</a>: most of what determines whether something gets found isn't a paid shortcut. It's whether the basics are actually done, consistently, over time.</p>`,
   },
 ];
 

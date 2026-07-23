@@ -106,8 +106,8 @@ function WebProjects() {
   return (
     <>
       <PageSEO
-        title="Web Projects | Ella Tech Solutions, Web Design for Nonprofits, Businesses &amp; Entrepreneurs"
-        description="Custom websites built for nonprofits, small businesses, and entrepreneurs. Detroit-founded, working with organizations nationwide. Responsive, fast, and built around your audience and goals."
+        title="Web Design Projects | Ella Tech Solutions"
+        description="Custom websites built for nonprofits, small businesses, and entrepreneurs. Detroit-founded, serving organizations nationwide with responsive, fast sites."
         canonical="https://www.ellatechsolutions.com/web-projects"
         schema={webProjectsSchema}
       />

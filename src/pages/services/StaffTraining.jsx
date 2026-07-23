@@ -75,8 +75,8 @@ function StaffTraining() {
   return (
     <>
       <PageSEO
-        title="Staff Technology Training for Nonprofits and Small Businesses | Ella Tech Solutions"
-        description="Ella Tech Solutions delivers live and self-paced technology training for nonprofit and small business staff nationwide. Training in plain language, no technical background required."
+        title="Staff Technology Training | Ella Tech Solutions"
+        description="Ella Tech Solutions delivers live and self-paced technology training for nonprofit and small business staff, in plain language, no tech background required."
         canonical={`${SITE_URL}/services/staff-training`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />

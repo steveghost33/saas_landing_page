@@ -28,8 +28,8 @@ function Home() {
   return (
     <>
       <PageSEO
-        title="Ella Tech Solutions | Websites &amp; Local SEO for Service Businesses, Detroit, MI"
-        description="Ella Tech Solutions builds websites and runs the SEO and AEO work that helps local service businesses get found and get called. Detroit-based, serving local businesses nationwide. Ask us about tech setup and CRM automation too."
+        title="Ella Tech Solutions | Websites &amp; Local SEO, Detroit MI"
+        description="Ella Tech Solutions builds websites and runs the SEO and AEO work that helps local service businesses get found and get called. Detroit-based."
         canonical="https://www.ellatechsolutions.com/"
         schema={faqSchema}
       />

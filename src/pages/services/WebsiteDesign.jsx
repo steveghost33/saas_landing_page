@@ -83,8 +83,8 @@ function WebsiteDesign() {
   return (
     <>
       <PageSEO
-        title="Website Creation and Redesign for Nonprofits and Small Businesses | Ella Tech Solutions"
-        description="Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses nationwide. Responsive design, donation flow integration, on-page SEO, and post-launch training included."
+        title="Website Design &amp; Redesign | Ella Tech Solutions"
+        description="Ella Tech Solutions builds and redesigns websites for nonprofits and small businesses: responsive design, donation flow integration, on-page SEO, training."
         canonical={`${SITE_URL}/services/website-design`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />

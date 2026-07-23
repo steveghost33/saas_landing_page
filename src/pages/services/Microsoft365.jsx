@@ -83,8 +83,8 @@ function Microsoft365() {
   return (
     <>
       <PageSEO
-        title="Microsoft 365 Implementation for Nonprofits and Small Businesses | Ella Tech Solutions"
-        description="Ella Tech Solutions implements Microsoft 365 for nonprofits and small businesses nationwide. Business email, Teams, SharePoint, OneDrive setup with permissions configuration and staff training."
+        title="Microsoft 365 Implementation | Ella Tech Solutions"
+        description="Ella Tech Solutions implements Microsoft 365 for nonprofits and small businesses: business email, Teams, SharePoint, and OneDrive setup with training."
         canonical={`${SITE_URL}/services/microsoft-365`}
         schema={[schema, faqSchema, breadcrumbSchema]}
       />

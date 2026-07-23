@@ -5,15 +5,18 @@ const Hero = () => {
     <section className="relative pt-20 pb-40 max-lg:pt-14 max-lg:pb-36 max-md:pt-12 max-md:pb-32 overflow-hidden">
       {/* Background photo */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/images/main-photo.jpg"
-          alt="Ella Tech Solutions, technology consulting for nonprofits, small businesses, and entrepreneurs"
-          width="1920"
-          height="1080"
-          fetchpriority="high"
-          className="w-full h-full object-cover"
-          style={{ objectPosition: "25% 50%" }}
-        />
+        <picture>
+          <source srcSet="/images/main-photo.webp" type="image/webp" />
+          <img
+            src="/images/main-photo.jpg"
+            alt="Ella Tech Solutions, technology consulting for nonprofits, small businesses, and entrepreneurs"
+            width="1920"
+            height="1080"
+            fetchPriority="high"
+            className="w-full h-full object-cover"
+            style={{ objectPosition: "25% 50%" }}
+          />
+        </picture>
         {/* Fade the photo into the background color under the text, left-to-right and top-to-bottom */}
         <div className="absolute inset-0 bg-gradient-to-r from-s1 via-s1/70 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-s1 via-s1/10 to-transparent" />

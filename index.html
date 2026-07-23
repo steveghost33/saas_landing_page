@@ -8,12 +8,22 @@
     <link rel="apple-touch-icon" href="/images/ellalogo.png?v=4" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0a14" />
-    <meta name="robots" content="index, follow" />
+    <!-- No default robots meta tag: absence means index,follow. Pages that
+         need noindex (Legal, TermsOfUse, ResearchForm) render their own via
+         Helmet — adding a default here would leave two conflicting
+         meta[name=robots] tags on those pages since Helmet only adds tags,
+         it doesn't remove this static one. -->
 
-    <!-- Static fallback meta (React Helmet overrides these per-page when JS runs) -->
-    <title>Ella Tech Solutions | Technology Consulting Detroit, MI</title>
-    <meta name="description" content="Ella Tech Solutions is a Detroit-based technology consulting firm helping nonprofits and small businesses with CRM setup, website design, AI workflow integration, staff training, LMS development, and Microsoft 365 implementation. Founded by Steven Bowman. Serving clients nationwide." />
-    <link rel="canonical" href="https://www.ellatechsolutions.com/" />
+    <!-- Static fallback meta for non-JS crawlers. On React 19, Helmet's
+         title/meta/link tags are hoisted into <head> as NEW elements rather
+         than replacing these — they don't get removed automatically. The
+         data-rh-static marker lets main.jsx strip these before the app
+         mounts, so the client only ever has one of each tag. The prerender
+         step replaces these outright per route, so this fallback only
+         matters for dev mode or an unprerendered route. -->
+    <title data-rh-static="true">Ella Tech Solutions | Technology Consulting Detroit, MI</title>
+    <meta data-rh-static="true" name="description" content="Ella Tech Solutions is a Detroit-based technology consulting firm helping nonprofits and small businesses with CRM setup, website design, AI workflow integration, staff training, LMS development, and Microsoft 365 implementation. Founded by Steven Bowman. Serving clients nationwide." />
+    <link data-rh-static="true" rel="canonical" href="https://www.ellatechsolutions.com/" />
     <meta name="author" content="Steven Bowman, Ella Tech Solutions" />
 
     <!-- Open Graph: sitewide static fields only -->

@@ -33,7 +33,7 @@ function FaqPage() {
   return (
     <>
       <PageSEO
-        title="FAQ: Nonprofit and Small Business Technology Consulting | Ella Tech Solutions"
+        title="FAQ | Nonprofit &amp; Small Business Tech Consulting"
         description="Answers to common questions about CRM setup, technology consulting, AI workflow training, website projects, and working with Ella Tech Solutions."
         canonical={`${SITE_URL}/faq`}
         schema={[schema, breadcrumbSchema]}

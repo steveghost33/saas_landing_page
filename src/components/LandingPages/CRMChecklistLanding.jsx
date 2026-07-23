@@ -1,5 +1,7 @@
 import { useState } from "react";
 import DownloadSuccess from "./DownloadSuccess.jsx";
+import PageSEO from "../PageSEO.jsx";
+import { SITE_URL } from "../../data/site.js";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || "";
 const isValidEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -52,6 +54,11 @@ const CRMChecklistLanding = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white flex flex-col">
+      <PageSEO
+        title="Free CRM Setup Checklist | Ella Tech Solutions"
+        description="A free, step-by-step checklist for choosing and implementing a CRM in 3 weeks, built for nonprofits and small businesses."
+        canonical={`${SITE_URL}/crm-checklist`}
+      />
       <header className="py-5 px-6 border-b border-slate-100">
         <div className="max-w-5xl mx-auto">
           <a href="/"><img src="/images/ellalogo.png" alt="Ella Tech Solutions" className="h-8" /></a>

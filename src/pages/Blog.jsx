@@ -43,7 +43,7 @@ function Blog() {
     <>
       <PageSEO
         title="Tech Strategy Blog | Ella Tech Solutions"
-        description="Technology strategy and diagnostic insights for nonprofits, small businesses, and entrepreneurs. CRM readiness, website effectiveness, and digital infrastructure, in plain language."
+        description="Technology strategy insights for nonprofits, small businesses, and entrepreneurs: CRM readiness, website effectiveness, and digital infrastructure."
         canonical={`${SITE_URL}/blog`}
         schema={schema}
       />
