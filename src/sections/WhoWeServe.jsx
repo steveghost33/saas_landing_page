@@ -4,14 +4,14 @@ const audiences = [
   {
     heading: "Nonprofits",
     description:
-      "Organizations growing faster than their current technology can support. We build CRMs your staff actually use, websites that communicate your mission clearly, and AI tools that save time without requiring a technical background. Mission-driven pricing is available for verified 501(c)(3) organizations.",
+      "Organizations growing faster than their current technology can support. We build CRMs your staff actually use, websites that communicate your mission clearly, AI tools that save time without requiring a technical background, and grant writing support to help fund it all. Mission-driven pricing is available for verified 501(c)(3) organizations.",
     link: "/services/nonprofits",
     linkLabel: "Nonprofit services",
   },
   {
     heading: "Small Businesses",
     description:
-      "Service-based businesses that need practical technology setup and staff training without enterprise contracts or long retainers. Common projects include website redesigns, CRM setup, Microsoft 365 implementation, and AI workflow automation.",
+      "Service-based businesses that need practical technology setup and staff training without enterprise contracts or long retainers. Common projects include website redesigns, CRM setup, Microsoft 365 implementation, AI workflow automation, and grant writing for SBA, state, and local funding programs.",
     link: "/services/small-business",
     linkLabel: "Small business services",
   },

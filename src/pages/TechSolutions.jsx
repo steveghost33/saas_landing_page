@@ -98,6 +98,21 @@ function TechSolutions() {
             </div>
           </div>
 
+          {/* Grant Writing callout */}
+          <div className="container mb-24">
+            <div className="bg-s2 rounded-3xl p-10 md:p-14 border border-white/10">
+              <div className="max-w-2xl">
+                <h2 className="h3 text-p4 mb-4">Grant Writing & Grant Readiness</h2>
+                <p className="body-1 text-p5 mb-6">
+                  Nonprofit and small business clients also come to us for grant funding help: research, proposal writing, and the readiness work that gets you funder-ready before applying. We build the reporting systems that keep grants in compliance after they're awarded, too.
+                </p>
+                <Button href="/services/grant-writing" containerClassName="inline-block">
+                  See Grant Writing Services
+                </Button>
+              </div>
+            </div>
+          </div>
+
           {/* Nonprofit note */}
           <div className="container mb-20 max-w-3xl mx-auto">
             <div className="border border-white/10 rounded-2xl p-8 text-center">

@@ -29,6 +29,8 @@ const Footer = () => {
           <span className="opacity-20 text-p5 hidden sm:block">|</span>
           <a href="/services/nonprofits" className="text-p5 text-sm opacity-60 hover:opacity-100 transition-opacity whitespace-nowrap">Nonprofit Websites</a>
           <span className="opacity-20 text-p5 hidden sm:block">|</span>
+          <a href="/services/grant-writing" className="text-p5 text-sm opacity-60 hover:opacity-100 transition-opacity whitespace-nowrap">Grant Writing</a>
+          <span className="opacity-20 text-p5 hidden sm:block">|</span>
           <a href="/services/entrepreneurs" className="text-p5 text-sm opacity-60 hover:opacity-100 transition-opacity whitespace-nowrap">Entrepreneur Websites</a>
           <span className="opacity-20 text-p5 hidden sm:block">|</span>
           <a href="/tech-solutions" className="text-p5 text-sm opacity-60 hover:opacity-100 transition-opacity whitespace-nowrap">Tech Setup &amp; CRM</a>

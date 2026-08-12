@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { email1, email2, email3, email4 } from "../emails/templates.js";
 import { generateAuditPdf } from "./auditPdfService.js";
+import { escapeHtml } from "../lib/htmlEscape.js";
 
 const FROM = `Steven at Ella Tech <info@ellatechsolutions.com>`;
 let resendClient = null;
@@ -94,12 +95,12 @@ export const sendAdminNotification = async ({ id, name, email, businessName, bus
           <tr>
             <td style="background:#ffffff;border-radius:16px;border:1px solid #e2e8f0;padding:36px 40px;">
               <h2 style="margin:0 0 16px;font-size:20px;font-weight:800;color:#0f172a;">
-                New lead: ${businessName}
+                New lead: ${escapeHtml(businessName)}
               </h2>
               <p style="margin:0 0 20px;font-size:15px;color:#475569;">
-                <strong>${name}</strong><br/>
-                ${businessLocation}<br/>
-                <a href="mailto:${email}" style="color:#1d4ed8;">${email}</a>
+                <strong>${escapeHtml(name)}</strong><br/>
+                ${escapeHtml(businessLocation)}<br/>
+                <a href="mailto:${encodeURIComponent(email)}" style="color:#1d4ed8;">${escapeHtml(email)}</a>
               </p>
               <p style="margin:0 0 20px;font-size:15px;color:#475569;">
                 Research needed. Click below to start:

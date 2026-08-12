@@ -27,6 +27,7 @@ import StaffTraining from "./pages/services/StaffTraining.jsx";
 import LmsDevelopment from "./pages/services/LmsDevelopment.jsx";
 import Microsoft365 from "./pages/services/Microsoft365.jsx";
 import DigitalStrategy from "./pages/services/DigitalStrategy.jsx";
+import GrantWriting from "./pages/services/GrantWriting.jsx";
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
         <Route path="/services/lms-development" element={<LmsDevelopment />} />
         <Route path="/services/microsoft-365" element={<Microsoft365 />} />
         <Route path="/services/digital-strategy" element={<DigitalStrategy />} />
+        <Route path="/services/grant-writing" element={<GrantWriting />} />
 
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogPost />} />

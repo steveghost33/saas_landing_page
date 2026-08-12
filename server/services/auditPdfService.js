@@ -1,4 +1,5 @@
 import pdf from "html-pdf";
+import { escapeHtml } from "../lib/htmlEscape.js";
 
 export const generateAuditPdf = async ({ businessName, businessLocation, research_data }) => {
   if (!research_data) {
@@ -208,8 +209,8 @@ export const getAuditPdfHtml = ({ businessName, businessLocation, research_data 
     </div>
 
     <div class="business-info">
-      <strong>${businessName}</strong>
-      <span>${businessLocation}</span>
+      <strong>${escapeHtml(businessName)}</strong>
+      <span>${escapeHtml(businessLocation)}</span>
     </div>
 
     <!-- GBP Health Section -->
@@ -238,7 +239,7 @@ export const getAuditPdfHtml = ({ businessName, businessLocation, research_data 
     <div class="section">
       <h2 class="section-title">Website Issues Found</h2>
       <ul class="issues-list">
-        ${website_issues.map(issue => `<li><span class="issue-item">${issue}</span></li>`).join('')}
+        ${website_issues.map(issue => `<li><span class="issue-item">${escapeHtml(issue)}</span></li>`).join('')}
       </ul>
     </div>
     ` : ''}
@@ -248,7 +249,7 @@ export const getAuditPdfHtml = ({ businessName, businessLocation, research_data 
     <div class="section">
       <h2 class="section-title">Competitor Benchmarking</h2>
       <ul class="competitors-list">
-        ${competitors.map(c => `<li><span class="competitor-item">${c.name}${c.ranking_position ? ` - Ranking #${c.ranking_position}` : ''}</span></li>`).join('')}
+        ${competitors.map(c => `<li><span class="competitor-item">${escapeHtml(c.name)}${c.ranking_position ? ` - Ranking #${escapeHtml(c.ranking_position)}` : ''}</span></li>`).join('')}
       </ul>
     </div>
     ` : ''}
@@ -258,7 +259,7 @@ export const getAuditPdfHtml = ({ businessName, businessLocation, research_data 
     <div class="section">
       <h2 class="section-title">Quick Wins You Can Do Today</h2>
       <ul class="wins-list">
-        ${quick_wins.map(win => `<li><span class="win-item">${win}</span></li>`).join('')}
+        ${quick_wins.map(win => `<li><span class="win-item">${escapeHtml(win)}</span></li>`).join('')}
       </ul>
     </div>
     ` : ''}
@@ -267,7 +268,7 @@ export const getAuditPdfHtml = ({ businessName, businessLocation, research_data 
     ${summary ? `
     <div class="section">
       <h2 class="section-title">Summary</h2>
-      <div class="summary">${summary}</div>
+      <div class="summary">${escapeHtml(summary)}</div>
     </div>
     ` : ''}
 

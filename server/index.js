@@ -6,6 +6,7 @@ import crypto from "crypto";
 import { fileURLToPath } from "url";
 import subscribeRouter from "./routes/subscribe.js";
 import adminResearchRouter from "./routes/admin-research.js";
+import { createRateLimiter } from "./lib/rateLimiter.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -136,39 +137,13 @@ app.use(express.json({ limit: "32kb", strict: true }));
 app.get("/healthz", (_req, res) => {
   res.status(200).json({ ok: true });
 });
-app.use("/api", subscribeRouter);
-app.use("/api/admin", adminResearchRouter);
-
-const createRateLimiter = ({ windowMs, max }) => {
-  const hits = new Map();
-
-  return (req, res, next) => {
-    const now = Date.now();
-    const key = `${req.ip}:${req.method}:${req.path}`;
-    const current = hits.get(key);
-
-    if (!current || current.resetAt <= now) {
-      hits.set(key, { count: 1, resetAt: now + windowMs });
-      if (hits.size > 5000) {
-        for (const [hitKey, hit] of hits.entries()) {
-          if (hit.resetAt <= now) hits.delete(hitKey);
-        }
-      }
-      return next();
-    }
-
-    current.count += 1;
-    if (current.count > max) {
-      res.setHeader("Retry-After", Math.ceil((current.resetAt - now) / 1000));
-      return res.status(429).json({ error: "Too many requests. Please try again later." });
-    }
-
-    return next();
-  };
-};
 
 const contactRateLimit = createRateLimiter({ windowMs: 15 * 60 * 1000, max: 8 });
 const chatRateLimit = createRateLimiter({ windowMs: 60 * 1000, max: 12 });
+const adminRateLimit = createRateLimiter({ windowMs: 15 * 60 * 1000, max: 30 });
+
+app.use("/api/admin", adminRateLimit, adminResearchRouter);
+app.use("/api", subscribeRouter);
 
 const DATA_FILE = path.join(__dirname, "contacts.json");
 fs.ensureFileSync(DATA_FILE);

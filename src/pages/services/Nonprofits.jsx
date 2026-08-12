@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../components/Button.jsx";
 import PageSEO from "../../components/PageSEO.jsx";
 import PageShell from "../../components/PageShell.jsx";
@@ -10,7 +11,7 @@ const schema = {
   name: "Nonprofit Technology Consulting",
   serviceType: "Technology Consulting",
   description:
-    "Website builds, CRM setup, LMS development, HRIS implementation, and staff training for nonprofit organizations. Mission-driven pricing available.",
+    "Website builds, CRM setup, LMS development, HRIS implementation, staff training, and grant writing for nonprofit organizations. Mission-driven pricing available.",
   provider: {
     "@type": "LocalBusiness",
     name: "Ella Tech Solutions",
@@ -84,6 +85,19 @@ const services = [
       "No hype, no tools your team won't touch six months from now",
     ],
   },
+  {
+    title: "Grant Writing & Grant Readiness",
+    description:
+      "Funding doesn't stop at the proposal. We research opportunities, write and edit proposals, and get your organization grant-ready, then build the reporting systems that keep you in compliance once the award lands.",
+    details: [
+      "Grant research matched to your mission and program size",
+      "Grant readiness review: case for support, outcomes, financials, board documentation",
+      "Full proposal writing, editing, and letters of inquiry",
+      "Outcome tracking and reporting systems for after the award",
+    ],
+    link: "/services/grant-writing",
+    linkLabel: "See grant writing services",
+  },
 ];
 
 function Nonprofits() {
@@ -92,8 +106,8 @@ function Nonprofits() {
   return (
     <>
       <PageSEO
-        title="Nonprofit Tech Consulting | Ella Tech Solutions"
-        description="Website builds, CRM setup, LMS development, and staff training for nonprofits. Mission-driven pricing available. Ella Tech Solutions, Detroit-based, nationwide."
+        title="Nonprofit Tech Consulting & Grant Writing | Ella Tech Solutions"
+        description="Website builds, CRM setup, LMS development, staff training, and grant writing for nonprofits. Mission-driven pricing available. Ella Tech Solutions, Detroit-based, nationwide."
         canonical={`${SITE_URL}/services/nonprofits`}
         schema={schema}
       />
@@ -145,6 +159,14 @@ function Nonprofits() {
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
+                  {service.link && (
+                    <Link
+                      to={service.link}
+                      className="inline-flex items-center gap-2 mt-6 text-p1 font-semibold text-sm uppercase tracking-wide hover:underline"
+                    >
+                      {service.linkLabel} &rarr;
+                    </Link>
+                  )}
                 </div>
               </div>
 
@@ -157,6 +179,7 @@ function Nonprofits() {
                     {idx === 2 && '"Our onboarding was a 60-page PDF. New hires couldn\'t find anything and we were training the same things over and over."'}
                     {idx === 3 && '"Our HR director was managing staff records in Google Sheets. We had no idea what we were paying for in Microsoft 365."'}
                     {idx === 4 && '"Our executive director was spending three hours every Friday pulling the same donor report by hand."'}
+                    {idx === 5 && '"We won the grant and then realized nobody had a way to track the outcomes it required us to report on."'}
                   </p>
                 </div>
               </div>

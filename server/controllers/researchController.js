@@ -1,16 +1,5 @@
 import pool from "../db/pool.js";
-
-const requireAdminToken = (req, res) => {
-  const token = req.headers["x-admin-token"] || req.query.token;
-  const secret = process.env.ADMIN_SECRET;
-
-  if (!secret || token !== secret) {
-    res.status(401).json({ error: "Unauthorized." });
-    return false;
-  }
-
-  return true;
-};
+import { requireAdminToken } from "../lib/adminAuth.js";
 
 export const getResearchForm = async (req, res) => {
   if (!requireAdminToken(req, res)) return;

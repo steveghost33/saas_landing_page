@@ -87,6 +87,7 @@ const Header = () => {
     { label: "Our Website Work", href: "/web-projects" },
     { label: "Small Business Websites", href: "/services/small-business" },
     { label: "Nonprofit Websites", href: "/services/nonprofits" },
+    { label: "Grant Writing", href: "/services/grant-writing" },
     { label: "Entrepreneur Websites", href: "/services/entrepreneurs" },
     { label: "Tech Setup & CRM", href: "/tech-solutions" },
     { label: "Blog", href: "/blog" },

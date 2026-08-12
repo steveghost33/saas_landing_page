@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "../../components/Button.jsx";
 import PageSEO from "../../components/PageSEO.jsx";
 import PageShell from "../../components/PageShell.jsx";
@@ -10,7 +11,7 @@ const schema = {
   name: "Tech Consulting for Small Businesses",
   serviceType: "Technology Consulting",
   description:
-    "Website design, CRM setup, Microsoft 365 onboarding, AI automation, and staff training for small businesses in Detroit and nationwide.",
+    "Website design, CRM setup, Microsoft 365 onboarding, AI automation, staff training, and grant writing for small businesses in Detroit and nationwide.",
   provider: {
     "@type": "LocalBusiness",
     name: "Ella Tech Solutions",
@@ -73,6 +74,19 @@ const services = [
       "No long-term commitment required",
     ],
   },
+  {
+    title: "Grant Writing & Grant Readiness",
+    description:
+      "There's real money available for small businesses through SBA, state, local, and economic development grant programs, including opportunities for minority-owned and women-owned businesses. We research the opportunities that fit your business, write and edit the proposal, and set up the systems you need to track and report if you're awarded.",
+    details: [
+      "Grant research matched to your industry, location, and business profile",
+      "Grant readiness review of your business narrative, financials, and documentation",
+      "Full proposal writing, editing, and required attachments",
+      "Outcome tracking systems for after the award, so reporting doesn't fall through the cracks",
+    ],
+    link: "/services/grant-writing",
+    linkLabel: "See grant writing services",
+  },
 ];
 
 function SmallBusiness() {
@@ -134,6 +148,14 @@ function SmallBusiness() {
                       <li key={item}>{item}</li>
                     ))}
                   </ul>
+                  {service.link && (
+                    <Link
+                      to={service.link}
+                      className="inline-flex items-center gap-2 mt-6 text-p1 font-semibold text-sm uppercase tracking-wide hover:underline"
+                    >
+                      {service.linkLabel} &rarr;
+                    </Link>
+                  )}
                 </div>
               </div>
 
@@ -145,6 +167,7 @@ function SmallBusiness() {
                     {idx === 1 && "Business owners paying for Microsoft 365 but running on personal Gmail, shared login credentials, and folders nobody can find."}
                     {idx === 2 && "Owners spending hours each week on tasks that should take minutes, scheduling, follow-ups, data entry, status updates."}
                     {idx === 3 && "Business owners who know they need better tech but don't know where to start, what to buy, or what order to do things in."}
+                    {idx === 4 && "Business owners who qualify for grant funding but don't have time to research programs, write a competitive proposal, or track outcomes after an award."}
                   </p>
                 </div>
               </div>

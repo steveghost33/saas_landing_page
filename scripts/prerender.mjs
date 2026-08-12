@@ -28,6 +28,7 @@ const staticRoutes = [
   "/services/lms-development",
   "/services/microsoft-365",
   "/services/digital-strategy",
+  "/services/grant-writing",
   "/crm-checklist",
   "/tech-health-check",
   "/terms-of-use",

@@ -23,6 +23,7 @@ export const techSolutionsSchema = {
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "AI Workflow Integration & Literacy" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "LMS & Micro-Learning Development" } },
       { "@type": "Offer", itemOffered: { "@type": "Service", name: "Staff Technology Training & Professional Development" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Grant Writing & Grant Readiness" } },
     ],
   },
   breadcrumb: {

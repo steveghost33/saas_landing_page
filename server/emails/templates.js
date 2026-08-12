@@ -1,3 +1,5 @@
+import { escapeHtml } from "../lib/htmlEscape.js";
+
 const SITE_URL = process.env.SITE_URL || "https://www.ellatechsolutions.com";
 const BOOKING_URL = `${SITE_URL}/#contact`;
 
@@ -62,7 +64,7 @@ export const email1 = (name, research_data) => {
     subject: `Here's your Local Search Visibility Audit, ${name}`,
     html: base(`
       <h1 style="margin:0 0 8px;font-size:22px;font-weight:800;color:#0f172a;line-height:1.3;">
-        Your local search audit is ready, ${name}
+        Your local search audit is ready, ${escapeHtml(name)}
       </h1>
       <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.7;">
         I've analyzed your online presence — where you show up, where you don't, and what's holding you back in local search. The full audit PDF is attached.
@@ -73,7 +75,7 @@ export const email1 = (name, research_data) => {
           Here's what jumped out:
         </p>
         <p style="margin:0;font-size:14px;color:#475569;">
-          ${research.summary || "Your business has opportunities in local search ranking, Google Business Profile optimization, and website visibility."}
+          ${escapeHtml(research.summary) || "Your business has opportunities in local search ranking, Google Business Profile optimization, and website visibility."}
         </p>
       </div>
 
@@ -112,15 +114,15 @@ export const email2 = (name, research_data) => {
     subject: `How to fix your #1 local search issue`,
     html: base(`
       <h1 style="margin:0 0 8px;font-size:22px;font-weight:800;color:#0f172a;line-height:1.3;">
-        Your #1 priority: ${topIssue}
+        Your #1 priority: ${escapeHtml(topIssue)}
       </h1>
       <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.7;">
-        Hey ${name}, from your audit, this one thing will have the biggest impact on your local search results and customer visibility. Here's how to fix it:
+        Hey ${escapeHtml(name)}, from your audit, this one thing will have the biggest impact on your local search results and customer visibility. Here's how to fix it:
       </p>
 
       <div style="background:#f0f4ff;border-left:4px solid #1d4ed8;padding:16px;margin:20px 0;border-radius:6px;">
         <p style="margin:0;font-size:14px;color:#475569;line-height:1.7;">
-          ${firstWin}
+          ${escapeHtml(firstWin)}
         </p>
       </div>
 
@@ -155,7 +157,7 @@ export const email3 = (name) => ({
   subject: `Did you get a chance to tackle that?`,
   html: base(`
     <p style="margin:0 0 20px;font-size:15px;color:#0f172a;line-height:1.7;">
-      Hey ${name},
+      Hey ${escapeHtml(name)},
     </p>
     <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.7;">
       I'm curious if you've had a chance to work through your audit and that #1 issue I sent over.
@@ -184,7 +186,7 @@ export const email4 = (name) => ({
   subject: `One more thing about your local search…`,
   html: base(`
     <p style="margin:0 0 20px;font-size:15px;color:#0f172a;line-height:1.7;">
-      Hey ${name},
+      Hey ${escapeHtml(name)},
     </p>
     <p style="margin:0 0 20px;font-size:15px;color:#475569;line-height:1.7;">
       Last note from me — I don't want to clutter your inbox.

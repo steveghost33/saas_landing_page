@@ -1,12 +1,16 @@
 import { Router } from "express";
 import { subscribe, getSubscribers, markContacted, processEmailSequence, clearSubscribers } from "../controllers/subscribeController.js";
+import { createRateLimiter } from "../lib/rateLimiter.js";
 
 const router = Router();
 
-router.post("/subscribe", subscribe);
-router.get("/subscribers", getSubscribers);
-router.put("/subscribers/:id/contacted", markContacted);
-router.post("/process-emails", processEmailSequence);
-router.get("/subscribers/clear", clearSubscribers);
+const subscribeRateLimit = createRateLimiter({ windowMs: 15 * 60 * 1000, max: 8 });
+const adminRateLimit = createRateLimiter({ windowMs: 15 * 60 * 1000, max: 30 });
+
+router.post("/subscribe", subscribeRateLimit, subscribe);
+router.get("/subscribers", adminRateLimit, getSubscribers);
+router.put("/subscribers/:id/contacted", adminRateLimit, markContacted);
+router.post("/process-emails", adminRateLimit, processEmailSequence);
+router.get("/subscribers/clear", adminRateLimit, clearSubscribers);
 
 export default router;

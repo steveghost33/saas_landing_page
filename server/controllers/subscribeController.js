@@ -1,23 +1,12 @@
 import pool from "../db/pool.js";
 import { sendAdminNotification } from "../services/emailService.js";
 import { runDueEmailSequence } from "../lib/emailSequence.js";
+import { requireAdminToken } from "../lib/adminAuth.js";
 
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 const normalizeField = (value, maxLength = 255) =>
   typeof value === "string" ? value.trim().slice(0, maxLength) : "";
-
-const requireAdminToken = (req, res) => {
-  const token = req.headers["x-admin-token"] || req.query.token;
-  const secret = process.env.ADMIN_SECRET;
-
-  if (!secret || token !== secret) {
-    res.status(401).json({ error: "Unauthorized." });
-    return false;
-  }
-
-  return true;
-};
 
 export const subscribe = async (req, res) => {
   const name = normalizeField(req.body?.name, 120);
