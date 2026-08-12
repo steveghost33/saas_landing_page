@@ -38,7 +38,8 @@ const MenuIcon = () => (
 const Header = () => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const firstNavLinkRef = useRef(null);
+  const firstDesktopNavLinkRef = useRef(null);
+  const firstMobileNavLinkRef = useRef(null);
   const headerRef = useRef(null);
   const mobilePanelRef = useRef(null);
   const { isDark, toggle } = useTheme();
@@ -72,9 +73,14 @@ const Header = () => {
   }, [isOpen]);
 
   useEffect(() => {
-    if (isOpen && firstNavLinkRef.current) {
-      firstNavLinkRef.current.focus();
-    }
+    if (!isOpen) return;
+    // Both the desktop and mobile nav are mounted at once and toggled purely
+    // by CSS breakpoint, so pick whichever one is actually visible in the
+    // current viewport (offsetParent is null for display:none elements).
+    const target = firstDesktopNavLinkRef.current?.offsetParent
+      ? firstDesktopNavLinkRef.current
+      : firstMobileNavLinkRef.current;
+    target?.focus();
   }, [isOpen]);
 
   const handleLogoClick = () => {
@@ -116,7 +122,7 @@ const Header = () => {
       onClick={() => setIsOpen((prev) => !prev)}
       aria-label={isOpen ? "Close menu" : "Open menu"}
       aria-expanded={isOpen}
-      aria-controls="site-nav"
+      aria-controls="site-nav-desktop site-nav-mobile"
     >
       {isOpen ? (
         <img src="/images/close.svg" alt="" aria-hidden="true" className="w-4 h-4 object-contain" />
@@ -169,12 +175,12 @@ const Header = () => {
           {isOpen && (
             <div className="relative hidden xl:block">
               <div className="absolute right-0 top-2 w-[340px] rounded-[28px] border border-white/10 bg-s2/95 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.35)] backdrop-blur-xl">
-                <nav id="site-nav" aria-label="Desktop menu">
+                <nav id="site-nav-desktop" aria-label="Desktop menu">
                   <ul className="space-y-2">
                     {navLinks.map(({ label, href }, i) => (
                       <li key={label}>
                         <a
-                          ref={i === 0 ? firstNavLinkRef : null}
+                          ref={i === 0 ? firstDesktopNavLinkRef : null}
                           href={href}
                           onClick={() => setIsOpen(false)}
                           className="flex items-center justify-between rounded-2xl px-4 py-3 text-left text-lg font-semibold uppercase tracking-[0.04em] text-p4 transition-colors duration-300 hover:bg-white/5 hover:text-p1"
@@ -216,12 +222,12 @@ const Header = () => {
           className="fixed left-0 right-0 top-[148px] sm:top-[172px] z-[99] bg-s2/98 backdrop-blur-xl border-b border-white/10 shadow-2xl xl:hidden"
         >
           <div className="container py-4">
-            <nav id="site-nav" aria-label="Mobile menu">
+            <nav id="site-nav-mobile" aria-label="Mobile menu">
               <ul className="space-y-1">
                 {navLinks.map(({ label, href }, i) => (
                   <li key={label}>
                     <a
-                      ref={i === 0 ? firstNavLinkRef : null}
+                      ref={i === 0 ? firstMobileNavLinkRef : null}
                       href={href}
                       onClick={() => setIsOpen(false)}
                       className="flex items-center justify-between rounded-xl px-4 py-4 text-base font-semibold uppercase tracking-[0.06em] text-p4 transition-colors duration-200 hover:bg-white/5 hover:text-p1"

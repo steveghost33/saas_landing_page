@@ -1,6 +1,7 @@
 // src/App.jsx
 import { Routes, Route } from "react-router-dom";
 import ScrollToHash from "./components/ScrollToHash.jsx";
+import RouteFocusManager from "./components/RouteFocusManager.jsx";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
 import LeadCapturePopup from "./features/leadCapture/LeadCapturePopup.jsx";
 
@@ -33,6 +34,7 @@ function App() {
   return (
     <ThemeProvider>
       <ScrollToHash offset={140} />
+      <RouteFocusManager />
       <LeadCapturePopup />
 
       <Routes>

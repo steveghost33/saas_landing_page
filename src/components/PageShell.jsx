@@ -11,7 +11,7 @@ function PageShell({ children, mainClassName = "overflow-hidden" }) {
         <ContactBanner />
       </div>
 
-      <main id="main-content" className={mainClassName}>
+      <main id="main-content" tabIndex={-1} className={mainClassName}>
         {children}
         <Chatbot />
         <Footer />

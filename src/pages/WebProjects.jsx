@@ -11,6 +11,7 @@ import { useScrollToHash } from "../hooks/useScrollToHash.js";
 
 function ProjectCard({ proj }) {
   const [skillsOpen, setSkillsOpen] = useState(false);
+  const skillsPanelId = `skills-${proj.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
 
   return (
     <div className="bg-s2 rounded-2xl shadow-lg overflow-hidden flex flex-col">
@@ -42,15 +43,18 @@ function ProjectCard({ proj }) {
         {proj.skills && (
           <div className="mb-4">
             <button
+              type="button"
               onClick={() => setSkillsOpen((o) => !o)}
+              aria-expanded={skillsOpen}
+              aria-controls={skillsPanelId}
               className="flex items-center gap-2 text-xs font-semibold text-p3 uppercase tracking-wide border border-white/20 rounded-full px-3 py-1 hover:bg-white/5 transition-colors"
             >
               Technical Skills
-              <span className="text-base leading-none">{skillsOpen ? "−" : "+"}</span>
+              <span className="text-base leading-none" aria-hidden="true">{skillsOpen ? "−" : "+"}</span>
             </button>
 
             {skillsOpen && (
-              <div className="mt-4 space-y-4">
+              <div id={skillsPanelId} className="mt-4 space-y-4">
                 {Object.entries(proj.skills).map(([category, items]) => (
                   <div key={category}>
                     <h4 className="text-xs font-bold text-p4 uppercase tracking-wider mb-2">

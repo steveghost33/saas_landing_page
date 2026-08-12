@@ -120,9 +120,11 @@ const TechHealthCheckLanding = () => {
                       id="th-name" type="text" autoComplete="given-name"
                       value={name} onChange={(e) => setName(e.target.value)}
                       disabled={loading} placeholder="Sarah"
+                      aria-invalid={errors.name ? "true" : undefined}
+                      aria-describedby={errors.name ? "th-name-error" : undefined}
                       className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.name ? "border-red-400 bg-red-50" : "border-slate-200"}`}
                     />
-                    {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+                    {errors.name && <p id="th-name-error" role="alert" className="mt-1 text-xs text-red-500">{errors.name}</p>}
                   </div>
                   <div>
                     <label htmlFor="th-email" className="block text-sm font-semibold text-slate-700 mb-1">Email</label>
@@ -130,12 +132,14 @@ const TechHealthCheckLanding = () => {
                       id="th-email" type="email" autoComplete="email"
                       value={email} onChange={(e) => setEmail(e.target.value)}
                       disabled={loading} placeholder="sarah@yourorg.org"
+                      aria-invalid={errors.email ? "true" : undefined}
+                      aria-describedby={errors.email ? "th-email-error" : undefined}
                       className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.email ? "border-red-400 bg-red-50" : "border-slate-200"}`}
                     />
-                    {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                    {errors.email && <p id="th-email-error" role="alert" className="mt-1 text-xs text-red-500">{errors.email}</p>}
                   </div>
                   {serverError && (
-                    <p className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-600">{serverError}</p>
+                    <p role="alert" className="rounded-lg bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-600">{serverError}</p>
                   )}
                   <button
                     type="submit" disabled={loading}

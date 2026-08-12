@@ -74,6 +74,20 @@ html.light .hover\:bg-white\/5:hover { background-color: rgba(15, 23, 42, 0.05);
 /* Light mode: transition color for header backdrop */
 html.light header { transition: background-color 0.5s ease, padding 0.5s ease; }
 
+/* Light mode: text-p5/NN opacity utilities read as low-contrast gray-on-white
+   (e.g. text-p5/50 computes to ~2.3:1, well under the 4.5:1 AA minimum for
+   body text). Force full-opacity p5 in light mode, which measures ~7.6:1 on
+   white/near-white surfaces. Dark mode is unaffected — the same opacity
+   values against the near-black background already clear AA. */
+html.light .text-p5\/30,
+html.light .text-p5\/40,
+html.light .text-p5\/50,
+html.light .text-p5\/60,
+html.light .text-p5\/70,
+html.light .text-p5\/80 {
+  color: rgb(71 85 105);
+}
+
 /* Light mode: white logo → dark (all fills are #fff so invert makes them #000) */
 html.light .theme-logo {
   filter: invert(1);
@@ -533,8 +547,12 @@ html.light .social-icon img {
     border: none;
     padding: 10px;
     font-size: 14px;
-    outline: none;
     color: #000; /* user input text in black */
+  }
+
+  .chatbot-footer input:focus-visible {
+    outline: 2px solid #0077cc;
+    outline-offset: -2px;
   }
 
   .chatbot-footer button {

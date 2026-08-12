@@ -173,10 +173,11 @@ const ResearchForm = () => {
               <p className="text-blue-100">Enter your admin token to load pending leads</p>
             </div>
             <div className="p-8 space-y-4">
-              <label className="block text-sm font-semibold text-slate-700">
+              <label htmlFor="admin-token-gate" className="block text-sm font-semibold text-slate-700">
                 Admin Token
               </label>
               <input
+                id="admin-token-gate"
                 type="password"
                 value={token}
                 onChange={(e) => handleTokenChange(e.target.value)}
@@ -205,7 +206,7 @@ const ResearchForm = () => {
             </div>
             <div className="p-8">
               {error && (
-                <div className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+                <div role="alert" className="mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
                   <p className="text-sm text-red-700">{error}</p>
                 </div>
               )}
@@ -312,10 +313,11 @@ const ResearchForm = () => {
 
             {/* Admin Token */}
             <div>
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label htmlFor="admin-token" className="block text-sm font-semibold text-slate-700 mb-2">
                 Admin Token *
               </label>
               <input
+                id="admin-token"
                 type="password"
                 value={token}
                 onChange={(e) => handleTokenChange(e.target.value)}
@@ -329,10 +331,11 @@ const ResearchForm = () => {
               <h3 className="font-bold text-slate-900 mb-4">Google Business Profile</h3>
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">
+                  <label htmlFor="gbp-score" className="block text-sm font-semibold text-slate-700 mb-2">
                     Completeness Score (0-100)
                   </label>
                   <input
+                    id="gbp-score"
                     type="number"
                     min="0"
                     max="100"
@@ -342,10 +345,11 @@ const ResearchForm = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">
+                  <label htmlFor="gbp-rating" className="block text-sm font-semibold text-slate-700 mb-2">
                     Rating
                   </label>
                   <input
+                    id="gbp-rating"
                     type="number"
                     step="0.1"
                     min="0"
@@ -356,10 +360,11 @@ const ResearchForm = () => {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">
+                  <label htmlFor="gbp-reviews" className="block text-sm font-semibold text-slate-700 mb-2">
                     Review Count
                   </label>
                   <input
+                    id="gbp-reviews"
                     type="number"
                     min="0"
                     value={gbpReviews}
@@ -372,10 +377,11 @@ const ResearchForm = () => {
 
             {/* Website Issues */}
             <div className="border-t pt-6">
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label htmlFor="website-issues" className="block text-sm font-semibold text-slate-700 mb-2">
                 Website Issues (one per line)
               </label>
               <textarea
+                id="website-issues"
                 value={websiteIssues}
                 onChange={(e) => setWebsiteIssues(e.target.value)}
                 placeholder="e.g., Slow page speed&#10;Missing mobile optimization&#10;No schema markup"
@@ -386,10 +392,11 @@ const ResearchForm = () => {
 
             {/* Competitors */}
             <div className="border-t pt-6">
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label htmlFor="competitors" className="block text-sm font-semibold text-slate-700 mb-2">
                 Competitors (name, ranking - one per line)
               </label>
               <textarea
+                id="competitors"
                 value={competitors}
                 onChange={(e) => setCompetitors(e.target.value)}
                 placeholder="e.g., ABC Plumbing, 1&#10;XYZ Plumbing, 2"
@@ -400,10 +407,11 @@ const ResearchForm = () => {
 
             {/* Quick Wins */}
             <div className="border-t pt-6">
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label htmlFor="quick-wins" className="block text-sm font-semibold text-slate-700 mb-2">
                 Quick Wins (one per line)
               </label>
               <textarea
+                id="quick-wins"
                 value={quickWins}
                 onChange={(e) => setQuickWins(e.target.value)}
                 placeholder="e.g., Claim and complete GBP profile&#10;Add high-quality photos&#10;Improve mobile site speed"
@@ -414,10 +422,11 @@ const ResearchForm = () => {
 
             {/* Summary */}
             <div className="border-t pt-6">
-              <label className="block text-sm font-semibold text-slate-700 mb-2">
+              <label htmlFor="summary" className="block text-sm font-semibold text-slate-700 mb-2">
                 Summary
               </label>
               <textarea
+                id="summary"
                 value={summary}
                 onChange={(e) => setSummary(e.target.value)}
                 placeholder="Brief summary of their local search situation..."
@@ -428,7 +437,7 @@ const ResearchForm = () => {
 
             {/* Error */}
             {error && (
-              <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+              <div role="alert" className="bg-red-50 border border-red-200 rounded-lg p-4">
                 <p className="text-sm text-red-700">{error}</p>
               </div>
             )}

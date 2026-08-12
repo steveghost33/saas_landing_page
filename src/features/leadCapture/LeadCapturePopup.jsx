@@ -38,6 +38,9 @@ const LeadCapturePopup = () => {
   const emailRef = useRef(null);
   const businessNameRef = useRef(null);
   const businessLocationRef = useRef(null);
+  const dialogRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const previouslyFocusedRef = useRef(null);
 
   useEffect(() => {
     if (hasDismissed()) return;
@@ -71,6 +74,43 @@ const LeadCapturePopup = () => {
     if (visible) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
     return () => { document.body.style.overflow = ""; };
+  }, [visible]);
+
+  // Move focus into the dialog on open, and back to the trigger on close.
+  useEffect(() => {
+    if (visible) {
+      previouslyFocusedRef.current = document.activeElement;
+      const raf = requestAnimationFrame(() => {
+        (nameRef.current || closeButtonRef.current)?.focus();
+      });
+      return () => cancelAnimationFrame(raf);
+    }
+
+    previouslyFocusedRef.current?.focus?.();
+    previouslyFocusedRef.current = null;
+  }, [visible]);
+
+  // Trap Tab focus inside the dialog while it's open.
+  useEffect(() => {
+    if (!visible) return;
+    const handler = (e) => {
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      const focusable = dialogRef.current.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
   }, [visible]);
 
   if (!visible) return null;
@@ -127,6 +167,7 @@ const LeadCapturePopup = () => {
 
       {/* Modal */}
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="popup-title"
@@ -144,6 +185,7 @@ const LeadCapturePopup = () => {
           {/* Header bar */}
           <div className="relative bg-gradient-to-br from-blue-700 via-blue-600 to-blue-500 px-6 pt-8 pb-6 text-center">
             <button
+              ref={closeButtonRef}
               onClick={() => close()}
               aria-label="Close"
               className="absolute top-4 right-4 text-white/60 hover:text-white transition"
@@ -199,44 +241,60 @@ const LeadCapturePopup = () => {
 
                 <form onSubmit={handleSubmit} noValidate className="space-y-3">
                   <div>
+                    <label htmlFor="popup-name" className="sr-only">Your first name</label>
                     <input
+                      id="popup-name"
                       ref={nameRef} type="text" autoComplete="given-name"
                       value={name} onChange={(e) => setName(e.target.value)}
                       disabled={loading} placeholder="Your first name"
+                      aria-invalid={errors.name ? "true" : undefined}
+                      aria-describedby={errors.name ? "popup-name-error" : undefined}
                       className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.name ? "border-red-400 bg-red-50" : "border-slate-200"}`}
                     />
-                    {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name}</p>}
+                    {errors.name && <p id="popup-name-error" role="alert" className="mt-1 text-xs text-red-500">{errors.name}</p>}
                   </div>
                   <div>
+                    <label htmlFor="popup-email" className="sr-only">Email address</label>
                     <input
+                      id="popup-email"
                       ref={emailRef} type="email" autoComplete="email"
                       value={email} onChange={(e) => setEmail(e.target.value)}
                       disabled={loading} placeholder="Email address"
+                      aria-invalid={errors.email ? "true" : undefined}
+                      aria-describedby={errors.email ? "popup-email-error" : undefined}
                       className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.email ? "border-red-400 bg-red-50" : "border-slate-200"}`}
                     />
-                    {errors.email && <p className="mt-1 text-xs text-red-500">{errors.email}</p>}
+                    {errors.email && <p id="popup-email-error" role="alert" className="mt-1 text-xs text-red-500">{errors.email}</p>}
                   </div>
                   <div>
+                    <label htmlFor="popup-business-name" className="sr-only">Business name</label>
                     <input
+                      id="popup-business-name"
                       ref={businessNameRef} type="text" autoComplete="organization"
                       value={businessName} onChange={(e) => setBusinessName(e.target.value)}
                       disabled={loading} placeholder="Business name"
+                      aria-invalid={errors.business_name ? "true" : undefined}
+                      aria-describedby={errors.business_name ? "popup-business-name-error" : undefined}
                       className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.business_name ? "border-red-400 bg-red-50" : "border-slate-200"}`}
                     />
-                    {errors.business_name && <p className="mt-1 text-xs text-red-500">{errors.business_name}</p>}
+                    {errors.business_name && <p id="popup-business-name-error" role="alert" className="mt-1 text-xs text-red-500">{errors.business_name}</p>}
                   </div>
                   <div>
+                    <label htmlFor="popup-business-location" className="sr-only">City, state</label>
                     <input
+                      id="popup-business-location"
                       ref={businessLocationRef} type="text" autoComplete="address-level2"
                       value={businessLocation} onChange={(e) => setBusinessLocation(e.target.value)}
                       disabled={loading} placeholder="City, state"
+                      aria-invalid={errors.business_location ? "true" : undefined}
+                      aria-describedby={errors.business_location ? "popup-business-location-error" : undefined}
                       className={`w-full rounded-xl border px-4 py-3 text-slate-800 text-[15px] outline-none transition focus:ring-2 focus:ring-blue-500/40 disabled:opacity-50 ${errors.business_location ? "border-red-400 bg-red-50" : "border-slate-200"}`}
                     />
-                    {errors.business_location && <p className="mt-1 text-xs text-red-500">{errors.business_location}</p>}
+                    {errors.business_location && <p id="popup-business-location-error" role="alert" className="mt-1 text-xs text-red-500">{errors.business_location}</p>}
                   </div>
 
                   {serverError && (
-                    <p className="rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-sm text-red-600">{serverError}</p>
+                    <p role="alert" className="rounded-lg bg-red-50 border border-red-200 px-3 py-2 text-sm text-red-600">{serverError}</p>
                   )}
 
                   <button

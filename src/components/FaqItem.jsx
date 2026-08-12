@@ -42,6 +42,7 @@ function FaqItem({ item, index }) {
       <div
         id={`faq-answer-${item.id}`}
         role="region"
+        aria-hidden={!active}
         className={clsx(
           "overflow-hidden transition-all duration-300 ease-in-out",
           active ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
