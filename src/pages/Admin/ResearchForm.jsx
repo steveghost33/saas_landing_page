@@ -233,6 +233,15 @@ const ResearchForm = () => {
                       <p className="text-lg font-bold text-slate-900">{pendingLead.business_name}</p>
                       <p className="text-slate-600">{pendingLead.name} · {pendingLead.email}</p>
                       <p className="text-slate-500 text-sm">{pendingLead.business_location}</p>
+                      {pendingLead.admin_notify_error ? (
+                        <p className="mt-2 text-sm font-semibold text-red-600">
+                          ⚠️ Notification email failed: {pendingLead.admin_notify_error}
+                        </p>
+                      ) : !pendingLead.admin_notified_at ? (
+                        <p className="mt-2 text-sm font-semibold text-amber-600">
+                          ⚠️ No notification email sent for this lead yet
+                        </p>
+                      ) : null}
                     </button>
                   ))}
                 </div>

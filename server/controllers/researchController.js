@@ -23,7 +23,7 @@ export const getResearchForm = async (req, res) => {
 
     // Get all pending research leads
     const result = await pool.query(
-      "SELECT id, name, email, business_name, business_location, created_at FROM subscribers WHERE research_status = 'pending' ORDER BY created_at DESC LIMIT 50"
+      "SELECT id, name, email, business_name, business_location, created_at, admin_notified_at, admin_notify_error FROM subscribers WHERE research_status = 'pending' ORDER BY created_at DESC LIMIT 50"
     );
 
     return res.json({ success: true, leads: result.rows });

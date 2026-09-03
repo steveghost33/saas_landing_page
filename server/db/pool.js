@@ -32,7 +32,9 @@ const initDb = async () => {
         ADD COLUMN IF NOT EXISTS service_type VARCHAR(100),
         ADD COLUMN IF NOT EXISTS research_status VARCHAR(50) DEFAULT 'pending',
         ADD COLUMN IF NOT EXISTS research_data JSONB,
-        ADD COLUMN IF NOT EXISTS research_completed_at TIMESTAMP
+        ADD COLUMN IF NOT EXISTS research_completed_at TIMESTAMP,
+        ADD COLUMN IF NOT EXISTS admin_notified_at TIMESTAMP,
+        ADD COLUMN IF NOT EXISTS admin_notify_error TEXT
     `);
 
     console.log("Database initialized — subscribers table ready.");

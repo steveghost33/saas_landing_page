@@ -270,6 +270,16 @@ app.use((error, req, res, next) => {
   return res.status(500).json({ error: "Unexpected server error." });
 });
 
+if (!process.env.RESEND_API_KEY) {
+  console.warn(
+    "⚠️  RESEND_API_KEY is not set — new-lead admin notifications and audit emails will NOT be sent. " +
+      "Set it in this service's environment variables (it is marked sync: false in render.yaml, so it must be entered manually per-service).",
+  );
+}
+if (!process.env.ADMIN_EMAIL) {
+  console.warn("⚠️  ADMIN_EMAIL is not set — lead notifications will default to steven@ellatechsolutions.com.");
+}
+
 app.listen(PORT, () => {
   console.log(`API server listening at http://localhost:${PORT}`);
 });

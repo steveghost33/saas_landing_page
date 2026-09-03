@@ -29,6 +29,7 @@ export const subscribe = async (req, res) => {
         "UPDATE subscribers SET name = $1, business_name = $2, business_location = $3, service_type = $4 WHERE email = $5",
         [name, businessName, businessLocation, serviceType, email]
       );
+      console.log(`Returning subscriber resubmitted: ${name} <${email}> — no new admin notification sent.`);
       return res.json({
         success: true,
         isReturning: true,
@@ -42,13 +43,29 @@ export const subscribe = async (req, res) => {
       "INSERT INTO subscribers (name, email, business_name, business_location, service_type, source, sequence_step, research_status) VALUES ($1, $2, $3, $4, $5, $6, 0, $7) RETURNING id",
       [name, email, businessName, businessLocation, serviceType, source, "pending"],
     );
+    const leadId = inserted.rows[0].id;
 
     console.log(`New subscriber: ${name} <${email}> [${source}] - Business: ${businessName}, ${businessLocation}`);
 
-    // Send admin notification to Steven about new lead
-    sendAdminNotification({ id: inserted.rows[0].id, name, email, businessName, businessLocation }).catch((err) =>
-      console.error("Admin notification failed:", err.message),
-    );
+    // Send admin notification to Steven about new lead. Fire-and-forget so a slow/failed
+    // email provider never delays the visitor's response, but record the outcome on the
+    // lead itself so a failure is visible in the subscribers data, not just server logs.
+    sendAdminNotification({ id: leadId, name, email, businessName, businessLocation })
+      .then(() =>
+        pool.query(
+          "UPDATE subscribers SET admin_notified_at = NOW(), admin_notify_error = NULL WHERE id = $1",
+          [leadId],
+        ),
+      )
+      .catch((err) => {
+        console.error(`Admin notification failed for lead ${leadId} <${email}>:`, err.message);
+        pool
+          .query("UPDATE subscribers SET admin_notify_error = $1 WHERE id = $2", [
+            String(err.message || err).slice(0, 500),
+            leadId,
+          ])
+          .catch((updateErr) => console.error("Failed to record admin_notify_error:", updateErr.message));
+      });
 
     return res.status(201).json({
       success: true,
